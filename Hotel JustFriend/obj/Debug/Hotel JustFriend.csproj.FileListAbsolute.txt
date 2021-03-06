@@ -1,0 +1,15 @@
+D:\Hotel-JustFriend\Hotel JustFriend\bin\Debug\Hotel JustFriend.exe.config
+D:\Hotel-JustFriend\Hotel JustFriend\bin\Debug\Hotel JustFriend.exe
+D:\Hotel-JustFriend\Hotel JustFriend\bin\Debug\Hotel JustFriend.pdb
+D:\Hotel-JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend.csprojAssemblyReference.cache
+D:\Hotel-JustFriend\Hotel JustFriend\obj\Debug\MainWindow.g.cs
+D:\Hotel-JustFriend\Hotel JustFriend\obj\Debug\App.g.cs
+D:\Hotel-JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend_MarkupCompile.cache
+D:\Hotel-JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend_MarkupCompile.lref
+D:\Hotel-JustFriend\Hotel JustFriend\obj\Debug\MainWindow.baml
+D:\Hotel-JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend.g.resources
+D:\Hotel-JustFriend\Hotel JustFriend\obj\Debug\Hotel_JustFriend.Properties.Resources.resources
+D:\Hotel-JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend.csproj.GenerateResource.cache
+D:\Hotel-JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend.csproj.CoreCompileInputs.cache
+D:\Hotel-JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend.exe
+D:\Hotel-JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend.pdb
