@@ -1,3 +1,12 @@
+USE [master]
+GO
+
+CREATE DATABASE Hotel_JustFriend
+GO
+
+USE [Hotel_JustFriend]
+GO
+
 CREATE TABLE [Account] (
   [idAccount] int PRIMARY KEY IDENTITY(1, 1),
   [username] varchar(50) UNIQUE NOT NULL,
@@ -96,7 +105,7 @@ GO
 
 CREATE TABLE [Attendance] (
   [dateAbsence] date,
-  [idEmployee] int(ref: > Employee.idEmployee),
+  [idEmployee] int,
   PRIMARY KEY ([dateAbsence], [idEmployee])
 )
 GO
@@ -155,6 +164,9 @@ ALTER TABLE [Billinfo] ADD FOREIGN KEY ([idBill]) REFERENCES [Bill] ([idBill])
 GO
 
 ALTER TABLE [Billinfo] ADD FOREIGN KEY ([idProduct]) REFERENCES [Product] ([idProduct])
+GO
+
+ALTER TABLE [Attendance] ADD FOREIGN KEY ([idEmployee]) REFERENCES [Employee] ([idEmployee])
 GO
 
 ALTER TABLE [Salary] ADD FOREIGN KEY ([idSalaryRecord]) REFERENCES [SalaryRecord] ([idSalaryRecord])
