@@ -7,6 +7,15 @@ D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\DevExpress.Mvvm.
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\DevExpress.Printing.v20.1.Core.dll
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\DevExpress.Xpf.Core.v20.1.dll
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\DevExpress.Xpf.Themes.Office2019Colorful.v20.1.dll
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\DevExpress.Xpo.v20.1.dll
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\EntityFramework.dll
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\EntityFramework.SqlServer.dll
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\LiveCharts.dll
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\LiveCharts.Wpf.dll
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\MaterialDesignColors.dll
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\ToastNotifications.dll
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\ToastNotifications.Messages.dll
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\DevExpress.Pdf.v20.1.Core.dll
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\DevExpress.Pdf.v20.1.Drawing.dll
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\DevExpress.Mvvm.v20.1.xml
@@ -14,6 +23,16 @@ D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\DevExpress.Data.
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\DevExpress.Data.v20.1.xml
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\DevExpress.Printing.v20.1.Core.xml
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\DevExpress.Xpf.Core.v20.1.xml
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\DevExpress.Xpo.v20.1.xml
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\EntityFramework.xml
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\EntityFramework.SqlServer.xml
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\LiveCharts.pdb
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\LiveCharts.xml
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\LiveCharts.Wpf.pdb
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\LiveCharts.Wpf.xml
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\MaterialDesignColors.pdb
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\MaterialDesignThemes.Wpf.xml
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\DevExpress.Pdf.v20.1.Core.xml
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\DevExpress.Pdf.v20.1.Drawing.xml
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\de\DevExpress.Data.v20.1.resources.dll
@@ -28,6 +47,10 @@ D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\de\DevExpress.Xp
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\es\DevExpress.Xpf.Core.v20.1.resources.dll
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\ja\DevExpress.Xpf.Core.v20.1.resources.dll
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\ru\DevExpress.Xpf.Core.v20.1.resources.dll
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\de\DevExpress.Xpo.v20.1.resources.dll
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\es\DevExpress.Xpo.v20.1.resources.dll
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\ja\DevExpress.Xpo.v20.1.resources.dll
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\ru\DevExpress.Xpo.v20.1.resources.dll
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\de\DevExpress.Pdf.v20.1.Core.resources.dll
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\es\DevExpress.Pdf.v20.1.Core.resources.dll
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\ja\DevExpress.Pdf.v20.1.Core.resources.dll
@@ -36,6 +59,7 @@ D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\MainWindow.g.cs
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\MainView.g.cs
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\App.g.cs
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend_Content.g.cs
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend_MarkupCompile.cache
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend_MarkupCompile.lref

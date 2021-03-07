@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="22613f17a9f84d2c90fed3084032d830" Name="Diagram1">
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.Account" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.AccountRole" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.Attendance" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.Bill" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.Billinfo" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.Customer" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.Employee" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.EmployeeRole" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.Product" Width="1.5" PointX="5.25" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.ProductImport" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.ProductImportInfo" Width="1.5" PointX="7.5" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.Room" Width="1.5" PointX="3" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.SalaryRecord" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.SalaryRecordInfo" Width="1.5" PointX="7.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.SalaryTable" Width="1.5" PointX="3" PointY="18.25" IsExpanded="true" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__Account__idAccou__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__SalaryRec__idAcc__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__Employee__idAcco__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__Attendanc__idEmp__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__Bill__idCustomer__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__Bill__idEmployee__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__Bill__idRoom__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__Billinfo__idBill__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__Billinfo__idProd__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__Employee__idEmpl__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__ProductIm__idEmp__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__SalaryRec__idEmp__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__SalaryTab__idEmp__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__ProductIm__idPro__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__ProductIm__idImp__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__SalaryRec__idSal__619B8048" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

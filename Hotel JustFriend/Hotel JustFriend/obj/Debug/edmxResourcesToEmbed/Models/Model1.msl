@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Hotel_JustFriendModelStoreContainer" CdmEntityContainer="Hotel_JustFriendEntities">
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.Account">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="idAccount" ColumnName="idAccount" />
+          <ScalarProperty Name="idAccountRole" ColumnName="idAccountRole" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AccountRoles">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.AccountRole">
+        <MappingFragment StoreEntitySet="AccountRole">
+          <ScalarProperty Name="idAccountRole" ColumnName="idAccountRole" />
+          <ScalarProperty Name="displayName" ColumnName="displayName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Attendances">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.Attendance">
+        <MappingFragment StoreEntitySet="Attendance">
+          <ScalarProperty Name="idEmployee" ColumnName="idEmployee" />
+          <ScalarProperty Name="dateAbsence" ColumnName="dateAbsence" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bills">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.Bill">
+        <MappingFragment StoreEntitySet="Bill">
+          <ScalarProperty Name="idBill" ColumnName="idBill" />
+          <ScalarProperty Name="idRoom" ColumnName="idRoom" />
+          <ScalarProperty Name="idEmployee" ColumnName="idEmployee" />
+          <ScalarProperty Name="idCustomer" ColumnName="idCustomer" />
+          <ScalarProperty Name="checkIn" ColumnName="checkIn" />
+          <ScalarProperty Name="checkOut" ColumnName="checkOut" />
+          <ScalarProperty Name="totalMoney" ColumnName="totalMoney" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Billinfoes">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.Billinfo">
+        <MappingFragment StoreEntitySet="Billinfo">
+          <ScalarProperty Name="idBill" ColumnName="idBill" />
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="idCustomer" ColumnName="idCustomer" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+          <ScalarProperty Name="idCard" ColumnName="idCard" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="idEmployee" ColumnName="idEmployee" />
+          <ScalarProperty Name="idEmployeeRole" ColumnName="idEmployeeRole" />
+          <ScalarProperty Name="idAccountRole" ColumnName="idAccountRole" />
+          <ScalarProperty Name="fullName" ColumnName="fullName" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+          <ScalarProperty Name="startDate" ColumnName="startDate" />
+          <ScalarProperty Name="endDate" ColumnName="endDate" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeRoles">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.EmployeeRole">
+        <MappingFragment StoreEntitySet="EmployeeRole">
+          <ScalarProperty Name="idEmployeeRole" ColumnName="idEmployeeRole" />
+          <ScalarProperty Name="displayName" ColumnName="displayName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="displayName" ColumnName="displayName" />
+          <ScalarProperty Name="unit" ColumnName="unit" />
+          <ScalarProperty Name="pricePerUnit" ColumnName="pricePerUnit" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductImports">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.ProductImport">
+        <MappingFragment StoreEntitySet="ProductImport">
+          <ScalarProperty Name="idImport" ColumnName="idImport" />
+          <ScalarProperty Name="idEmployee" ColumnName="idEmployee" />
+          <ScalarProperty Name="dateImport" ColumnName="dateImport" />
+          <ScalarProperty Name="importPrice" ColumnName="importPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductImportInfoes">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.ProductImportInfo">
+        <MappingFragment StoreEntitySet="ProductImportInfo">
+          <ScalarProperty Name="idImport" ColumnName="idImport" />
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rooms">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.Room">
+        <MappingFragment StoreEntitySet="Room">
+          <ScalarProperty Name="idRoom" ColumnName="idRoom" />
+          <ScalarProperty Name="displayName" ColumnName="displayName" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalaryRecords">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.SalaryRecord">
+        <MappingFragment StoreEntitySet="SalaryRecord">
+          <ScalarProperty Name="idSalaryRecord" ColumnName="idSalaryRecord" />
+          <ScalarProperty Name="idAccount" ColumnName="idAccount" />
+          <ScalarProperty Name="salaryRecordDate" ColumnName="salaryRecordDate" />
+          <ScalarProperty Name="total" ColumnName="total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalaryRecordInfoes">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.SalaryRecordInfo">
+        <MappingFragment StoreEntitySet="SalaryRecordInfo">
+          <ScalarProperty Name="idSalaryRecord" ColumnName="idSalaryRecord" />
+          <ScalarProperty Name="idEmployee" ColumnName="idEmployee" />
+          <ScalarProperty Name="numOfShift" ColumnName="numOfShift" />
+          <ScalarProperty Name="numOfFault" ColumnName="numOfFault" />
+          <ScalarProperty Name="totalSalary" ColumnName="totalSalary" />
+          <ScalarProperty Name="salaryMonth" ColumnName="salaryMonth" />
+          <ScalarProperty Name="coefficients" ColumnName="coefficients" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalaryTables">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.SalaryTable">
+        <MappingFragment StoreEntitySet="SalaryTable">
+          <ScalarProperty Name="idEmployeeRole" ColumnName="idEmployeeRole" />
+          <ScalarProperty Name="salaryBase" ColumnName="salaryBase" />
+          <ScalarProperty Name="moneyPerShift" ColumnName="moneyPerShift" />
+          <ScalarProperty Name="moneyPerFault" ColumnName="moneyPerFault" />
+          <ScalarProperty Name="standardWorkDays" ColumnName="standardWorkDays" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

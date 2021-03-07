@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel JustFriend", "Hotel JustFriend\Hotel JustFriend.csproj", "{08B24CCE-7B5A-4CEC-B360-3D13AD54C429}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel JustFriend", "Hotel JustFriend\Hotel JustFriend.csproj", "{992E0A31-0479-4939-BB36-197FD5E824CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{08B24CCE-7B5A-4CEC-B360-3D13AD54C429}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{08B24CCE-7B5A-4CEC-B360-3D13AD54C429}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{08B24CCE-7B5A-4CEC-B360-3D13AD54C429}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{08B24CCE-7B5A-4CEC-B360-3D13AD54C429}.Release|Any CPU.Build.0 = Release|Any CPU
+		{992E0A31-0479-4939-BB36-197FD5E824CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{992E0A31-0479-4939-BB36-197FD5E824CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{992E0A31-0479-4939-BB36-197FD5E824CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{992E0A31-0479-4939-BB36-197FD5E824CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {D381D460-6927-45A9-BDC5-5152C48A7B4B}
+		SolutionGuid = {5D7764AF-CA64-416A-9911-9A9654E148DD}
 	EndGlobalSection
 EndGlobal

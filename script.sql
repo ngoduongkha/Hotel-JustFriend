@@ -18,7 +18,6 @@ CREATE TABLE [Account] (
   [idAccountRole] int,
   [username] varchar(100) UNIQUE NOT NULL,
   [password] varchar(100) NOT NULL,
-  [createdAt] timestamp
 )
 GO
 
@@ -29,7 +28,7 @@ CREATE TABLE [Product] (
   [pricePerUnit] money NOT NULL,
   [image] varbinary(max),
   [quantity] int DEFAULT (0),
-  [status] nvarchar(255) NOT NULL CHECK ([status] IN ('outOfStock', 'inStock', 'runningLow')),
+  [status] nvarchar(255) NOT NULL CHECK ([status] IN ('OutOfStock', 'InStock', 'RunningLow')),
   [isDelete] bit DEFAULT (0)
 )
 GO
@@ -61,7 +60,7 @@ CREATE TABLE [Room] (
   [displayName] nvarchar(max) NOT NULL,
   [type] nvarchar(50) NOT NULL,
   [price] money NOT NULL,
-  [status] nvarchar(255) NOT NULL CHECK ([status] IN ('rented', 'available', 'notAvailable')),
+  [status] nvarchar(255) NOT NULL CHECK ([status] IN ('Rented', 'Available', 'NotAvailable')),
   [note] nvarchar(max) DEFAULT '',
   [isDelete] bit DEFAULT (0)
 )
@@ -92,7 +91,8 @@ CREATE TABLE [ProductImportInfo] (
   [idImport] varchar(64),
   [idProduct] varchar(64),
   [quantity] int NOT NULL,
-  [price] money NOT NULL
+  [price] money NOT NULL,
+  PRIMARY KEY ([idImport], [idProduct])
 )
 GO
 
@@ -111,7 +111,8 @@ CREATE TABLE [Billinfo] (
   [idBill] varchar(64),
   [idProduct] varchar(64),
   [quantity] int NOT NULL,
-  [price] money NOT NULL
+  [price] money NOT NULL,
+  PRIMARY KEY ([idBill], [idProduct])
 )
 GO
 
@@ -123,7 +124,7 @@ CREATE TABLE [Attendance] (
 GO
 
 CREATE TABLE [SalaryTable] (
-  [idEmployeeRole] int,
+  [idEmployeeRole] int PRIMARY KEY,
   [salaryBase] money NOT NULL,
   [moneyPerShift] money NOT NULL,
   [moneyPerFault] money NOT NULL,
