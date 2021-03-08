@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hotel_JustFriend.Models
 {
-    class DataProvider
+    public class DataProvider
     {
         private static DataProvider instance;
 
