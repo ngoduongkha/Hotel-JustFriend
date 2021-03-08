@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:Hotel_JustFriend.Views"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="Đăng nhập" Height="350" Width="280">
+        Title="Đăng nhập" Height="350" Width="280"
+        DataContext="{StaticResource LoginVM}"
+        x:Name="window">
     <Grid>
         <materialDesign:Card Height="280" Width="250" Background="Pink">
             <Grid>
@@ -63,7 +65,9 @@
                     <Grid Grid.Column="0">
                         <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"
                                 Width="110" Content="Đăng nhập"
-                                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton">
+                                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                                Command="{Binding LoginCommand}"
+                                CommandParameter="{Binding ElementName=window}">
                         </Button>
                     </Grid>
                     <Grid Grid.Column="1">

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Hotel_JustFriend.ViewModels
@@ -18,16 +19,17 @@ namespace Hotel_JustFriend.ViewModels
         #region Method
         public LoginViewModel()
         {
-            LoginCommand = new RelayCommand<LoginWindow>(p => true, p => Login(p));
+            LoginCommand = new RelayCommand<object>(p => true, p => Login(p));
         }
-        public void Login(LoginWindow p)
+        public void Login(object p)
         {
             if (p != null)
             {
                 MainWindow main = new MainWindow();
-                p.Hide();
+                Window window = p as Window;
+                window.Hide();
                 main.ShowDialog();
-                p.Show();
+                window.Show();
             }
         }
         #endregion
