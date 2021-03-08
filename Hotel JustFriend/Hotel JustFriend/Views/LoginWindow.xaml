@@ -4,9 +4,76 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hotel_JustFriend.Views"
-        mc:Ignorable="d"
-        Title="LoginWindow" Height="450" Width="800">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="Đăng nhập" Height="350" Width="280">
     <Grid>
-        
+        <materialDesign:Card Height="280" Width="250" Background="Pink">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Label Content="Đăng nhập" FontSize="25" FontWeight="ExtraBold"
+                           Foreground="GhostWhite"
+                           HorizontalAlignment="Center" VerticalAlignment="Center">
+                    </Label>
+                </Grid>
+                <Grid Grid.Row="1" Margin="20,0"
+                      VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" Margin="0,0,5,5"
+                          VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                        <materialDesign:PackIcon Kind="Account" Height="23" Width="23"/>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <TextBox materialDesign:HintAssist.Hint="Tên đăng nhập"
+                             FontSize="15"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2" Margin="20, 0"
+                      VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" Margin="0,0,5,5"
+                          VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                        <materialDesign:PackIcon Kind="Key" Height="23" Width="23"/>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <PasswordBox x:Name="FloatingPasswordBox"
+                                 materialDesign:HintAssist.Hint="Mật khẩu"
+                                 FontSize="15"
+                                 Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                                Width="110" Content="Đăng nhập"
+                                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton">
+                        </Button>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                                Width="110" Content="Thoát" Background="OrangeRed"
+                                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton">
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </materialDesign:Card>
     </Grid>
 </Window>
