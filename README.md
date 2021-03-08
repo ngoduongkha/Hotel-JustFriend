@@ -96,6 +96,7 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 ### Built-with
 
 * [WPF (.NET Core)](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/?view=netdesktop-5.0)
+* [DevExpress](https://www.devexpress.com/)
 * [Material Design](http://materialdesigninxaml.net/)
 * [Toast Notifications](https://github.com/rafallopatka/ToastNotifications)
 * [Live Charts](https://lvcharts.net/)
@@ -157,12 +158,12 @@ See the [open issues](https://github.com/othneildrew/Best-README-Template/issues
 <!-- CONTRIBUTING -->
 ## Thành viên
 
-|  Họ và tên                   |      MSSV    |     Vai trò     |
-|  :---                        |       :----:     |         :---:     |
-|  Ngô Dương Kha         |  1950117     |  Leader     |
-|  Lê Thành Luân           |  19520702  |  UX/UI        |
-|  Dương Hoài Nam        |  19521868  |  Developer  |
-|  Nguyễn Vĩnh Hoàng Phúc  |  19520225  |  Database   |
+|   Họ và tên                 |    MSSV    |  Vai trò    |
+|   :---                      |   :----:   |    :---:    |
+|   Ngô Dương Kha             |  1950117   |  Leader     |
+|   Lê Thành Luân             |  19520702  |  UX/UI      |
+|   Dương Hoài Nam            |  19521868  |  Developer  |
+|   Nguyễn Vĩnh Hoàng Phúc    |  19520225  |  Database   |
 
 <!-- LICENSE -->
 ## Giấy phép
