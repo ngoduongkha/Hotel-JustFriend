@@ -230,9 +230,6 @@ _Pvt_Extensions
 .fake/
 *.binlog
 /.dotnet
-Hotel JustFriend/Hotel JustFriend/obj/Debug/Hotel JustFriend.csprojAssemblyReference.cache
-Hotel JustFriend/Hotel JustFriend/obj/Debug/Hotel JustFriend_MarkupCompile.cache
-Hotel JustFriend/Hotel JustFriend/obj/Debug/Hotel JustFriend_MarkupCompile.lref
-Hotel JustFriend/Hotel JustFriend/obj/Debug/Views/LoginWindow.baml
-Hotel JustFriend/Hotel JustFriend/obj/Debug/Views/MainWindow.baml
-Hotel JustFriend/.vs/Hotel JustFriend/v16/.suo
+*.baml
+*.lref
+*.cache
