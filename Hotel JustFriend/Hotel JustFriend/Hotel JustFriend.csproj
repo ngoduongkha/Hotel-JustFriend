@@ -141,67 +141,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\ORMDataModel1Code\Account.cs" />
-    <Compile Include="Models\ORMDataModel1Code\Account.Designer.cs">
-      <DependentUpon>Account.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ORMDataModel1Code\AccountRole.cs" />
-    <Compile Include="Models\ORMDataModel1Code\AccountRole.Designer.cs">
-      <DependentUpon>AccountRole.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ORMDataModel1Code\Attendance.cs" />
-    <Compile Include="Models\ORMDataModel1Code\Attendance.Designer.cs">
-      <DependentUpon>Attendance.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ORMDataModel1Code\Bill.cs" />
-    <Compile Include="Models\ORMDataModel1Code\Bill.Designer.cs">
-      <DependentUpon>Bill.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ORMDataModel1Code\Billinfo.cs" />
-    <Compile Include="Models\ORMDataModel1Code\Billinfo.Designer.cs">
-      <DependentUpon>Billinfo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ORMDataModel1Code\ConnectionHelper.cs" />
-    <Compile Include="Models\ORMDataModel1Code\Customer.cs" />
-    <Compile Include="Models\ORMDataModel1Code\Customer.Designer.cs">
-      <DependentUpon>Customer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ORMDataModel1Code\Employee.cs" />
-    <Compile Include="Models\ORMDataModel1Code\Employee.Designer.cs">
-      <DependentUpon>Employee.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ORMDataModel1Code\EmployeeRole.cs" />
-    <Compile Include="Models\ORMDataModel1Code\EmployeeRole.Designer.cs">
-      <DependentUpon>EmployeeRole.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ORMDataModel1Code\Product.cs" />
-    <Compile Include="Models\ORMDataModel1Code\Product.Designer.cs">
-      <DependentUpon>Product.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ORMDataModel1Code\ProductImport.cs" />
-    <Compile Include="Models\ORMDataModel1Code\ProductImport.Designer.cs">
-      <DependentUpon>ProductImport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ORMDataModel1Code\ProductImportInfo.cs" />
-    <Compile Include="Models\ORMDataModel1Code\ProductImportInfo.Designer.cs">
-      <DependentUpon>ProductImportInfo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ORMDataModel1Code\Room.cs" />
-    <Compile Include="Models\ORMDataModel1Code\Room.Designer.cs">
-      <DependentUpon>Room.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ORMDataModel1Code\SalaryRecord.cs" />
-    <Compile Include="Models\ORMDataModel1Code\SalaryRecord.Designer.cs">
-      <DependentUpon>SalaryRecord.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ORMDataModel1Code\SalaryRecordInfo.cs" />
-    <Compile Include="Models\ORMDataModel1Code\SalaryRecordInfo.Designer.cs">
-      <DependentUpon>SalaryRecordInfo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ORMDataModel1Code\SalaryTable.cs" />
-    <Compile Include="Models\ORMDataModel1Code\SalaryTable.Designer.cs">
-      <DependentUpon>SalaryTable.cs</DependentUpon>
-    </Compile>
     <Compile Include="Models\Product.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -250,10 +189,6 @@
     </EntityDeploy>
     <None Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
-    </None>
-    <None Include="Models\ORMDataModel1.xpo" />
-    <None Include="Models\ORMDataModel1.xpo.diagram">
-      <DependentUpon>ORMDataModel1.xpo</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
