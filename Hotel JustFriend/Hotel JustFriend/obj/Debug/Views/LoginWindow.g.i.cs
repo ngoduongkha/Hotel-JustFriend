@@ -94,6 +94,9 @@ namespace Hotel_JustFriend.Views {
             case 1:
             this.window = ((Hotel_JustFriend.Views.LoginWindow)(target));
             return;
+            case 2:
+            this.FloatingPasswordBox = ((System.Windows.Controls.PasswordBox)(target));
+            return;
             }
             this._contentLoaded = true;
         }
