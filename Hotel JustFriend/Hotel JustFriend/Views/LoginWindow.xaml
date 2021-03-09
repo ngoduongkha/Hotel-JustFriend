@@ -48,7 +48,8 @@
                             <materialDesign:PackIcon Kind="Account" Height="23" Width="23"/>
                         </Grid>
                         <Grid Grid.Column="1">
-                            <TextBox materialDesign:HintAssist.Hint="Tên đăng nhập"
+                            <TextBox materialDesign:HintAssist.Hint="Tên đăng nhập" 
+                                     Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}"
                                      FontSize="15"
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                         </Grid>
@@ -64,9 +65,17 @@
                             <materialDesign:PackIcon Kind="Key" Height="23" Width="23"/>
                         </Grid>
                         <Grid Grid.Column="1">
-                            <PasswordBox materialDesign:HintAssist.Hint="Mật khẩu"
+                            <PasswordBox x:Name="FloatingPasswordBox"
+                                         materialDesign:HintAssist.Hint="Mật khẩu"
                                          FontSize="15"
-                                         Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                                         Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="PasswordChanged">
+                                        <i:InvokeCommandAction Command="{Binding OnPasswordChangedCommand}"
+                                                               CommandParameter="{Binding ElementName=FloatingPasswordBox}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </PasswordBox>
                         </Grid>
                     </Grid>
                     <Grid Grid.Row="3">
@@ -99,5 +108,4 @@
             </materialDesign:Card>
         </Grid>
     </Border>
-    
 </Window>

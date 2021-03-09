@@ -17,7 +17,7 @@ CREATE TABLE [Account] (
   [idAccount] int PRIMARY KEY IDENTITY(1, 1),
   [idAccountRole] int,
   [username] varchar(100) UNIQUE NOT NULL,
-  [password] varchar(100) NOT NULL,
+  [password] char(64) NOT NULL,
 )
 GO
 
@@ -208,3 +208,11 @@ EXEC sp_addextendedproperty
 @level1type = N'Table',  @level1name = 'Customer',
 @level2type = N'Column', @level2name = 'type';
 GO
+
+INSERT INTO dbo.AccountRole (displayName) VALUES ('Administrator')
+INSERT INTO dbo.AccountRole (displayName) VALUES ('Owner')
+INSERT INTO dbo.AccountRole (displayName) VALUES ('Manager')
+INSERT INTO dbo.AccountRole (displayName) VALUES ('Receptionist')
+INSERT INTO dbo.AccountRole (displayName) VALUES ('Staff')
+
+INSERT INTO dbo.Account (idAccountRole, username, password) VALUES (1, 'admin', '38D180985D1B2E7A6014190E2CBD3C967408837188354EC93D27BFD86D09A017')
