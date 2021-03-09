@@ -10,8 +10,12 @@ using System.Windows.Input;
 
 namespace Hotel_JustFriend.ViewModels
 {
-    class LoginViewModel : ViewModelBase
+    class LoginViewModel : BindableBase
     {
+        #region Variables
+        private string _UserName;
+        private string _Password;
+        #endregion
         #region Properties
         public ICommand LoginCommand { get; set; }
         public ICommand CloseCommand { get; set; }

@@ -33,41 +33,40 @@
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
                         <Label Content="Đăng nhập" FontSize="25" FontWeight="ExtraBold"
-                    Foreground="GhostWhite"
-                    HorizontalAlignment="Center" VerticalAlignment="Center">
+                               Foreground="GhostWhite"
+                               HorizontalAlignment="Center" VerticalAlignment="Center">
                         </Label>
                     </Grid>
                     <Grid Grid.Row="1" Margin="20,0"
-                VerticalAlignment="Center">
+                          VerticalAlignment="Center">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0" Margin="0,0,5,5"
-                    VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                              VerticalAlignment="Bottom" HorizontalAlignment="Center">
                             <materialDesign:PackIcon Kind="Account" Height="23" Width="23"/>
                         </Grid>
                         <Grid Grid.Column="1">
                             <TextBox materialDesign:HintAssist.Hint="Tên đăng nhập"
-                        FontSize="15"
-                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                                     FontSize="15"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                         </Grid>
                     </Grid>
                     <Grid Grid.Row="2" Margin="20, 0"
-                VerticalAlignment="Center">
+                          VerticalAlignment="Center">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0" Margin="0,0,5,5"
-                    VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                              VerticalAlignment="Bottom" HorizontalAlignment="Center">
                             <materialDesign:PackIcon Kind="Key" Height="23" Width="23"/>
                         </Grid>
                         <Grid Grid.Column="1">
-                            <PasswordBox x:Name="FloatingPasswordBox"
-                            materialDesign:HintAssist.Hint="Mật khẩu"
-                            FontSize="15"
-                            Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                            <PasswordBox materialDesign:HintAssist.Hint="Mật khẩu"
+                                         FontSize="15"
+                                         Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
                         </Grid>
                     </Grid>
                     <Grid Grid.Row="3">
@@ -77,22 +76,22 @@
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0">
                             <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                        Width="110" Content="Đăng nhập"
-                        ToolTip="Đăng nhập"
-                        materialDesign:ButtonAssist.CornerRadius="10"
-                        Background="#fa91d7" BorderBrush="#fa91d7"
-                        Command="{Binding LoginCommand}"
-                        CommandParameter="{Binding ElementName=window}">
+                                    Width="110" Content="Đăng nhập"
+                                    ToolTip="Đăng nhập"
+                                    materialDesign:ButtonAssist.CornerRadius="10"
+                                    Background="#fa91d7" BorderBrush="#fa91d7"
+                                    Command="{Binding LoginCommand}"
+                                    CommandParameter="{Binding ElementName=window}">
                             </Button>
                         </Grid>
                         <Grid Grid.Column="1">
                             <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                        Width="110" Content="Thoát" Background="#ff7383"
-                        BorderBrush="#ff7383"
-                        materialDesign:ButtonAssist.CornerRadius="10"
-                        ToolTip="Thoát"
-                        Command="{Binding CloseCommand}"
-                        CommandParameter="{Binding ElementName=window}">
+                                    Width="110" Content="Thoát" Background="#ff7383"
+                                    BorderBrush="#ff7383"
+                                    materialDesign:ButtonAssist.CornerRadius="10"
+                                    ToolTip="Thoát"
+                                    Command="{Binding CloseCommand}"
+                                    CommandParameter="{Binding ElementName=window}">
                             </Button>
                         </Grid>
                     </Grid>
