@@ -23,5 +23,14 @@ namespace Hotel_JustFriend.Views
         {
             InitializeComponent();
         }
+
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                DragMove();
+            }
+            catch { return; }
+        }
     }
 }

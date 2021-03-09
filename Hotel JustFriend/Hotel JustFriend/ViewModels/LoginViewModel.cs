@@ -16,13 +16,14 @@ namespace Hotel_JustFriend.ViewModels
         public ICommand LoginCommand { get; set; }
         public ICommand CloseCommand { get; set; }
         #endregion
-
-        #region Method
+       
         public LoginViewModel()
         {
             LoginCommand = new RelayCommand<object>(p => true, p => Login(p));
             CloseCommand = new RelayCommand<object>(p => true, p => Close(p));
         }
+
+        #region Method
         public void Login(object p)
         {
             if (p != null)
