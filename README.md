@@ -28,7 +28,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/ngoduongkha/Hotel-JustFriend">
-    <img src="images/banner.jpg" alt="Logo" width="80" height="80">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Hotel Management</h3>
@@ -158,7 +158,7 @@ See the [open issues](https://github.com/ngoduongkha/Hotel-JustFriend/issues) fo
 <!-- CONTRIBUTING -->
 ## Thành viên
 
-|   **Họ và tên**             |  **MSSV**  | **Vai trò** |
+|     Họ và tên               |    MSSV    |   Vai trò   |
 |   :---                      |   :----:   |    :---:    |
 |   Ngô Dương Kha             |  1950117   |  Leader     |
 |   Lê Thành Luân             |  19520702  |  UX/UI      |
