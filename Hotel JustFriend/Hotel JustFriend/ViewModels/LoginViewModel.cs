@@ -14,7 +14,7 @@ namespace Hotel_JustFriend.ViewModels
         private string _UserName;
         private string _Password;
         #endregion
-
+        
         #region Properties
         public string UserName { get => _UserName; set => _UserName = value; }
         public string Password { get => _Password; set { _Password = value; RaisePropertyChanged(); } }
