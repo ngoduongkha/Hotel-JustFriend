@@ -11,10 +11,18 @@
         DataContext="{StaticResource LoginVM}"
         WindowStyle="None" AllowsTransparency="True" Background="Transparent"
         x:Name="window">
-    <Border BorderBrush="#ffd9dd" CornerRadius="20" BorderThickness="10"
-            MouseLeftButtonDown="Border_MouseLeftButtonDown">
-        <Grid Background="#FFFFD9DD" Margin="-1" 
-              MouseLeftButtonDown="Border_MouseLeftButtonDown">
+    <Border BorderBrush="#ffd9dd" CornerRadius="20" BorderThickness="10">
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="MouseLeftButtonDown">
+                <i:InvokeCommandAction Command="{Binding MouseMoveWindowCommand}" CommandParameter="{Binding ElementName=window}"/>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+        <Grid Background="#FFFFD9DD" Margin="-1">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseLeftButtonDown">
+                    <i:InvokeCommandAction Command="{Binding MouseMoveWindowCommand}" CommandParameter="{Binding ElementName=window}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
             <materialDesign:Card Height="280" Width="250" Background="Pink">
                 <Grid>
                     <Grid.RowDefinitions>

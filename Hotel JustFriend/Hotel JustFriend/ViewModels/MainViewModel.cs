@@ -11,14 +11,27 @@ namespace Hotel_JustFriend.ViewModels
         public ICommand CloseWindowCommand { get; set; }
         public ICommand MaximizeWindowCommand { get; set; }
         public ICommand MinimizeWindowCommand { get; set; }
+        public ICommand MouseMoveWindowCommand { get; set; }
         #endregion
         public MainViewModel()
         {
             CloseWindowCommand = new RelayCommand<object>(p => true, p => CloseWindow(p));
             MaximizeWindowCommand = new RelayCommand<object>(p => true, p => MaximizeWindow(p));
             MinimizeWindowCommand = new RelayCommand<object>(p => true, p => MinimizeWindow(p));
+            MouseMoveWindowCommand = new RelayCommand<object>(p => true, p => MouseMoveWindow(p));
         }
         #region Methods
+        public void MouseMoveWindow(object p)
+        {
+            if (p != null)
+            {
+                try
+                {
+                    (p as Window).DragMove();
+                }
+                catch { return; }
+            }
+        }
         public void MaximizeWindow(object p)
         {
             if (p != null)
