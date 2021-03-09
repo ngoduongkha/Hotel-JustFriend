@@ -29,7 +29,7 @@ namespace Hotel_JustFriend.ViewModels
             if (p != null)
             {
                 MainWindow main = new MainWindow();
-                Window window = p as Window;
+                var window = p as Window;
                 window.Hide();
                 main.ShowDialog();
                 window.Show();
@@ -39,10 +39,7 @@ namespace Hotel_JustFriend.ViewModels
         {
             if (p != null)
             {
-                if(MessageBox.Show("Bạn muốn thoát chương trình?", "Thông báo", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                {
-                    (p as Window).Close();
-                }
+                (p as Window).Close();                
             }
         }
         #endregion
