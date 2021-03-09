@@ -28,7 +28,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/ngoduongkha/Hotel-JustFriend">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/banner.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Hotel Management</h3>
@@ -55,7 +55,7 @@
       <a href="#về-dự-án">Về dự án</a>
       <ul>
         <li><a href="#built-with">Built-with</a></li>
-        <li><a href="người-dùng">Người dùng</a></li>
+        <li><a href="#người-dùng">Người dùng</a></li>
       </ul>
     </li>
     <li>
@@ -80,7 +80,7 @@ href="#acknowledgements">Acknowledgements</a></li>
 <!-- ABOUT THE PROJECT -->
 ## Về dự án
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]]
 
 There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
 
@@ -151,7 +151,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/ngoduongkha/Hotel-JustFriend/issues) for a list of proposed features (and known issues).
 
 
 
@@ -168,7 +168,7 @@ See the [open issues](https://github.com/othneildrew/Best-README-Template/issues
 <!-- LICENSE -->
 ## Giấy phép
 
-Được phân phối theo Giấy phép MIT.  Xem `LICENSE` để biết thêm thông tin.
+Được phân phối theo Giấy phép MIT.  Xem [LICENSE](https://github.com/ngoduongkha/Hotel-JustFriend/blob/master/LICENSE) để biết thêm thông tin.
 <!-- CONTACT -->
 ## Liên hệ & góp ý
 
