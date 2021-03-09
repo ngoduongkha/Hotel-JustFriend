@@ -8,8 +8,15 @@
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="Đăng nhập" Height="350" Width="280"
         DataContext="{StaticResource LoginVM}"
+        WindowStyle="None"
         x:Name="window">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
+                <GradientStop Color="#ffc2c9" Offset="1"></GradientStop>
+                <GradientStop Color="White" Offset="0"></GradientStop>
+            </LinearGradientBrush>
+        </Grid.Background>
         <materialDesign:Card Height="280" Width="250" Background="Pink">
             <Grid>
                 <Grid.RowDefinitions>
@@ -65,15 +72,21 @@
                     <Grid Grid.Column="0">
                         <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"
                                 Width="110" Content="Đăng nhập"
-                                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                                ToolTip="Đăng nhập"
+                                materialDesign:ButtonAssist.CornerRadius="10"
+                                Background="#fa91d7" BorderBrush="#fa91d7"
                                 Command="{Binding LoginCommand}"
                                 CommandParameter="{Binding ElementName=window}">
                         </Button>
                     </Grid>
                     <Grid Grid.Column="1">
                         <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                                Width="110" Content="Thoát" Background="OrangeRed"
-                                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton">
+                                Width="110" Content="Thoát" Background="#ff7383"
+                                BorderBrush="#ff7383"
+                                materialDesign:ButtonAssist.CornerRadius="10"
+                                ToolTip="Thoát"
+                                Command="{Binding CloseCommand}"
+                                CommandParameter="{Binding ElementName=window}">
                         </Button>
                     </Grid>
                 </Grid>

@@ -14,12 +14,14 @@ namespace Hotel_JustFriend.ViewModels
     {
         #region Properties
         public ICommand LoginCommand { get; set; }
+        public ICommand CloseCommand { get; set; }
         #endregion
 
         #region Method
         public LoginViewModel()
         {
             LoginCommand = new RelayCommand<object>(p => true, p => Login(p));
+            CloseCommand = new RelayCommand<object>(p => true, p => Close(p));
         }
         public void Login(object p)
         {
@@ -30,6 +32,16 @@ namespace Hotel_JustFriend.ViewModels
                 window.Hide();
                 main.ShowDialog();
                 window.Show();
+            }
+        }
+        public void Close(object p)
+        {
+            if (p != null)
+            {
+                if(MessageBox.Show("Bạn muốn thoát chương trình?", "Thông báo", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    (p as Window).Close();
+                }
             }
         }
         #endregion
