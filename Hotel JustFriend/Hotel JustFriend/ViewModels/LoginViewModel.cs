@@ -1,63 +1,74 @@
 ﻿using DevExpress.Mvvm;
+using DevExpress.Mvvm.DataAnnotations;
 using Hotel_JustFriend.Views;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Input;
+using System.Windows.Controls;
 
 namespace Hotel_JustFriend.ViewModels
 {
-    class LoginViewModel : BindableBase
+    [POCOViewModel]
+    class LoginViewModel : ViewModelBase
     {
         #region Variables
         private string _UserName;
         private string _Password;
         #endregion
+        
         #region Properties
-        public ICommand LoginCommand { get; set; }
-        public ICommand CloseCommand { get; set; }
-        public ICommand MouseMoveWindowCommand { get; set; }
+        public string UserName { get => _UserName; set => _UserName = value; }
+        public string Password { get => _Password; set { _Password = value; RaisePropertyChanged(); } }
         #endregion
 
-        public LoginViewModel()
-        {
-            LoginCommand = new RelayCommand<object>(p => true, p => Login(p));
-            CloseCommand = new RelayCommand<object>(p => true, p => Close(p));
-            MouseMoveWindowCommand = new RelayCommand<object>(p => true, p => MouseMoveWindow(p));
-        }
-
         #region Method
-        public void MouseMoveWindow(object p)
+        [Command]
+        public void MouseMoveWindow(Window p)
         {
-            if (p != null)
+            try
             {
-                try
+                p.DragMove();
+            }
+            catch { return; }
+        }
+        [Command]
+        public void Login(Window p)
+        {
+            try
+            {
+                string passEncode = Utility.Encryption.EncryptPassword(Password);
+                var count = Models.DataProvider.Instance.DB.Accounts.Where(x => x.username == UserName && x.password == passEncode).Count();
+
+                if (count > 0)
                 {
-                    (p as Window).DragMove();
+                    MainWindow main = new MainWindow();
+                    p.Hide();
+                    main.ShowDialog();
+                    p.Show();
                 }
-                catch { return; }
+                else
+                {
+                    MessageBox.Show("Sai tài khoản hoặc mật khẩu!");
+                }
             }
+            catch { return; }
         }
-        public void Login(object p)
+        [Command]
+        public void Close(Window p)
         {
-            if (p != null)
+            try
             {
-                MainWindow main = new MainWindow();
-                var window = p as Window;
-                window.Hide();
-                main.ShowDialog();
-                window.Show();
+                p.Close();
             }
+            catch { return; }
         }
-        public void Close(object p)
+        [Command]
+        public void OnPasswordChanged(PasswordBox p)
         {
-            if (p != null)
+            try
             {
-                (p as Window).Close();                
+                Password = p.Password;
             }
+            catch { return; }
         }
         #endregion
     }
