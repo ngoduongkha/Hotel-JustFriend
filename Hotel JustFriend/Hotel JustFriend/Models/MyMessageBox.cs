@@ -8,22 +8,18 @@ using System.Windows;
 
 namespace Hotel_JustFriend.Models
 {
-    class MyMessageBox
+    public class MyMessageBox
     {
-        public static MessageBoxResult Show(string message, string caption, MessageBoxButton button)
+        public enum Buttons { YesNo, OK}
+        public static string Show(string text, string caption)
         {
-            MessageBoxResult result = MessageBoxResult.None;
-            switch (button)
-            {
-                case MessageBoxButton.YesNo:
-                    MMBYesNoWindow popup = new MMBYesNoWindow();                   
-                    popup.message.Text = message;
-                    popup.caption.Content = caption;
-                    popup.ShowDialog();
-                    popup.Close();
-                break;
-            }
-            return result;
+            return Show(text, caption, Buttons.OK);
+        }
+        public static string Show(string text, string caption, Buttons buttons)
+        {
+            MyMessageBoxWindow mb = new MyMessageBoxWindow(text, caption, buttons);
+            mb.ShowDialog();
+            return mb.ReturnString;
         }
     }
 }

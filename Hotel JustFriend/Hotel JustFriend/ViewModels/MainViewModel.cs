@@ -63,7 +63,7 @@ namespace Hotel_JustFriend.ViewModels
         {
             if (p != null)
             {
-                if (MyMessageBox.Show("Bạn muốn thoát chương trình?", "Thông báo", MessageBoxButton.YesNo)== MessageBoxResult.Yes)
+                if (MyMessageBox.Show("Bạn muốn thoát khỏi chương trình?", "Nhắc nhở", MyMessageBox.Buttons.YesNo) == "YES")
                 {
                     (p as Window).Close();
                 }
