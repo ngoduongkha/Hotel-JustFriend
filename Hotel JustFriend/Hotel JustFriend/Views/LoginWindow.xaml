@@ -18,13 +18,27 @@
                 <i:InvokeCommandAction Command="{Binding MouseMoveWindowCommand}" CommandParameter="{Binding ElementName=window}"/>
             </i:EventTrigger>
         </i:Interaction.Triggers>
-        <Grid Margin="-1">
+        <Grid>
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseLeftButtonDown">
                     <i:InvokeCommandAction Command="{Binding MouseMoveWindowCommand}" CommandParameter="{Binding ElementName=window}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
-            <materialDesign:Card Height="280" Width="250" Background="Pink">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Button HorizontalAlignment="Right" VerticalAlignment="Top"
+                    ToolTip="Thoát" Margin="7,7" Height="25" Width="30"
+                    Command="{Binding CloseCommand}" Padding="0"
+                    CommandParameter="{Binding ElementName=window}"
+                    Background="Transparent" BorderBrush="Transparent" Foreground="Black">
+                    <materialDesign:PackIcon Kind="WindowClose" Width="20" Height="20" 
+                                         HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button>
+            </Grid>
+            <materialDesign:Card Height="280" Width="250" Background="Pink" Grid.Row="1">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="70"></RowDefinition>

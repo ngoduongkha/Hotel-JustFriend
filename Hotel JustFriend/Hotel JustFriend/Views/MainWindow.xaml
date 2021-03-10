@@ -9,71 +9,76 @@
         xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts" x:Class="Hotel_JustFriend.Views.MainWindow"
         mc:Ignorable="d" WindowStyle="None" WindowStartupLocation="CenterScreen"
         x:Name="window" DataContext="{StaticResource MainVM}"
-        Title="Hotel Just Friend" Height="500" Width="900" ResizeMode="NoResize">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <materialDesign:ColorZone Background="Pink" Height="Auto" Grid.Row="0">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseLeftButtonDown">
-                    <i:InvokeCommandAction Command="{Binding MouseMoveWindowCommand}" CommandParameter="{Binding ElementName=window}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0">
-                    <ToggleButton Style="{DynamicResource MaterialDesignHamburgerToggleButton}" />
-                </Grid>
-                <Grid Grid.Column="1">
-                    <Label Content="{Binding Title, ElementName=window}"
+        Title="Hotel Just Friend" Height="500" Width="900" 
+        ResizeMode="NoResize" Background="{x:Null}">
+    
+    <Border BorderBrush="Transparent" CornerRadius="10" BorderThickness="0.1"
+            Background="White">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <materialDesign:ColorZone Background="Pink" Height="Auto" Grid.Row="0">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding MouseMoveWindowCommand}" CommandParameter="{Binding ElementName=window}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <ToggleButton Style="{DynamicResource MaterialDesignHamburgerToggleButton}" />
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Label Content="{Binding Title, ElementName=window}"
                            VerticalAlignment="Center" HorizontalAlignment="Center"
                            Foreground="WhiteSmoke"
                            FontSize="25" FontWeight="Bold"/>
-                </Grid>
-                <Grid Grid.Column="2">
-                    <Grid.Resources>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="Width" Value="50"/>
-                            <Setter Property="Margin" Value="0,0,0,20"/>
-                            <Setter Property="BorderThickness" Value="0"/>
-                            <Setter Property="Background" Value="Transparent"/>
-                            <Setter Property="Foreground" Value="Black"/>
-                        </Style>
-                    </Grid.Resources>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Button Grid.Column="2"
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <Grid.Resources>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Width" Value="50"/>
+                                <Setter Property="Margin" Value="0,0,0,20"/>
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="2"
                             ToolTip="Thoát"
                             Command="{Binding CloseWindowCommand}"
                             CommandParameter="{Binding ElementName=window}">
-                        <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25" 
+                            <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25" 
                                                  HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Button>
-                    <Button Grid.Column="1"
+                        </Button>
+                        <Button Grid.Column="1"
                             ToolTip="Phóng to"
                             Command="{Binding MaximizeWindowCommand}"
                             CommandParameter="{Binding ElementName=window}">
-                        <materialDesign:PackIcon Kind="WindowMaximize" Width="25" Height="25" 
+                            <materialDesign:PackIcon Kind="WindowMaximize" Width="25" Height="25" 
                                                  HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Button>
-                    <Button Grid.Column="0"
+                        </Button>
+                        <Button Grid.Column="0"
                             ToolTip="Thu gọn"
                             Command="{Binding MinimizeWindowCommand}"
                             CommandParameter="{Binding ElementName=window}">
-                        <materialDesign:PackIcon Kind="WindowMinimize" Width="25" Height="25" 
+                            <materialDesign:PackIcon Kind="WindowMinimize" Width="25" Height="25" 
                                                  HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Button>
+                        </Button>
+                    </Grid>
                 </Grid>
-            </Grid>
-        </materialDesign:ColorZone>
-    </Grid>
+            </materialDesign:ColorZone>
+        </Grid>
+    </Border>
 </Window>
