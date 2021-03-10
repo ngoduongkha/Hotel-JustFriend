@@ -278,3 +278,5 @@ D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\es\DevExp
 D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\ja\DevExpress.Office.v20.1.Core.resources.dll
 D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\ru\DevExpress.Office.v20.1.Core.resources.dll
 D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend.exe.licenses
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\MyMessageBoxes\MMBYesNoWindow.g.cs
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\MyMessageBoxes\MMBYesNoWindow.baml

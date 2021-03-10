@@ -9,7 +9,7 @@
         xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts" x:Class="Hotel_JustFriend.Views.MainWindow"
         mc:Ignorable="d" WindowStyle="None" WindowStartupLocation="CenterScreen"
         x:Name="window" DataContext="{StaticResource MainVM}"
-        Title="Hotel Just Friend" Height="450" Width="800" ResizeMode="NoResize">
+        Title="Hotel Just Friend" Height="500" Width="900" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

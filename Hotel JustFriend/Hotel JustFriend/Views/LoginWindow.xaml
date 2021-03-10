@@ -8,16 +8,17 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="Đăng nhập" Height="350" Width="300"
-        DataContext="{StaticResource LoginVM}"
-        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        DataContext="{StaticResource LoginVM}" ResizeMode="NoResize"
+        WindowStyle="None" AllowsTransparency="True" Background="{x:Null}"
         x:Name="window">
-    <Border BorderBrush="#ffd9dd" CornerRadius="20" BorderThickness="10">
+    <Border BorderBrush="Transparent" CornerRadius="20" BorderThickness="0.1"
+            Background="#ffd9dd">
         <i:Interaction.Triggers>
             <i:EventTrigger EventName="MouseLeftButtonDown">
                 <i:InvokeCommandAction Command="{Binding MouseMoveWindowCommand}" CommandParameter="{Binding ElementName=window}"/>
             </i:EventTrigger>
         </i:Interaction.Triggers>
-        <Grid Background="#FFFFD9DD" Margin="-1">
+        <Grid Margin="-1">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseLeftButtonDown">
                     <i:InvokeCommandAction Command="{Binding MouseMoveWindowCommand}" CommandParameter="{Binding ElementName=window}"/>
