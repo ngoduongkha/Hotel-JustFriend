@@ -10,16 +10,11 @@ namespace Hotel_JustFriend.Models
 {
     public class MyMessageBox
     {
-        public enum Buttons { YesNo, OK}
-        public static string Show(string text, string caption)
-        {
-            return Show(text, caption, Buttons.OK);
-        }
-        public static string Show(string text, string caption, Buttons buttons)
+        public static MessageBoxResult Show(string text, string caption, MessageBoxButton buttons)
         {
             MyMessageBoxWindow mb = new MyMessageBoxWindow(text, caption, buttons);
             mb.ShowDialog();
-            return mb.ReturnString;
+            return mb.Result;
         }
     }
 }

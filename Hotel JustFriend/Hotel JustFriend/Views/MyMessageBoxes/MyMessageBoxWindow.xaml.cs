@@ -20,18 +20,18 @@ namespace Hotel_JustFriend.Views.MyMessageBoxes
     /// </summary>
     public partial class MyMessageBoxWindow : Window
     {
-        public string ReturnString { get; set; }
-        public MyMessageBoxWindow(string _text, string _caption, MyMessageBox.Buttons buttons)
+        public MessageBoxResult Result { get; set; }
+        public MyMessageBoxWindow(string _text, string _caption, MessageBoxButton buttons)
         {
             InitializeComponent();
-            caption.Content = caption;
+            caption.Content = _caption;
             message.Text = _text;
             switch (buttons)
             {
-                case MyMessageBox.Buttons.OK:
+                case MessageBoxButton.OK:
                     //ok.Visibility = Visibility.Visible;
                     break;
-                case MyMessageBox.Buttons.YesNo:
+                case MessageBoxButton.YesNo:
                     yes.Visibility = Visibility.Visible;
                     no.Visibility = Visibility.Visible;
                     break;
@@ -40,7 +40,7 @@ namespace Hotel_JustFriend.Views.MyMessageBoxes
 
         private void return_Click(object sender, RoutedEventArgs e)
         {
-            ReturnString = ((Button)sender).Uid.ToString();
+            Result = MessageBoxResult.Yes;
             Close();
         }
     }

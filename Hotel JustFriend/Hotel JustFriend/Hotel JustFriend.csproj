@@ -108,6 +108,7 @@
     </ApplicationDefinition>
     <Compile Include="Models\DataProvider.cs" />
     <Compile Include="Models\MyMessageBox.cs" />
+    <Compile Include="Models\MyMessageBoxButton.cs" />
     <Compile Include="Utility\Encryption.cs" />
     <Compile Include="Utility\ImageHelper.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
