@@ -19,9 +19,20 @@ namespace Hotel_JustFriend.Views.MyMessageBoxes
     /// </summary>
     public partial class MMBYesNoWindow : Window
     {
+        public MessageBoxResult Result { get; set; }
         public MMBYesNoWindow()
         {
             InitializeComponent();
+        }
+
+        private void yes_Click(object sender, RoutedEventArgs e)
+        {
+            Result = MessageBoxResult.Yes;
+        }
+
+        private void no_Click(object sender, RoutedEventArgs e)
+        {
+            Result = MessageBoxResult.No;
         }
     }
 }
