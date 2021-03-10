@@ -33,8 +33,8 @@ namespace Hotel_JustFriend.ViewModels
         [Command]
         public void Login(Window p)
         {
-            try
-            {
+            //try
+            //{
                 string passEncode = Utility.Encryption.EncryptPassword(Password);
                 var count = Models.DataProvider.Instance.DB.Accounts.Where(x => x.username == UserName && x.password == passEncode).Count();
 
@@ -49,8 +49,8 @@ namespace Hotel_JustFriend.ViewModels
                 {
                     MessageBox.Show("Sai tài khoản hoặc mật khẩu!");
                 }
-            }
-            catch { return; }
+            //}
+            //catch { return; }
         }
         [Command]
         public void Close(Window p)

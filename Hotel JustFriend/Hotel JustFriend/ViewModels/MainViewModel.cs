@@ -1,4 +1,5 @@
 ﻿using DevExpress.Mvvm;
+using Hotel_JustFriend.Models;
 using System;
 using System.Windows;
 using System.Windows.Input;
@@ -62,7 +63,7 @@ namespace Hotel_JustFriend.ViewModels
         {
             if (p != null)
             {
-                if (MessageBox.Show("Bạn muốn thoát chương trình?", "Thông báo", MessageBoxButton.YesNo)== MessageBoxResult.Yes)
+                if (MyMessageBox.Show("Bạn muốn thoát khỏi chương trình?", "Nhắc nhở", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     (p as Window).Close();
                 }

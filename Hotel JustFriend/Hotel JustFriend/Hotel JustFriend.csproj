@@ -107,12 +107,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\DataProvider.cs" />
+    <Compile Include="Models\MyMessageBox.cs" />
+    <Compile Include="Models\MyMessageBoxButton.cs" />
     <Compile Include="Utility\Encryption.cs" />
     <Compile Include="Utility\ImageHelper.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MyMessageBoxes\MyMessageBoxWindow.xaml.cs">
+      <DependentUpon>MyMessageBoxWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\Resources.xaml">
       <SubType>Designer</SubType>
@@ -191,6 +196,10 @@
     </Compile>
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Page Include="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MyMessageBoxes\MyMessageBoxWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
