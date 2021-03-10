@@ -3,13 +3,69 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Hotel_JustFriend.Views.MyMessageBoxes"
         mc:Ignorable="d" ResizeMode="NoResize" WindowStyle="None"
         AllowsTransparency="True" Background="{x:Null}"
         Title="MMBYesNoWindow" Height="200" Width="300">
-    <Border CornerRadius="10" Background="White" BorderBrush="Transparent" BorderThickness="0.1">
+    <Border CornerRadius="10" Background="LightPink" BorderBrush="Transparent" BorderThickness="0.1">
         <Grid>
-            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button HorizontalAlignment="Right" VerticalAlignment="Top"
+                        ToolTip="Thoát" Height="30" Width="34"
+                        Command="{Binding CloseWindowCommand}" Padding="0"
+                        Grid.Column="2"
+                        CommandParameter="{Binding ElementName=window}"
+                        Background="Transparent" BorderBrush="Transparent" Foreground="Black">
+                    <materialDesign:PackIcon Kind="WindowClose" Width="30" Height="30" 
+                                         HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button>
+                <Grid Grid.Column="0">
+                    <materialDesign:PackIcon Kind="FacebookMessenger"
+                                             Width="30" Height="34"></materialDesign:PackIcon>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Label Content="{Binding Notify}" FontSize="20"
+                           VerticalAlignment="Top" HorizontalAlignment="Left"
+                           Margin="10,0"></Label>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1" Background="WhiteSmoke">
+                <TextBlock Text="{Binding Message}" FontSize="20" TextWrapping="Wrap" 
+                           HorizontalAlignment="Center" VerticalAlignment="Top"
+                           Margin="20" Width="250">
+                </TextBlock>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                        Width="110" Content="YES" Grid.Column="0" Margin="10"
+                        materialDesign:ButtonAssist.CornerRadius="10"
+                        Background="#fa91d7" BorderBrush="#fa91d7"
+                        Command="{Binding LoginCommand}"
+                        CommandParameter="{Binding ElementName=window}">
+                </Button>
+                <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                        Width="110" Content="NO" Grid.Column="1" Margin="10"
+                        materialDesign:ButtonAssist.CornerRadius="10"
+                        Background="#ff7383" BorderBrush="#ff7383"
+                        Command="{Binding LoginCommand}"
+                        CommandParameter="{Binding ElementName=window}">
+                </Button>
+            </Grid>
         </Grid>
     </Border>
 </Window>
