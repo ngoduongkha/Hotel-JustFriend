@@ -20,7 +20,6 @@ namespace Hotel_JustFriend.Models
                     popup.message.Text = message;
                     popup.caption.Content = caption;
                     popup.ShowDialog();
-                    result = popup.Result;
                     popup.Close();
                 break;
             }
