@@ -1,5 +1,6 @@
 ﻿using DevExpress.Mvvm;
 using DevExpress.Mvvm.DataAnnotations;
+using Hotel_JustFriend.Models;
 using Hotel_JustFriend.Views;
 using System.Linq;
 using System.Windows;
@@ -33,8 +34,8 @@ namespace Hotel_JustFriend.ViewModels
         [Command]
         public void Login(Window p)
         {
-            //try
-            //{
+            try
+            {
                 string passEncode = Utility.Encryption.EncryptPassword(Password);
                 var count = Models.DataProvider.Instance.DB.Accounts.Where(x => x.username == UserName && x.password == passEncode).Count();
 
@@ -47,10 +48,14 @@ namespace Hotel_JustFriend.ViewModels
                 }
                 else
                 {
-                    MessageBox.Show("Sai tài khoản hoặc mật khẩu!");
+                    MyMessageBox.Show("Sai tài khoản hoặc mật khẩu!", "Thông báo", MessageBoxButton.OK);
                 }
-            //}
-            //catch { return; }
+            }
+            catch 
+            {
+                MyMessageBox.Show("Vui lòng điền tài khoản và mật khẩu", "Thông báo", MessageBoxButton.OK);
+                return; 
+            }
         }
         [Command]
         public void Close(Window p)

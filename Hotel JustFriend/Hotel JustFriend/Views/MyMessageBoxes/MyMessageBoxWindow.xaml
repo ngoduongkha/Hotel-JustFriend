@@ -6,8 +6,9 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Hotel_JustFriend.Views.MyMessageBoxes"
         mc:Ignorable="d" ResizeMode="NoResize" WindowStyle="None"
-        AllowsTransparency="True" Background="{x:Null}"
-        Title="MMBYesNoWindow" Height="200" Width="300">
+        AllowsTransparency="True" Background="{x:Null}" Name="window"
+        Title="MessageBox" Height="200" Width="300" WindowStartupLocation="CenterScreen"
+        MouseLeftButtonDown="Grid_MouseLeftButtonDown">
     <Border CornerRadius="10" Background="LightPink" BorderBrush="Transparent" BorderThickness="0.1">
         <Grid>
             <Grid.RowDefinitions>
@@ -23,9 +24,7 @@
                 </Grid.ColumnDefinitions>
                 <Button HorizontalAlignment="Right" VerticalAlignment="Top"
                         ToolTip="Thoát" Height="30" Width="34"
-                        Command="{Binding CloseWindowCommand}" Padding="0"
-                        Grid.Column="2"
-                        CommandParameter="{Binding ElementName=window}"
+                        Padding="0" Grid.Column="2" Click="exit_Click"
                         Background="Transparent" BorderBrush="Transparent" Foreground="Black">
                     <materialDesign:PackIcon Kind="WindowClose" Width="30" Height="30" 
                                          HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -49,19 +48,26 @@
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"
                         Width="100" Content="YES" Grid.Column="0" Margin="10"
                         materialDesign:ButtonAssist.CornerRadius="10"
                         Background="#fa91d7" BorderBrush="#fa91d7"
-                        x:Name="yes" Click="return_Click">
+                        x:Name="yes" Click="yes_Click">
                 </Button>
                 <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                        Width="100" Content="NO" Grid.Column="1" Margin="10"
+                        Width="100" Content="NO" Grid.Column="2" Margin="10"
                         materialDesign:ButtonAssist.CornerRadius="10"
                         Background="#ff7383" BorderBrush="#ff7383"
-                        x:Name="no" Click="return_Click">
+                        x:Name="no" Click="no_Click">
+                </Button>
+                <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                        Width="100" Content="OK" Grid.Column="1" Margin="10"
+                        materialDesign:ButtonAssist.CornerRadius="10"
+                        Background="#eba1ff" BorderBrush="#eba1ff"
+                        x:Name="ok" Click="ok_Click">
                 </Button>
             </Grid>
         </Grid>
