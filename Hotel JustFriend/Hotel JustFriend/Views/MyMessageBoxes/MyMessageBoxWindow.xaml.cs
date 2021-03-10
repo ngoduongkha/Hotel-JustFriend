@@ -29,18 +29,41 @@ namespace Hotel_JustFriend.Views.MyMessageBoxes
             switch (buttons)
             {
                 case MessageBoxButton.OK:
-                    //ok.Visibility = Visibility.Visible;
+                    ok.Visibility = Visibility.Visible;
+                    yes.Visibility = Visibility.Collapsed;
+                    no.Visibility = Visibility.Collapsed;
                     break;
                 case MessageBoxButton.YesNo:
+                    ok.Visibility = Visibility.Collapsed;
                     yes.Visibility = Visibility.Visible;
                     no.Visibility = Visibility.Visible;
                     break;
             }
         }
 
-        private void return_Click(object sender, RoutedEventArgs e)
+        private void yes_Click(object sender, RoutedEventArgs e)
         {
             Result = MessageBoxResult.Yes;
+            Close();
+        }
+        private void no_Click(object sender, RoutedEventArgs e)
+        {
+            Result = MessageBoxResult.No;
+            Close();
+        }
+        private void ok_Click(object sender, RoutedEventArgs e)
+        {
+            Result = MessageBoxResult.OK;
+            Close();
+        }
+
+        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        private void exit_Click(object sender, RoutedEventArgs e)
+        {
             Close();
         }
     }
