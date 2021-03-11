@@ -11,22 +11,46 @@
         x:Name="window" DataContext="{StaticResource MainVM}"
         Title="Hotel Just Friend" Height="500" Width="900" 
         ResizeMode="NoResize" Background="{x:Null}">
-    
-    <Border BorderBrush="{x:Null}" CornerRadius="10" BorderThickness="0.1"
-            Background="White">
+    <Window.Resources>
+        <Storyboard x:Key="MenuOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="gridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="200"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                            Storyboard.TargetName="borderMain" To="#e8e8e8" Duration="0:0:0.2"/>
+        </Storyboard>
+        <Storyboard x:Key="MenuClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="gridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                            Storyboard.TargetName="borderMain" To="White" Duration="0:0:0.2"/>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btnOpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuOpen}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btnCloseMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Border BorderBrush="{x:Null}" CornerRadius="10,10,0,0" BorderThickness="0.1"
-                    Background="Pink">
+                Background="Pink" Grid.Row="0">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseLeftButtonDown">
                         <i:InvokeCommandAction Command="{Binding MouseMoveWindowCommand}" CommandParameter="{Binding ElementName=window}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
-                <Grid Background="{x:Null}" Height="Auto" Grid.Row="0">
+                <Grid Background="{x:Null}" Height="Auto">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -34,13 +58,21 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0">
-                            <ToggleButton Style="{DynamicResource MaterialDesignHamburgerToggleButton}" />
+                            <Button Height="40" HorizontalAlignment="Right"
+                                    Width="45" Background="{x:Null}" BorderBrush="{x:Null}"
+                                    x:Name="btnOpenMenu" Padding="0"
+                                    Command="{Binding MenuOpenCommand}"
+                                    CommandParameter="{Binding ElementName=borderMain}">
+                                <materialDesign:PackIcon Kind="Menu" Foreground="Black" 
+                                                         Width="45" Height="30" 
+                                                         VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Button>
                         </Grid>
                         <Grid Grid.Column="1">
                             <Label Content="{Binding Title, ElementName=window}"
-                           VerticalAlignment="Center" HorizontalAlignment="Center"
-                           Foreground="WhiteSmoke"
-                           FontSize="25" FontWeight="Bold"/>
+                        VerticalAlignment="Center" HorizontalAlignment="Center"
+                        Foreground="WhiteSmoke"
+                        FontSize="25" FontWeight="Bold"/>
                         </Grid>
                         <Grid Grid.Column="2">
                             <Grid.Resources>
@@ -58,30 +90,51 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Button Grid.Column="2"
-                            ToolTip="Thoát"
-                            Command="{Binding CloseWindowCommand}"
-                            CommandParameter="{Binding ElementName=window}">
+                        ToolTip="Thoát"
+                        Command="{Binding CloseWindowCommand}"
+                        CommandParameter="{Binding ElementName=window}">
                                 <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25" 
-                                                 HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Button>
                             <Button Grid.Column="1"
-                            ToolTip="Phóng to"
-                            Command="{Binding MaximizeWindowCommand}"
-                            CommandParameter="{Binding ElementName=window}">
+                        ToolTip="Phóng to"
+                        Command="{Binding MaximizeWindowCommand}"
+                        CommandParameter="{Binding ElementName=window}">
                                 <materialDesign:PackIcon Kind="WindowMaximize" Width="25" Height="25" 
-                                                 HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Button>
                             <Button Grid.Column="0"
-                            ToolTip="Thu gọn"
-                            Command="{Binding MinimizeWindowCommand}"
-                            CommandParameter="{Binding ElementName=window}">
+                        ToolTip="Thu gọn"
+                        Command="{Binding MinimizeWindowCommand}"
+                        CommandParameter="{Binding ElementName=window}">
                                 <materialDesign:PackIcon Kind="WindowMinimize" Width="25" Height="25" 
-                                                 HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Button>
                         </Grid>
                     </Grid>
                 </Grid>
             </Border>
+            <Border BorderBrush="{x:Null}" CornerRadius="0,0,10,10" BorderThickness="0.1"
+                    Background="White" Grid.Row="1" x:Name="borderMain">
+            </Border>
         </Grid>
-    </Border>
+        <Grid Width="0" HorizontalAlignment="Left" Background="{x:Null}" x:Name="gridMenu">
+            <Border BorderBrush="{x:Null}" CornerRadius="10,0,0,10" BorderThickness="0.1"
+                    Background="White">
+                <StackPanel>
+                    <Grid Height="48">
+                        <Button Height="40" HorizontalAlignment="Right"
+                            Width="45" Background="{x:Null}" BorderBrush="{x:Null}"
+                            x:Name="btnCloseMenu" Padding="0"
+                            Command="{Binding MenuCloseCommand}" CommandParameter="{Binding ElementName=borderMain}">
+                            <materialDesign:PackIcon Kind="ArrowLeft" Foreground="Black" 
+                                                 Width="45" Height="30" 
+                                                 VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Button>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+
 </Window>
