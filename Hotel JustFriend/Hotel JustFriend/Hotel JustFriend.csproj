@@ -119,6 +119,9 @@
     <Compile Include="Views\MyMessageBoxes\MyMessageBoxWindow.xaml.cs">
       <DependentUpon>MyMessageBoxWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\RoomWindow.xaml.cs">
+      <DependentUpon>RoomWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="Resources\Resources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -200,6 +203,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MyMessageBoxes\MyMessageBoxWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RoomWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

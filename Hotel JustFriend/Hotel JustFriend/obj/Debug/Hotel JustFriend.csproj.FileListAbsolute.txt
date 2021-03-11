@@ -280,3 +280,5 @@ D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\ru\DevExp
 D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend.exe.licenses
 D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\MyMessageBoxes\MyMessageBoxWindow.g.cs
 D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\MyMessageBoxes\MyMessageBoxWindow.baml
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\RoomWindow.g.cs
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\RoomWindow.baml
