@@ -14,8 +14,6 @@ namespace Hotel_JustFriend.ViewModels
         public ICommand MaximizeWindowCommand { get; set; }
         public ICommand MinimizeWindowCommand { get; set; }
         public ICommand MouseMoveWindowCommand { get; set; }
-        public ICommand MenuOpenCommand { get; set; }
-        public ICommand MenuCloseCommand { get; set; }
         #endregion
         public MainViewModel()
         {
@@ -23,18 +21,8 @@ namespace Hotel_JustFriend.ViewModels
             MaximizeWindowCommand = new RelayCommand<object>(p => true, p => MaximizeWindow(p));
             MinimizeWindowCommand = new RelayCommand<object>(p => true, p => MinimizeWindow(p));
             MouseMoveWindowCommand = new RelayCommand<object>(p => true, p => MouseMoveWindow(p));
-            MenuOpenCommand = new RelayCommand<object>(p => true, p => MenuOpen(p));
-            MenuCloseCommand = new RelayCommand<object>(p => true, p => MenuClose(p));
         }
         #region Methods
-        public void MenuOpen(object p)
-        {
-            if (p != null) (p as Border).IsEnabled = false;
-        }
-        public void MenuClose(object p)
-        {
-            if (p != null) (p as Border).IsEnabled = true;
-        }
         public void MouseMoveWindow(object p)
         {
             if (p != null)

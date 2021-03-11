@@ -105,7 +105,8 @@
                                     materialDesign:ButtonAssist.CornerRadius="10"
                                     Background="#fa91d7" BorderBrush="#fa91d7"
                                     Command="{Binding LoginCommand}"
-                                    CommandParameter="{Binding ElementName=window}">
+                                    CommandParameter="{Binding ElementName=window}"
+                                    IsDefault="True">
                             </Button>
                         </Grid>
                         <Grid Grid.Column="1">
