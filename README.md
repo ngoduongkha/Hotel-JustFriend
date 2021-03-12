@@ -82,16 +82,10 @@ href="#acknowledgements">Acknowledgements</a></li>
 
 ![Product Name Screen Shot][product-screenshot]
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
-
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this template!
-
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
+Hiện nay không dễ dàng gì bạn có thể tìm được một ứng dụng hỗ trợ tập street workout miễn phí và đầy đủ tính năng trên các cửa hàng ứng dụng của app store hay chPlay, để hỗ trợ mọi người tốt nhất trong việc tập luyện nhóm chúng tôi sẽ không ngừng lắng nghe và cải tiến sản phẩm của mình.
+Hiện tại, ứng dụng chúng tôi có thể hỗ trợ đầy đủ các tính năng trong việc tập luyện theo mọi lứa tuổi, giới tính như tạo lịch tập hàng tuần/tháng, chỉnh sửa lịch tập luyện, cảnh báo nếu lịch tập chưa phù hợp giúp bạn chọn ra lịch tập tốt nhất. Chia ngày tập theo nhóm cơ, với danh sách các bài tập và thơi gian hợp lý (có đếm lùi và thông báo khi tập), các bạn cũng có thể thay đổi một số bài tập bằng các bài tập khác khi gặp phải động tác không tập được.
+Bên cạnh luyện tập dinh dưỡng và chăm sóc sức khỏe sau khi tập cũng quan trong không kém thế nên chúng tôi cũng đưa ra tính năng gợi ý khẩu phần ăn, cách xử lý chấn thương và hotline hỗ trợ khi cần thiết.
+Khi bắt đầu tập luyện chán nãn mệt mõi, muốn từ bỏ là điều không thể tránh khỏi hiểu được điều đó, chúng tôi luôn động viên giúp đỡ các bạn trong suốt quá trình luyện tập, các bạn có thể nghe nhạc trực tuyến trên ứng dụng khi luyện tập. Xem lại quá trình và đánh giá buổi tập của mình đồng thời chia sẻ nó với bạn bè, hay tìm kiếm bạn tập nhóm tập dù gì khi có ai đó đồng hành chúng ta cũng có thêm nhiều động lực và niềm vui khi tập luyện hơn, bên cạnh đó bạn còn có thể theo dõi qúa trình phát triển của bản thân khi sử dụng ứng dụng thông qua ảnh quá trình thay đổi từ khi tập luyện và kỉ lục trong các nội dung tập kích thích sự hăng hái trong bạn
 
 ### Built-with
 
