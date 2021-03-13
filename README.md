@@ -49,13 +49,13 @@
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
-  <summary><b>Mục lục</b></summary>
+  <summary><b>Table of Contents</b></summary>
   <ol>
     <li>
-      <a href="#về-dự-án">Về dự án</a>
+      <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#built-with">Built-with</a></li>
-        <li><a href="#người-dùng">Người dùng</a></li>
+        <li><a href="#user">User</a></li>
       </ul>
     </li>
     <li>
@@ -65,20 +65,19 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#sử-dụng">Sử dụng</a></li>
+    <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#thành-viên">Thành viên</a></li>
-    <li><a href="#giấy-phép">Giấy phép</a></li>
-    <li><a href="#liên-hệ--góp-ý">Liên hệ & góp ý</a></li>
-    <li><a 
-href="#acknowledgements">Acknowledgements</a></li>
+    <li><a href="#contributors">Contributors</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
 
 
 
 <!-- ABOUT THE PROJECT -->
-## Về dự án
+## About The Project
 
 ![Product Name Screen Shot][product-screenshot]
 
@@ -101,11 +100,11 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 * [Toast Notifications](https://github.com/rafallopatka/ToastNotifications)
 * [Live Charts](https://lvcharts.net/)
 
-### Người dùng
+### User
 
-* Chủ sở hữu khách sạn
-* Quản lý khách sạn
-* Nhân viên khách sạn
+* Owner
+* Manager
+* Staff
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -140,7 +139,7 @@ This is an example of how to list things you need to use the software and how to
 
 
 <!-- USAGE EXAMPLES -->
-## Sử dụng
+## Usage
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
@@ -156,9 +155,9 @@ See the [open issues](https://github.com/ngoduongkha/Hotel-JustFriend/issues) fo
 
 
 <!-- CONTRIBUTING -->
-## Thành viên
+## Contributors
 
-|     Họ và tên               |    MSSV    |   Vai trò   |
+|     Full name               | Student ID |     Role    |
 |   :---                      |   :----:   |    :---:    |
 |   Ngô Dương Kha             |  1950117   |  Leader     |
 |   Lê Thành Luân             |  19520702  |  UX/UI      |
@@ -166,11 +165,11 @@ See the [open issues](https://github.com/ngoduongkha/Hotel-JustFriend/issues) fo
 |   Nguyễn Vĩnh Hoàng Phúc    |  19520225  |  Database   |
 
 <!-- LICENSE -->
-## Giấy phép
+## License
 
-Được phân phối theo Giấy phép MIT.  Xem [LICENSE](https://github.com/ngoduongkha/Hotel-JustFriend/blob/master/LICENSE) để biết thêm thông tin.
+Distributed under the MIT License. See [LICENSE](https://github.com/ngoduongkha/Hotel-JustFriend/blob/master/LICENSE) for more information.
 <!-- CONTACT -->
-## Liên hệ & góp ý
+## Contact
 
 Ngô Dương Kha - [Facebook](https://facebook.com/ngoduongkha) - <19520117@gm.uit.edu.vn>
 
