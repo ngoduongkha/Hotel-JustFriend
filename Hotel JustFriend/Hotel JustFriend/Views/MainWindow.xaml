@@ -80,7 +80,7 @@
                                     <materialDesign:PackIcon Kind="Menu" Width="35" Height="40"/>
                                 </materialDesign:PopupBox.ToggleContent>
                                 <StackPanel>
-                                    <Button ToolTip="Thêm phòng" Background="Transparent">
+                                    <Button ToolTip="Thêm phòng" Background="Transparent" Command="{Binding AddRoomCommand}">
                                         <materialDesign:PackIcon Kind="PlusBold" Height="30" Width="Auto"/>
                                     </Button>
                                     <Button ToolTip="Thông tin phòng" Background="Transparent">

@@ -1,5 +1,7 @@
 ﻿using DevExpress.Mvvm;
+using DevExpress.Mvvm.DataAnnotations;
 using Hotel_JustFriend.Models;
+using Hotel_JustFriend.Views;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -7,49 +9,49 @@ using System.Windows.Input;
 
 namespace Hotel_JustFriend.ViewModels
 {
+    [POCOViewModel]
     public class MainViewModel : ViewModelBase
     {
-        #region Properties
-        public ICommand CloseWindowCommand { get; set; }
-        public ICommand MaximizeWindowCommand { get; set; }
-        public ICommand MinimizeWindowCommand { get; set; }
-        public ICommand MouseMoveWindowCommand { get; set; }
-        #endregion
-        public MainViewModel()
+        #region Command
+        [Command]
+        public void AddRoom(Window p)
         {
-            CloseWindowCommand = new RelayCommand<object>(p => true, p => CloseWindow(p));
-            MaximizeWindowCommand = new RelayCommand<object>(p => true, p => MaximizeWindow(p));
-            MinimizeWindowCommand = new RelayCommand<object>(p => true, p => MinimizeWindow(p));
-            MouseMoveWindowCommand = new RelayCommand<object>(p => true, p => MouseMoveWindow(p));
-        }
-        #region Methods
-        public void MouseMoveWindow(object p)
-        {
-            if (p != null)
+            try
             {
-                try
-                {
-                    (p as Window).DragMove();
-                }
-                catch { return; }
+                AddRoomWindow addRoom = new AddRoomWindow();
+                addRoom.ShowDialog();
             }
+            catch { return; }
         }
-        public void MaximizeWindow(object p)
+        [Command]
+        public void MouseMoveWindow(Window p)
         {
-            if (p != null)
+            try
             {
-                var w = p as Window;
-                if (w.WindowState != WindowState.Maximized)
+                p.DragMove();
+            }
+            catch { return; }
+        }
+
+        [Command]
+        public void MaximizeWindow(Window p)
+        {
+            try
+            {
+                if (p.WindowState != WindowState.Maximized)
                 {
-                    w.WindowState = WindowState.Maximized;
+                    p.WindowState = WindowState.Maximized;
                 }
                 else
                 {
-                    w.WindowState = WindowState.Normal;
+                    p.WindowState = WindowState.Normal;
                 }
             }
+            catch { return; }
         }
-        public void MinimizeWindow(object p)
+
+        [Command]
+        public void MinimizeWindow(Window p)
         {
             if (p != null)
             {
@@ -60,15 +62,18 @@ namespace Hotel_JustFriend.ViewModels
                 }
             }
         }
-        public void CloseWindow(object p)
+
+        [Command]
+        public void CloseWindow(Window p)
         {
-            if (p != null)
+            try
             {
                 if (MyMessageBox.Show("Bạn muốn thoát khỏi chương trình?", "Nhắc nhở", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    (p as Window).Close();
+                    p.Close();
                 }
             }
+            catch { return; }
         }
         #endregion
     }

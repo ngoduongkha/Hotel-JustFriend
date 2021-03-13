@@ -37,7 +37,7 @@ namespace Hotel_JustFriend.ViewModels
             try
             {
                 string passEncode = Utility.Encryption.EncryptPassword(Password);
-                var count = Models.DataProvider.Instance.DB.Accounts.Where(x => x.username == UserName && x.password == passEncode).Count();
+                var count = DataProvider.Instance.DB.Accounts.Where(x => x.username == UserName && x.password == passEncode).Count();
 
                 if (count > 0)
                 {

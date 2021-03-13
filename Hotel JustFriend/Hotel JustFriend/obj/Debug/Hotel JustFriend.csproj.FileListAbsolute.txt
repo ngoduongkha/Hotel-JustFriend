@@ -283,6 +283,6 @@ D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\MyM
 D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\RoomWindow.g.cs
 D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\RoomWindow.baml
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\MyMessageBoxes\MyMessageBoxWindow.g.cs
-D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\RoomWindow.g.cs
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\MyMessageBoxes\MyMessageBoxWindow.baml
-D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\RoomWindow.baml
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\AddRoomWindow.g.cs
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\AddRoomWindow.baml

@@ -27,9 +27,9 @@ namespace Hotel_JustFriend.Models
         public Nullable<int> idEmployeeRole { get; set; }
         public Nullable<int> idAccountRole { get; set; }
         public string fullName { get; set; }
+        public string idCard { get; set; }
         public string gender { get; set; }
         public string phone { get; set; }
-        public string address { get; set; }
         public System.DateTime dateOfBirth { get; set; }
         public System.DateTime startDate { get; set; }
         public Nullable<System.DateTime> endDate { get; set; }

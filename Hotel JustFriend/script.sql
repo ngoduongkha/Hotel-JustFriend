@@ -7,6 +7,9 @@ GO
 USE [Hotel_JustFriend]
 GO
 
+SET DATEFORMAT DMY
+GO
+
 CREATE TABLE [AccountRole] (
   [idAccountRole] int PRIMARY KEY IDENTITY(1, 1),
   [displayName] nvarchar(100) UNIQUE NOT NULL
@@ -44,9 +47,9 @@ CREATE TABLE [Employee] (
   [idEmployeeRole] int,
   [idAccountRole] int,
   [fullName] nvarchar(max) NOT NULL,
+  [idCard] varchar(20) UNIQUE NOT NULL,
   [gender] nvarchar(20) NOT NULL,
   [phone] varchar(20) UNIQUE NOT NULL,
-  [address] nvarchar(max) DEFAULT 'Not provided',
   [dateOfBirth] date NOT NULL,
   [startDate] date NOT NULL,
   [endDate] date DEFAULT (null),
@@ -60,7 +63,7 @@ CREATE TABLE [Room] (
   [displayName] nvarchar(max) NOT NULL,
   [type] nvarchar(50) NOT NULL,
   [price] money NOT NULL,
-  [status] nvarchar(255) NOT NULL CHECK ([status] IN ('Rented', 'Available', 'NotAvailable')),
+  [status] nvarchar(255) NOT NULL CHECK ([status] IN ('Rented', 'Available', 'NotAvailable')) DEFAULT 'Available',
   [note] nvarchar(max) DEFAULT '',
   [isDelete] bit DEFAULT (0)
 )
@@ -74,8 +77,7 @@ CREATE TABLE [Customer] (
   [address] nvarchar(max) DEFAULT 'Not provided',
   [dateOfBirth] date DEFAULT (null),
   [idCard] varchar(20) UNIQUE NOT NULL,
-  [type] tinyint,
-  [isDelete] bit DEFAULT (0)
+  [type] tinyint
 )
 GO
 
