@@ -29,6 +29,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0">
                             <Label Content="{Binding Title, ElementName=window}"
@@ -69,6 +70,9 @@
                                 <materialDesign:PackIcon Kind="WindowMinimize" Width="25" Height="25"
                                                          HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Button>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            
                         </Grid>
                     </Grid>
                 </Grid>
