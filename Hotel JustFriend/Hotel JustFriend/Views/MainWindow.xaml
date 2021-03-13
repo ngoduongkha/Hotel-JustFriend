@@ -27,17 +27,17 @@
                 <Grid Background="{x:Null}" Height="Auto">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
                             <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition />
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0">
+                        <Grid Grid.Column="1">
                             <Label Content="{Binding Title, ElementName=window}"
                         VerticalAlignment="Center" HorizontalAlignment="Center"
                         Foreground="WhiteSmoke"
                         FontSize="25" FontWeight="Bold"/>
                         </Grid>
-                        <Grid Grid.Column="1">
+                        <Grid Grid.Column="2">
                             <Grid.Resources>
                                 <Style TargetType="{x:Type Button}">
                                     <Setter Property="Width" Value="50"/>
@@ -71,8 +71,23 @@
                                                          HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Button>
                         </Grid>
-                        <Grid Grid.Column="2">
-                            
+                        <Grid Grid.Column="0">
+                            <materialDesign:PopupBox PlacementMode="RightAndAlignTopEdges"
+                                                     VerticalAlignment="Center"
+                                                     HorizontalAlignment="Center"
+                                                     Background="Transparent" Margin="5,5,0,5">
+                                <materialDesign:PopupBox.ToggleContent>
+                                    <materialDesign:PackIcon Kind="Menu" Width="35" Height="40"/>
+                                </materialDesign:PopupBox.ToggleContent>
+                                <StackPanel>
+                                    <Button ToolTip="Thêm phòng" Background="Transparent">
+                                        <materialDesign:PackIcon Kind="PlusBold" Height="30" Width="Auto"/>
+                                    </Button>
+                                    <Button ToolTip="Thông tin phòng" Background="Transparent">
+                                        <materialDesign:PackIcon Kind="Information" Height="30" Width="25"/>
+                                    </Button>
+                                </StackPanel>
+                            </materialDesign:PopupBox>
                         </Grid>
                     </Grid>
                 </Grid>
