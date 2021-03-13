@@ -60,13 +60,13 @@
                             <Button Grid.Column="1" ToolTip="Phóng to"
                                     Command="{Binding MaximizeWindowCommand}"
                                     CommandParameter="{Binding ElementName=window}">
-                                <materialDesign:PackIcon Kind="WindowMaximize" Width="25" Height="25" 
+                                <materialDesign:PackIcon Kind="WindowMaximize" Width="25" Height="25"
                                                          HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Button>
                             <Button Grid.Column="0" ToolTip="Thu gọn"
                                     Command="{Binding MinimizeWindowCommand}"
                                     CommandParameter="{Binding ElementName=window}">
-                                <materialDesign:PackIcon Kind="WindowMinimize" Width="25" Height="25" 
+                                <materialDesign:PackIcon Kind="WindowMinimize" Width="25" Height="25"
                                                          HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Button>
                         </Grid>
@@ -77,8 +77,8 @@
                 Background="Pink">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="750"/>
                         <ColumnDefinition/>
+                        <ColumnDefinition Width="450"/>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0">
                         <Grid.RowDefinitions>
@@ -324,5 +324,4 @@
             </Border>
         </Grid>
     </Border>
-    
 </Window>
