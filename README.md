@@ -52,10 +52,10 @@
   <summary><b>Table of Contents</b></summary>
   <ol>
     <li>
-      <a href="#về-dự-án">About The Project</a>
+      <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#built-with">Built-with</a></li>
-        <li><a href="#người-dùng">User</a></li>
+        <li><a href="#user">User</a></li>
       </ul>
     </li>
     <li>
@@ -65,11 +65,11 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#sử-dụng">Usage</a></li>
+    <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#thành-viên">Contributors</a></li>
-    <li><a href="#giấy-phép">License</a></li>
-    <li><a href="#liên-hệ--góp-ý">Contact</a></li>
+    <li><a href="#contributors">Contributors</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
