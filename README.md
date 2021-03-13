@@ -165,7 +165,7 @@ See the [open issues](https://github.com/ngoduongkha/Hotel-JustFriend/issues) fo
 |   Nguyễn Vĩnh Hoàng Phúc    |  19520225  |  Database   |
 
 <!-- LICENSE -->
-##License
+## License
 
 Được phân phối theo Giấy phép MIT.  Xem [LICENSE](https://github.com/ngoduongkha/Hotel-JustFriend/blob/master/LICENSE) để biết thêm thông tin.
 <!-- CONTACT -->
