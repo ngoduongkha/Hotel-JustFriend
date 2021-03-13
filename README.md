@@ -157,7 +157,7 @@ See the [open issues](https://github.com/ngoduongkha/Hotel-JustFriend/issues) fo
 <!-- CONTRIBUTING -->
 ## Contributors
 
-|     Họ và tên               |    MSSV    |   Vai trò   |
+|     Full name               | Student ID |     Role    |
 |   :---                      |   :----:   |    :---:    |
 |   Ngô Dương Kha             |  1950117   |  Leader     |
 |   Lê Thành Luân             |  19520702  |  UX/UI      |
@@ -167,7 +167,7 @@ See the [open issues](https://github.com/ngoduongkha/Hotel-JustFriend/issues) fo
 <!-- LICENSE -->
 ## License
 
-Được phân phối theo Giấy phép MIT.  Xem [LICENSE](https://github.com/ngoduongkha/Hotel-JustFriend/blob/master/LICENSE) để biết thêm thông tin.
+Distributed under the MIT License. See [LICENSE](https://github.com/ngoduongkha/Hotel-JustFriend/blob/master/LICENSE) for more information.
 <!-- CONTACT -->
 ## Contact
 
