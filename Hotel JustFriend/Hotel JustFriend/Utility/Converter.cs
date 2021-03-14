@@ -25,18 +25,18 @@ namespace Hotel_JustFriend.Utility
 
         public string ConvertDecimalToCurrency(decimal money)
         {
-            return money.ToString("#,0", new CultureInfo("vi-VN"));
+            return money.ToString("#,0", CultureInfo.GetCultureInfo("en-US"));
         }
 
         public string ConvertDecimalToCurrency(string moneyString)
         {
-            decimal money = decimal.Parse((moneyString as string), NumberStyles.Currency, CultureInfo.GetCultureInfo("vi-VN"));
-            return money.ToString("#,0", new CultureInfo("vi-VN"));
+            decimal money = decimal.Parse((moneyString as string), NumberStyles.Currency, CultureInfo.GetCultureInfo("en-US"));
+            return money.ToString("#,0", CultureInfo.GetCultureInfo("en-US"));
         }
 
         public decimal ConvertCurrencyToDecimal(string moneyString)
         {
-            return decimal.Parse((moneyString as string), NumberStyles.Currency, CultureInfo.GetCultureInfo("vi-VN"));
+            return decimal.Parse((moneyString as string), NumberStyles.Currency, CultureInfo.GetCultureInfo("en-US"));
         }
     }
 }

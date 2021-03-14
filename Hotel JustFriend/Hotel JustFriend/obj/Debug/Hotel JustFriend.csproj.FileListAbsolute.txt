@@ -55,7 +55,6 @@ D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\de\DevExpress.Pd
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\es\DevExpress.Pdf.v20.1.Core.resources.dll
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\ja\DevExpress.Pdf.v20.1.Core.resources.dll
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\ru\DevExpress.Pdf.v20.1.Core.resources.dll
-D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend.csprojAssemblyReference.cache
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\App.g.cs
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend_Content.g.cs
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\GeneratedInternalTypeHelper.g.cs
@@ -287,3 +286,4 @@ D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\MyMessageB
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\AddRoomWindow.g.cs
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\AddRoomWindow.baml
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\Syncfusion.Licensing.dll
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend.csprojAssemblyReference.cache

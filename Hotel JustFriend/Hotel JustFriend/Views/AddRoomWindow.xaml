@@ -193,19 +193,6 @@
                             MaxLines="1"
                             MaxLength="11"
                             x:Name="txtPrice">
-                            <TextBox.Text>
-                                <Binding
-                                    Path="RoomPrice"
-                                    UpdateSourceTrigger="PropertyChanged"
-                                    Mode="OneWayToSource">
-                                    <Binding.ValidationRules>
-                                        <validation:NotNullValidation
-                                            ErrorMessage="Vui lòng nhập giá!"/>
-                                        <validation:MoneyValidation
-                                            Divisor="1000"/>
-                                    </Binding.ValidationRules>
-                                </Binding>
-                            </TextBox.Text>
                             <i:Interaction.Triggers>
                                 <i:EventTrigger
                                     EventName="TextChanged">
@@ -214,6 +201,20 @@
                                         CommandParameter="{Binding ElementName=txtPrice}"/>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
+                            <TextBox.Text>
+                                <Binding
+                                    Path="RoomPrice"
+                                    Mode="OneWayToSource"
+                                    UpdateSourceTrigger="Default">
+                                    <Binding.ValidationRules>
+                                        <validation:NotNullValidation
+                                            ValidatesOnTargetUpdated="True"
+                                            ErrorMessage="Vui lòng nhập giá!"/>
+                                        <validation:MoneyValidation
+                                            Divisor="1000"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
                         </TextBox>
                     </Grid>
                 </Grid>

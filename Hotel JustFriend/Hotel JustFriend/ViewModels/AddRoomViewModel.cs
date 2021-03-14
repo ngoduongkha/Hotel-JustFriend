@@ -42,12 +42,6 @@ namespace Hotel_JustFriend.ViewModels
             ListRoomType = new ObservableCollection<string>(data.Select(x => x.type).Distinct());
         }
 
-        public void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }
-
         #region Command
         [Command]
         public void Add()
@@ -71,9 +65,8 @@ namespace Hotel_JustFriend.ViewModels
             try
             {
                 decimal money = Converter.Instance.ConvertCurrencyToDecimal(obj.Text);
-                    obj.Text = Converter.Instance.ConvertDecimalToCurrency(money);
-                    obj.Select(obj.Text.Length, 0);
-               
+                obj.Text = Converter.Instance.ConvertDecimalToCurrency(money);
+                obj.Select(obj.Text.Length, 0);
             }
             catch { return; }
         }
