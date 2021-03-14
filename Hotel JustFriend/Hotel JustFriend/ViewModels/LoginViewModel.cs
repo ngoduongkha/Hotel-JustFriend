@@ -17,7 +17,7 @@ namespace Hotel_JustFriend.ViewModels
         #endregion
         
         #region Properties
-        public string UserName { get => _UserName; set => _UserName = value; }
+        public string UserName { get => _UserName; set { _UserName = value; RaisePropertyChanged(); } }
         public string Password { get => _Password; set { _Password = value; RaisePropertyChanged(); } }
         #endregion
 
@@ -31,6 +31,7 @@ namespace Hotel_JustFriend.ViewModels
             }
             catch { return; }
         }
+
         [Command]
         public void Login(Window p)
         {
@@ -57,6 +58,7 @@ namespace Hotel_JustFriend.ViewModels
                 return; 
             }
         }
+
         [Command]
         public void Close(Window p)
         {
@@ -66,6 +68,7 @@ namespace Hotel_JustFriend.ViewModels
             }
             catch { return; }
         }
+
         [Command]
         public void OnPasswordChanged(PasswordBox p)
         {

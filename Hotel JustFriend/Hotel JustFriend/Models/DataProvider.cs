@@ -8,17 +8,17 @@ namespace Hotel_JustFriend.Models
 {
     public class DataProvider
     {
-        private static DataProvider instance;
+        private static DataProvider _Instance;
 
         public static DataProvider Instance
         {
             get
             {
-                if (instance == null)
-                    instance = new DataProvider();
-                return instance;
+                if (_Instance == null)
+                    _Instance = new DataProvider();
+                return _Instance;
             }
-            set { instance = value; }
+            set { _Instance = value; }
         }
 
         public Hotel_JustFriendEntities DB { get; set; }

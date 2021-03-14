@@ -53,9 +53,9 @@
     <Property Name="idCustomer" Type="int" Nullable="false" />
     <Property Name="phone" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="fullname" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="gender" Type="nvarchar" MaxLength="20" />
-    <Property Name="address" Type="nvarchar(max)" />
-    <Property Name="dateOfBirth" Type="date" />
+    <Property Name="gender" Type="nvarchar" MaxLength="20" StoreGeneratedPattern="Computed" />
+    <Property Name="address" Type="nvarchar(max)" StoreGeneratedPattern="Computed" />
+    <Property Name="dateOfBirth" Type="date" StoreGeneratedPattern="Computed" />
     <Property Name="idCard" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="type" Type="tinyint" />
   </EntityType>
@@ -72,9 +72,9 @@
     <Property Name="phone" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="dateOfBirth" Type="date" Nullable="false" />
     <Property Name="startDate" Type="date" Nullable="false" />
-    <Property Name="endDate" Type="date" />
+    <Property Name="endDate" Type="date" StoreGeneratedPattern="Computed" />
     <Property Name="image" Type="varbinary(max)" />
-    <Property Name="isDelete" Type="bit" />
+    <Property Name="isDelete" Type="bit" StoreGeneratedPattern="Computed" />
   </EntityType>
   <EntityType Name="EmployeeRole">
     <Key>
@@ -92,9 +92,9 @@
     <Property Name="unit" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="pricePerUnit" Type="money" Nullable="false" />
     <Property Name="image" Type="varbinary(max)" />
-    <Property Name="quantity" Type="int" />
+    <Property Name="quantity" Type="int" StoreGeneratedPattern="Computed" />
     <Property Name="status" Type="nvarchar" MaxLength="255" Nullable="false" />
-    <Property Name="isDelete" Type="bit" />
+    <Property Name="isDelete" Type="bit" StoreGeneratedPattern="Computed" />
   </EntityType>
   <EntityType Name="ProductImport">
     <Key>
@@ -119,13 +119,13 @@
     <Key>
       <PropertyRef Name="idRoom" />
     </Key>
-    <Property Name="idRoom" Type="int" Nullable="false" />
+    <Property Name="idRoom" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="displayName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="price" Type="money" Nullable="false" />
-    <Property Name="status" Type="nvarchar" MaxLength="255" Nullable="false" />
-    <Property Name="note" Type="nvarchar(max)" />
-    <Property Name="isDelete" Type="bit" />
+    <Property Name="status" Type="nvarchar" MaxLength="255" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="note" Type="nvarchar(max)" StoreGeneratedPattern="Computed" />
+    <Property Name="isDelete" Type="bit" StoreGeneratedPattern="Computed" />
   </EntityType>
   <EntityType Name="SalaryRecord">
     <Key>
@@ -143,11 +143,11 @@
     </Key>
     <Property Name="idSalaryRecord" Type="varchar" MaxLength="64" />
     <Property Name="idEmployee" Type="int" Nullable="false" />
-    <Property Name="numOfShift" Type="int" />
-    <Property Name="numOfFault" Type="int" />
+    <Property Name="numOfShift" Type="int" StoreGeneratedPattern="Computed" />
+    <Property Name="numOfFault" Type="int" StoreGeneratedPattern="Computed" />
     <Property Name="totalSalary" Type="money" />
     <Property Name="salaryMonth" Type="date" Nullable="false" />
-    <Property Name="coefficients" Type="real" />
+    <Property Name="coefficients" Type="real" StoreGeneratedPattern="Computed" />
   </EntityType>
   <EntityType Name="SalaryTable">
     <Key>
@@ -159,7 +159,7 @@
     <Property Name="moneyPerFault" Type="money" Nullable="false" />
     <Property Name="standardWorkDays" Type="tinyint" Nullable="false" />
   </EntityType>
-  <Association Name="FK__Account__idAccou__66603565">
+  <Association Name="FK__Account__idAccou__5441852A">
     <End Role="AccountRole" Type="Self.AccountRole" Multiplicity="0..1" />
     <End Role="Account" Type="Self.Account" Multiplicity="*" />
     <ReferentialConstraint>
@@ -171,7 +171,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Attendanc__idEmp__70DDC3D8">
+  <Association Name="FK__Attendanc__idEmp__5EBF139D">
     <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
     <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
     <ReferentialConstraint>
@@ -183,7 +183,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Bill__idCustomer__6E01572D">
+  <Association Name="FK__Bill__idCustomer__5BE2A6F2">
     <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
     <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
     <ReferentialConstraint>
@@ -195,7 +195,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Bill__idEmployee__6D0D32F4">
+  <Association Name="FK__Bill__idEmployee__5AEE82B9">
     <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
     <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
     <ReferentialConstraint>
@@ -207,7 +207,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Bill__idRoom__6C190EBB">
+  <Association Name="FK__Bill__idRoom__59FA5E80">
     <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
     <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
     <ReferentialConstraint>
@@ -219,7 +219,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Billinfo__idBill__6EF57B66">
+  <Association Name="FK__Billinfo__idBill__5CD6CB2B">
     <End Role="Bill" Type="Self.Bill" Multiplicity="1" />
     <End Role="Billinfo" Type="Self.Billinfo" Multiplicity="*" />
     <ReferentialConstraint>
@@ -231,7 +231,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Billinfo__idProd__6FE99F9F">
+  <Association Name="FK__Billinfo__idProd__5DCAEF64">
     <End Role="Product" Type="Self.Product" Multiplicity="1" />
     <End Role="Billinfo" Type="Self.Billinfo" Multiplicity="*" />
     <ReferentialConstraint>
@@ -243,7 +243,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Employee__idAcco__68487DD7">
+  <Association Name="FK__Employee__idAcco__5629CD9C">
     <End Role="AccountRole" Type="Self.AccountRole" Multiplicity="0..1" />
     <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
     <ReferentialConstraint>
@@ -255,7 +255,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Employee__idEmpl__6754599E">
+  <Association Name="FK__Employee__idEmpl__5535A963">
     <End Role="EmployeeRole" Type="Self.EmployeeRole" Multiplicity="0..1" />
     <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
     <ReferentialConstraint>
@@ -267,7 +267,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ProductIm__idEmp__693CA210">
+  <Association Name="FK__ProductIm__idEmp__571DF1D5">
     <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
     <End Role="ProductImport" Type="Self.ProductImport" Multiplicity="*" />
     <ReferentialConstraint>
@@ -279,7 +279,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ProductIm__idImp__6A30C649">
+  <Association Name="FK__ProductIm__idImp__5812160E">
     <End Role="ProductImport" Type="Self.ProductImport" Multiplicity="1" />
     <End Role="ProductImportInfo" Type="Self.ProductImportInfo" Multiplicity="*" />
     <ReferentialConstraint>
@@ -291,7 +291,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ProductIm__idPro__6B24EA82">
+  <Association Name="FK__ProductIm__idPro__59063A47">
     <End Role="Product" Type="Self.Product" Multiplicity="1" />
     <End Role="ProductImportInfo" Type="Self.ProductImportInfo" Multiplicity="*" />
     <ReferentialConstraint>
@@ -303,7 +303,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SalaryRec__idAcc__72C60C4A">
+  <Association Name="FK__SalaryRec__idAcc__60A75C0F">
     <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
     <End Role="SalaryRecord" Type="Self.SalaryRecord" Multiplicity="*" />
     <ReferentialConstraint>
@@ -315,7 +315,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SalaryRec__idEmp__74AE54BC">
+  <Association Name="FK__SalaryRec__idEmp__628FA481">
     <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
     <End Role="SalaryRecordInfo" Type="Self.SalaryRecordInfo" Multiplicity="*" />
     <ReferentialConstraint>
@@ -327,7 +327,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SalaryRec__idSal__73BA3083">
+  <Association Name="FK__SalaryRec__idSal__619B8048">
     <End Role="SalaryRecord" Type="Self.SalaryRecord" Multiplicity="0..1" />
     <End Role="SalaryRecordInfo" Type="Self.SalaryRecordInfo" Multiplicity="*" />
     <ReferentialConstraint>
@@ -339,7 +339,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SalaryTab__idEmp__71D1E811">
+  <Association Name="FK__SalaryTab__idEmp__5FB337D6">
     <End Role="EmployeeRole" Type="Self.EmployeeRole" Multiplicity="1" />
     <End Role="SalaryTable" Type="Self.SalaryTable" Multiplicity="0..1" />
     <ReferentialConstraint>
@@ -367,67 +367,67 @@
     <EntitySet Name="SalaryRecord" EntityType="Self.SalaryRecord" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SalaryRecordInfo" EntityType="Self.SalaryRecordInfo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SalaryTable" EntityType="Self.SalaryTable" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Account__idAccou__66603565" Association="Self.FK__Account__idAccou__66603565">
+    <AssociationSet Name="FK__Account__idAccou__5441852A" Association="Self.FK__Account__idAccou__5441852A">
       <End Role="AccountRole" EntitySet="AccountRole" />
       <End Role="Account" EntitySet="Account" />
     </AssociationSet>
-    <AssociationSet Name="FK__Attendanc__idEmp__70DDC3D8" Association="Self.FK__Attendanc__idEmp__70DDC3D8">
+    <AssociationSet Name="FK__Attendanc__idEmp__5EBF139D" Association="Self.FK__Attendanc__idEmp__5EBF139D">
       <End Role="Employee" EntitySet="Employee" />
       <End Role="Attendance" EntitySet="Attendance" />
     </AssociationSet>
-    <AssociationSet Name="FK__Bill__idCustomer__6E01572D" Association="Self.FK__Bill__idCustomer__6E01572D">
+    <AssociationSet Name="FK__Bill__idCustomer__5BE2A6F2" Association="Self.FK__Bill__idCustomer__5BE2A6F2">
       <End Role="Customer" EntitySet="Customer" />
       <End Role="Bill" EntitySet="Bill" />
     </AssociationSet>
-    <AssociationSet Name="FK__Bill__idEmployee__6D0D32F4" Association="Self.FK__Bill__idEmployee__6D0D32F4">
+    <AssociationSet Name="FK__Bill__idEmployee__5AEE82B9" Association="Self.FK__Bill__idEmployee__5AEE82B9">
       <End Role="Employee" EntitySet="Employee" />
       <End Role="Bill" EntitySet="Bill" />
     </AssociationSet>
-    <AssociationSet Name="FK__Bill__idRoom__6C190EBB" Association="Self.FK__Bill__idRoom__6C190EBB">
+    <AssociationSet Name="FK__Bill__idRoom__59FA5E80" Association="Self.FK__Bill__idRoom__59FA5E80">
       <End Role="Room" EntitySet="Room" />
       <End Role="Bill" EntitySet="Bill" />
     </AssociationSet>
-    <AssociationSet Name="FK__Billinfo__idBill__6EF57B66" Association="Self.FK__Billinfo__idBill__6EF57B66">
+    <AssociationSet Name="FK__Billinfo__idBill__5CD6CB2B" Association="Self.FK__Billinfo__idBill__5CD6CB2B">
       <End Role="Bill" EntitySet="Bill" />
       <End Role="Billinfo" EntitySet="Billinfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__Billinfo__idProd__6FE99F9F" Association="Self.FK__Billinfo__idProd__6FE99F9F">
+    <AssociationSet Name="FK__Billinfo__idProd__5DCAEF64" Association="Self.FK__Billinfo__idProd__5DCAEF64">
       <End Role="Product" EntitySet="Product" />
       <End Role="Billinfo" EntitySet="Billinfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__Employee__idAcco__68487DD7" Association="Self.FK__Employee__idAcco__68487DD7">
+    <AssociationSet Name="FK__Employee__idAcco__5629CD9C" Association="Self.FK__Employee__idAcco__5629CD9C">
       <End Role="AccountRole" EntitySet="AccountRole" />
       <End Role="Employee" EntitySet="Employee" />
     </AssociationSet>
-    <AssociationSet Name="FK__Employee__idEmpl__6754599E" Association="Self.FK__Employee__idEmpl__6754599E">
+    <AssociationSet Name="FK__Employee__idEmpl__5535A963" Association="Self.FK__Employee__idEmpl__5535A963">
       <End Role="EmployeeRole" EntitySet="EmployeeRole" />
       <End Role="Employee" EntitySet="Employee" />
     </AssociationSet>
-    <AssociationSet Name="FK__ProductIm__idEmp__693CA210" Association="Self.FK__ProductIm__idEmp__693CA210">
+    <AssociationSet Name="FK__ProductIm__idEmp__571DF1D5" Association="Self.FK__ProductIm__idEmp__571DF1D5">
       <End Role="Employee" EntitySet="Employee" />
       <End Role="ProductImport" EntitySet="ProductImport" />
     </AssociationSet>
-    <AssociationSet Name="FK__ProductIm__idImp__6A30C649" Association="Self.FK__ProductIm__idImp__6A30C649">
+    <AssociationSet Name="FK__ProductIm__idImp__5812160E" Association="Self.FK__ProductIm__idImp__5812160E">
       <End Role="ProductImport" EntitySet="ProductImport" />
       <End Role="ProductImportInfo" EntitySet="ProductImportInfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__ProductIm__idPro__6B24EA82" Association="Self.FK__ProductIm__idPro__6B24EA82">
+    <AssociationSet Name="FK__ProductIm__idPro__59063A47" Association="Self.FK__ProductIm__idPro__59063A47">
       <End Role="Product" EntitySet="Product" />
       <End Role="ProductImportInfo" EntitySet="ProductImportInfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__SalaryRec__idAcc__72C60C4A" Association="Self.FK__SalaryRec__idAcc__72C60C4A">
+    <AssociationSet Name="FK__SalaryRec__idAcc__60A75C0F" Association="Self.FK__SalaryRec__idAcc__60A75C0F">
       <End Role="Account" EntitySet="Account" />
       <End Role="SalaryRecord" EntitySet="SalaryRecord" />
     </AssociationSet>
-    <AssociationSet Name="FK__SalaryRec__idEmp__74AE54BC" Association="Self.FK__SalaryRec__idEmp__74AE54BC">
+    <AssociationSet Name="FK__SalaryRec__idEmp__628FA481" Association="Self.FK__SalaryRec__idEmp__628FA481">
       <End Role="Employee" EntitySet="Employee" />
       <End Role="SalaryRecordInfo" EntitySet="SalaryRecordInfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__SalaryRec__idSal__73BA3083" Association="Self.FK__SalaryRec__idSal__73BA3083">
+    <AssociationSet Name="FK__SalaryRec__idSal__619B8048" Association="Self.FK__SalaryRec__idSal__619B8048">
       <End Role="SalaryRecord" EntitySet="SalaryRecord" />
       <End Role="SalaryRecordInfo" EntitySet="SalaryRecordInfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__SalaryTab__idEmp__71D1E811" Association="Self.FK__SalaryTab__idEmp__71D1E811">
+    <AssociationSet Name="FK__SalaryTab__idEmp__5FB337D6" Association="Self.FK__SalaryTab__idEmp__5FB337D6">
       <End Role="EmployeeRole" EntitySet="EmployeeRole" />
       <End Role="SalaryTable" EntitySet="SalaryTable" />
     </AssociationSet>

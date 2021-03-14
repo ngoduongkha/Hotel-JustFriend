@@ -3,9 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Hotel_JustFriend.Views"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:ei ="http://schemas.microsoft.com/expression/2010/interactions"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:validation="clr-namespace:Hotel_JustFriend.Validations"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         DataContext="{StaticResource AddRoomVM}"
         ResizeMode="NoResize" WindowStyle="None"
@@ -51,7 +52,7 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="2" ToolTip="Thoát" Command="{Binding CloseWindow}"
+                        <Button Grid.Column="2" ToolTip="Thoát" Command="{Binding CloseCommand}"
                                 CommandParameter="{Binding ElementName=window}">
                             <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25" 
                                                      HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -60,8 +61,12 @@
                 </Grid>
             </Grid>
         </Border>
-        <Border Background="White" BorderBrush="{x:Null}" CornerRadius="0,0,10,10" BorderThickness="0.1"
-                Grid.Row="1">
+        <Border 
+            Background="White" 
+            BorderBrush="{x:Null}" 
+            CornerRadius="0,0,10,10" 
+            BorderThickness="0.1"
+            Grid.Row="1">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -71,29 +76,71 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
+                <Grid
+                    Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0">
-                        <TextBlock Text="Số phòng" FontSize="20"/>
+                        <TextBox
+                            materialDesign:ValidationAssist.HorizontalAlignment="Right"
+                            materialDesign:HintAssist.Hint="Tầng"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            VerticalAlignment="Center">
+                            <TextBox.Text>
+                                <Binding
+                                    Path="RoomFloor"
+                                    Mode="OneWayToSource"
+                                    UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <validation:NotNullValidation
+                                            ErrorMessage="Vui lòng nhập tầng!"/>
+                                        <validation:NumberValidation
+                                            Min="1"
+                                            Max="99"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
                     </Grid>
                     <Grid Grid.Column="1">
-                        <TextBox FontSize="20" Width="200" Height="30"
-                                 Text="{Binding RoomID}"
-                                 IsEnabled="False"/>
+                        <TextBox
+                            materialDesign:ValidationAssist.HorizontalAlignment="Right"
+                            materialDesign:HintAssist.Hint="Phòng"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            VerticalAlignment="Center">
+                            <TextBox.Text>
+                                <Binding
+                                    Path="RoomNumber"
+                                    Mode="OneWayToSource"
+                                    UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <validation:NotNullValidation
+                                            ErrorMessage="Vui lòng nhập phòng!"/>
+                                        <validation:NumberValidation
+                                            Min="1"
+                                            Max="99"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
                     </Grid>
                 </Grid>
-                <Grid Grid.Row="1">
+                <Grid
+                    Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Tên phòng" FontSize="20"/>
+                    <Grid 
+                        Grid.Column="0">
+                        <TextBlock
+                            Text="Tên phòng"
+                            FontSize="20"/>
                     </Grid>
-                    <Grid Grid.Column="1">
+                    <Grid
+                        Grid.Column="1">
                         <TextBox
                             FontSize="20"
                             Width="200"
@@ -101,15 +148,20 @@
                             Text="{Binding DisplayName}"/>
                     </Grid>
                 </Grid>
-                <Grid Grid.Row="2">
+                <Grid
+                    Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Loại phòng" FontSize="20"/>
+                    <Grid 
+                        Grid.Column="0">
+                        <TextBlock
+                            Text="Loại phòng"
+                            FontSize="20"/>
                     </Grid>
-                    <Grid Grid.Column="1">
+                    <Grid 
+                        Grid.Column="1">
                         <ComboBox
                             materialDesign:HintAssist.Hint="Nhập hoặc chọn loại phòng"
                             materialDesign:HintAssist.HintOpacity=".26"
@@ -119,31 +171,64 @@
                         </ComboBox>
                     </Grid>
                 </Grid>
-                <Grid Grid.Row="3">
+                <Grid 
+                    Grid.Row="3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
+                    <Grid 
+                        Grid.Column="0">
                         <TextBlock Text="Giá thuê" FontSize="20"/>
                     </Grid>
-                    <Grid Grid.Column="1">
+                    <Grid 
+                        Grid.Column="1">
                         <TextBox
                             FontSize="20"
-                            Width="200"
-                            Height="30"
-                            Text="{Binding RoomPrice}"/>
+                            materialDesign:ValidationAssist.HorizontalAlignment="Right"
+                            materialDesign:HintAssist.Hint="Giá"
+                            materialDesign:TextFieldAssist.SuffixText="VNĐ/ngày"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            VerticalAlignment="Center"
+                            MaxLines="1"
+                            MaxLength="11"
+                            x:Name="txtPrice">
+                            <TextBox.Text>
+                                <Binding
+                                    Path="RoomPrice"
+                                    UpdateSourceTrigger="PropertyChanged"
+                                    Mode="OneWayToSource">
+                                    <Binding.ValidationRules>
+                                        <validation:NotNullValidation
+                                            ErrorMessage="Vui lòng nhập giá!"/>
+                                        <validation:MoneyValidation
+                                            Divisor="1000"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger
+                                    EventName="TextChanged">
+                                    <i:InvokeCommandAction
+                                        Command="{Binding SeparateThousandsCommand}"
+                                        CommandParameter="{Binding ElementName=txtPrice}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
                     </Grid>
                 </Grid>
-                <Grid Grid.Row="4">
+                <Grid 
+                    Grid.Row="4">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
+                    <Grid 
+                        Grid.Column="0">
                         <TextBlock Text="Ghi chú" FontSize="20"/>
                     </Grid>
-                    <Grid Grid.Column="1">
+                    <Grid 
+                        Grid.Column="1">
                         <TextBox
                             TextWrapping="Wrap"
                             VerticalAlignment="Stretch"
@@ -156,7 +241,8 @@
                             Text="{Binding RoomNote}"/>
                     </Grid>
                 </Grid>
-                <Grid Grid.Row="5">
+                <Grid 
+                    Grid.Row="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>

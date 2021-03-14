@@ -64,7 +64,7 @@
                         </Grid>
                         <Grid Grid.Column="1">
                             <TextBox materialDesign:HintAssist.Hint="Tên đăng nhập" 
-                                     Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}"
+                                     Text="{Binding UserName}"
                                      FontSize="15"
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                         </Grid>

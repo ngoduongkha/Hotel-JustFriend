@@ -59,7 +59,7 @@ CREATE TABLE [Employee] (
 GO
 
 CREATE TABLE [Room] (
-  [idRoom] int PRIMARY KEY,
+  [idRoom] int PRIMARY KEY IDENTITY(1, 1),
   [displayName] nvarchar(max) NOT NULL,
   [type] nvarchar(50) NOT NULL,
   [price] money NOT NULL,
