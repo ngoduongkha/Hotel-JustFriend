@@ -211,6 +211,7 @@
                                             ValidatesOnTargetUpdated="True"
                                             ErrorMessage="Vui lòng nhập giá!"/>
                                         <validation:MoneyValidation
+                                            ValidatesOnTargetUpdated="True"
                                             Divisor="1000"/>
                                     </Binding.ValidationRules>
                                 </Binding>
