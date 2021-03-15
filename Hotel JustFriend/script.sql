@@ -19,8 +19,9 @@ GO
 CREATE TABLE [Account] (
   [idAccount] int PRIMARY KEY IDENTITY(1, 1),
   [idAccountRole] int,
+  [idEmployee] int,
   [username] varchar(100) UNIQUE NOT NULL,
-  [password] char(64) NOT NULL,
+  [password] char(64) NOT NULL
 )
 GO
 
@@ -29,7 +30,7 @@ CREATE TABLE [Product] (
   [displayName] nvarchar(max) NOT NULL,
   [unit] nvarchar(20) NOT NULL,
   [pricePerUnit] money NOT NULL,
-  [image] varbinary(max),
+  [image] varbinary(max) NOT NULL,
   [quantity] int DEFAULT (0),
   [status] nvarchar(255) NOT NULL CHECK ([status] IN ('OutOfStock', 'InStock', 'RunningLow')),
   [isDelete] bit DEFAULT (0)
@@ -43,9 +44,8 @@ CREATE TABLE [EmployeeRole] (
 GO
 
 CREATE TABLE [Employee] (
-  [idEmployee] int PRIMARY KEY,
+  [idEmployee] int PRIMARY KEY IDENTITY(1, 1),
   [idEmployeeRole] int,
-  [idAccountRole] int,
   [fullName] nvarchar(max) NOT NULL,
   [idCard] varchar(20) UNIQUE NOT NULL,
   [gender] nvarchar(20) NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE [Employee] (
   [dateOfBirth] date NOT NULL,
   [startDate] date NOT NULL,
   [endDate] date DEFAULT (null),
-  [image] varbinary(max),
+  [image] varbinary(max) NOT NULL,
   [isDelete] bit DEFAULT (0)
 )
 GO
@@ -70,14 +70,14 @@ CREATE TABLE [Room] (
 GO
 
 CREATE TABLE [Customer] (
-  [idCustomer] int PRIMARY KEY,
-  [phone] varchar(20) UNIQUE NOT NULL,
+  [idCustomer] int PRIMARY KEY IDENTITY(1, 1),
   [fullname] nvarchar(max) NOT NULL,
+  [idCard] varchar(20) UNIQUE NOT NULL,
+  [phone] varchar(20) UNIQUE NOT NULL,
+  [type] nvarchar(50) NOT NULL,
   [gender] nvarchar(20) DEFAULT 'Others',
   [address] nvarchar(max) DEFAULT 'Not provided',
-  [dateOfBirth] date DEFAULT (null),
-  [idCard] varchar(20) UNIQUE NOT NULL,
-  [type] tinyint
+  [dateOfBirth] date DEFAULT (null)
 )
 GO
 
@@ -154,13 +154,13 @@ CREATE TABLE [SalaryRecordInfo] (
 )
 GO
 
+ALTER TABLE [Account] ADD FOREIGN KEY ([idEmployee]) REFERENCES [Employee] ([idEmployee])
+GO
+
 ALTER TABLE [Account] ADD FOREIGN KEY ([idAccountRole]) REFERENCES [AccountRole] ([idAccountRole])
 GO
 
 ALTER TABLE [Employee] ADD FOREIGN KEY ([idEmployeeRole]) REFERENCES [EmployeeRole] ([idEmployeeRole])
-GO
-
-ALTER TABLE [Employee] ADD FOREIGN KEY ([idAccountRole]) REFERENCES [AccountRole] ([idAccountRole])
 GO
 
 ALTER TABLE [ProductImport] ADD FOREIGN KEY ([idEmployee]) REFERENCES [Employee] ([idEmployee])
@@ -200,15 +200,6 @@ ALTER TABLE [SalaryRecordInfo] ADD FOREIGN KEY ([idSalaryRecord]) REFERENCES [Sa
 GO
 
 ALTER TABLE [SalaryRecordInfo] ADD FOREIGN KEY ([idEmployee]) REFERENCES [Employee] ([idEmployee])
-GO
-
-
-EXEC sp_addextendedproperty
-@name = N'Column_Description',
-@value = '0 for VIP, 1 for loyal, 2 for normal',
-@level0type = N'Schema', @level0name = 'dbo',
-@level1type = N'Table',  @level1name = 'Customer',
-@level2type = N'Column', @level2name = 'type';
 GO
 
 INSERT INTO dbo.AccountRole (displayName) VALUES ('Administrator')
