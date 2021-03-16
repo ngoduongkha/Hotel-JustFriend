@@ -75,6 +75,25 @@ namespace Hotel_JustFriend.ViewModels
             }
             catch { return; }
         }
+
+        [Command]
+        public void OpenMenu(Border p)
+        {
+            try
+            {
+                p.IsEnabled = false;
+            }
+            catch { return; }
+        }
+        [Command]
+        public void CloseMenu(Border p)
+        {
+            try
+            {
+                p.IsEnabled = true;
+            }
+            catch { return; }
+        }
         #endregion
     }
 }

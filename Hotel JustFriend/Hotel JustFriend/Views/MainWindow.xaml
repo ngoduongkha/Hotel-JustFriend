@@ -11,6 +11,40 @@
         x:Name="window" DataContext="{StaticResource MainVM}"
         Title="Hotel Just Friend" Height="700" Width="1200" 
         ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True">
+    <Window.Resources>
+        <Storyboard x:Key="OpenMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="gridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="200"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                            Storyboard.TargetName="borderMain"
+                            To="#d9d9d9" Duration="0:0:0.1"/>
+            <DoubleAnimation Storyboard.TargetProperty="(FrameworkElement.Opacity)"
+                             Storyboard.TargetName="borderMain"
+                             From="1" To="0.5" Duration="0:0:0.1"/>
+        </Storyboard>
+        <Storyboard x:Key="CloseMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="gridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                            Storyboard.TargetName="borderMain"
+                            To="Pink" Duration="0:0:0.1"/>
+            <DoubleAnimation Storyboard.TargetProperty="(FrameworkElement.Opacity)"
+                             Storyboard.TargetName="borderMain"
+                             From="0.5" To="1" Duration="0:0:0.1"/>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btnOpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btnCloseMenu">
+            <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+    </Window.Triggers>
     <Grid>
         <Border Background="Pink" BorderBrush="{x:Null}" BorderThickness="0.1" CornerRadius="10">
             <Grid Background="{x:Null}">
@@ -73,28 +107,20 @@
                                 </Button>
                             </Grid>
                             <Grid Grid.Column="0">
-                                <materialDesign:PopupBox PlacementMode="RightAndAlignTopEdges"
-                                                     VerticalAlignment="Center"
-                                                     HorizontalAlignment="Center"
-                                                     Background="Transparent" Margin="5,5,0,5">
-                                    <materialDesign:PopupBox.ToggleContent>
-                                        <materialDesign:PackIcon Kind="Menu" Width="35" Height="40"/>
-                                    </materialDesign:PopupBox.ToggleContent>
-                                    <StackPanel>
-                                        <Button ToolTip="Thêm phòng" Background="Transparent" Command="{Binding AddRoomCommand}">
-                                            <materialDesign:PackIcon Kind="PlusBold" Height="30" Width="Auto"/>
-                                        </Button>
-                                        <Button ToolTip="Thông tin phòng" Background="Transparent">
-                                            <materialDesign:PackIcon Kind="Information" Height="30" Width="25"/>
-                                        </Button>
-                                    </StackPanel>
-                                </materialDesign:PopupBox>
+                                <Button x:Name="btnOpenMenu" Padding="0" 
+                                        Background="Transparent" Foreground="Black"
+                                        BorderBrush="Transparent" Width="45" Height="40"
+                                        Command="{Binding OpenMenuCommand}"
+                                        CommandParameter="{Binding ElementName=borderMain}">
+                                    <materialDesign:PackIcon Kind="Menu" Width="35" Height="40"
+                                                             VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Button>
                             </Grid>
                         </Grid>
                     </Grid>
                 </Border>
                 <Border Grid.Row="1" BorderBrush="{x:Null}" CornerRadius="0,0,10,10" BorderThickness="0"
-                Background="Pink">
+                        Background="Pink" x:Name="borderMain">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -176,7 +202,7 @@
                                         </Style.Triggers>
                                     </Style>
                                 </Grid.Resources>
-                                <materialDesign:Card Margin="10">
+                                <materialDesign:Card Margin="10" Background="White">
                                     <WrapPanel>
                                         <Button Content="Phòng 1.1" Background="Pink"/>
                                         <Button Content="Phòng v1.1" Background="Pink"/>
@@ -344,7 +370,7 @@
                 </Border>
             </Grid>
         </Border>
-        <Grid HorizontalAlignment="Left" Width="0">
+        <Grid HorizontalAlignment="Left" Width="0" x:Name="gridMenu">
             <Border Background="White" BorderBrush="{x:Null}" BorderThickness="0.1" CornerRadius="10,0,0,10">
                 <StackPanel>
                     <StackPanel.Resources>
@@ -355,19 +381,43 @@
                             <Setter Property="BorderBrush" Value="White"/>
                             <Setter Property="BorderThickness" Value="0"/>
                         </Style>
+                        <Style TargetType="Label">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="FontSize" Value="18"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                        </Style>
+                        <Style TargetType="materialDesign:PackIcon">
+                            <Setter Property="Width" Value="40"/>
+                            <Setter Property="Height" Value="40"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="Margin" Value="0,0,10,0"/>
+                        </Style>
                     </StackPanel.Resources>
                     <Grid>
                         <Button HorizontalAlignment="Right" VerticalAlignment="Center"
                                 Margin="0,0,0,10" Background="Transparent" Foreground="Black"
                                 Padding="0" Width="50" Height="40" BorderBrush="Transparent"
-                                BorderThickness="0">
-                            <materialDesign:PackIcon Kind="ArrowLeft" Width="50" Height="40"/>
+                                BorderThickness="0" x:Name="btnCloseMenu"
+                                Command="{Binding CloseMenuCommand}"
+                                CommandParameter="{Binding ElementName=borderMain}">
+                            <materialDesign:PackIcon Kind="ArrowLeft" Width="50" Height="40" Margin="0"/>
                         </Button>
                     </Grid>
                     <Grid Height="50"/>
-                    <Button Content="Quản lý phòng"/>
-                    <Button Content="Quản lý phòng"/>
-                    <Button Content="Quản lý phòng"/>
+                    <Button>
+                        <StackPanel Orientation="Horizontal" Width="180">
+                            <materialDesign:PackIcon Grid.Column="0"/>
+                            <Label Content="Quản lý phòng" Grid.Column="0"/>
+                        </StackPanel>
+                    </Button>
+                    <Button>
+                        <StackPanel Orientation="Horizontal" Width="180">
+                            <materialDesign:PackIcon Grid.Column="0"/>
+                            <Label Content="Quản lý phòng" Grid.Column="0"/>
+                        </StackPanel>
+                    </Button>
                 </StackPanel>
             </Border>
         </Grid>
