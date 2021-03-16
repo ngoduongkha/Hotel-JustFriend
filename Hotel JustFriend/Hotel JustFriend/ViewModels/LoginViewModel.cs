@@ -2,6 +2,8 @@
 using DevExpress.Mvvm.DataAnnotations;
 using Hotel_JustFriend.Models;
 using Hotel_JustFriend.Views;
+using System;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -52,10 +54,10 @@ namespace Hotel_JustFriend.ViewModels
                     MyMessageBox.Show("Sai tài khoản hoặc mật khẩu!", "Thông báo", MessageBoxButton.OK);
                 }
             }
-            catch 
+            catch
             {
                 MyMessageBox.Show("Vui lòng điền tài khoản và mật khẩu", "Thông báo", MessageBoxButton.OK);
-                return; 
+                return;
             }
         }
 

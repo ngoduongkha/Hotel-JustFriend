@@ -2,15 +2,10 @@
 using DevExpress.Mvvm.DataAnnotations;
 using Hotel_JustFriend.Models;
 using Hotel_JustFriend.Utility;
-using System;
 using System.Collections.ObjectModel;
-using System.Data.Entity;
-using System.Globalization;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace Hotel_JustFriend.ViewModels
 {
@@ -37,7 +32,7 @@ namespace Hotel_JustFriend.ViewModels
 
         public AddRoomViewModel()
         {
-            DbSet<Room> data = DataProvider.Instance.DB.Rooms;
+            System.Data.Entity.DbSet<Room> data = DataProvider.Instance.DB.Rooms;
             ListRoomName = new ObservableCollection<string>(data.Where(x => x.isDelete == false).Select(x => x.displayName));
             ListRoomType = new ObservableCollection<string>(data.Select(x => x.type).Distinct());
         }
