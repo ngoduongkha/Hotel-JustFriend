@@ -6,6 +6,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
 
 namespace Hotel_JustFriend.ViewModels
 {
@@ -91,6 +92,32 @@ namespace Hotel_JustFriend.ViewModels
             try
             {
                 p.IsEnabled = true;
+            }
+            catch { return; }
+        }
+        [Command]
+        public void OpenTabHome(MainWindow p)
+        {
+            try
+            {
+                p.gridMain.Children.Clear();
+                UserControlHome uc = new UserControlHome();
+                (p.FindResource("CloseMenu") as Storyboard).Begin();
+                p.borderMain.IsEnabled = true;
+                p.gridMain.Children.Add(uc);
+            }
+            catch { return; }
+        }
+        [Command]
+        public void OpenTabRoomManage(MainWindow p)
+        {
+            try
+            {
+                p.gridMain.Children.Clear();
+                UserControlRoomManage uc = new UserControlRoomManage();
+                (p.FindResource("CloseMenu") as Storyboard).Begin();
+                p.borderMain.IsEnabled = true;
+                p.gridMain.Children.Add(uc);
             }
             catch { return; }
         }
