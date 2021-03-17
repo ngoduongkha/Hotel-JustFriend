@@ -189,15 +189,25 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Margin="10,10"
+                <Button Grid.Column="0" Margin="10,20"
                         Content="Thêm" FontWeight="SemiBold" FontSize="15"
-                        VerticalAlignment="Top"/>
-                <Button Grid.Column="1" Margin="10,10"
+                        VerticalAlignment="Top" Foreground="Black"
+                        Background="#9df587" BorderBrush="#9df587"
+                        Width="90" Height="50"
+                        Command="{Binding AddRoomCommand}"
+                        materialDesign:ButtonAssist.CornerRadius="10"/>
+                <Button Grid.Column="1" Margin="10,20"
                         Content="Xóa" FontWeight="SemiBold" FontSize="15"
-                        VerticalAlignment="Top"/>
-                <Button Grid.Column="2" Margin="10,10"
+                        VerticalAlignment="Top" Foreground="Black"
+                        Background="#ff9494" BorderBrush="#ff9494"
+                        Width="90" Height="50"
+                        materialDesign:ButtonAssist.CornerRadius="10"/>
+                <Button Grid.Column="2" Margin="10,20"
                         Content="Sửa" FontWeight="SemiBold" FontSize="15"
-                        VerticalAlignment="Top"/>
+                        VerticalAlignment="Top" Foreground="Black"
+                        Background="#faf896" BorderBrush="#faf896"
+                        Width="90" Height="50"
+                        materialDesign:ButtonAssist.CornerRadius="10"/>
             </Grid>
         </Grid>
     </Grid>

@@ -9,7 +9,7 @@
         AllowsTransparency="True" Background="{x:Null}" Name="window"
         Title="MessageBox" Height="200" Width="300" WindowStartupLocation="CenterScreen"
         MouseLeftButtonDown="Grid_MouseLeftButtonDown">
-    <Border CornerRadius="10" Background="LightPink" BorderBrush="Transparent" BorderThickness="0.1">
+    <Border CornerRadius="10" Background="LightPink" BorderBrush="Black" BorderThickness="1">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
