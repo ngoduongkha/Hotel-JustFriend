@@ -122,7 +122,9 @@
                 </Border>
                 <Border Grid.Row="1" BorderBrush="{x:Null}" CornerRadius="0,0,10,10" BorderThickness="0"
                         Background="Pink" x:Name="borderMain">
-                    <local:UserControlHome/>
+                    <Grid x:Name="gridMain">
+                        <local:UserControlHome/>
+                    </Grid>
                 </Border>
             </Grid>
         </Border>
@@ -162,14 +164,16 @@
                         </Button>
                     </Grid>
                     <Grid Height="50"/>
-                    <Button>
-                        <StackPanel Orientation="Horizontal" Width="230">
+                    <Button Command="{Binding OpenTabHomeCommand}"
+                            CommandParameter="{Binding ElementName=window}">
+                        <StackPanel Orientation="Horizontal" Width="250">
                             <materialDesign:PackIcon Kind="Home" Grid.Column="0"/>
                             <Label Content="Giao diện chính" Grid.Column="0"/>
                         </StackPanel>
                     </Button>
-                    <Button>
-                        <StackPanel Orientation="Horizontal" Width="230">
+                    <Button Command="{Binding OpenTabRoomManageCommand}"
+                            CommandParameter="{Binding ElementName=window}">
+                        <StackPanel Orientation="Horizontal" Width="250">
                             <materialDesign:PackIcon Kind="Hotel" Grid.Column="0"/>
                             <Label Content="Quản lý phòng" Grid.Column="0"/>
                         </StackPanel>
