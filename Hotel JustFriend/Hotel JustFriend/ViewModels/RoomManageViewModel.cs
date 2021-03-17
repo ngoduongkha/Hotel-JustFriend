@@ -42,8 +42,9 @@ namespace Hotel_JustFriend.ViewModels
         {
             try
             {
-                RoomDetailView addRoom = new RoomDetailView();
-                addRoom.ShowDialog();
+                RoomDetailView editRoom = new RoomDetailView();
+                editRoom.DataContext = new RoomDetailViewModel(SelectedRoom);
+                editRoom.ShowDialog();
             }
             catch { return; }
         }

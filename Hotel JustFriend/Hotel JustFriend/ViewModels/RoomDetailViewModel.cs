@@ -37,6 +37,22 @@ namespace Hotel_JustFriend.ViewModels
             ListRoomType = new ObservableCollection<string>(data.Select(x => x.type).Distinct());
         }
 
+        public RoomDetailViewModel(Room selectedRoom)
+        {
+            try
+            {
+                string temp = selectedRoom.displayName;
+                int RoomFloor = int.Parse(temp.Substring(temp.Length - 4, 2));
+                int RoomNumber = int.Parse(temp.Substring(temp.Length - 2, 2));                
+
+                this.RoomFloor = RoomFloor;
+                this.RoomNumber = RoomNumber;
+                this.RoomType = selectedRoom.type;
+                this.RoomPrice = selectedRoom.price;
+            }
+            catch { return; }
+        }
+
         #region Command
         [Command]
         public void Save()

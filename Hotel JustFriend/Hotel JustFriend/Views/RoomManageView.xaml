@@ -33,10 +33,11 @@
                                       FontSize="15" Background="Transparent"
                                       Style="{StaticResource MaterialDesignFloatingHintTextBox}">
                         </TextBox>
-                        <Button Content="Tìm" VerticalAlignment="Bottom"
-                                        Margin="10,0" Height="25" FontSize="15" Width="60"
-                                        Padding="15,0" Background="#fa91d7" BorderBrush="#fa91d7"
-                                        materialDesign:ButtonAssist.CornerRadius="10"/>
+                        <Button Content="Tìm"
+                                VerticalAlignment="Bottom"
+                                Margin="10,0" Height="25" FontSize="15" Width="60"
+                                Padding="15,0" Background="#fa91d7" BorderBrush="#fa91d7"
+                                materialDesign:ButtonAssist.CornerRadius="10"/>
                     </StackPanel>
                 </materialDesign:Card>
                 <materialDesign:Card Grid.Column="1" Margin="10">
@@ -92,7 +93,7 @@
                 </Grid.Resources>
                 <materialDesign:Card Margin="10" Background="White">
                     <ListView
-                        x:Name="ListRoom"
+                        x:Name="mainListView"
                         ItemsSource="{Binding ListRoom}"
                         SelectedItem="{Binding SelectedRoom}">
                         <ListView.View>
@@ -115,7 +116,7 @@
                             <i:EventTrigger EventName="SelectionChanged">
                                 <i:InvokeCommandAction
                                     Command="{Binding SelectedChangedCommand}"
-                                    CommandParameter="{Binding ElementName=ListRoomm}"/>
+                                    CommandParameter="{Binding ElementName=mainListView}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </ListView>
