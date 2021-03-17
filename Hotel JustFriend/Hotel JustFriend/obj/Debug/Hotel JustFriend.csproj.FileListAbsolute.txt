@@ -284,7 +284,6 @@ D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\MyMessageB
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\AddRoomWindow.g.cs
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\AddRoomWindow.baml
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\Syncfusion.Licensing.dll
-D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend.csprojAssemblyReference.cache
 D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\Syncfusion.Licensing.dll
 D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\AddRoomWindow.g.cs
 D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\AddRoomWindow.baml
@@ -294,3 +293,5 @@ D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\UserContro
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\UserControlHome.baml
 D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\UserControlRoomManage.g.cs
 D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\UserControlRoomManage.baml
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\UserControlRoomManage.g.cs
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\UserControlRoomManage.baml

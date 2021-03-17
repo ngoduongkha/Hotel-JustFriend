@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\
 Hotel_JustFriend
 none
 false
 DEBUG;TRACE
-D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\App.xaml
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\App.xaml
 7-1258210704
 21628168987
-41145787817
-401845973397
+44242391056
+40-973498638
 Resources\Resources.xaml;Views\LoginWindow.xaml;Views\MainWindow.xaml;Views\MyMessageBoxes\MyMessageBoxWindow.xaml;Views\AddRoomWindow.xaml;Views\UserControlHome.xaml;Views\UserControlRoomManage.xaml;
 
 False

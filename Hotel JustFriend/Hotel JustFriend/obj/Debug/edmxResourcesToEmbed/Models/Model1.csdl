@@ -6,9 +6,11 @@
     </Key>
     <Property Name="idAccount" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="idAccountRole" Type="Int32" />
+    <Property Name="idEmployee" Type="Int32" />
     <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="password" Type="String" MaxLength="64" FixedLength="true" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="AccountRole" Relationship="Self.FK__Account__idAccou__5441852A" FromRole="Account" ToRole="AccountRole" />
+    <NavigationProperty Name="AccountRole" Relationship="Self.FK__Account__idAccou__5535A963" FromRole="Account" ToRole="AccountRole" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__Account__idEmplo__5441852A" FromRole="Account" ToRole="Employee" />
     <NavigationProperty Name="SalaryRecords" Relationship="Self.FK__SalaryRec__idAcc__60A75C0F" FromRole="Account" ToRole="SalaryRecord" />
   </EntityType>
   <EntityType Name="AccountRole">
@@ -17,8 +19,7 @@
     </Key>
     <Property Name="idAccountRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="displayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Accounts" Relationship="Self.FK__Account__idAccou__5441852A" FromRole="AccountRole" ToRole="Account" />
-    <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__idAcco__5629CD9C" FromRole="AccountRole" ToRole="Employee" />
+    <NavigationProperty Name="Accounts" Relationship="Self.FK__Account__idAccou__5535A963" FromRole="AccountRole" ToRole="Account" />
   </EntityType>
   <EntityType Name="Attendance">
     <Key>
@@ -61,23 +62,22 @@
     <Key>
       <PropertyRef Name="idCustomer" />
     </Key>
-    <Property Name="idCustomer" Type="Int32" Nullable="false" />
-    <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idCustomer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="fullname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="idCard" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="gender" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="dateOfBirth" Type="DateTime" Precision="0" />
-    <Property Name="idCard" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="type" Type="Byte" />
     <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__idCustomer__5BE2A6F2" FromRole="Customer" ToRole="Bill" />
   </EntityType>
   <EntityType Name="Employee">
     <Key>
       <PropertyRef Name="idEmployee" />
     </Key>
-    <Property Name="idEmployee" Type="Int32" Nullable="false" />
+    <Property Name="idEmployee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="idEmployeeRole" Type="Int32" />
-    <Property Name="idAccountRole" Type="Int32" />
     <Property Name="fullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="idCard" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="gender" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
@@ -85,12 +85,12 @@
     <Property Name="dateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="startDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="endDate" Type="DateTime" Precision="0" />
-    <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
     <Property Name="isDelete" Type="Boolean" />
-    <NavigationProperty Name="AccountRole" Relationship="Self.FK__Employee__idAcco__5629CD9C" FromRole="Employee" ToRole="AccountRole" />
+    <NavigationProperty Name="Accounts" Relationship="Self.FK__Account__idEmplo__5441852A" FromRole="Employee" ToRole="Account" />
     <NavigationProperty Name="Attendances" Relationship="Self.FK__Attendanc__idEmp__5EBF139D" FromRole="Employee" ToRole="Attendance" />
     <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__idEmployee__5AEE82B9" FromRole="Employee" ToRole="Bill" />
-    <NavigationProperty Name="EmployeeRole" Relationship="Self.FK__Employee__idEmpl__5535A963" FromRole="Employee" ToRole="EmployeeRole" />
+    <NavigationProperty Name="EmployeeRole" Relationship="Self.FK__Employee__idEmpl__5629CD9C" FromRole="Employee" ToRole="EmployeeRole" />
     <NavigationProperty Name="ProductImports" Relationship="Self.FK__ProductIm__idEmp__571DF1D5" FromRole="Employee" ToRole="ProductImport" />
     <NavigationProperty Name="SalaryRecordInfoes" Relationship="Self.FK__SalaryRec__idEmp__628FA481" FromRole="Employee" ToRole="SalaryRecordInfo" />
   </EntityType>
@@ -100,7 +100,7 @@
     </Key>
     <Property Name="idEmployeeRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="displayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__idEmpl__5535A963" FromRole="EmployeeRole" ToRole="Employee" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__idEmpl__5629CD9C" FromRole="EmployeeRole" ToRole="Employee" />
     <NavigationProperty Name="SalaryTable" Relationship="Self.FK__SalaryTab__idEmp__5FB337D6" FromRole="EmployeeRole" ToRole="SalaryTable" />
   </EntityType>
   <EntityType Name="Product">
@@ -111,7 +111,7 @@
     <Property Name="displayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="unit" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="pricePerUnit" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
     <Property Name="quantity" Type="Int32" />
     <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="isDelete" Type="Boolean" />
@@ -191,7 +191,17 @@
     <Property Name="standardWorkDays" Type="Byte" Nullable="false" />
     <NavigationProperty Name="EmployeeRole" Relationship="Self.FK__SalaryTab__idEmp__5FB337D6" FromRole="SalaryTable" ToRole="EmployeeRole" />
   </EntityType>
-  <Association Name="FK__Account__idAccou__5441852A">
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__Account__idAccou__5535A963">
     <End Role="AccountRole" Type="Self.AccountRole" Multiplicity="0..1" />
     <End Role="Account" Type="Self.Account" Multiplicity="*" />
     <ReferentialConstraint>
@@ -200,6 +210,18 @@
       </Principal>
       <Dependent Role="Account">
         <PropertyRef Name="idAccountRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Account__idEmplo__5441852A">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="idEmployee" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="idEmployee" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -212,18 +234,6 @@
       </Principal>
       <Dependent Role="SalaryRecord">
         <PropertyRef Name="idAccount" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Employee__idAcco__5629CD9C">
-    <End Role="AccountRole" Type="Self.AccountRole" Multiplicity="0..1" />
-    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="AccountRole">
-        <PropertyRef Name="idAccountRole" />
-      </Principal>
-      <Dependent Role="Employee">
-        <PropertyRef Name="idAccountRole" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -299,7 +309,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Employee__idEmpl__5535A963">
+  <Association Name="FK__Employee__idEmpl__5629CD9C">
     <End Role="EmployeeRole" Type="Self.EmployeeRole" Multiplicity="0..1" />
     <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
     <ReferentialConstraint>
@@ -399,17 +409,18 @@
     <EntitySet Name="SalaryRecords" EntityType="Self.SalaryRecord" />
     <EntitySet Name="SalaryRecordInfoes" EntityType="Self.SalaryRecordInfo" />
     <EntitySet Name="SalaryTables" EntityType="Self.SalaryTable" />
-    <AssociationSet Name="FK__Account__idAccou__5441852A" Association="Self.FK__Account__idAccou__5441852A">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK__Account__idAccou__5535A963" Association="Self.FK__Account__idAccou__5535A963">
       <End Role="AccountRole" EntitySet="AccountRoles" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Account__idEmplo__5441852A" Association="Self.FK__Account__idEmplo__5441852A">
+      <End Role="Employee" EntitySet="Employees" />
       <End Role="Account" EntitySet="Accounts" />
     </AssociationSet>
     <AssociationSet Name="FK__SalaryRec__idAcc__60A75C0F" Association="Self.FK__SalaryRec__idAcc__60A75C0F">
       <End Role="Account" EntitySet="Accounts" />
       <End Role="SalaryRecord" EntitySet="SalaryRecords" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Employee__idAcco__5629CD9C" Association="Self.FK__Employee__idAcco__5629CD9C">
-      <End Role="AccountRole" EntitySet="AccountRoles" />
-      <End Role="Employee" EntitySet="Employees" />
     </AssociationSet>
     <AssociationSet Name="FK__Attendanc__idEmp__5EBF139D" Association="Self.FK__Attendanc__idEmp__5EBF139D">
       <End Role="Employee" EntitySet="Employees" />
@@ -435,7 +446,7 @@
       <End Role="Product" EntitySet="Products" />
       <End Role="Billinfo" EntitySet="Billinfoes" />
     </AssociationSet>
-    <AssociationSet Name="FK__Employee__idEmpl__5535A963" Association="Self.FK__Employee__idEmpl__5535A963">
+    <AssociationSet Name="FK__Employee__idEmpl__5629CD9C" Association="Self.FK__Employee__idEmpl__5629CD9C">
       <End Role="EmployeeRole" EntitySet="EmployeeRoles" />
       <End Role="Employee" EntitySet="Employees" />
     </AssociationSet>
@@ -463,5 +474,46 @@
       <End Role="SalaryRecord" EntitySet="SalaryRecords" />
       <End Role="SalaryRecordInfo" EntitySet="SalaryRecordInfoes" />
     </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Hotel_JustFriendModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Hotel_JustFriendModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
   </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
 </Schema>

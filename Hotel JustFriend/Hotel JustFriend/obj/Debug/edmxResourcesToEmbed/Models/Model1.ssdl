@@ -6,6 +6,7 @@
     </Key>
     <Property Name="idAccount" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="idAccountRole" Type="int" />
+    <Property Name="idEmployee" Type="int" />
     <Property Name="username" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="password" Type="char" MaxLength="64" Nullable="false" />
   </EntityType>
@@ -50,31 +51,30 @@
     <Key>
       <PropertyRef Name="idCustomer" />
     </Key>
-    <Property Name="idCustomer" Type="int" Nullable="false" />
-    <Property Name="phone" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="idCustomer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="fullname" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="gender" Type="nvarchar" MaxLength="20" StoreGeneratedPattern="Computed" />
-    <Property Name="address" Type="nvarchar(max)" StoreGeneratedPattern="Computed" />
-    <Property Name="dateOfBirth" Type="date" StoreGeneratedPattern="Computed" />
     <Property Name="idCard" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="type" Type="tinyint" />
+    <Property Name="phone" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="gender" Type="nvarchar" MaxLength="20" />
+    <Property Name="address" Type="nvarchar(max)" />
+    <Property Name="dateOfBirth" Type="date" />
   </EntityType>
   <EntityType Name="Employee">
     <Key>
       <PropertyRef Name="idEmployee" />
     </Key>
-    <Property Name="idEmployee" Type="int" Nullable="false" />
+    <Property Name="idEmployee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="idEmployeeRole" Type="int" />
-    <Property Name="idAccountRole" Type="int" />
     <Property Name="fullName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="idCard" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="gender" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="phone" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="dateOfBirth" Type="date" Nullable="false" />
     <Property Name="startDate" Type="date" Nullable="false" />
-    <Property Name="endDate" Type="date" StoreGeneratedPattern="Computed" />
-    <Property Name="image" Type="varbinary(max)" />
-    <Property Name="isDelete" Type="bit" StoreGeneratedPattern="Computed" />
+    <Property Name="endDate" Type="date" />
+    <Property Name="image" Type="varbinary(max)" Nullable="false" />
+    <Property Name="isDelete" Type="bit" />
   </EntityType>
   <EntityType Name="EmployeeRole">
     <Key>
@@ -91,10 +91,10 @@
     <Property Name="displayName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="unit" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="pricePerUnit" Type="money" Nullable="false" />
-    <Property Name="image" Type="varbinary(max)" />
-    <Property Name="quantity" Type="int" StoreGeneratedPattern="Computed" />
+    <Property Name="image" Type="varbinary(max)" Nullable="false" />
+    <Property Name="quantity" Type="int" />
     <Property Name="status" Type="nvarchar" MaxLength="255" Nullable="false" />
-    <Property Name="isDelete" Type="bit" StoreGeneratedPattern="Computed" />
+    <Property Name="isDelete" Type="bit" />
   </EntityType>
   <EntityType Name="ProductImport">
     <Key>
@@ -123,9 +123,9 @@
     <Property Name="displayName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="price" Type="money" Nullable="false" />
-    <Property Name="status" Type="nvarchar" MaxLength="255" Nullable="false" StoreGeneratedPattern="Computed" />
-    <Property Name="note" Type="nvarchar(max)" StoreGeneratedPattern="Computed" />
-    <Property Name="isDelete" Type="bit" StoreGeneratedPattern="Computed" />
+    <Property Name="status" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="note" Type="nvarchar(max)" />
+    <Property Name="isDelete" Type="bit" />
   </EntityType>
   <EntityType Name="SalaryRecord">
     <Key>
@@ -143,11 +143,11 @@
     </Key>
     <Property Name="idSalaryRecord" Type="varchar" MaxLength="64" />
     <Property Name="idEmployee" Type="int" Nullable="false" />
-    <Property Name="numOfShift" Type="int" StoreGeneratedPattern="Computed" />
-    <Property Name="numOfFault" Type="int" StoreGeneratedPattern="Computed" />
+    <Property Name="numOfShift" Type="int" />
+    <Property Name="numOfFault" Type="int" />
     <Property Name="totalSalary" Type="money" />
     <Property Name="salaryMonth" Type="date" Nullable="false" />
-    <Property Name="coefficients" Type="real" StoreGeneratedPattern="Computed" />
+    <Property Name="coefficients" Type="real" />
   </EntityType>
   <EntityType Name="SalaryTable">
     <Key>
@@ -159,7 +159,17 @@
     <Property Name="moneyPerFault" Type="money" Nullable="false" />
     <Property Name="standardWorkDays" Type="tinyint" Nullable="false" />
   </EntityType>
-  <Association Name="FK__Account__idAccou__5441852A">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__Account__idAccou__5535A963">
     <End Role="AccountRole" Type="Self.AccountRole" Multiplicity="0..1" />
     <End Role="Account" Type="Self.Account" Multiplicity="*" />
     <ReferentialConstraint>
@@ -168,6 +178,18 @@
       </Principal>
       <Dependent Role="Account">
         <PropertyRef Name="idAccountRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Account__idEmplo__5441852A">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="idEmployee" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="idEmployee" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -243,19 +265,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Employee__idAcco__5629CD9C">
-    <End Role="AccountRole" Type="Self.AccountRole" Multiplicity="0..1" />
-    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="AccountRole">
-        <PropertyRef Name="idAccountRole" />
-      </Principal>
-      <Dependent Role="Employee">
-        <PropertyRef Name="idAccountRole" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Employee__idEmpl__5535A963">
+  <Association Name="FK__Employee__idEmpl__5629CD9C">
     <End Role="EmployeeRole" Type="Self.EmployeeRole" Multiplicity="0..1" />
     <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
     <ReferentialConstraint>
@@ -351,6 +361,37 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="Hotel_JustFriendModelStoreContainer">
     <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AccountRole" EntityType="Self.AccountRole" Schema="dbo" store:Type="Tables" />
@@ -367,8 +408,13 @@
     <EntitySet Name="SalaryRecord" EntityType="Self.SalaryRecord" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SalaryRecordInfo" EntityType="Self.SalaryRecordInfo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SalaryTable" EntityType="Self.SalaryTable" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Account__idAccou__5441852A" Association="Self.FK__Account__idAccou__5441852A">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Account__idAccou__5535A963" Association="Self.FK__Account__idAccou__5535A963">
       <End Role="AccountRole" EntitySet="AccountRole" />
+      <End Role="Account" EntitySet="Account" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Account__idEmplo__5441852A" Association="Self.FK__Account__idEmplo__5441852A">
+      <End Role="Employee" EntitySet="Employee" />
       <End Role="Account" EntitySet="Account" />
     </AssociationSet>
     <AssociationSet Name="FK__Attendanc__idEmp__5EBF139D" Association="Self.FK__Attendanc__idEmp__5EBF139D">
@@ -395,11 +441,7 @@
       <End Role="Product" EntitySet="Product" />
       <End Role="Billinfo" EntitySet="Billinfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__Employee__idAcco__5629CD9C" Association="Self.FK__Employee__idAcco__5629CD9C">
-      <End Role="AccountRole" EntitySet="AccountRole" />
-      <End Role="Employee" EntitySet="Employee" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Employee__idEmpl__5535A963" Association="Self.FK__Employee__idEmpl__5535A963">
+    <AssociationSet Name="FK__Employee__idEmpl__5629CD9C" Association="Self.FK__Employee__idEmpl__5629CD9C">
       <End Role="EmployeeRole" EntitySet="EmployeeRole" />
       <End Role="Employee" EntitySet="Employee" />
     </AssociationSet>

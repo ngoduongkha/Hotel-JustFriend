@@ -17,6 +17,7 @@ namespace Hotel_JustFriend.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Employee()
         {
+            this.Accounts = new HashSet<Account>();
             this.Attendances = new HashSet<Attendance>();
             this.Bills = new HashSet<Bill>();
             this.ProductImports = new HashSet<ProductImport>();
@@ -25,7 +26,6 @@ namespace Hotel_JustFriend.Models
     
         public int idEmployee { get; set; }
         public Nullable<int> idEmployeeRole { get; set; }
-        public Nullable<int> idAccountRole { get; set; }
         public string fullName { get; set; }
         public string idCard { get; set; }
         public string gender { get; set; }
@@ -36,7 +36,8 @@ namespace Hotel_JustFriend.Models
         public byte[] image { get; set; }
         public Nullable<bool> isDelete { get; set; }
     
-        public virtual AccountRole AccountRole { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Account> Accounts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Attendance> Attendances { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

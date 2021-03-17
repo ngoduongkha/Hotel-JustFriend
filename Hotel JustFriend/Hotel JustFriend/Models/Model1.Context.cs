@@ -12,21 +12,19 @@ namespace Hotel_JustFriend.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Windows;
-
+    
     public partial class Hotel_JustFriendEntities : DbContext
     {
         public Hotel_JustFriendEntities()
             : base("name=Hotel_JustFriendEntities")
         {
-
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<AccountRole> AccountRoles { get; set; }
         public virtual DbSet<Attendance> Attendances { get; set; }

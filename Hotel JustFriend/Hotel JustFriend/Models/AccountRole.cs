@@ -18,7 +18,6 @@ namespace Hotel_JustFriend.Models
         public AccountRole()
         {
             this.Accounts = new HashSet<Account>();
-            this.Employees = new HashSet<Employee>();
         }
     
         public int idAccountRole { get; set; }
@@ -26,7 +25,5 @@ namespace Hotel_JustFriend.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Account> Accounts { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee> Employees { get; set; }
     }
 }

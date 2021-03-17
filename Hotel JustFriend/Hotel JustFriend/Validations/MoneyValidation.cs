@@ -1,10 +1,6 @@
 ﻿using Hotel_JustFriend.Utility;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace Hotel_JustFriend.Validations
@@ -20,7 +16,7 @@ namespace Hotel_JustFriend.Validations
             try
             {
                 if ((value as string).Length > 0)
-                    money = Converter.Instance.ConvertCurrencyToDecimal(value as string);        
+                    money = Converter.Instance.ConvertCurrencyToDecimal(value as string);
             }
             catch (Exception)
             {

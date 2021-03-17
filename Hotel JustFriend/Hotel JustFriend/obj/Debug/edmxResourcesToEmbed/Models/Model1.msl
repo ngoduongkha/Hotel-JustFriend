@@ -6,6 +6,7 @@
         <MappingFragment StoreEntitySet="Account">
           <ScalarProperty Name="idAccount" ColumnName="idAccount" />
           <ScalarProperty Name="idAccountRole" ColumnName="idAccountRole" />
+          <ScalarProperty Name="idEmployee" ColumnName="idEmployee" />
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="password" ColumnName="password" />
         </MappingFragment>
@@ -54,13 +55,13 @@
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.Customer">
         <MappingFragment StoreEntitySet="Customer">
           <ScalarProperty Name="idCustomer" ColumnName="idCustomer" />
-          <ScalarProperty Name="phone" ColumnName="phone" />
           <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="idCard" ColumnName="idCard" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="type" ColumnName="type" />
           <ScalarProperty Name="gender" ColumnName="gender" />
           <ScalarProperty Name="address" ColumnName="address" />
           <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
-          <ScalarProperty Name="idCard" ColumnName="idCard" />
-          <ScalarProperty Name="type" ColumnName="type" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -69,7 +70,6 @@
         <MappingFragment StoreEntitySet="Employee">
           <ScalarProperty Name="idEmployee" ColumnName="idEmployee" />
           <ScalarProperty Name="idEmployeeRole" ColumnName="idEmployeeRole" />
-          <ScalarProperty Name="idAccountRole" ColumnName="idAccountRole" />
           <ScalarProperty Name="fullName" ColumnName="fullName" />
           <ScalarProperty Name="idCard" ColumnName="idCard" />
           <ScalarProperty Name="gender" ColumnName="gender" />
@@ -171,5 +171,40 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Hotel_JustFriendModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Hotel_JustFriendModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Hotel_JustFriendModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Hotel_JustFriendModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Hotel_JustFriendModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Hotel_JustFriendModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Hotel_JustFriendModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Hotel_JustFriendModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Hotel_JustFriendModel.Store.sp_upgraddiagrams" />
   </EntityContainerMapping>
 </Mapping>

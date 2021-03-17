@@ -2,10 +2,8 @@
 using DevExpress.Mvvm.DataAnnotations;
 using Hotel_JustFriend.Models;
 using Hotel_JustFriend.Views;
-using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media.Animation;
 
 namespace Hotel_JustFriend.ViewModels

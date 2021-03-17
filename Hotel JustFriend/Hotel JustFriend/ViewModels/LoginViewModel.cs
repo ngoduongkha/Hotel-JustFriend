@@ -2,8 +2,6 @@
 using DevExpress.Mvvm.DataAnnotations;
 using Hotel_JustFriend.Models;
 using Hotel_JustFriend.Views;
-using System;
-using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,7 +15,7 @@ namespace Hotel_JustFriend.ViewModels
         private string _UserName;
         private string _Password;
         #endregion
-        
+
         #region Properties
         public string UserName { get => _UserName; set { _UserName = value; RaisePropertyChanged(); } }
         public string Password { get => _Password; set { _Password = value; RaisePropertyChanged(); } }

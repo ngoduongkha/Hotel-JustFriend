@@ -32,7 +32,7 @@ CREATE TABLE [Product] (
   [pricePerUnit] money NOT NULL,
   [image] varbinary(max) NOT NULL,
   [quantity] int DEFAULT (0),
-  [status] nvarchar(255) NOT NULL CHECK ([status] IN ('OutOfStock', 'InStock', 'RunningLow')),
+  [status] nvarchar(20) NOT NULL CHECK ([status] IN (N'Hết hàng', N'Còn hàng', N'Sắp hết')),
   [isDelete] bit DEFAULT (0)
 )
 GO
@@ -63,7 +63,7 @@ CREATE TABLE [Room] (
   [displayName] nvarchar(max) NOT NULL,
   [type] nvarchar(50) NOT NULL,
   [price] money NOT NULL,
-  [status] nvarchar(255) NOT NULL CHECK ([status] IN ('Rented', 'Available', 'NotAvailable')) DEFAULT 'Available',
+  [status] nvarchar(20) NOT NULL CHECK ([status] IN ('Đang thuê', N'Sẵn sàng', N'Không sẵn sàng')) DEFAULT N'Sẵn sàng',
   [note] nvarchar(max) DEFAULT '',
   [isDelete] bit DEFAULT (0)
 )
@@ -75,8 +75,8 @@ CREATE TABLE [Customer] (
   [idCard] varchar(20) UNIQUE NOT NULL,
   [phone] varchar(20) UNIQUE NOT NULL,
   [type] nvarchar(50) NOT NULL,
-  [gender] nvarchar(20) DEFAULT 'Others',
-  [address] nvarchar(max) DEFAULT 'Not provided',
+  [gender] nvarchar(20) NOT NULL,
+  [address] nvarchar(max) DEFAULT N'Không cung cấp',
   [dateOfBirth] date DEFAULT (null)
 )
 GO

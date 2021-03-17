@@ -21,13 +21,13 @@ namespace Hotel_JustFriend.Models
         }
     
         public int idCustomer { get; set; }
-        public string phone { get; set; }
         public string fullname { get; set; }
+        public string idCard { get; set; }
+        public string phone { get; set; }
+        public string type { get; set; }
         public string gender { get; set; }
         public string address { get; set; }
         public Nullable<System.DateTime> dateOfBirth { get; set; }
-        public string idCard { get; set; }
-        public Nullable<byte> type { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bill> Bills { get; set; }
