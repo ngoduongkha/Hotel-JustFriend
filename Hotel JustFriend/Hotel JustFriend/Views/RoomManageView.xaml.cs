@@ -5,9 +5,9 @@ namespace Hotel_JustFriend.Views
     /// <summary>
     /// Interaction logic for UserControlRoomManage.xaml
     /// </summary>
-    public partial class UserControlRoomManage : UserControl
+    public partial class RoomManageView : UserControl
     {
-        public UserControlRoomManage()
+        public RoomManageView()
         {
             InitializeComponent();
         }

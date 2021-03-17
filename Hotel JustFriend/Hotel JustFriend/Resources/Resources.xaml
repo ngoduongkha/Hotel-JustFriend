@@ -4,5 +4,7 @@
                     xmlns:models="clr-namespace:Hotel_JustFriend.Models">
     <viewmodels:LoginViewModel x:Key="LoginVM"></viewmodels:LoginViewModel>
     <viewmodels:MainViewModel x:Key="MainVM"></viewmodels:MainViewModel>
-    <viewmodels:AddRoomViewModel x:Key="AddRoomVM"></viewmodels:AddRoomViewModel>
+    <viewmodels:RoomDetailViewModel x:Key="AddRoomVM"></viewmodels:RoomDetailViewModel>
+    <viewmodels:BusinessViewModel x:Key="BusinessVM"></viewmodels:BusinessViewModel>
+    <viewmodels:RoomManageViewModel x:Key="RoomManageVM"></viewmodels:RoomManageViewModel>
 </ResourceDictionary>

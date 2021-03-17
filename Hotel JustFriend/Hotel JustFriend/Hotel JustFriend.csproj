@@ -191,22 +191,13 @@
     <Compile Include="Models\SalaryTable.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagrams_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Utility\Converter.cs" />
     <Compile Include="Utility\Encryption.cs" />
     <Compile Include="Utility\ImageHelper.cs" />
     <Compile Include="Validations\MoneyValidation.cs" />
     <Compile Include="Validations\NotNullValidation.cs" />
     <Compile Include="Validations\NumberValidation.cs" />
-    <Compile Include="ViewModels\AddRoomViewModel.cs" />
+    <Compile Include="ViewModels\RoomDetailViewModel.cs" />
     <Compile Include="ViewModels\BusinessViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\RoomManageViewModel.cs" />
@@ -216,14 +207,14 @@
     <Compile Include="Views\MyMessageBoxes\MyMessageBoxWindow.xaml.cs">
       <DependentUpon>MyMessageBoxWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddRoomWindow.xaml.cs">
-      <DependentUpon>AddRoomWindow.xaml</DependentUpon>
+    <Compile Include="Views\RoomDetailView.xaml.cs">
+      <DependentUpon>RoomDetailView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserControlHome.xaml.cs">
-      <DependentUpon>UserControlHome.xaml</DependentUpon>
+    <Compile Include="Views\BusinessView.xaml.cs">
+      <DependentUpon>BusinessView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserControlRoomManage.xaml.cs">
-      <DependentUpon>UserControlRoomManage.xaml</DependentUpon>
+    <Compile Include="Views\RoomManageView.xaml.cs">
+      <DependentUpon>RoomManageView.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\Resources.xaml">
       <SubType>Designer</SubType>
@@ -249,15 +240,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddRoomWindow.xaml">
+    <Page Include="Views\RoomDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\UserControlHome.xaml">
+    <Page Include="Views\BusinessView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\UserControlRoomManage.xaml">
+    <Page Include="Views\RoomManageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

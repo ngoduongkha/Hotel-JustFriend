@@ -24,9 +24,9 @@ namespace Hotel_JustFriend.Models
         public string displayName { get; set; }
         public string type { get; set; }
         public decimal price { get; set; }
-        public string status { get; set; }
-        public string note { get; set; }
-        public Nullable<bool> isDelete { get; set; }
+        public string status { get; set; } = "Sẵn sàng";
+        public string note { get; set; } = "";
+        public Nullable<bool> isDelete { get; set; } = false;
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bill> Bills { get; set; }

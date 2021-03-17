@@ -10,7 +10,7 @@ using System.Windows.Controls;
 namespace Hotel_JustFriend.ViewModels
 {
     [POCOViewModel]
-    public class AddRoomViewModel : ViewModelBase
+    public class RoomDetailViewModel : ViewModelBase
     {
         private ObservableCollection<string> _ListRoomName;
         private ObservableCollection<string> _ListRoomType;
@@ -25,12 +25,12 @@ namespace Hotel_JustFriend.ViewModels
         public ObservableCollection<string> ListRoomType { get => _ListRoomType; set => _ListRoomType = value; }
         public int RoomFloor { get => _RoomFloor; set { _RoomFloor = value; RaisePropertyChanged(); } }
         public int RoomNumber { get => _RoomNumber; set { _RoomNumber = value; RaisePropertyChanged(); } }
-        public string DisplayName { get => _DisplayName; set { _DisplayName = value; RaisePropertyChanged(); } }
+        public string DisplayName { get => _DisplayName; set { _DisplayName = value; } }
         public string RoomType { get => _RoomType; set { _RoomType = value; RaisePropertyChanged(); } }
         public decimal RoomPrice { get => _RoomPrice; set { _RoomPrice = value; RaisePropertyChanged(); } }
         public string RoomNote { get => _RoomNote; set { _RoomNote = value; RaisePropertyChanged(); } }
 
-        public AddRoomViewModel()
+        public RoomDetailViewModel()
         {
             System.Data.Entity.DbSet<Room> data = DataProvider.Instance.DB.Rooms;
             ListRoomName = new ObservableCollection<string>(data.Where(x => x.isDelete == false).Select(x => x.displayName));
@@ -39,7 +39,7 @@ namespace Hotel_JustFriend.ViewModels
 
         #region Command
         [Command]
-        public void Add()
+        public void Save()
         {
             try
             {
@@ -52,6 +52,15 @@ namespace Hotel_JustFriend.ViewModels
                 DataProvider.Instance.DB.SaveChanges();
             }
             catch { return; }
+        }
+
+        [Command]
+        public void GenerateDisplayName()
+        {
+            if (RoomNumber < 10)
+                DisplayName = $"Phòng {RoomFloor}0{RoomNumber}";
+            else
+                DisplayName = $"Phòng {RoomFloor}{RoomNumber}";
         }
 
         [Command]

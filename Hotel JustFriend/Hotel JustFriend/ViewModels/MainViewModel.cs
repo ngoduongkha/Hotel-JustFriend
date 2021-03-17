@@ -13,16 +13,6 @@ namespace Hotel_JustFriend.ViewModels
     {
         #region Command
         [Command]
-        public void AddRoom(Window p)
-        {
-            try
-            {
-                AddRoomWindow addRoom = new AddRoomWindow();
-                addRoom.ShowDialog();
-            }
-            catch { return; }
-        }
-        [Command]
         public void MouseMoveWindow(Window p)
         {
             try
@@ -84,6 +74,7 @@ namespace Hotel_JustFriend.ViewModels
             }
             catch { return; }
         }
+
         [Command]
         public void CloseMenu(Border p)
         {
@@ -93,26 +84,28 @@ namespace Hotel_JustFriend.ViewModels
             }
             catch { return; }
         }
+
         [Command]
         public void OpenTabHome(MainWindow p)
         {
             try
             {
                 p.gridMain.Children.Clear();
-                UserControlHome uc = new UserControlHome();
+                BusinessView uc = new BusinessView();
                 (p.FindResource("CloseMenu") as Storyboard).Begin();
                 p.borderMain.IsEnabled = true;
                 p.gridMain.Children.Add(uc);
             }
             catch { return; }
         }
+
         [Command]
         public void OpenTabRoomManage(MainWindow p)
         {
             try
             {
                 p.gridMain.Children.Clear();
-                UserControlRoomManage uc = new UserControlRoomManage();
+                RoomManageView uc = new RoomManageView();
                 (p.FindResource("CloseMenu") as Storyboard).Begin();
                 p.borderMain.IsEnabled = true;
                 p.gridMain.Children.Add(uc);

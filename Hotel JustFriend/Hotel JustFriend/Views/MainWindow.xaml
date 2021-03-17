@@ -123,7 +123,7 @@
                 <Border Grid.Row="1" BorderBrush="{x:Null}" CornerRadius="0,0,10,10" BorderThickness="0"
                         Background="Pink" x:Name="borderMain">
                     <Grid x:Name="gridMain">
-                        <local:UserControlHome/>
+                        <local:BusinessView/>
                     </Grid>
                 </Border>
             </Grid>

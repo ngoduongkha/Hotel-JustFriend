@@ -5,9 +5,9 @@ namespace Hotel_JustFriend.Views
     /// <summary>
     /// Interaction logic for AddRoomWindow.xaml
     /// </summary>
-    public partial class AddRoomWindow : Window
+    public partial class RoomDetailView : Window
     {
-        public AddRoomWindow()
+        public RoomDetailView()
         {
             InitializeComponent();
         }

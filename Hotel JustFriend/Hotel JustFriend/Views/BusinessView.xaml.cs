@@ -6,12 +6,11 @@ namespace Hotel_JustFriend.Views
     /// <summary>
     /// Interaction logic for UserControlHome.xaml
     /// </summary>
-    public partial class UserControlHome : UserControl
+    public partial class BusinessView : UserControl
     {
-        public UserControlHome()
+        public BusinessView()
         {
             InitializeComponent();
-            this.DataContext = new BusinessViewModel(panel);
         }
     }
 }
