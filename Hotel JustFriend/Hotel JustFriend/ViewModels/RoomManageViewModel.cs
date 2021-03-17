@@ -15,7 +15,7 @@ namespace Hotel_JustFriend.ViewModels
         private bool _IsEditable;
         private Room _SelectedRoom;
 
-        public ObservableCollection<Room> ListRoom { get => _ListRoom; set => _ListRoom = value; }
+        public ObservableCollection<Room> ListRoom { get => _ListRoom; set { _ListRoom = value; RaisePropertyChanged(); } }
         public bool IsEditable { get => _IsEditable; set { _IsEditable = value; RaisePropertyChanged(); } }
 
         public Room SelectedRoom { get => _SelectedRoom; set { _SelectedRoom = value; RaisePropertyChanged(); } }
@@ -33,6 +33,7 @@ namespace Hotel_JustFriend.ViewModels
             {
                 RoomDetailView addRoom = new RoomDetailView();
                 addRoom.ShowDialog();
+                ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms.Where(x => x.isDelete == false));
             }
             catch { return; }
         }
@@ -45,6 +46,19 @@ namespace Hotel_JustFriend.ViewModels
                 RoomDetailView editRoom = new RoomDetailView();
                 editRoom.DataContext = new RoomDetailViewModel(SelectedRoom);
                 editRoom.ShowDialog();
+            }
+            catch { return; }
+        }
+
+        [Command]
+        public void DeleteRoom()
+        {
+            try
+            {
+                var beenDeleted = DataProvider.Instance.DB.Rooms.Where(x => x.idRoom == SelectedRoom.idRoom).SingleOrDefault();
+                beenDeleted.isDelete = true;
+                ListRoom.Remove(SelectedRoom);
+                DataProvider.Instance.DB.SaveChanges();
             }
             catch { return; }
         }

@@ -218,15 +218,17 @@
                         VerticalAlignment="Top" Foreground="Black"
                         Background="#ff9494" BorderBrush="#ff9494"
                         Width="90" Height="50"
+                        Command="{Binding DeleteRoomCommand}"
+                        IsEnabled="{Binding IsEditable}"
                         materialDesign:ButtonAssist.CornerRadius="10"/>
                 <Button Grid.Column="2" Margin="10,20"
                         Content="Sửa" FontWeight="SemiBold" FontSize="15"
                         VerticalAlignment="Top" Foreground="Black"
                         Background="#faf896" BorderBrush="#faf896"
                         Width="90" Height="50"
-                        materialDesign:ButtonAssist.CornerRadius="10"
                         IsEnabled="{Binding IsEditable}"
-                        Command="{Binding EditRoomCommand}"/>
+                        Command="{Binding EditRoomCommand}"
+                        materialDesign:ButtonAssist.CornerRadius="10"/>
             </Grid>
         </Grid>
     </Grid>

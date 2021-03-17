@@ -25,7 +25,7 @@ namespace Hotel_JustFriend.ViewModels
         public ObservableCollection<string> ListRoomType { get => _ListRoomType; set => _ListRoomType = value; }
         public int RoomFloor { get => _RoomFloor; set { _RoomFloor = value; RaisePropertyChanged(); } }
         public int RoomNumber { get => _RoomNumber; set { _RoomNumber = value; RaisePropertyChanged(); } }
-        public string DisplayName { get => _DisplayName; set { _DisplayName = value; } }
+        public string DisplayName { get => _DisplayName; set { _DisplayName = value; RaisePropertyChanged(); } }
         public string RoomType { get => _RoomType; set { _RoomType = value; RaisePropertyChanged(); } }
         public decimal RoomPrice { get => _RoomPrice; set { _RoomPrice = value; RaisePropertyChanged(); } }
         public string RoomNote { get => _RoomNote; set { _RoomNote = value; RaisePropertyChanged(); } }
@@ -61,6 +61,7 @@ namespace Hotel_JustFriend.ViewModels
             {
                 if (ListRoomName.Contains(DisplayName))
                 {
+                    MyMessageBox.Show("Phòng đã tốn tại", "Thông báo", MessageBoxButton.OK);
                     return;
                 }
                 Room newRoom = new Room() { displayName = DisplayName, type = RoomType, price = RoomPrice, note = RoomNote };
