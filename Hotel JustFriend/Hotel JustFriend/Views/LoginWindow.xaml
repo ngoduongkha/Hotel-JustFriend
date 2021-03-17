@@ -111,8 +111,8 @@
                         </Grid>
                         <Grid Grid.Column="1">
                             <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                                    Width="110" Content="Thoát" Background="#ff7383"
-                                    BorderBrush="#ff7383"
+                                    Width="110" Content="Thoát" 
+                                    BorderBrush="#ff7383" Background="#ff7383"
                                     materialDesign:ButtonAssist.CornerRadius="10"
                                     ToolTip="Thoát"
                                     Command="{Binding CloseCommand}"
