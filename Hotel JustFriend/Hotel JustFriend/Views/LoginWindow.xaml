@@ -7,21 +7,25 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="Đăng nhập" Height="350" Width="300"
+        Title="Đăng nhập" Height="700" Width="1200"
         DataContext="{StaticResource LoginVM}" ResizeMode="NoResize"
         WindowStyle="None" AllowsTransparency="True" Background="{x:Null}"
         x:Name="window">
     <Border BorderBrush="Transparent" CornerRadius="20" BorderThickness="0.1"
-            Background="#ffd9dd">
+            Background="Pink">
         <i:Interaction.Triggers>
             <i:EventTrigger EventName="MouseLeftButtonDown">
-                <i:InvokeCommandAction Command="{Binding MouseMoveWindowCommand}" CommandParameter="{Binding ElementName=window}"/>
+                <i:InvokeCommandAction
+                    Command="{Binding MouseMoveWindowCommand}"
+                    CommandParameter="{Binding ElementName=window}"/>
             </i:EventTrigger>
         </i:Interaction.Triggers>
         <Grid>
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseLeftButtonDown">
-                    <i:InvokeCommandAction Command="{Binding MouseMoveWindowCommand}" CommandParameter="{Binding ElementName=window}"/>
+                    <i:InvokeCommandAction
+                        Command="{Binding MouseMoveWindowCommand}"
+                        CommandParameter="{Binding ElementName=window}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
             <Grid.RowDefinitions>
@@ -29,16 +33,21 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <Button HorizontalAlignment="Right" VerticalAlignment="Top"
-                    ToolTip="Thoát" Margin="7,7" Height="25" Width="30"
+                <Button
+                    HorizontalAlignment="Right" VerticalAlignment="Top"
+                    ToolTip="Thoát" Margin="10" Height="30" Width="30"
                     Command="{Binding CloseCommand}" Padding="0"
                     CommandParameter="{Binding ElementName=window}"
-                    Background="Transparent" BorderBrush="Transparent" Foreground="Black">
-                    <materialDesign:PackIcon Kind="WindowClose" Width="20" Height="20" 
-                                         HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    Background="Transparent" BorderBrush="Transparent">
+                    <materialDesign:PackIcon
+                        Kind="WindowClose" Width="30" Height="30" 
+                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                 </Button>
             </Grid>
-            <materialDesign:Card Height="280" Width="250" Background="Pink" Grid.Row="1">
+            <materialDesign:Card
+                Height="320" Width="280"
+                Background="White" Grid.Row="1"
+                UniformCornerRadius="5">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="70"></RowDefinition>
@@ -48,7 +57,7 @@
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
                         <Label Content="Đăng nhập" FontSize="25" FontWeight="ExtraBold"
-                               Foreground="GhostWhite"
+                               Foreground="{DynamicResource PrimaryHueMidBrush}"
                                HorizontalAlignment="Center" VerticalAlignment="Center">
                         </Label>
                     </Grid>
@@ -95,33 +104,50 @@
                         </Grid>
                     </Grid>
                     <Grid Grid.Row="3">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0">
-                            <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                                    Width="110" Content="Đăng nhập"
-                                    ToolTip="Đăng nhập"
-                                    materialDesign:ButtonAssist.CornerRadius="10"
-                                    Background="#fa91d7" BorderBrush="#fa91d7"
-                                    Command="{Binding LoginCommand}"
-                                    CommandParameter="{Binding ElementName=window}"
-                                    IsDefault="True">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Button
+                                Content="Quên mật khẩu?"
+                                Background="{x:Null}"
+                                Foreground="Black"
+                                BorderBrush="{x:Null}">                                
                             </Button>
                         </Grid>
-                        <Grid Grid.Column="1">
-                            <Button Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                                    Width="110" Content="Thoát" 
-                                    BorderBrush="#ff7383" Background="#ff7383"
-                                    materialDesign:ButtonAssist.CornerRadius="10"
-                                    ToolTip="Thoát"
-                                    Command="{Binding CloseCommand}"
-                                    CommandParameter="{Binding ElementName=window}">
+                        <Grid Grid.Row="1">
+                            <Button
+                                Width="110" Content="_Đăng nhập"
+                                ToolTip="Đăng nhập"
+                                materialDesign:ButtonAssist.CornerRadius="5"
+                                Background="{DynamicResource PrimaryHueMidBrush}"
+                                Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"
+                                Command="{Binding LoginCommand}"
+                                CommandParameter="{Binding ElementName=window}"
+                                IsDefault="True">
+                            </Button>
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Button
+                                Content="Đăng ký"
+                                Background="{x:Null}"
+                                Foreground="Black"
+                                BorderBrush="{x:Null}">
                             </Button>
                         </Grid>
                     </Grid>
                 </Grid>
+            </materialDesign:Card>
+            <materialDesign:Card
+                UniformCornerRadius="5"
+                Width="800"
+                Margin="50"
+                Padding="50 20 50 20">
+                <Image
+                    Source="/Hotel JustFriend;component/Resources/Images/banner.png">
+                </Image>
             </materialDesign:Card>
         </Grid>
     </Border>
