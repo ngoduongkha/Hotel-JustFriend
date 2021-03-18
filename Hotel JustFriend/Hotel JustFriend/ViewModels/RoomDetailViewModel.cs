@@ -61,7 +61,7 @@ namespace Hotel_JustFriend.ViewModels
             {
                 if (ListRoomName.Contains(DisplayName))
                 {
-                    MyMessageBox.Show("Phòng đã tốn tại", "Thông báo", MessageBoxButton.OK);
+                    MyMessageBox.Show("Phòng đã tồn tại", "Thông báo", MessageBoxButton.OK);
                     return;
                 }
                 Room newRoom = new Room() { displayName = DisplayName, type = RoomType, price = RoomPrice, note = RoomNote };

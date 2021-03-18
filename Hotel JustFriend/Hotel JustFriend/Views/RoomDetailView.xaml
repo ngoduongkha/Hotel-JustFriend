@@ -94,7 +94,7 @@
                                 <TextBox.Text>
                                     <Binding
                                         Path="RoomFloor"
-                                        Mode="OneWayToSource"
+                                        Mode="TwoWay"
                                         UpdateSourceTrigger="PropertyChanged">
                                         <Binding.ValidationRules>
                                             <validation:NotNullValidation
@@ -124,7 +124,7 @@
                                 <TextBox.Text>
                                     <Binding
                                         Path="RoomNumber"
-                                        Mode="OneWayToSource"
+                                        Mode="TwoWay"
                                         UpdateSourceTrigger="PropertyChanged">
                                         <Binding.ValidationRules>
                                             <validation:NotNullValidation
@@ -152,7 +152,7 @@
                             Margin="30,18,0,0"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                             materialDesign:HintAssist.Hint="Tên phòng"
-                            Text="{Binding DisplayName}"
+                            Text="{Binding DisplayName, Mode=TwoWay}"
                             IsEnabled="False"/>
                         <ComboBox
                             Style="{StaticResource MaterialDesignFloatingHintComboBox}"
@@ -160,7 +160,7 @@
                             IsEditable="True" FontSize="20"
                             Width="150" Margin="30,18,0,0"
                             ItemsSource="{Binding Path=ListRoomType}"
-                            Text="{Binding RoomType}">
+                            Text="{Binding RoomType, Mode=TwoWay}">
                         </ComboBox>
                     </StackPanel>
                     <Grid Grid.Row="2">
@@ -177,7 +177,7 @@
                             <TextBox.Text>
                                 <Binding
                                     Path="RoomPrice"
-                                    Mode="OneWayToSource"
+                                    Mode="TwoWay"
                                     UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
                                         <validation:NotNullValidation
@@ -214,7 +214,7 @@
                                 AcceptsReturn="True"
                                 VerticalScrollBarVisibility="Auto"
                                 SpellCheck.IsEnabled="True" Height="130"
-                                Text="{Binding RoomNote}"/>
+                                Text="{Binding RoomNote, Mode=TwoWay}"/>
                         </Grid>
                     </StackPanel>
                     <Grid Grid.Row="4">
