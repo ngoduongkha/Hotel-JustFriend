@@ -34,12 +34,12 @@ namespace Hotel_JustFriend.ViewModels
         {
             System.Data.Entity.DbSet<Room> data = DataProvider.Instance.DB.Rooms;
             ListRoomName = new ObservableCollection<string>(data.Where(x => x.isDelete == false).Select(x => x.displayName));
-            ListRoomType = new ObservableCollection<string>(data.Where(x => x.isDelete == false).Select(x => x.type).Distinct());
+            ListRoomType = new ObservableCollection<string>(data.Select(x => x.type).Distinct());
         }
 
         #region Command
         [Command]
-        public void Save(Window p)
+        public void Save()
         {
             try
             {
@@ -52,7 +52,6 @@ namespace Hotel_JustFriend.ViewModels
                 DataProvider.Instance.DB.Rooms.Add(newRoom);
                 DataProvider.Instance.DB.SaveChanges();
                 MyMessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButton.OK);
-                p.Close();
             }
             catch { return; }
         }
