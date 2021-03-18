@@ -8,8 +8,7 @@
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DesignHeight="651.2" d:DesignWidth="1200"
-             DataContext="{StaticResource RoomManageVM}"
-             x:Name="RoomManageUC">
+             DataContext="{StaticResource RoomManageVM}">
     <Grid Margin="20">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -45,29 +44,20 @@
                     <StackPanel Grid.Column="1" Margin="10" Orientation="Horizontal">
                         <Label Content="Bộ lọc: " FontSize="17"
                                    VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                        <ComboBox
-                            x:Name="txtFilterStatus"
-                            ItemsSource="{Binding ListRoomStatus}"
-                            materialDesign:HintAssist.Hint="Trạng thái"
-                            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                            VerticalAlignment="Bottom"
-                            Margin="10,0" FontSize="15">
+                        <ComboBox materialDesign:HintAssist.Hint="Trạng thái"
+                                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                      VerticalAlignment="Bottom"
+                                      Margin="10,0" FontSize="15">
                         </ComboBox>
-                        <ComboBox
-                            x:Name="txtFilterType"
-                            ItemsSource="{Binding ListRoomType}"
-                            materialDesign:HintAssist.Hint="Loại phòng"
-                            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                            VerticalAlignment="Bottom"
-                            Margin="10,0" FontSize="15">
+                        <ComboBox materialDesign:HintAssist.Hint="Loại phòng"
+                                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                      VerticalAlignment="Bottom"
+                                      Margin="10,0" FontSize="15">
                         </ComboBox>
-                        <Button
-                            Content="Lọc" VerticalAlignment="Bottom"
-                            Margin="10,0" Height="25" FontSize="15" Width="60"
-                            Padding="15,0" Background="#fa91d7" BorderBrush="#fa91d7"
-                            materialDesign:ButtonAssist.CornerRadius="100"
-                            Command="{Binding RoomFilterCommand}"
-                            CommandParameter="{Binding ElementName=RoomManageUC}"/>
+                        <Button Content="Lọc" VerticalAlignment="Bottom"
+                                    Margin="10,0" Height="25" FontSize="15" Width="60"
+                                    Padding="15,0" Background="#fa91d7" BorderBrush="#fa91d7"
+                                    materialDesign:ButtonAssist.CornerRadius="10"/>
                     </StackPanel>
                 </materialDesign:Card>
             </Grid>
@@ -118,7 +108,13 @@
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Tầng" Width="Auto"
-                                                DisplayMemberBinding="{Binding floor}"/>
+                                                DisplayMemberBinding="{Binding floor}">
+                                    <GridViewColumn.HeaderContainerStyle>
+                                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                                            <Setter Property="HorizontalContentAlignment" Value="Left" />
+                                        </Style>
+                                    </GridViewColumn.HeaderContainerStyle>
+                                </GridViewColumn>
                                 <GridViewColumn Header="Số phòng" Width="Auto"
                                                 DisplayMemberBinding="{Binding number}"/>
                                 <GridViewColumn Header="Tên phòng" Width="Auto"
