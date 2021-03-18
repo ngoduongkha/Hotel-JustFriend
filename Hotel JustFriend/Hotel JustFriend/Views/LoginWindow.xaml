@@ -63,8 +63,9 @@
                             <materialDesign:PackIcon Kind="Account" Height="23" Width="23"/>
                         </Grid>
                         <Grid Grid.Column="1">
-                            <TextBox materialDesign:HintAssist.Hint="Tên đăng nhập" 
-                                     Text="{Binding UserName}"
+                            <TextBox x:Name="txtUserName"
+                                     materialDesign:HintAssist.Hint="Tên đăng nhập" 
+                                     Text="{Binding UserName, Mode=OneWayToSource}"
                                      FontSize="15"
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                         </Grid>
@@ -80,14 +81,14 @@
                             <materialDesign:PackIcon Kind="Key" Height="23" Width="23"/>
                         </Grid>
                         <Grid Grid.Column="1">
-                            <PasswordBox x:Name="FloatingPasswordBox"
+                            <PasswordBox x:Name="txtPassword"
                                          materialDesign:HintAssist.Hint="Mật khẩu"
                                          FontSize="15"
                                          Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="PasswordChanged">
                                         <i:InvokeCommandAction Command="{Binding OnPasswordChangedCommand}"
-                                                               CommandParameter="{Binding ElementName=FloatingPasswordBox}"/>
+                                                               CommandParameter="{Binding ElementName=txtPassword}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </PasswordBox>

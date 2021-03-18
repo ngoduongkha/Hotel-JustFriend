@@ -126,6 +126,8 @@
           </Key>
           <Property Name="idRoom" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="displayName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="floor" Type="tinyint" />
+          <Property Name="number" Type="tinyint" />
           <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="price" Type="money" Nullable="false" />
           <Property Name="status" Type="nvarchar" MaxLength="20" Nullable="false" />
@@ -589,6 +591,8 @@
           </Key>
           <Property Name="idRoom" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="displayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="floor" Type="Byte" />
+          <Property Name="number" Type="Byte" />
           <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
@@ -1040,6 +1044,8 @@
               <MappingFragment StoreEntitySet="Room">
                 <ScalarProperty Name="idRoom" ColumnName="idRoom" />
                 <ScalarProperty Name="displayName" ColumnName="displayName" />
+                <ScalarProperty Name="floor" ColumnName="floor" />
+                <ScalarProperty Name="number" ColumnName="number" />
                 <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="status" ColumnName="status" />

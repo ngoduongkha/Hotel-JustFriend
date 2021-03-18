@@ -96,10 +96,27 @@
                         x:Name="mainListView"
                         ItemsSource="{Binding ListRoom}"
                         SelectedItem="{Binding SelectedRoom}">
+                        <ListView.ItemContainerStyle>
+                            <Style
+                                TargetType="ListViewItem"
+                                BasedOn="{StaticResource MaterialDesignGridViewItem}">
+                                <Setter 
+                                    Property="HorizontalAlignment"
+                                    Value="Stretch"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>                        
                         <ListView.View>
                             <GridView>
+                                <GridViewColumn Header="Tầng" Width="Auto"
+                                                DisplayMemberBinding="{Binding floor}">
+                                    <GridViewColumn.HeaderContainerStyle>
+                                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                                            <Setter Property="HorizontalContentAlignment" Value="Left" />
+                                        </Style>
+                                    </GridViewColumn.HeaderContainerStyle>
+                                </GridViewColumn>
                                 <GridViewColumn Header="Số phòng" Width="Auto"
-                                                DisplayMemberBinding="{Binding idRoom}"/>
+                                                DisplayMemberBinding="{Binding number}"/>
                                 <GridViewColumn Header="Tên phòng" Width="Auto"
                                                 DisplayMemberBinding="{Binding displayName}"/>
                                 <GridViewColumn Header="Loại phòng" Width="Auto"

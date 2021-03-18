@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="992c00bce3fe46b1949d9a4220ee3055" Name="Diagram1">
+      <Diagram DiagramId="b53ae54832894cbb8f59178f4053baf7" Name="Diagram1">
         <EntityTypeShape EntityType="Hotel_JustFriendModel.Account" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.AccountRole" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.Attendance" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.Bill" Width="1.5" PointX="8.25" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.Billinfo" Width="1.5" PointX="10.5" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hotel_JustFriendModel.Customer" Width="1.5" PointX="6" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.Customer" Width="1.5" PointX="6" PointY="18.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.Employee" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.EmployeeRole" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.Product" Width="1.5" PointX="8.25" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.ProductImport" Width="1.5" PointX="5.25" PointY="14.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.ProductImportInfo" Width="1.5" PointX="7.5" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hotel_JustFriendModel.Room" Width="1.5" PointX="6" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.Room" Width="1.5" PointX="6" PointY="21.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.SalaryRecord" Width="1.5" PointX="7.5" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.SalaryRecordInfo" Width="1.5" PointX="10.75" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.SalaryTable" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />

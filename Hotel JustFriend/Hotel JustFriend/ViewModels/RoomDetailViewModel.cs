@@ -14,8 +14,8 @@ namespace Hotel_JustFriend.ViewModels
     {
         private ObservableCollection<string> _ListRoomName;
         private ObservableCollection<string> _ListRoomType;
-        private int _RoomFloor;
-        private int _RoomNumber;
+        private byte _RoomFloor;
+        private byte _RoomNumber;
         private string _DisplayName;
         private string _RoomType;
         private decimal _RoomPrice;
@@ -23,8 +23,8 @@ namespace Hotel_JustFriend.ViewModels
 
         public ObservableCollection<string> ListRoomName { get => _ListRoomName; set => _ListRoomName = value; }
         public ObservableCollection<string> ListRoomType { get => _ListRoomType; set => _ListRoomType = value; }
-        public int RoomFloor { get => _RoomFloor; set { _RoomFloor = value; RaisePropertyChanged(); } }
-        public int RoomNumber { get => _RoomNumber; set { _RoomNumber = value; RaisePropertyChanged(); } }
+        public byte RoomFloor { get => _RoomFloor; set { _RoomFloor = value; RaisePropertyChanged(); } }
+        public byte RoomNumber { get => _RoomNumber; set { _RoomNumber = value; RaisePropertyChanged(); } }
         public string DisplayName { get => _DisplayName; set { _DisplayName = value; RaisePropertyChanged(); } }
         public string RoomType { get => _RoomType; set { _RoomType = value; RaisePropertyChanged(); } }
         public decimal RoomPrice { get => _RoomPrice; set { _RoomPrice = value; RaisePropertyChanged(); } }
@@ -35,22 +35,6 @@ namespace Hotel_JustFriend.ViewModels
             System.Data.Entity.DbSet<Room> data = DataProvider.Instance.DB.Rooms;
             ListRoomName = new ObservableCollection<string>(data.Where(x => x.isDelete == false).Select(x => x.displayName));
             ListRoomType = new ObservableCollection<string>(data.Select(x => x.type).Distinct());
-        }
-
-        public RoomDetailViewModel(Room selectedRoom)
-        {
-            try
-            {
-                string temp = selectedRoom.displayName;
-                int RoomFloor = int.Parse(temp.Substring(temp.Length - 4, 2));
-                int RoomNumber = int.Parse(temp.Substring(temp.Length - 2, 2));                
-
-                this.RoomFloor = RoomFloor;
-                this.RoomNumber = RoomNumber;
-                this.RoomType = selectedRoom.type;
-                this.RoomPrice = selectedRoom.price;
-            }
-            catch { return; }
         }
 
         #region Command
@@ -64,9 +48,10 @@ namespace Hotel_JustFriend.ViewModels
                     MyMessageBox.Show("Phòng đã tồn tại", "Thông báo", MessageBoxButton.OK);
                     return;
                 }
-                Room newRoom = new Room() { displayName = DisplayName, type = RoomType, price = RoomPrice, note = RoomNote };
+                Room newRoom = new Room() { floor = RoomFloor, number = RoomNumber, displayName = DisplayName, type = RoomType, price = RoomPrice, note = RoomNote };
                 DataProvider.Instance.DB.Rooms.Add(newRoom);
                 DataProvider.Instance.DB.SaveChanges();
+                MyMessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButton.OK);
             }
             catch { return; }
         }

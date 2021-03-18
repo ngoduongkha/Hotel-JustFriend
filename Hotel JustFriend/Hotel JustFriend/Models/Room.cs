@@ -22,6 +22,8 @@ namespace Hotel_JustFriend.Models
     
         public int idRoom { get; set; }
         public string displayName { get; set; }
+        public Nullable<byte> floor { get; set; }
+        public Nullable<byte> number { get; set; }
         public string type { get; set; }
         public decimal price { get; set; }
         public string status { get; set; } = "Sẵn sàng";
