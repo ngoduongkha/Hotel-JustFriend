@@ -129,6 +129,8 @@
         <MappingFragment StoreEntitySet="Room">
           <ScalarProperty Name="idRoom" ColumnName="idRoom" />
           <ScalarProperty Name="displayName" ColumnName="displayName" />
+          <ScalarProperty Name="floor" ColumnName="floor" />
+          <ScalarProperty Name="number" ColumnName="number" />
           <ScalarProperty Name="type" ColumnName="type" />
           <ScalarProperty Name="price" ColumnName="price" />
           <ScalarProperty Name="status" ColumnName="status" />

@@ -16,7 +16,7 @@ namespace Hotel_JustFriend.Models
     public partial class Hotel_JustFriendEntities : DbContext
     {
         public Hotel_JustFriendEntities()
-            : base("Hotel_JustFriendEntities")
+            : base("name=Hotel_JustFriendEntities")
         {
         }
     

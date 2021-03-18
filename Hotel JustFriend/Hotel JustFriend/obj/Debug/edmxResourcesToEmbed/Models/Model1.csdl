@@ -147,6 +147,8 @@
     </Key>
     <Property Name="idRoom" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="displayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="floor" Type="Byte" />
+    <Property Name="number" Type="Byte" />
     <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
     <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />

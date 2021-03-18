@@ -44,7 +44,12 @@ namespace Hotel_JustFriend.ViewModels
             try
             {
                 RoomDetailView editRoom = new RoomDetailView();
-                editRoom.DataContext = new RoomDetailViewModel(SelectedRoom);
+                editRoom.Title = "Cập nhật phòng";
+                editRoom.txtFloor.Text = SelectedRoom.floor.ToString();
+                editRoom.txtNumber.Text = SelectedRoom.number.ToString();
+                editRoom.txtType.Text = SelectedRoom.type.ToString();
+                editRoom.txtPrice.Text = SelectedRoom.price.ToString();
+                editRoom.txtNote.Text = SelectedRoom.note.ToString() ?? "";
                 editRoom.ShowDialog();
             }
             catch { return; }

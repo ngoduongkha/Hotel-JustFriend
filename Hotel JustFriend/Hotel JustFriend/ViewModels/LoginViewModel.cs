@@ -33,10 +33,24 @@ namespace Hotel_JustFriend.ViewModels
         }
 
         [Command]
-        public void Login(Window p)
+        public void Login(LoginWindow p)
         {
             try
             {
+                if (string.IsNullOrEmpty(UserName))
+                {
+                    p.txtUserName.Focus();
+                    MyMessageBox.Show("Vui lòng điền tài khoản!", "Thông báo", MessageBoxButton.OK);
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(Password))
+                {
+                    p.txtPassword.Focus();
+                    MyMessageBox.Show("Vui lòng điền mật khẩu!", "Thông báo", MessageBoxButton.OK);
+                    return;
+                }
+
                 string passEncode = Utility.Encryption.EncryptPassword(Password);
                 var count = DataProvider.Instance.DB.Accounts.Where(x => x.username == UserName && x.password == passEncode).Count();
 
@@ -49,12 +63,16 @@ namespace Hotel_JustFriend.ViewModels
                 }
                 else
                 {
-                    MyMessageBox.Show("Sai tài khoản hoặc mật khẩu!", "Thông báo", MessageBoxButton.OK);
+                    p.txtUserName.Text = string.Empty;
+                    p.txtPassword.Clear();
+                    p.txtUserName.Focus();
+                    MyMessageBox.Show("Sai tên đăng nhập hoặc mật khẩu!", "Thông báo", MessageBoxButton.OK);
                 }
             }
             catch
             {
-                MyMessageBox.Show("Vui lòng điền tài khoản và mật khẩu", "Thông báo", MessageBoxButton.OK);
+                MyMessageBox.Show("Lỗi", "Thông báo", MessageBoxButton.OK);
+                App.Current.Shutdown();
                 return;
             }
         }
