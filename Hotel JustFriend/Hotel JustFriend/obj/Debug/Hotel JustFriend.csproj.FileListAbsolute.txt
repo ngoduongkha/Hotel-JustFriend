@@ -283,12 +283,6 @@ D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\MyMessageB
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\MyMessageBoxes\MyMessageBoxWindow.baml
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\Syncfusion.Licensing.dll
 D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\bin\Debug\Syncfusion.Licensing.dll
-D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\AddRoomWindow.g.cs
-D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\AddRoomWindow.baml
-D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\UserControlHome.g.cs
-D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\UserControlHome.baml
-D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\UserControlRoomManage.g.cs
-D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\UserControlRoomManage.baml
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend.csprojAssemblyReference.cache
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\BusinessView.g.cs
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\RoomManageView.g.cs
@@ -296,3 +290,9 @@ D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\BusinessVi
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\RoomManageView.baml
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\RoomDetailView.g.cs
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\RoomDetailView.baml
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\RoomDetailView.g.cs
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\BusinessView.g.cs
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\RoomManageView.g.cs
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\RoomDetailView.baml
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\BusinessView.baml
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\RoomManageView.baml

@@ -7,7 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="Đăng nhập" Height="700" Width="1200"
+        Title="Đăng nhập" Height="700" Width="910"
         DataContext="{StaticResource LoginVM}" ResizeMode="NoResize"
         WindowStyle="None" AllowsTransparency="True" Background="{x:Null}"
         x:Name="window">
@@ -45,7 +45,7 @@
                 </Button>
             </Grid>
             <materialDesign:Card
-                Height="320" Width="280"
+                Height="320" Width="400"
                 Background="White" Grid.Row="1"
                 UniformCornerRadius="5">
                 <Grid>
@@ -75,7 +75,7 @@
                             <TextBox x:Name="txtUserName"
                                      materialDesign:HintAssist.Hint="Tên đăng nhập" 
                                      Text="{Binding UserName, Mode=OneWayToSource}"
-                                     FontSize="15"
+                                     FontSize="18"
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                         </Grid>
                     </Grid>
@@ -92,7 +92,7 @@
                         <Grid Grid.Column="1">
                             <PasswordBox x:Name="txtPassword"
                                          materialDesign:HintAssist.Hint="Mật khẩu"
-                                         FontSize="15"
+                                         FontSize="18"
                                          Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="PasswordChanged">
@@ -114,18 +114,21 @@
                                 Content="Quên mật khẩu?"
                                 Background="{x:Null}"
                                 Foreground="Black"
-                                BorderBrush="{x:Null}">                                
+                                BorderBrush="{x:Null}"
+                                FontSize="15">  
                             </Button>
                         </Grid>
                         <Grid Grid.Row="1">
                             <Button
-                                Width="110" Content="_Đăng nhập"
+                                Width="150" Content="_Đăng nhập"
+                                Height="40"
                                 ToolTip="Đăng nhập"
                                 materialDesign:ButtonAssist.CornerRadius="5"
                                 Background="{DynamicResource PrimaryHueMidBrush}"
                                 Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"
                                 Command="{Binding LoginCommand}"
                                 CommandParameter="{Binding ElementName=window}"
+                                FontSize="18"
                                 IsDefault="True">
                             </Button>
                         </Grid>
@@ -134,7 +137,8 @@
                                 Content="Đăng ký"
                                 Background="{x:Null}"
                                 Foreground="Black"
-                                BorderBrush="{x:Null}">
+                                BorderBrush="{x:Null}"
+                                FontSize="15">
                             </Button>
                         </Grid>
                     </Grid>
