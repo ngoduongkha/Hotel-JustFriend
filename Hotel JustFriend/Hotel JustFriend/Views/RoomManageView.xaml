@@ -248,7 +248,6 @@
                         Background="#faf896" BorderBrush="#faf896"
                         Width="90" Height="50"
                         IsEnabled="{Binding IsEditable}"
-                        Command="{Binding EditRoomCommand}"
                         materialDesign:ButtonAssist.CornerRadius="10"/>
             </Grid>
         </Grid>

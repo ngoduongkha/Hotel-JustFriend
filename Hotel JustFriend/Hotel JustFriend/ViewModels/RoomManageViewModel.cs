@@ -64,24 +64,6 @@ namespace Hotel_JustFriend.ViewModels
         }
 
         [Command]
-        public void EditRoom()
-        {
-            try
-            {
-                RoomDetailView editRoom = new RoomDetailView();
-                editRoom.Title = "Cập nhật phòng";
-                editRoom.txtFloor.Text = SelectedRoom.floor.ToString();
-                editRoom.txtNumber.Text = SelectedRoom.number.ToString();
-                editRoom.txtType.Text = SelectedRoom.type.ToString();
-                editRoom.txtPrice.Text = SelectedRoom.price.ToString();
-                editRoom.txtNote.Text = SelectedRoom.note.ToString() ?? "";
-                editRoom.ShowDialog();
-                ResetView();
-            }
-            catch { return; }
-        }
-
-        [Command]
         public void DeleteRoom()
         {
             try
@@ -89,8 +71,8 @@ namespace Hotel_JustFriend.ViewModels
                 var beenDeleted = DataProvider.Instance.DB.Rooms.Where(x => x.idRoom == SelectedRoom.idRoom).SingleOrDefault();
                 beenDeleted.isDelete = true;
                 ListRoom.Remove(SelectedRoom);
-                ResetView();
                 DataProvider.Instance.DB.SaveChanges();
+                ResetView();
             }
             catch { return; }
         }

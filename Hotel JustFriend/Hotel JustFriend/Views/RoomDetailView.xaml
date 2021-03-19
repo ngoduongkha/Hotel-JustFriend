@@ -157,7 +157,7 @@
                             Margin="30,18,0,0"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                             materialDesign:HintAssist.Hint="Tên phòng"
-                            Text="{Binding DisplayName, Mode=TwoWay}"
+                            Text="{Binding DisplayName, Mode=OneWay}"
                             IsEnabled="False"/>
                         <ComboBox
                             x:Name="txtType"
