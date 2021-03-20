@@ -9,7 +9,7 @@
         xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts"
         x:Class="Hotel_JustFriend.Views.MainWindow"
         mc:Ignorable="d" WindowStyle="None" WindowStartupLocation="CenterScreen"
-        x:Name="window" DataContext="{StaticResource MainVM}"
+        x:Name="window"
         Title="Hotel Just Friend" Height="700" Width="1200" 
         ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True">
     <Window.Resources>
@@ -143,7 +143,7 @@
                             <Setter Property="Height" Value="40"/>
                             <Setter Property="VerticalAlignment" Value="Center"/>
                             <Setter Property="HorizontalAlignment" Value="Center"/>
-                            <Setter Property="Margin" Value="0,0,10,0"/>
+                            <Setter Property="Margin" Value="15,0,10,0"/>
                         </Style>
                     </StackPanel.Resources>
                     <Grid>
@@ -169,6 +169,14 @@
                         <StackPanel Orientation="Horizontal" Width="250">
                             <materialDesign:PackIcon Kind="Hotel" Grid.Column="0"/>
                             <Label Content="Quản lý phòng" Grid.Column="0"/>
+                        </StackPanel>
+                    </Button>
+                    <Button
+                        Command="{Binding OpenTabFoodManageCommand}"
+                        CommandParameter="{Binding ElementName=window}">
+                        <StackPanel Orientation="Horizontal" Width="250">
+                            <materialDesign:PackIcon Kind="Food" Grid.Column="0"/>
+                            <Label Content="Quản lý ăn uống" Grid.Column="0"/>
                         </StackPanel>
                     </Button>
                 </StackPanel>

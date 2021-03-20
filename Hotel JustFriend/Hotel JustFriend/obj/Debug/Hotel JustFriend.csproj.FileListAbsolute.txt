@@ -447,3 +447,7 @@ E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend
 E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend.csproj.CopyComplete
 E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend.exe
 E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend.pdb
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Template\BillTemplate.g.cs
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Template\BillTemplate.baml
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\FoodManageView.g.cs
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\FoodManageView.baml

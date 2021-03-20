@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using Hotel_JustFriend.ViewModels;
+using System.Windows.Controls;
 
 namespace Hotel_JustFriend.Views
 {
@@ -10,6 +11,7 @@ namespace Hotel_JustFriend.Views
         public RoomManageView()
         {
             InitializeComponent();
+            this.DataContext = new RoomManageViewModel();
         }
     }
 }
