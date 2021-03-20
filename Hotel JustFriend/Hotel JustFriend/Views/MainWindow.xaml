@@ -9,33 +9,21 @@
         xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts"
         x:Class="Hotel_JustFriend.Views.MainWindow"
         mc:Ignorable="d" WindowStyle="None" WindowStartupLocation="CenterScreen"
-        x:Name="window" DataContext="{StaticResource MainVM}"
+        x:Name="window"
         Title="Hotel Just Friend" Height="700" Width="1200" 
         ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True">
     <Window.Resources>
         <Storyboard x:Key="OpenMenu">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="gridMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="borderMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="250"/>
             </DoubleAnimationUsingKeyFrames>
-            <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                            Storyboard.TargetName="borderMain"
-                            To="#d9d9d9" Duration="0:0:0.1"/>
-            <DoubleAnimation Storyboard.TargetProperty="(FrameworkElement.Opacity)"
-                             Storyboard.TargetName="borderMain"
-                             From="1" To="0.5" Duration="0:0:0.1"/>
         </Storyboard>
         <Storyboard x:Key="CloseMenu">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="gridMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="borderMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="250"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
-            <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                            Storyboard.TargetName="borderMain"
-                            To="Pink" Duration="0:0:0.1"/>
-            <DoubleAnimation Storyboard.TargetProperty="(FrameworkElement.Opacity)"
-                             Storyboard.TargetName="borderMain"
-                             From="0.5" To="1" Duration="0:0:0.1"/>
         </Storyboard>
     </Window.Resources>
     <Window.Triggers>
@@ -112,7 +100,7 @@
                                         Background="Transparent" Foreground="Black"
                                         BorderBrush="Transparent" Width="45" Height="40"
                                         Command="{Binding OpenMenuCommand}"
-                                        CommandParameter="{Binding ElementName=borderMain}">
+                                        CommandParameter="{Binding ElementName=borderHide}">
                                     <materialDesign:PackIcon Kind="Menu" Width="35" Height="40"
                                                              VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 </Button>
@@ -128,8 +116,13 @@
                 </Border>
             </Grid>
         </Border>
-        <Grid HorizontalAlignment="Left" Width="0" x:Name="gridMenu" Opacity="100">
-            <Border Background="White" BorderBrush="{x:Null}" BorderThickness="0.1" CornerRadius="10,0,0,10">
+        <Grid HorizontalAlignment="Left" Width="1200">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border Background="White" BorderBrush="{x:Null}" BorderThickness="0.1" CornerRadius="10,0,0,10"
+                    Grid.Column="0" x:Name="borderMenu" Width="0">
                 <StackPanel Width="250">
                     <StackPanel.Resources>
                         <Style TargetType="Button">
@@ -150,7 +143,7 @@
                             <Setter Property="Height" Value="40"/>
                             <Setter Property="VerticalAlignment" Value="Center"/>
                             <Setter Property="HorizontalAlignment" Value="Center"/>
-                            <Setter Property="Margin" Value="0,0,10,0"/>
+                            <Setter Property="Margin" Value="15,0,10,0"/>
                         </Style>
                     </StackPanel.Resources>
                     <Grid>
@@ -159,7 +152,7 @@
                                 Padding="0" Width="50" Height="40" BorderBrush="Transparent"
                                 BorderThickness="0" x:Name="btnCloseMenu"
                                 Command="{Binding CloseMenuCommand}"
-                                CommandParameter="{Binding ElementName=borderMain}">
+                                CommandParameter="{Binding ElementName=borderHide}">
                             <materialDesign:PackIcon Kind="ArrowLeft" Width="50" Height="40" Margin="0"/>
                         </Button>
                     </Grid>
@@ -178,8 +171,26 @@
                             <Label Content="Quản lý phòng" Grid.Column="0"/>
                         </StackPanel>
                     </Button>
+                    <Button
+                        Command="{Binding OpenTabFoodManageCommand}"
+                        CommandParameter="{Binding ElementName=window}">
+                        <StackPanel Orientation="Horizontal" Width="250">
+                            <materialDesign:PackIcon Kind="Food" Grid.Column="0"/>
+                            <Label Content="Quản lý ăn uống" Grid.Column="0"/>
+                        </StackPanel>
+                    </Button>
                 </StackPanel>
             </Border>
+            <Grid Opacity="0.5" Grid.Column="1">
+                <Border Background="#d9d9d9" x:Name="borderHide" Visibility="Hidden"
+                        CornerRadius="0,10,10,0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDown">
+                            <i:InvokeCommandAction Command="{Binding CloseMenuByClickCommand}" CommandParameter="{Binding ElementName=window}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Border>
+            </Grid>
         </Grid>
     </Grid>
 </Window>

@@ -7,5 +7,5 @@
     <viewmodels:RoomDetailViewModel x:Key="AddRoomVM"></viewmodels:RoomDetailViewModel>
     <viewmodels:BusinessViewModel x:Key="BusinessVM"></viewmodels:BusinessViewModel>
     <viewmodels:RoomManageViewModel x:Key="RoomManageVM"></viewmodels:RoomManageViewModel>
-    <viewmodels:BillViewModel x:Key="BillVM"></viewmodels:BillViewModel>
+    <viewmodels:FoodManageViewModel x:Key="FoodManageVM"></viewmodels:FoodManageViewModel>
 </ResourceDictionary>

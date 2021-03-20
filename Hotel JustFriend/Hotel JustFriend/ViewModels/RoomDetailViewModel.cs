@@ -93,12 +93,6 @@ namespace Hotel_JustFriend.ViewModels
         {
             try
             {
-                System.Data.Entity.DbSet<Room> data = DataProvider.Instance.DB.Rooms;
-                ListRoomName = new ObservableCollection<string>(data.Where(x => x.isDelete == false).Select(x => x.displayName));
-                ListRoomType = new ObservableCollection<string>(data.Where(x => x.isDelete == false).Select(x => x.type).Distinct());
-                DisplayName = string.Empty;
-                RoomFloor = 0;
-                RoomNumber = 0;
                 p.Close();
             }
             catch { return; }

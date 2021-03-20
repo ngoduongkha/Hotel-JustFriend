@@ -70,7 +70,7 @@ namespace Hotel_JustFriend.ViewModels
         {
             try
             {
-                p.IsEnabled = false;
+                p.Visibility = Visibility.Visible;
             }
             catch { return; }
         }
@@ -80,11 +80,20 @@ namespace Hotel_JustFriend.ViewModels
         {
             try
             {
-                p.IsEnabled = true;
+                p.Visibility = Visibility.Hidden;
             }
             catch { return; }
         }
-
+        [Command]
+        public void CloseMenuByClick(MainWindow p)
+        {
+            try
+            {
+                p.borderHide.Visibility = Visibility.Hidden;
+                (p.FindResource("CloseMenu") as Storyboard).Begin();
+            }
+            catch { return; }
+        }
         [Command]
         public void OpenTabHome(MainWindow p)
         {
@@ -92,8 +101,7 @@ namespace Hotel_JustFriend.ViewModels
             {
                 p.gridMain.Children.Clear();
                 BusinessView uc = new BusinessView();
-                (p.FindResource("CloseMenu") as Storyboard).Begin();
-                p.borderMain.IsEnabled = true;
+                CloseMenuByClick(p);
                 p.gridMain.Children.Add(uc);
             }
             catch { return; }
@@ -106,8 +114,20 @@ namespace Hotel_JustFriend.ViewModels
             {
                 p.gridMain.Children.Clear();
                 RoomManageView uc = new RoomManageView();
-                (p.FindResource("CloseMenu") as Storyboard).Begin();
-                p.borderMain.IsEnabled = true;
+                CloseMenuByClick(p);
+                p.gridMain.Children.Add(uc);
+            }
+            catch { return; }
+        }
+
+        [Command]
+        public void OpenTabFoodManage(MainWindow p)
+        {
+            try
+            {
+                p.gridMain.Children.Clear();
+                FoodManageView uc = new FoodManageView();
+                CloseMenuByClick(p);
                 p.gridMain.Children.Add(uc);
             }
             catch { return; }
