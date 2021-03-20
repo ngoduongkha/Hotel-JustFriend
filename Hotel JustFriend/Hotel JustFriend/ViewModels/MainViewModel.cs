@@ -119,6 +119,19 @@ namespace Hotel_JustFriend.ViewModels
             }
             catch { return; }
         }
+
+        [Command]
+        public void OpenTabFoodManage(MainWindow p)
+        {
+            try
+            {
+                p.gridMain.Children.Clear();
+                FoodManageView uc = new FoodManageView();
+                CloseMenuByClick(p);
+                p.gridMain.Children.Add(uc);
+            }
+            catch { return; }
+        }
         #endregion
     }
 }
