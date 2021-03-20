@@ -128,7 +128,7 @@
                 </Border>
             </Grid>
         </Border>
-        <Grid HorizontalAlignment="Left" Width="0" x:Name="gridMenu" Opacity="0">
+        <Grid HorizontalAlignment="Left" Width="0" x:Name="gridMenu" Opacity="100">
             <Border Background="White" BorderBrush="{x:Null}" BorderThickness="0.1" CornerRadius="10,0,0,10">
                 <StackPanel Width="250">
                     <StackPanel.Resources>
