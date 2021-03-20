@@ -201,6 +201,7 @@
     <Compile Include="Validations\MoneyValidation.cs" />
     <Compile Include="Validations\NotNullValidation.cs" />
     <Compile Include="Validations\NumberValidation.cs" />
+    <Compile Include="ViewModels\BillViewModel.cs" />
     <Compile Include="ViewModels\RoomDetailViewModel.cs" />
     <Compile Include="ViewModels\BusinessViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
