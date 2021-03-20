@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\App.xaml
-8-2009525804
+9-1414097479
 21628168987
-44-130979988
+46-658409744
 401845973397
-Resources\Resources.xaml;Template\BillTemplate.xaml;Views\LoginWindow.xaml;Views\MainWindow.xaml;Views\MyMessageBoxes\MyMessageBoxWindow.xaml;Views\RoomDetailView.xaml;Views\BusinessView.xaml;Views\RoomManageView.xaml;
+Resources\Resources.xaml;Template\BillTemplate.xaml;Views\FoodManageView.xaml;Views\LoginWindow.xaml;Views\MainWindow.xaml;Views\MyMessageBoxes\MyMessageBoxWindow.xaml;Views\RoomDetailView.xaml;Views\BusinessView.xaml;Views\RoomManageView.xaml;
 
-True
+False
 
