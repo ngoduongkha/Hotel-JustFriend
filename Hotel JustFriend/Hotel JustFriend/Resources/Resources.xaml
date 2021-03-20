@@ -8,4 +8,5 @@
     <viewmodels:BusinessViewModel x:Key="BusinessVM"></viewmodels:BusinessViewModel>
     <viewmodels:RoomManageViewModel x:Key="RoomManageVM"></viewmodels:RoomManageViewModel>
     <viewmodels:FoodManageViewModel x:Key="FoodManageVM"></viewmodels:FoodManageViewModel>
+    <viewmodels:BillViewModel x:Key="BillVM"></viewmodels:BillViewModel>
 </ResourceDictionary>
