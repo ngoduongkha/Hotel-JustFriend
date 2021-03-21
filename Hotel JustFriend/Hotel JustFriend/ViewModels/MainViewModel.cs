@@ -126,7 +126,7 @@ namespace Hotel_JustFriend.ViewModels
             try
             {
                 p.gridMain.Children.Clear();
-                FoodManageView uc = new FoodManageView();
+                ProductManageView uc = new ProductManageView();
                 CloseMenuByClick(p);
                 p.gridMain.Children.Add(uc);
             }
