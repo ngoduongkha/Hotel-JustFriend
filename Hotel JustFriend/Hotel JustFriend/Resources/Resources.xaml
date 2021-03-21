@@ -5,8 +5,9 @@
     <viewmodels:LoginViewModel x:Key="LoginVM"></viewmodels:LoginViewModel>
     <viewmodels:MainViewModel x:Key="MainVM"></viewmodels:MainViewModel>
     <viewmodels:RoomDetailViewModel x:Key="AddRoomVM"></viewmodels:RoomDetailViewModel>
+    <viewmodels:ProductDetailViewModel x:Key="AddProductVM"></viewmodels:ProductDetailViewModel>
     <viewmodels:BusinessViewModel x:Key="BusinessVM"></viewmodels:BusinessViewModel>
     <viewmodels:RoomManageViewModel x:Key="RoomManageVM"></viewmodels:RoomManageViewModel>
-    <viewmodels:FoodManageViewModel x:Key="FoodManageVM"></viewmodels:FoodManageViewModel>
     <viewmodels:BillViewModel x:Key="BillVM"></viewmodels:BillViewModel>
+    <viewmodels:ProductManageViewModel x:Key="ProductManageVM"></viewmodels:ProductManageViewModel>
 </ResourceDictionary>

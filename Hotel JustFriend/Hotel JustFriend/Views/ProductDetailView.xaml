@@ -1,0 +1,96 @@
+﻿<Window x:Class="Hotel_JustFriend.Views.ProductDetailView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hotel_JustFriend.Views"
+        mc:Ignorable="d"
+        x:Name="window"
+        WindowStyle="None"
+        Title="FoodDetailView" Height="500" Width="550">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Ten san pham"></Label>
+                <TextBox Height="30" Width="200">
+                    <TextBox.Text>
+                        <Binding Path="DisplayName" Mode="OneWayToSource">
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="don vi"></Label>
+                <TextBox Height="30" Width="200">
+                    <TextBox.Text>
+                        <Binding Path="Unit" Mode="OneWayToSource">
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </Grid>
+        </Grid >
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="don gia"></Label>
+                <TextBox Height="30" Width="200">
+                    <TextBox.Text>
+                        <Binding Path="PricePerUnit" Mode="OneWayToSource">
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </Grid>
+            <Grid Grid.Column="1"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" >
+                    <Image  x:Name="imgField"
+                    Source="/Hotel JustFriend;component/Resources/Images/banner.png"
+                    Margin="10,10,0,100"
+                    HorizontalAlignment="Left" 
+                    Height="42" 
+                    VerticalAlignment="Top" 
+                    Width="70"/>
+                    <Button Content="Chon anh" Height="30" Width="100"
+                            Command="{Binding SelectImageCommand}"
+                            CommandParameter="{Binding ElementName=window}"></Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Button Content="Luu" Height="30" Width="60"
+                        Command="{Binding SaveCommand}"
+                        CommandParameter="{Binding ElementName=window}">
+                </Button>
+
+            </Grid>
+            <Grid Grid.Column="1">
+                <Button Content="Huy" Height="30" Width="60"
+                        Command="{Binding CloseCommand}"
+                        CommandParameter="{Binding ElementName=window}">
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

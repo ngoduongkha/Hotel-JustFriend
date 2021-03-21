@@ -6,9 +6,20 @@ using System.Windows.Media.Imaging;
 
 namespace Hotel_JustFriend.Utility
 {
-    public class ImageHelper : IValueConverter
+    public class ImageHelper
     {
-        private BitmapImage ConvertByteArrayToBitMapImage(byte[] imageByteArray)
+        private static ImageHelper _Instance;
+
+        public static ImageHelper Instance { 
+            get
+            {
+                if (_Instance == null)
+                    _Instance = new ImageHelper();
+                return _Instance;
+            }
+        }
+
+        public BitmapImage ConvertByteArrayToBitMapImage(byte[] imageByteArray)
         {
             try
             {
@@ -28,7 +39,7 @@ namespace Hotel_JustFriend.Utility
             catch { return null; }
         }
 
-        private byte[] ConvertBitMapImageToByteArray(BitmapImage imageC)
+        public byte[] ConvertBitMapImageToByteArray(BitmapImage imageC)
         {
             try
             {
@@ -37,34 +48,6 @@ namespace Hotel_JustFriend.Utility
                 encoder.Frames.Add(BitmapFrame.Create(imageC));
                 encoder.Save(memStream);
                 return memStream.ToArray();
-            }
-            catch { return null; }
-        }
-
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            try
-            {
-                if (value != null)
-                {
-                    BitmapImage img = this.ConvertByteArrayToBitMapImage(value as byte[]);
-                    return img;
-                }
-                return null;
-            }
-            catch { return null; }
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            try
-            {
-                if (value != null)
-                {
-                    byte[] imageByteArray = ConvertBitMapImageToByteArray(value as BitmapImage);
-                    return imageByteArray;
-                }
-                return null;
             }
             catch { return null; }
         }

@@ -54,20 +54,20 @@ namespace Hotel_JustFriend.ViewModels
                 string passEncode = Utility.Encryption.EncryptPassword(Password);
                 var count = DataProvider.Instance.DB.Accounts.Where(x => x.username == UserName && x.password == passEncode).Count();
 
-                if (count > 0)
-                {
+                //if (count > 0)
+               // {
                     MainWindow main = new MainWindow();
                     p.Hide();
                     main.ShowDialog();
                     p.Show();
-                }
-                else
-                {
-                    p.txtUserName.Text = string.Empty;
-                    p.txtPassword.Clear();
-                    p.txtUserName.Focus();
-                    MyMessageBox.Show("Sai tên đăng nhập hoặc mật khẩu!", "Thông báo", MessageBoxButton.OK);
-                }
+              //  }
+               // else
+               // {
+                //    p.txtUserName.Text = string.Empty;
+                //    p.txtPassword.Clear();
+               //     p.txtUserName.Focus();
+               //     MyMessageBox.Show("Sai tên đăng nhập hoặc mật khẩu!", "Thông báo", MessageBoxButton.OK);
+               // }
             }
             catch
             {
