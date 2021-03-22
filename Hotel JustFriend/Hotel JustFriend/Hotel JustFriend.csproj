@@ -202,19 +202,23 @@
     <Compile Include="Validations\NotNullValidation.cs" />
     <Compile Include="Validations\NumberValidation.cs" />
     <Compile Include="ViewModels\BillViewModel.cs" />
-    <Compile Include="ViewModels\FoodManageViewModel.cs" />
+    <Compile Include="ViewModels\ProductDetailViewModel.cs" />
+    <Compile Include="ViewModels\ProductManageViewModel.cs" />
     <Compile Include="ViewModels\RoomDetailViewModel.cs" />
     <Compile Include="ViewModels\BusinessViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\RoomManageViewModel.cs" />
-    <Compile Include="Views\FoodManageView.xaml.cs">
-      <DependentUpon>FoodManageView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MyMessageBoxes\MyMessageBoxWindow.xaml.cs">
       <DependentUpon>MyMessageBoxWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductDetailView.xaml.cs">
+      <DependentUpon>ProductDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductManageView.xaml.cs">
+      <DependentUpon>ProductManageView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RoomDetailView.xaml.cs">
       <DependentUpon>RoomDetailView.xaml</DependentUpon>
@@ -230,10 +234,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Template\BillTemplate.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\FoodManageView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -256,6 +256,14 @@
     <Page Include="Views\MyMessageBoxes\MyMessageBoxWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductDetailView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ProductManageView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\RoomDetailView.xaml">
       <SubType>Designer</SubType>

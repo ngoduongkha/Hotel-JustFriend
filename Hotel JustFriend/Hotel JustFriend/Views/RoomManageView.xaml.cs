@@ -13,5 +13,10 @@ namespace Hotel_JustFriend.Views
             InitializeComponent();
             this.DataContext = new RoomManageViewModel();
         }
+
+        private void DataGrid_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
+        {
+            e.Cancel = true;
+        }
     }
 }
