@@ -22,86 +22,7 @@
             </materialDesign:Card>
         </StackPanel>
         <Grid Grid.Row="1">
-            <Grid.Resources>
-                <Style TargetType="Button">
-                    <Setter Property="Width" Value="120" />
-                    <Setter Property="Height" Value="80" />
-                    <Setter Property="Margin" Value="10" />
-                    <Setter Property="FontSize" Value="15" />
-                    <Setter Property="FontWeight" Value="SemiBold" />
-                    <Setter Property="BorderThickness" Value="2" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Style.Triggers>
-                        <Trigger Property="IsFocused" Value="True">
-                            <Trigger.EnterActions>
-                                <BeginStoryboard>
-                                    <Storyboard Storyboard.TargetProperty="Background.Color">
-                                        <ColorAnimation To="WhiteSmoke" Duration="0" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.EnterActions>
-                            <Trigger.ExitActions>
-                                <BeginStoryboard>
-                                    <Storyboard Storyboard.TargetProperty="Background.Color">
-                                        <ColorAnimation To="Pink" Duration="0" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.ExitActions>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Grid.Resources>
             <materialDesign:Card Margin="10">
-                <!--<ListView
-                    x:Name="mainListView"
-                    ItemsSource="{Binding ListRoom}"
-                    SelectedItem="{Binding SelectedRoom}">
-
-                    <ListView.View>
-                        <GridView x:Name="gv">
-                            <GridView.ColumnHeaderContainerStyle>
-                                <Style
-                                    TargetType="GridViewColumnHeader"
-                                    BasedOn="{StaticResource MaterialDesignOutlinedButton}">
-                                </Style>
-                            </GridView.ColumnHeaderContainerStyle>
-                            <GridViewColumn Header="Tầng" Width="Auto">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Grid Background="Blue">
-                                            <TextBlock Background="Green" Text="{Binding floor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        </Grid>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                            <GridViewColumn Header="Phòng" Width="Auto" DisplayMemberBinding="{Binding number}" />
-                            <GridViewColumn Header="Tên phòng" Width="Auto" DisplayMemberBinding="{Binding displayName}" />
-                            <GridViewColumn Header="Loại phòng" Width="Auto" DisplayMemberBinding="{Binding type}" />
-                            <GridViewColumn Header="Trạng thái" Width="Auto" DisplayMemberBinding="{Binding status}" />
-                            <GridViewColumn Header="Đơn giá" Width="Auto" DisplayMemberBinding="{Binding price, StringFormat=\{0:n0\}}" />
-                            <GridViewColumn Header="Ghi chú" Width="Auto" DisplayMemberBinding="{Binding note}"/>
-                            <GridViewColumn>
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <materialDesign:PackIcon Kind="EditOutline" Foreground="Green" Width="50" Height="50" />
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                            <GridViewColumn>
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <materialDesign:PackIcon Kind="TrashCanOutline" Foreground="Red" Width="50" Height="50" />
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                        </GridView>
-                    </ListView.View>
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="SelectionChanged">
-                            <i:InvokeCommandAction Command="{Binding SelectedChangedCommand}" CommandParameter="{Binding ElementName=mainListView}" />
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </ListView>-->
                 <DataGrid
                     ItemsSource="{Binding ListRoom}"
                     AutoGenerateColumns="False"
@@ -139,33 +60,4 @@
             </materialDesign:Card>
         </Grid>
     </Grid>
-    <!--<Grid Grid.Column="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Margin="10,20"
-                        Content="Thêm" FontWeight="SemiBold" FontSize="15"
-                        VerticalAlignment="Top" Foreground="Black"
-                        Background="#9df587" BorderBrush="#9df587"
-                        Width="90" Height="50"
-                        Command="{Binding AddRoomCommand}"
-                        materialDesign:ButtonAssist.CornerRadius="10"/>
-                <Button Grid.Column="1" Margin="10,20"
-                        Content="Xóa" FontWeight="SemiBold" FontSize="15"
-                        VerticalAlignment="Top" Foreground="Black"
-                        Background="#ff9494" BorderBrush="#ff9494"
-                        Width="90" Height="50"
-                        Command="{Binding DeleteRoomCommand}"
-                        IsEnabled="{Binding IsEditable}"
-                        materialDesign:ButtonAssist.CornerRadius="10"/>
-                <Button Grid.Column="2" Margin="10,20"
-                        Content="Sửa" FontWeight="SemiBold" FontSize="15"
-                        VerticalAlignment="Top" Foreground="Black"
-                        Background="#faf896" BorderBrush="#faf896"
-                        Width="90" Height="50"
-                        IsEnabled="{Binding IsEditable}"
-                        materialDesign:ButtonAssist.CornerRadius="10"/>
-            </Grid>-->
 </UserControl>
