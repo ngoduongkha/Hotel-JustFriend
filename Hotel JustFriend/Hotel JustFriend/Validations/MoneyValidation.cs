@@ -23,6 +23,10 @@ namespace Hotel_JustFriend.Validations
                 return new ValidationResult(false, "Chỉ được nhập số!");
             }
 
+            if (money <= 0)
+            {
+                return new ValidationResult(false, "Chỉ được nhập số dương!");
+            }
             if (money % Divisor != 0)
             {
                 string divisorString = Converter.Instance.ConvertDecimalToCurrency(Divisor);

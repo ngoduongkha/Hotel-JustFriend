@@ -14,38 +14,25 @@ namespace Hotel_JustFriend.ViewModels
         private ObservableCollection<Room> _ListRoom;
         private ObservableCollection<string> _ListRoomType;
         private ObservableCollection<string> _ListRoomStatus;
-        private bool _IsEditable;
         private Room _SelectedRoom;
 
         public ObservableCollection<Room> ListRoom { get => _ListRoom; set { _ListRoom = value; RaisePropertyChanged(); } }
         public ObservableCollection<string> ListRoomType { get => _ListRoomType; set { _ListRoomType = value; RaisePropertyChanged(); } }
         public ObservableCollection<string> ListRoomStatus { get => _ListRoomStatus; set { _ListRoomStatus = value; RaisePropertyChanged(); } }
-        public bool IsEditable { get => _IsEditable; set { _IsEditable = value; RaisePropertyChanged(); } }
         public Room SelectedRoom { get => _SelectedRoom; set { _SelectedRoom = value; RaisePropertyChanged(); } }
 
         public RoomManageViewModel()
         {
-            ResetView();
+            LoadDB();
         }
 
-        public void ResetView()
-        {
-            var RoomVisible = DataProvider.Instance.DB.Rooms.Where(x => x.isDelete == false);
-            ListRoom = new ObservableCollection<Room>(RoomVisible);
-            ListRoomType = new ObservableCollection<string>(RoomVisible.Select(x => x.type).Distinct());
-            ListRoomStatus = new ObservableCollection<string>(RoomVisible.Select(x => x.status).Distinct());
-
-            SortRoom();
-        }
-
-        public void SortRoom()
+        private void LoadDB()
         {
             try
             {
-                if (ListRoom == null)
-                    return;
-                ListRoom = new ObservableCollection<Room>(ListRoom.OrderBy(x => x.floor).OrderBy(x => x.number));
-                IsEditable = false;
+                ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms.Where(x => x.isDelete == false));
+                ListRoomStatus = new ObservableCollection<string>(ListRoom.Select(x => x.status).Distinct());
+                ListRoomType = new ObservableCollection<string>(ListRoom.Select(x => x.type).Distinct());
             }
             catch { return; }
         }
@@ -57,8 +44,8 @@ namespace Hotel_JustFriend.ViewModels
             {
                 RoomDetailView addRoom = new RoomDetailView();
                 addRoom.ShowDialog();
-                ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms.Where(x => x.isDelete == false));
-                ResetView();
+
+                LoadDB();
             }
             catch { return; }
         }
@@ -68,11 +55,32 @@ namespace Hotel_JustFriend.ViewModels
         {
             try
             {
-                var beenDeleted = DataProvider.Instance.DB.Rooms.Where(x => x.idRoom == SelectedRoom.idRoom).SingleOrDefault();
-                beenDeleted.isDelete = true;
-                ListRoom.Remove(SelectedRoom);
+                if (SelectedRoom == null)
+                    MyMessageBox.Show("Không có gì để xóa cả!", "Thông báo", System.Windows.MessageBoxButton.OK);
+
+                DataProvider.Instance.DB.Rooms.Where(x => x.idRoom == SelectedRoom.idRoom).SingleOrDefault().isDelete = true;
                 DataProvider.Instance.DB.SaveChanges();
-                ResetView();
+
+                LoadDB();
+            }
+            catch { return; }
+        }
+
+        [Command]
+        public void EditRoom()
+        {
+            try
+            {
+                if (SelectedRoom == null)
+                    MyMessageBox.Show("Không có gì để sửa cả!", "Thông báo", System.Windows.MessageBoxButton.OK);
+
+                RoomDetailView editRoom = new RoomDetailView();
+                editRoom.txtFloor.Text = SelectedRoom.floor.ToString();
+                editRoom.txtNumber.Text = SelectedRoom.number.ToString();
+                editRoom.txtPrice.Text = SelectedRoom.price.ToString("C");
+                editRoom.ShowDialog();
+
+                LoadDB();
             }
             catch { return; }
         }
@@ -82,40 +90,25 @@ namespace Hotel_JustFriend.ViewModels
         {
             try
             {
-                if (string.IsNullOrEmpty(p.txtFilterStatus.Text) && string.IsNullOrEmpty(p.txtFilterType.Text))
-                {
-                    ResetView();
-                }
-                else if (string.IsNullOrEmpty(p.txtFilterStatus.Text) && !string.IsNullOrEmpty(p.txtFilterType.Text))
+                ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms.Where(x => x.isDelete == false));
+
+                if (string.IsNullOrEmpty(p.txtFilterStatus.Text) && !string.IsNullOrEmpty(p.txtFilterType.Text))
                 {
                     ListRoom = new ObservableCollection<Room>(ListRoom.Where(x => x.type == p.txtFilterType.Text));
-                    SortRoom();
                 }
                 else if (!string.IsNullOrEmpty(p.txtFilterStatus.Text) && string.IsNullOrEmpty(p.txtFilterType.Text))
                 {
-                    ListRoom = new ObservableCollection<Room>(ListRoom.Where(x => x.type == p.txtFilterStatus.Text));
-                    SortRoom();
+                    ListRoom = new ObservableCollection<Room>(ListRoom.Where(x => x.status == p.txtFilterStatus.Text));
                 }
-                else
+                else if (!string.IsNullOrEmpty(p.txtFilterStatus.Text) && !string.IsNullOrEmpty(p.txtFilterType.Text))
                 {
                     ListRoom = new ObservableCollection<Room>(ListRoom.Where(x => x.type == p.txtFilterType.Text && x.status == p.txtFilterStatus.Text));
-                    SortRoom();
                 }
+
+                p.txtFilterStatus.Text = string.Empty;
+                p.txtFilterType.Text = string.Empty;
             }
             catch { return; }
-        }
-
-        [Command]
-        public void SelectedChanged(ListView lv)
-        {
-            if (lv.SelectedItem != null)
-            {
-                IsEditable = true;
-            }
-            else
-            {
-                IsEditable = false;
-            }
         }
     }
 }

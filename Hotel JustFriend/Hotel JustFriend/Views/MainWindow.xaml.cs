@@ -11,7 +11,6 @@ namespace Hotel_JustFriend.Views
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new MainViewModel();
         }
     }
 }

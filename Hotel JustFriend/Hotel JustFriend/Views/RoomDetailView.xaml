@@ -248,7 +248,7 @@
                                 Command="{Binding SaveCommand}"
                                 CommandParameter="{Binding ElementName=window}">
                                 <Button.Style>
-                                    <Style TargetType="Button">
+                                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatAccentBgButton}">
                                         <Setter Property="IsEnabled" Value="False"/>
                                         <Style.Triggers>
                                             <MultiDataTrigger>
