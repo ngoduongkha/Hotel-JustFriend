@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<UserControl
+﻿<UserControl
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
@@ -8,18 +7,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
     x:Class="Hotel_JustFriend.Views.RoomManageView" 
-    mc:Ignorable="d" 
-    d:DesignHeight="651.2"
-    d:DesignWidth="1200"
-    x:Name="RoomManageUC"
-    DataContext="{StaticResource RoomManageVM}">
+    mc:Ignorable="d" d:DesignHeight="651.2" d:DesignWidth="1200"
+    x:Name="RoomManageUC">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="10 0">
-            <materialDesign:Card>
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <materialDesign:Card Margin="10 0 0 0">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Margin="20 0 5 0" Kind="Search" Height="24" Width="24" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
                     <TextBox Margin="5 0 10 0" materialDesign:HintAssist.Hint="Tìm phòng" FontSize="15" Background="Transparent" MaxLength="50" MaxWidth="250" Width="250" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
@@ -49,37 +45,63 @@
                 </StackPanel>
             </materialDesign:Card>
             <Button
-                Margin="10 5 0 5"
+                Margin="10 0 0 0"
                 Content="Thêm" FontWeight="SemiBold" FontSize="15"
-                VerticalAlignment="Top" Foreground="Black"                
+                Foreground="Black"                
                 Background="#9df587" BorderBrush="#9df587"
-                Width="90" Height="50"
+                Width="85" Height="50"
                 Command="{Binding AddRoomCommand}"
                 materialDesign:ButtonAssist.CornerRadius="10"/>
             <Button
-                Margin="10 5 0 5"
+                Margin="10 0 0 0"
                 Content="Xóa" FontWeight="SemiBold" FontSize="15"
-                VerticalAlignment="Top" Foreground="Black"
+                Foreground="Black"
                 Background="#ff9494" BorderBrush="#ff9494"
-                Width="90" Height="50"
+                Width="85" Height="50"
                 Command="{Binding DeleteRoomCommand}"
-                materialDesign:ButtonAssist.CornerRadius="10"/>
+                materialDesign:ButtonAssist.CornerRadius="10">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding SelectedItems.Count,ElementName=dGrid}"
+                                 Value="0">
+                                <Setter Property="IsEnabled"
+                                Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
             <Button
-                Margin="10 5 0 5"
-                Content="Sửa" FontWeight="SemiBold" FontSize="15"
-                VerticalAlignment="Top" Foreground="Black"
+                Margin="10 0 0 0"
+                Content="Sửa chữa" FontWeight="SemiBold" FontSize="15"
+                Foreground="Black"
                 Background="#faf896" BorderBrush="#faf896"
-                Width="90" Height="50"
-                Command="{Binding EditRoomCommand}"
-                materialDesign:ButtonAssist.CornerRadius="10"/>
+                Width="105" Height="50"
+                Command="{Binding FixRoomCommand}"
+                materialDesign:ButtonAssist.CornerRadius="10">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                        <Style.Triggers>
+                            <DataTrigger
+                                Binding="{Binding SelectedItems.Count,ElementName=dGrid}"
+                                Value="0">
+                                <Setter 
+                                    Property="IsEnabled"
+                                    Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </StackPanel>
         <Grid Grid.Row="1">
             <materialDesign:Card Margin="10">
                 <DataGrid
+                    x:Name="dGrid"
                     Background="White"
                     ItemsSource="{Binding ListRoom}"
                     AutoGenerateColumns="False"
-                    AlternatingRowBackground="AliceBlue"
                     AutomationProperties.IsColumnHeader="True"
                     CanUserDeleteRows="False"
                     CanUserAddRows="False"
@@ -87,21 +109,24 @@
                     SelectionMode="Single"
                     SelectedItem="{Binding SelectedRoom}">
                     <DataGrid.Resources>
-                        <Style TargetType="DataGridColumnHeader">
-                            <Setter Property="Background" Value="Pink"  />
+                        <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+                            <Setter Property="Background" Value="LightPink" />
                             <Setter Property="FontWeight" Value="SemiBold"/>
                             <Setter Property="HorizontalContentAlignment" Value="Center"/>
                             <Setter Property="FontSize" Value="20"/>
                             <Setter Property="BorderBrush" Value="White"/>
-                            <Setter Property="BorderThickness" Value="0 0 0.5 0"/>
+                            <Setter Property="BorderThickness" Value="0 0 1 0"/>
                         </Style>
-                        <Style TargetType="DataGridCell">
+                        <Style TargetType="DataGridCell" BasedOn="{StaticResource MaterialDesignDataGridCell}">
                             <Setter Property="FontSize" Value="20"/>
+                            <Setter Property="Height" Value="35"/>
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="{x:Type DataGridCell}">
                                         <Grid Background="{TemplateBinding Background}">
-                                            <ContentPresenter HorizontalAlignment="Center" />
+                                            <ContentPresenter
+                                                HorizontalAlignment="Center" 
+                                                VerticalAlignment="Center"/>
                                         </Grid>
                                     </ControlTemplate>
                                 </Setter.Value>

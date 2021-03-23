@@ -65,7 +65,7 @@ CREATE TABLE [Room] (
   [number] tinyint,
   [type] nvarchar(50) NOT NULL,
   [price] money NOT NULL,
-  [status] nvarchar(20) NOT NULL CHECK ([status] IN (N'Đang thuê', N'Sẵn sàng', N'Không sẵn sàng')) DEFAULT N'Sẵn sàng',
+  [status] nvarchar(20) NOT NULL CHECK ([status] IN (N'Đang thuê', N'Sẵn sàng', N'Không sẵn sàng', N'Hỏng')) DEFAULT N'Sẵn sàng',
   [note] nvarchar(max) DEFAULT '',
   [isDelete] bit DEFAULT (0)
 )

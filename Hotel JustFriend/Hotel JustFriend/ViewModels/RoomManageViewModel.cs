@@ -1,6 +1,7 @@
 ﻿using DevExpress.Mvvm;
 using DevExpress.Mvvm.DataAnnotations;
 using Hotel_JustFriend.Models;
+using Hotel_JustFriend.Utility;
 using Hotel_JustFriend.Views;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -30,9 +31,10 @@ namespace Hotel_JustFriend.ViewModels
         {
             try
             {
-                ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms.Where(x => x.isDelete == false));
+                ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms.Where(x => x.isDelete == false).OrderBy(x => x.floor).ThenBy(x => x.number));
                 ListRoomStatus = new ObservableCollection<string>(ListRoom.Select(x => x.status).Distinct());
                 ListRoomType = new ObservableCollection<string>(ListRoom.Select(x => x.type).Distinct());
+                
             }
             catch { return; }
         }
@@ -56,10 +58,19 @@ namespace Hotel_JustFriend.ViewModels
             try
             {
                 if (SelectedRoom == null)
-                    MyMessageBox.Show("Không có gì để xóa cả!", "Thông báo", System.Windows.MessageBoxButton.OK);
+                {
+                    MyMessageBox.Show("Không có gì để xóa!", "Thông báo", System.Windows.MessageBoxButton.OK);
+                    return;
+                }
+                if (SelectedRoom.status == "Đang thuê")
+                {
+                    MyMessageBox.Show("Phòng đang được thuê!", "Thông báo", System.Windows.MessageBoxButton.OK);
+                    return;
+                }
 
                 DataProvider.Instance.DB.Rooms.Where(x => x.idRoom == SelectedRoom.idRoom).SingleOrDefault().isDelete = true;
                 DataProvider.Instance.DB.SaveChanges();
+                MyMessageBox.Show("Xóa thành công!", "Thông báo", System.Windows.MessageBoxButton.OK);
 
                 LoadDB();
             }
@@ -67,18 +78,24 @@ namespace Hotel_JustFriend.ViewModels
         }
 
         [Command]
-        public void EditRoom()
+        public void FixRoom()
         {
             try
             {
                 if (SelectedRoom == null)
-                    MyMessageBox.Show("Không có gì để sửa cả!", "Thông báo", System.Windows.MessageBoxButton.OK);
+                {
+                    MyMessageBox.Show("Không có gì để sửa chữa!", "Thông báo", System.Windows.MessageBoxButton.OK);
+                    return;
+                }
+                if (SelectedRoom.status != "Hỏng")
+                {
+                    MyMessageBox.Show("Phòng không hỏng!", "Thông báo", System.Windows.MessageBoxButton.OK);
+                    return;
+                }
 
-                RoomDetailView editRoom = new RoomDetailView();
-                editRoom.txtFloor.Text = SelectedRoom.floor.ToString();
-                editRoom.txtNumber.Text = SelectedRoom.number.ToString();
-                editRoom.txtPrice.Text = SelectedRoom.price.ToString("C");
-                editRoom.ShowDialog();
+                DataProvider.Instance.DB.Rooms.Where(x => x.idRoom == SelectedRoom.idRoom).SingleOrDefault().status = "Sẵn sàng";
+                DataProvider.Instance.DB.SaveChanges();
+                MyMessageBox.Show("Sửa chữa thành công!", "Thông báo", System.Windows.MessageBoxButton.OK);
 
                 LoadDB();
             }
