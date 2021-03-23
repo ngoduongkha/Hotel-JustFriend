@@ -8,7 +8,6 @@
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DesignHeight="651.2" d:DesignWidth="1200"
-             DataContext="{StaticResource ProductManageVM}"
              x:Name="uc">
     <Grid Margin="20">
         <Grid.ColumnDefinitions>
@@ -71,44 +70,47 @@
                     </StackPanel>
                 </materialDesign:Card>
             </Grid>
-            <Grid Grid.Row="1">
-                <materialDesign:Card Margin="10" Background="White">
-                    <DataGrid
-                        ItemsSource="{Binding ListRoom}"
-                        AutoGenerateColumns="False"
-                        CanUserReorderColumns="True"
-                        CanUserResizeColumns="True"
-                        AlternatingRowBackground="AliceBlue"
-                        AutomationProperties.IsColumnHeader="True"
-                        CanUserDeleteRows="False"
-                        CanUserAddRows="False"
-                        CanUserResizeRows="True">
-                        <DataGrid.Resources>
-                            <Style TargetType="DataGridColumnHeader">
-                                <Setter Property="Background" Value="Pink"  />
-                                <Setter Property="FontWeight" Value="SemiBold"/>
-                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                <Setter Property="FontSize" Value="20"/>
-                                <Setter Property="BorderBrush" Value="White"/>
-                                <Setter Property="BorderThickness" Value="0.5"/>
-                            </Style>
-                            <Style TargetType="DataGridCell">
-                                <Setter Property="HorizontalAlignment" Value="Center"/>
-                                <Setter Property="FontSize" Value="20"/>
-                            </Style>
-                        </DataGrid.Resources>
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="STT" MinWidth="50"/>
-                            <DataGridTextColumn Header="Tên món" MinWidth="200"/>
-                            <DataGridTextColumn Header="Đơn vị tính" MinWidth="150"/>
-                            <DataGridTextColumn Header="Đơn giá" MinWidth="180"/>
-                            <DataGridTextColumn Header="Số lượng" MinWidth="80"/>
-                            <DataGridTextColumn Header="Trạng thái" MinWidth="120"/>
-                        </DataGrid.Columns>
-
-                    </DataGrid>
+            <materialDesign:Card Grid.Row="1">
+                <materialDesign:Card Height="200" Width="150">
+                    <StackPanel Margin="5" Orientation="Vertical">
+                        <Image
+                            Source="/Hotel JustFriend;component/Resources/Images/demo.jpg"
+                            Stretch="Fill"/>
+                        <TextBlock
+                            Text="Tên"
+                            HorizontalAlignment="Stretch"
+                            TextAlignment="Center"/>
+                        <TextBlock
+                            Text="Số lượng"
+                            HorizontalAlignment="Stretch"
+                            TextAlignment="Center"/>
+                    </StackPanel>
+                    <!--<materialDesign:Card.Template>
+                        <ControlTemplate>
+                            <Trigger>
+                                <Setter Property="AllowDrop" Value="False">
+                                    
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate>
+                    </materialDesign:Card.Template>-->
                 </materialDesign:Card>
-            </Grid>
+                <!--</materialDesign:Card>
+                    <ItemsControl
+                        ItemsSource="{Binding ListProduct}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel></StackPanel>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding displayName}"></TextBlock>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </materialDesign:Card>-->
+            </materialDesign:Card>
         </Grid>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
