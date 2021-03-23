@@ -170,7 +170,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\MyMessageBox.cs" />
+    <Compile Include="Views\MyMessageBoxes\MyMessageBox.cs" />
     <Compile Include="Models\Product.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

@@ -8,8 +8,22 @@ using System.Windows.Controls;
 
 namespace Hotel_JustFriend.ViewModels
 {
-    class ProductManageViewModel: ViewModelBase
-    { 
+    [POCOViewModel]
+    class ProductManageViewModel : ViewModelBase
+    {
+        private ObservableCollection<Product> _ListProduct;
+
+        public ObservableCollection<Product> ListProduct { get => _ListProduct; set => _ListProduct = value; }
+
+        public ProductManageViewModel()
+        {
+            LoadDB();
+        }
+
+        private void LoadDB()
+        {
+            ListProduct = new ObservableCollection<Product>(DataProvider.Instance.DB.Products.Where(x => x.isDelete == false));
+        }
 
         [Command]
         public void AddProduct()
