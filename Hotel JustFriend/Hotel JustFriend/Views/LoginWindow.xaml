@@ -11,8 +11,7 @@
         DataContext="{StaticResource LoginVM}" ResizeMode="NoResize"
         WindowStyle="None" AllowsTransparency="True" Background="{x:Null}"
         x:Name="window">
-    <Border BorderBrush="Transparent" CornerRadius="20" BorderThickness="0.1"
-            Background="Pink">
+    <Border BorderBrush="Black" BorderThickness="0.5" CornerRadius="10" Background="Pink">
         <i:Interaction.Triggers>
             <i:EventTrigger EventName="MouseLeftButtonDown">
                 <i:InvokeCommandAction
@@ -21,13 +20,6 @@
             </i:EventTrigger>
         </i:Interaction.Triggers>
         <Grid>
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseLeftButtonDown">
-                    <i:InvokeCommandAction
-                        Command="{Binding MouseMoveWindowCommand}"
-                        CommandParameter="{Binding ElementName=window}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition></RowDefinition>

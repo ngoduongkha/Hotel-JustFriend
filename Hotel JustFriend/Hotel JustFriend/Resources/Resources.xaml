@@ -5,5 +5,4 @@
     <viewmodels:LoginViewModel x:Key="LoginVM"></viewmodels:LoginViewModel>
     <viewmodels:MainViewModel x:Key="MainVM"></viewmodels:MainViewModel>
     <viewmodels:BusinessViewModel x:Key="BusinessVM"></viewmodels:BusinessViewModel>
-    <viewmodels:RoomManageViewModel x:Key="RoomManageVM"></viewmodels:RoomManageViewModel>
 </ResourceDictionary>

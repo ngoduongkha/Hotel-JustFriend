@@ -11,6 +11,7 @@ namespace Hotel_JustFriend.Views
         public RoomManageView()
         {
             InitializeComponent();
+            this.DataContext = new RoomManageViewModel();
         }
     }
 }

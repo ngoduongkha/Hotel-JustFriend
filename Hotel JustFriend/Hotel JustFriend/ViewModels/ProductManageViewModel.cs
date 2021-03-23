@@ -19,8 +19,7 @@ namespace Hotel_JustFriend.ViewModels
                 ProductDetailView addproduct = new ProductDetailView();
                 addproduct.ShowDialog();
             }
-            catch
-            { }
+            catch { return; }
         }
 
     }

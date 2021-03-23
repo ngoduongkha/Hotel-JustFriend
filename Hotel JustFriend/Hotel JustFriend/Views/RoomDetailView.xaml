@@ -11,165 +11,145 @@
         ResizeMode="NoResize" WindowStyle="None"
         AllowsTransparency="True" Background="Transparent"
         Title="Thêm phòng" Height="500" Width="550"
-        x:Name="window">
-    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="10">
-        <Grid>
+        x:Name="window" ShowInTaskbar="False">
+    <Border BorderBrush="Black" BorderThickness="0.5" CornerRadius="10" Background="Pink">
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="MouseLeftButtonDown">
+                <i:InvokeCommandAction Command="{Binding MouseMoveWindowCommand}" CommandParameter="{Binding ElementName=window}"/>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+        <Grid Margin="5">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Border BorderBrush="{x:Null}" BorderThickness="0.1"
-                Background="#ffb8f8" Grid.Row="0">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="MouseLeftButtonDown">
-                        <i:InvokeCommandAction Command="{Binding MouseMoveWindowCommand}" CommandParameter="{Binding ElementName=window}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-                <Grid Background="{x:Null}" Height="Auto">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0">
-                            <Label Content="{Binding Title, ElementName=window}"
-                        VerticalAlignment="Center" HorizontalAlignment="Center"
-                        Foreground="WhiteSmoke"
-                        FontSize="25" FontWeight="Bold"/>
-                        </Grid>
-                        <Grid Grid.Column="1">
-                            <Grid.Resources>
-                                <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Width" Value="50"/>
-                                    <Setter Property="Margin" Value="0,0,0,20"/>
-                                    <Setter Property="BorderThickness" Value="0"/>
-                                    <Setter Property="Background" Value="Transparent"/>
-                                    <Setter Property="Foreground" Value="Black"/>
-                                </Style>
-                            </Grid.Resources>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Button
-                                HorizontalAlignment="Right" VerticalAlignment="Top"
-                                ToolTip="Thoát" Margin="10" Height="30" Width="30"
-                                Command="{Binding CloseCommand}" Padding="0"
-                                CommandParameter="{Binding ElementName=window}"
-                                Background="Transparent" BorderBrush="Transparent">
-                                <materialDesign:PackIcon
-                                    Kind="WindowClose" Width="30" Height="30" 
-                                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                            </Button>
-                        </Grid>
-                    </Grid>
-                </Grid>
-            </Border>
-            <Border 
-            Background="White" 
-            BorderBrush="{x:Null}" 
-            BorderThickness="0.1"
-            Grid.Row="1">
+            <Grid Margin="0 0 0 5">
+                <Label 
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Foreground="White"
+                    FontSize="25" FontWeight="Bold"
+                    Content="{Binding Title, ElementName=window}"/>
+                <Button
+                    HorizontalAlignment="Right" VerticalAlignment="Center"
+                    ToolTip="Thoát"
+                    Command="{Binding CloseCommand}" Padding="0"
+                    CommandParameter="{Binding ElementName=window}"
+                    Background="Transparent" BorderBrush="Transparent">
+                    <materialDesign:PackIcon
+                        Kind="WindowClose" Width="30" Height="30" 
+                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                </Button>
+            </Grid>
+            <materialDesign:Card Grid.Row="1" Background="White">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Grid
-                    Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0">
-                            <TextBox
-                                x:Name="txtFloor"
-                                materialDesign:ValidationAssist.HorizontalAlignment="Right"
-                                materialDesign:HintAssist.Hint="Tầng"
-                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Left"
-                                Width="200" FontSize="20" Margin="30,0">
-                                <TextBox.Text>
-                                    <Binding
-                                        Path="RoomFloor"
-                                        Mode="OneWayToSource"
-                                        UpdateSourceTrigger="PropertyChanged">
-                                        <Binding.ValidationRules>
-                                            <validation:NotNullValidation
-                                                ErrorMessage="Vui lòng nhập tầng!"/>
-                                            <validation:NumberValidation
-                                                Min="1"
-                                                Max="99"/>
-                                        </Binding.ValidationRules>
-                                    </Binding>
-                                </TextBox.Text>
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="TextChanged">
-                                        <i:InvokeCommandAction
-                                            Command="{Binding GenerateDisplayNameCommand}"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                            </TextBox>
-                        </Grid>
-                        <Grid Grid.Column="1">
-                            <TextBox
-                                x:Name="txtNumber"
-                                materialDesign:ValidationAssist.HorizontalAlignment="Right"
-                                materialDesign:HintAssist.Hint="Phòng"
-                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Left"
-                                FontSize="20" Width="200">
-                                <TextBox.Text>
-                                    <Binding
-                                        Path="RoomNumber"
-                                        Mode="OneWayToSource"
-                                        UpdateSourceTrigger="PropertyChanged">
-                                        <Binding.ValidationRules>
-                                            <validation:NotNullValidation
-                                                ErrorMessage="Vui lòng nhập phòng!"/>
-                                            <validation:NumberValidation
-                                                Min="1"
-                                                Max="99"/>
-                                        </Binding.ValidationRules>
-                                    </Binding>
-                                </TextBox.Text>
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="TextChanged">
-                                        <i:InvokeCommandAction
-                                            Command="{Binding GenerateDisplayNameCommand}"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                            </TextBox>
-                        </Grid>
-                    </Grid>
-                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                    <DockPanel Grid.Row="0" LastChildFill="True">
                         <TextBox
-                            FontSize="20" Width="300" Height="55"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
-                            Margin="30,18,0,0"
+                            DockPanel.Dock="Left"
+                            x:Name="txtFloor"
+                            materialDesign:ValidationAssist.HorizontalAlignment="Right"
+                            materialDesign:HintAssist.Hint="Tầng"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            materialDesign:ValidationAssist.Background="White"
+                            Width="100" FontSize="20"
+                            Margin="30 0 15 0">
+                            <TextBox.Text>
+                                <Binding
+                                    Path="RoomFloor"
+                                    Mode="OneWayToSource"
+                                    UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <validation:NotNullValidation
+                                            ErrorMessage="Vui lòng nhập tầng!"/>
+                                        <validation:NumberValidation
+                                            Min="1"
+                                            Max="99"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction
+                                            Command="{Binding GenerateDisplayNameCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                        <TextBox
+                            DockPanel.Dock="Left"
+                            x:Name="txtNumber"
+                            materialDesign:ValidationAssist.HorizontalAlignment="Right"
+                            materialDesign:HintAssist.Hint="Phòng"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            materialDesign:ValidationAssist.Background="White"
+                            FontSize="20" Width="100"
+                            Margin="15 0 15 0">
+                            <TextBox.Text>
+                                <Binding
+                                    Path="RoomNumber"
+                                    Mode="OneWayToSource"
+                                    UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <validation:NotNullValidation
+                                                ErrorMessage="Vui lòng nhập phòng!"/>
+                                        <validation:NumberValidation
+                                                Min="1"
+                                                Max="99"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction
+                                            Command="{Binding GenerateDisplayNameCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                        <TextBox
+                            DockPanel.Dock="Left"
+                            FontSize="20"
+                            Margin="15 0 30 0"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                             materialDesign:HintAssist.Hint="Tên phòng"
                             Text="{Binding DisplayName, Mode=OneWay}"
                             IsEnabled="False"/>
+                    </DockPanel>
+                    <DockPanel Grid.Row="1" LastChildFill="True">
                         <ComboBox
+                            DockPanel.Dock="Left"
+                            x:Name="txtStatus"
+                            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                            materialDesign:HintAssist.Hint="Trạng thái"
+                            materialDesign:ValidationAssist.HorizontalAlignment="Right"
+                            FontSize="20"
+                            Width="200" Margin="30 25 15 0"
+                            SelectedIndex="0" Text="{Binding RoomStatus, Mode=OneWayToSource}">
+                            <ComboBoxItem Content="Sẵn sàng"/>
+                            <ComboBoxItem Content="Đang thuê"/>
+                            <ComboBoxItem Content="Không sẵn sàng"/>
+                            <ComboBoxItem Content="Hỏng"/>
+                        </ComboBox>
+                        <ComboBox
+                            DockPanel.Dock="Left"
                             x:Name="txtType"
                             Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                            materialDesign:ValidationAssist.Background="White"
                             materialDesign:HintAssist.Hint="Loại phòng"
                             materialDesign:ValidationAssist.HorizontalAlignment="Right"
-                            IsEditable="True" FontSize="20"
-                            Width="150" Margin="30,18,0,0"
+                            FontSize="20" Margin="15 25 30 0"
+                            IsEditable="True"
                             ItemsSource="{Binding Path=ListRoomType}">
                             <ComboBox.Text>
                                 <Binding
                                     Path="RoomType"
-                                    Mode="OneWayToSource">
+                                    Mode="OneWayToSource"
+                                    UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
                                         <validation:NotNullValidation
                                             ValidatesOnTargetUpdated="True"
@@ -178,23 +158,17 @@
                                 </Binding>
                             </ComboBox.Text>
                         </ComboBox>
-                    </StackPanel>
+                    </DockPanel>
                     <Grid Grid.Row="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="72*"/>
-                            <ColumnDefinition Width="362*"/>
-                            <ColumnDefinition Width="24*"/>
-                            <ColumnDefinition Width="91*"/>
-                        </Grid.ColumnDefinitions>
                         <TextBox
                             x:Name="txtPrice"
                             FontSize="20"
                             materialDesign:ValidationAssist.HorizontalAlignment="Right"
                             materialDesign:HintAssist.Hint="Giá"
-                            HorizontalAlignment="Left" VerticalAlignment="Top"
-                            Margin="30,18,0,0" Width="350"
+                            Margin="30 25 30 0"
                             materialDesign:TextFieldAssist.SuffixText="VNĐ/ngày"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            materialDesign:ValidationAssist.Background="White"
                             MaxLines="1" MaxLength="11" Grid.ColumnSpan="2">
                             <TextBox.Text>
                                 <Binding
@@ -220,20 +194,18 @@
                             </i:Interaction.Triggers>
                         </TextBox>
                     </Grid>
-                    <Grid Grid.Row="3">
-                        <TextBox
-                            x:Name="txtNote"
-                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                            VerticalAlignment="Top"
-                            Height="100"
-                            FontSize="15"
-                            Margin="25, 25, 25, 25" MinWidth="320"
-                            AcceptsReturn="True"
-                            TextWrapping="Wrap"
-                            VerticalScrollBarVisibility="Auto"
-                            materialDesign:HintAssist.Hint="Ghi chú"
-                            Text="{Binding RoomNote, Mode=OneWayToSource}"/>
-                    </Grid>
+                    <TextBox Grid.Row="3"
+                        x:Name="txtNote"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch"
+                        FontSize="15"
+                        Margin="30 25 30 25"
+                        AcceptsReturn="True"
+                        TextWrapping="Wrap"
+                        VerticalScrollBarVisibility="Auto"
+                        materialDesign:HintAssist.Hint="Ghi chú"
+                        Text="{Binding RoomNote, Mode=OneWayToSource}"/>
                     <Grid Grid.Row="4">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -243,12 +215,12 @@
                             <Button
                                 Content="Lưu" Width="100" Height="50"
                                 VerticalAlignment="Center" HorizontalAlignment="Right"
-                                Margin="0 0 40 0" materialDesign:ButtonAssist.CornerRadius="10"
+                                Margin="0 0 40 20" materialDesign:ButtonAssist.CornerRadius="10"
                                 Background="#fa91d7" BorderBrush="#fa91d7"
                                 Command="{Binding SaveCommand}"
                                 CommandParameter="{Binding ElementName=window}">
                                 <Button.Style>
-                                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatAccentBgButton}">
+                                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                         <Setter Property="IsEnabled" Value="False"/>
                                         <Style.Triggers>
                                             <MultiDataTrigger>
@@ -269,14 +241,14 @@
                             <Button
                                 Content="Hủy" Width="100" Height="50"
                                 VerticalAlignment="Center" HorizontalAlignment="Left"
-                                Margin="40 0 0 0" materialDesign:ButtonAssist.CornerRadius="10"
+                                Margin="40 0 0 20" materialDesign:ButtonAssist.CornerRadius="10"
                                 BorderBrush="#ff7383" Background="#ff7383"
                                 Command="{Binding CloseCommand}"
                                 CommandParameter="{Binding ElementName=window}"/>
                         </Grid>
                     </Grid>
                 </Grid>
-            </Border>
+            </materialDesign:Card>
         </Grid>
     </Border>
 </Window>
