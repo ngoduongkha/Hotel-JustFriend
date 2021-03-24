@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hotel_JustFriend.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace Hotel_JustFriend.Views
         public AccountManageView()
         {
             InitializeComponent();
+            this.DataContext = new AccountManageViewModel();
         }
     }
 }
