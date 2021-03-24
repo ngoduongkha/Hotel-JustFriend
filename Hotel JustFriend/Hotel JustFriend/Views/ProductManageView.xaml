@@ -72,44 +72,50 @@
             </Grid>
             <materialDesign:Card Grid.Row="1">
                 <materialDesign:Card Height="200" Width="150">
-                    <StackPanel Margin="5" Orientation="Vertical">
-                        <Image
-                            Source="/Hotel JustFriend;component/Resources/Images/demo.jpg"
-                            Stretch="Fill"/>
+                    <Grid Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="140"/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid
+                            x:Name="gridVisible"
+                            Visibility="Hidden"
+                            Grid.Row="0">
+                            <materialDesign:PackIcon
+                                Width="50" Height="50"
+                                Kind="Edit"/>
+                            <Grid.Style>
+                                <Style TargetType="Grid">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Grid.Style>
+                        </Grid>
+                        <Grid Grid.Row="0">
+                            <Grid.Background>
+                                <ImageBrush ImageSource="/Hotel JustFriend;component/Resources/Images/banner.png"/>
+                            </Grid.Background>
+                        </Grid>                        
                         <TextBlock
+                            Grid.Row="1"
                             Text="Tên"
                             HorizontalAlignment="Stretch"
-                            TextAlignment="Center"/>
+                            VerticalAlignment="Stretch"
+                            TextAlignment="Center"
+                            FontSize="15"/>
                         <TextBlock
+                            Grid.Row="2"
                             Text="Số lượng"
                             HorizontalAlignment="Stretch"
-                            TextAlignment="Center"/>
-                    </StackPanel>
-                    <!--<materialDesign:Card.Template>
-                        <ControlTemplate>
-                            <Trigger>
-                                <Setter Property="AllowDrop" Value="False">
-                                    
-                                </Setter>
-                            </Trigger>
-                        </ControlTemplate>
-                    </materialDesign:Card.Template>-->
+                            VerticalAlignment="Stretch"
+                            TextAlignment="Center"
+                            FontSize="15"/>
+                    </Grid>
                 </materialDesign:Card>
-                <!--</materialDesign:Card>
-                    <ItemsControl
-                        ItemsSource="{Binding ListProduct}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel></StackPanel>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding displayName}"></TextBlock>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </materialDesign:Card>-->
             </materialDesign:Card>
         </Grid>
         <Grid Grid.Column="1">

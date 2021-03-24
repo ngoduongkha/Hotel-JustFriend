@@ -26,7 +26,7 @@ CREATE TABLE [Account] (
 GO
 
 CREATE TABLE [Product] (
-  [idProduct] varchar(64) PRIMARY KEY,
+  [idProduct] char(32) PRIMARY KEY,
   [displayName] nvarchar(max) NOT NULL,
   [unit] nvarchar(20) NOT NULL,
   [pricePerUnit] money NOT NULL,
@@ -84,7 +84,7 @@ CREATE TABLE [Customer] (
 GO
 
 CREATE TABLE [ProductImport] (
-  [idImport] varchar(64) PRIMARY KEY,
+  [idImport] char(32) PRIMARY KEY,
   [idEmployee] int,
   [dateImport] datetime NOT NULL,
   [importPrice] money NOT NULL
@@ -92,8 +92,8 @@ CREATE TABLE [ProductImport] (
 GO
 
 CREATE TABLE [ProductImportInfo] (
-  [idImport] varchar(64),
-  [idProduct] varchar(64),
+  [idImport] char(32),
+  [idProduct] char(32),
   [quantity] int NOT NULL,
   [price] money NOT NULL,
   PRIMARY KEY ([idImport], [idProduct])
@@ -101,7 +101,7 @@ CREATE TABLE [ProductImportInfo] (
 GO
 
 CREATE TABLE [Bill] (
-  [idBill] varchar(64) PRIMARY KEY,
+  [idBill] char(32) PRIMARY KEY,
   [idRoom] int,
   [idEmployee] int,
   [idCustomer] int,
@@ -112,8 +112,8 @@ CREATE TABLE [Bill] (
 GO
 
 CREATE TABLE [Billinfo] (
-  [idBill] varchar(64),
-  [idProduct] varchar(64),
+  [idBill] char(32),
+  [idProduct] char(32),
   [quantity] int NOT NULL,
   [price] money NOT NULL,
   PRIMARY KEY ([idBill], [idProduct])
@@ -137,7 +137,7 @@ CREATE TABLE [SalaryTable] (
 GO
 
 CREATE TABLE [SalaryRecord] (
-  [idSalaryRecord] varchar(64) PRIMARY KEY,
+  [idSalaryRecord] char(32) PRIMARY KEY,
   [idAccount] int,
   [salaryRecordDate] datetime,
   [total] money NOT NULL
@@ -145,7 +145,7 @@ CREATE TABLE [SalaryRecord] (
 GO
 
 CREATE TABLE [SalaryRecordInfo] (
-  [idSalaryRecord] varchar(64),
+  [idSalaryRecord] char(32),
   [idEmployee] int,
   [numOfShift] int DEFAULT (0),
   [numOfFault] int DEFAULT (0),
