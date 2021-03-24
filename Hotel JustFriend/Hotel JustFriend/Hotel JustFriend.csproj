@@ -342,6 +342,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Images\demo.jpg" />
+    <Resource Include="Resources\Images\logo.png" />
     <Resource Include="Resources\Images\banner.png" />
     <Resource Include="Resources\Images\hotel_cam_icon.ico" />
   </ItemGroup>

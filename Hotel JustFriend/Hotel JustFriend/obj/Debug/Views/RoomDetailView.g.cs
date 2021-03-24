@@ -11,6 +11,7 @@
 
 using DevExpress.Xpf.DXBinding;
 using Hotel_JustFriend.Validations;
+using Hotel_JustFriend.Views;
 using MaterialDesignThemes.Wpf;
 using MaterialDesignThemes.Wpf.Converters;
 using MaterialDesignThemes.Wpf.Transitions;

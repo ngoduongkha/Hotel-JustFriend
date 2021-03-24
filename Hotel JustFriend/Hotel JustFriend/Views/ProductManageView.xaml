@@ -72,44 +72,54 @@
             </Grid>
             <materialDesign:Card Grid.Row="1">
                 <materialDesign:Card Height="200" Width="150">
-                    <StackPanel Margin="5" Orientation="Vertical">
+                    <materialDesign:Card.Resources>
+                        <Style TargetType="materialDesign:Card">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Opacity" Value="0.5"></Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                        <!--<Style TargetType="materialDesign:PackIcon">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Visibility" Value="Visible" TargetName="editIcon"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>-->
+                    </materialDesign:Card.Resources>
+                    <Grid Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="140"/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
                         <Image
-                            Source="/Hotel JustFriend;component/Resources/Images/demo.jpg"
+                            Grid.Row="0"
+                            Source="/Hotel JustFriend;component/Resources/Images/banner.png"
                             Stretch="Fill"/>
+                        <materialDesign:PackIcon
+                            x:Name="editIcon"
+                            Grid.Row="0"
+                            Kind="Edit"
+                            Visibility="Hidden"
+                            />
                         <TextBlock
+                            Grid.Row="1"
                             Text="Tên"
                             HorizontalAlignment="Stretch"
-                            TextAlignment="Center"/>
+                            VerticalAlignment="Stretch"
+                            TextAlignment="Center"
+                            FontSize="15"/>
                         <TextBlock
+                            Grid.Row="2"
                             Text="Số lượng"
                             HorizontalAlignment="Stretch"
-                            TextAlignment="Center"/>
-                    </StackPanel>
-                    <!--<materialDesign:Card.Template>
-                        <ControlTemplate>
-                            <Trigger>
-                                <Setter Property="AllowDrop" Value="False">
-                                    
-                                </Setter>
-                            </Trigger>
-                        </ControlTemplate>
-                    </materialDesign:Card.Template>-->
+                            VerticalAlignment="Stretch"
+                            TextAlignment="Center"
+                            FontSize="15"/>
+                    </Grid>
                 </materialDesign:Card>
-                <!--</materialDesign:Card>
-                    <ItemsControl
-                        ItemsSource="{Binding ListProduct}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel></StackPanel>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding displayName}"></TextBlock>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </materialDesign:Card>-->
             </materialDesign:Card>
         </Grid>
         <Grid Grid.Column="1">
