@@ -127,5 +127,22 @@ namespace Hotel_JustFriend.ViewModels
             }
             catch { return; }
         }
+
+        [Command]
+        public void SearchRoom(RoomManageView p)
+        {
+            try
+            {
+                ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms.Where(x => x.isDelete == false));
+
+                if (string.IsNullOrEmpty(p.txtSearch.Text))
+                    return;
+
+                ListRoom = new ObservableCollection<Room>(ListRoom.Where(x => x.displayName.Contains(p.txtSearch.Text)).ToList());
+
+                p.txtSearch.Text = string.Empty;
+            }
+            catch { return; }
+        }
     }
 }

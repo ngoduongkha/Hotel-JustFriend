@@ -84,6 +84,7 @@ namespace Hotel_JustFriend.ViewModels
             }
             catch { return; }
         }
+
         [Command]
         public void CloseMenuByClick(MainWindow p)
         {
@@ -94,6 +95,7 @@ namespace Hotel_JustFriend.ViewModels
             }
             catch { return; }
         }
+
         [Command]
         public void OpenTabHome(MainWindow p)
         {

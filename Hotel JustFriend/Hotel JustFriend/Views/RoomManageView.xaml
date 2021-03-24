@@ -14,66 +14,11 @@
             <RowDefinition Height="60" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <materialDesign:Card Margin="10 0 0 0">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Margin="20 0 5 0" Kind="Search" Height="24" Width="24" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-                    <TextBox Margin="5 0 10 0" materialDesign:HintAssist.Hint="Tìm phòng" FontSize="15" Background="Transparent" MaxLength="50" MaxWidth="250" Width="250" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
-                    <Button Content="Tìm" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10 0 20 0" Width="70" Height="35" FontSize="15" Background="{DynamicResource PrimaryHueMidBrush}" BorderBrush="{DynamicResource PrimaryHueMidBrush}" materialDesign:ButtonAssist.CornerRadius="5" />
-                </StackPanel>
-            </materialDesign:Card>
-            <materialDesign:Card Margin="10 0 0 0">
-                <StackPanel Orientation="Horizontal">
-                    <ComboBox 
-                        x:Name="txtFilterStatus"
-                        ItemsSource="{Binding ListRoomStatus}"
-                        materialDesign:HintAssist.Hint="Trạng thái"
-                        Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                        HorizontalContentAlignment="Left"
-                        FontSize="15" Width="150" 
-                        Margin="20 0 10 0" />
-                    <ComboBox 
-                        x:Name="txtFilterType"
-                        ItemsSource="{Binding ListRoomType}"
-                        materialDesign:HintAssist.Hint="Loại phòng"                     
-                        Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                        HorizontalContentAlignment="Left" 
-                        FontSize="15" Width="150" 
-                        Margin="10 0 10 0">
-                    </ComboBox>
-                    <Button Content="Lọc" Margin="10 0 20 0" FontSize="15" Width="70" Height="35" Background="{DynamicResource PrimaryHueMidBrush}" BorderBrush="{DynamicResource PrimaryHueMidBrush}" materialDesign:ButtonAssist.CornerRadius="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding RoomFilterCommand}" CommandParameter="{Binding ElementName=RoomManageUC}" />
-                </StackPanel>
-            </materialDesign:Card>
+        <DockPanel Grid.Row="0" LastChildFill="True">
             <Button
-                Margin="10 0 0 0"
-                Content="Thêm" FontWeight="SemiBold" FontSize="15"
-                Foreground="Black"                
-                Background="#9df587" BorderBrush="#9df587"
-                Width="85" Height="50"
-                Command="{Binding AddRoomCommand}"
-                materialDesign:ButtonAssist.CornerRadius="10"/>
-            <Button
-                Margin="10 0 0 0"
-                Content="Xóa" FontWeight="SemiBold" FontSize="15"
-                Foreground="Black"
-                Background="#ff9494" BorderBrush="#ff9494"
-                Width="85" Height="50"
-                Command="{Binding DeleteRoomCommand}"
-                materialDesign:ButtonAssist.CornerRadius="10">
-                <Button.Style>
-                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding SelectedItems.Count,ElementName=dGrid}"
-                                 Value="0">
-                                <Setter Property="IsEnabled"
-                                Value="False" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
-            <Button
-                Margin="10 0 0 0"
+                DockPanel.Dock="Right"
+                Margin="10 0 10 0"
+                HorizontalAlignment="Left"
                 Content="Sửa chữa" FontWeight="SemiBold" FontSize="15"
                 Foreground="Black"
                 Background="#faf896" BorderBrush="#faf896"
@@ -94,7 +39,96 @@
                     </Style>
                 </Button.Style>
             </Button>
-        </StackPanel>
+            <Button
+                DockPanel.Dock="Right"
+                Margin="10 0 0 0"
+                Content="Xóa" FontWeight="SemiBold" FontSize="15"
+                HorizontalAlignment="Left"
+                Foreground="Black"
+                Background="#ff9494" BorderBrush="#ff9494"
+                Width="85" Height="50"
+                Command="{Binding DeleteRoomCommand}"
+                materialDesign:ButtonAssist.CornerRadius="10">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding SelectedItems.Count,ElementName=dGrid}"
+                                 Value="0">
+                                <Setter Property="IsEnabled"
+                                Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button
+                DockPanel.Dock="Right"
+                Margin="10 0 0 0"
+                Content="Thêm" FontWeight="SemiBold" FontSize="15"
+                HorizontalAlignment="Left"
+                Foreground="Black"                
+                Background="#9df587" BorderBrush="#9df587"
+                Width="85" Height="50"
+                Command="{Binding AddRoomCommand}"
+                materialDesign:ButtonAssist.CornerRadius="10"/>
+            <materialDesign:Card Margin="10 0 0 0" DockPanel.Dock="Right">
+                <DockPanel>
+                    <ComboBox 
+                        DockPanel.Dock="Left"
+                        x:Name="txtFilterStatus"
+                        ItemsSource="{Binding ListRoomStatus}"
+                        materialDesign:HintAssist.Hint="Trạng thái"
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                        HorizontalContentAlignment="Left"
+                        FontSize="15" Width="150" MaxWidth="250"
+                        Margin="20 0 10 0" />
+                    <ComboBox 
+                        x:Name="txtFilterType"
+                        ItemsSource="{Binding ListRoomType}"
+                        materialDesign:HintAssist.Hint="Loại phòng"                     
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                        HorizontalContentAlignment="Left" 
+                        FontSize="15" Width="150" MaxWidth="250"
+                        Margin="10 0 10 0">
+                    </ComboBox>
+                    <Button DockPanel.Dock="Right" Content="Lọc" Margin="10 0 20 0" FontSize="15" Width="70" Height="35" Background="{DynamicResource PrimaryHueMidBrush}" BorderBrush="{DynamicResource PrimaryHueMidBrush}" materialDesign:ButtonAssist.CornerRadius="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding RoomFilterCommand}" CommandParameter="{Binding ElementName=RoomManageUC}" />
+                </DockPanel>
+            </materialDesign:Card>
+            <materialDesign:Card Margin="10 0 0 0">
+                <DockPanel LastChildFill="True">
+                    <materialDesign:PackIcon 
+                        DockPanel.Dock="Left" 
+                        Margin="20 0 5 0"
+                        Kind="Search" Height="24"
+                        Width="24" VerticalAlignment="Center" 
+                        HorizontalAlignment="Center" 
+                        HorizontalContentAlignment="Center" 
+                        VerticalContentAlignment="Center" />
+                    <Button 
+                        DockPanel.Dock="Right" 
+                        Content="Tìm" VerticalAlignment="Center" 
+                        HorizontalAlignment="Center" 
+                        HorizontalContentAlignment="Center" 
+                        VerticalContentAlignment="Center" 
+                        Margin="10 0 20 0" Width="70" Height="35" 
+                        FontSize="15"
+                        Background="{DynamicResource PrimaryHueMidBrush}" 
+                        BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                        materialDesign:ButtonAssist.CornerRadius="5" 
+                        Command="{Binding SearchRoomCommand}"
+                        CommandParameter="{Binding ElementName=RoomManageUC}"/>
+                    <TextBox 
+                        x:Name="txtSearch"
+                        DockPanel.Dock="Left" Margin="5 0 10 0" 
+                        materialDesign:HintAssist.Hint="Tìm phòng"
+                        FontSize="15" Background="Transparent" 
+                        MaxLength="50" VerticalAlignment="Center" 
+                        HorizontalAlignment="Stretch" 
+                        HorizontalContentAlignment="Left" 
+                        VerticalContentAlignment="Center" />
+                </DockPanel>
+            </materialDesign:Card>
+        </DockPanel>
         <Grid Grid.Row="1">
             <materialDesign:Card Margin="10">
                 <DataGrid
