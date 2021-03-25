@@ -149,30 +149,52 @@
                             </Style.Triggers>
                         </Style>
                     </materialDesign:Card.Style>
-                    <Grid Margin="5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="140"/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <Grid
+                    <Grid x:Name="grid">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseEnter">
+                                <i:InvokeCommandAction Command="{Binding MouseEnterCommand}" CommandParameter="{Binding ElementName=grid}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="MouseLeave">
+                                <i:InvokeCommandAction Command="{Binding MouseLeaveCommand}" CommandParameter="{Binding ElementName=grid}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <Grid Margin="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="140"/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid
                             x:Name="gridVisible"
                             Grid.Row="0" Background="Red">
-                        </Grid>
-                        <TextBlock
+                            </Grid>
+                            <TextBlock
                             Grid.Row="1"
                             Text="Tên"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Center"
                             TextAlignment="Center"
                             FontSize="15"/>
-                        <TextBlock
+                            <TextBlock
                             Grid.Row="2"
                             Text="Số lượng"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Center"
                             TextAlignment="Center"
                             FontSize="15"/>
+                        </Grid>
+                        <Grid Visibility="Hidden"
+                              Opacity="0.5"
+                              Background="#d9d9d9">
+                        </Grid>
+                        <Grid Visibility="Hidden">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button Content="Edit" Grid.Column="0" Margin="5"/>
+                            <Button Content="Delete" Grid.Column="1" Margin="5"/>
+                        </Grid>
                     </Grid>
                 </materialDesign:Card>
             </materialDesign:Card>

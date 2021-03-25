@@ -465,3 +465,5 @@ D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\AccountMan
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\AccountManageView.baml
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\EmployeeManageView.g.cs
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\EmployeeManageView.baml
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\EmployeeManageView.g.cs
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\EmployeeManageView.baml
