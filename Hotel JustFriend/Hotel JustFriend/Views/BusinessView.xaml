@@ -91,18 +91,19 @@
                     </Style>
                 </Grid.Resources>
                 <materialDesign:Card Margin="10" Background="White">
-                    <ItemsControl ItemsSource="{Binding ListRoom}">
+                    <ItemsControl
+                        ItemsSource="{Binding ListRoom}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel/>
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
-                            <HierarchicalDataTemplate>
-                                <TextBlock Text="{Binding floor}"/>
-                            </HierarchicalDataTemplate>
-                            <!--<DataTemplate>
-                                <Button Margin="10" Content="{Binding displayName}">
+                            <DataTemplate>
+                                <Button 
+                                    Margin="10" 
+                                    Content="{Binding displayName}"
+                                    Click="{Binding SelectRoomCommand}">
                                     <Button.Style>
                                         <Style 
                                             TargetType="Button"
@@ -129,7 +130,7 @@
                                         </Style>
                                     </Button.Style>
                                 </Button>
-                            </DataTemplate>-->
+                            </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </materialDesign:Card>
@@ -141,7 +142,7 @@
                 <RowDefinition Height="400"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label Content="Selected Room's Name" FontSize="30" Margin="20"
+            <Label Content="{Binding SelectedRoom.displayName}" FontSize="30" Margin="20"
                            VerticalAlignment="Center" HorizontalAlignment="Center"
                            FontWeight="SemiBold" Foreground="White" Grid.Row="0"/>
             <materialDesign:Card Grid.Row="1" Margin="10">

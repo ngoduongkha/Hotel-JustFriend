@@ -176,14 +176,7 @@
                         <DataGridTextColumn Header="Đơn giá" MinWidth="120" Binding="{Binding price, StringFormat=\{0:n0\}}" />
                         <DataGridTextColumn Header="Ghi chú" Width="*" MinWidth="180" Binding="{Binding note}"/>
                     </DataGrid.Columns>
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger>
-                            <i:InvokeCommandAction>
-                                
-                            </i:InvokeCommandAction>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                    </DataGrid>
+                </DataGrid>
             </materialDesign:Card>
         </Grid>
     </Grid>
