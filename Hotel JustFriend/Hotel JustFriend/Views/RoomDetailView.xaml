@@ -194,9 +194,11 @@
                             </i:Interaction.Triggers>
                         </TextBox>
                     </Grid>
-                    <TextBox Grid.Row="3"
+                    <TextBox 
+                        Grid.Row="3"
                         x:Name="txtNote"
                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                        materialDesign:HintAssist.Background="White"
                         VerticalAlignment="Stretch"
                         HorizontalAlignment="Stretch"
                         FontSize="15"

@@ -1,4 +1,6 @@
-﻿using Hotel_JustFriend.ViewModels;
+﻿using Hotel_JustFriend.Models;
+using Hotel_JustFriend.ViewModels;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Hotel_JustFriend.Views
@@ -11,6 +13,7 @@ namespace Hotel_JustFriend.Views
         public BusinessView()
         {
             InitializeComponent();
+            this.DataContext = new BusinessViewModel();
         }
     }
 }

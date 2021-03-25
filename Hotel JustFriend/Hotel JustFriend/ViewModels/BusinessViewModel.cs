@@ -3,6 +3,7 @@ using DevExpress.Mvvm.DataAnnotations;
 using Hotel_JustFriend.Models;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Hotel_JustFriend.ViewModels
@@ -32,9 +33,14 @@ namespace Hotel_JustFriend.ViewModels
         }
 
         [Command]
-        public void SelectRoom()
+        private void SelectRoom(Room x)
         {
-
+            try
+            {
+                SelectedRoom = x;
+                MessageBox.Show("a");
+            }
+            catch { return; }
         }
     }
 }

@@ -31,7 +31,11 @@ namespace Hotel_JustFriend.ViewModels
         {
             try
             {
-                ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms.Where(x => x.isDelete == false).OrderBy(x => x.floor).ThenBy(x => x.number));
+                ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms
+                    .Where(x => x.isDelete == false)
+                    .OrderBy(x => x.floor)
+                    .ThenBy(x => x.number));
+
                 ListRoomStatus = new ObservableCollection<string>(ListRoom.Select(x => x.status).Distinct());
                 ListRoomType = new ObservableCollection<string>(ListRoom.Select(x => x.type).Distinct());
             }
@@ -106,7 +110,10 @@ namespace Hotel_JustFriend.ViewModels
         {
             try
             {
-                ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms.Where(x => x.isDelete == false));
+                ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms
+                    .Where(x => x.isDelete == false)
+                    .OrderBy(x => x.floor)
+                    .ThenBy(x => x.number));
 
                 if (string.IsNullOrEmpty(p.txtFilterStatus.Text) && !string.IsNullOrEmpty(p.txtFilterType.Text))
                 {
@@ -141,7 +148,10 @@ namespace Hotel_JustFriend.ViewModels
         {
             try
             {
-                ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms.Where(x => x.isDelete == false));
+                ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms
+                    .Where(x => x.isDelete == false)
+                    .OrderBy(x => x.floor)
+                    .ThenBy(x => x.number));
 
                 if (string.IsNullOrEmpty(p.txtSearch.Text))
                     return;

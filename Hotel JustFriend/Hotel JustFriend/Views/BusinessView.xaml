@@ -7,12 +7,11 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             d:DesignHeight="651.2" d:DesignWidth="1200"
-             DataContext="{StaticResource BusinessVM}">
+             d:DesignHeight="651.2" d:DesignWidth="1200">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="450"/>
+            <ColumnDefinition Width="810"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
@@ -90,9 +89,14 @@
                         </Style.Triggers>
                     </Style>
                 </Grid.Resources>
-                <materialDesign:Card Margin="10" Background="White">
+                <materialDesign:Card
+                    Margin="10"
+                    Background="White"
+                    MaxWidth="1050"
+                    Padding="5">
                     <ItemsControl
-                        ItemsSource="{Binding ListRoom}">
+                        ItemsSource="{Binding ListRoom}"
+                        x:Name="MyItems">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel/>
@@ -101,12 +105,14 @@
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Button 
-                                    Margin="10" 
+                                    Width="120"
+                                    Height="50"
+                                    Margin="5"
                                     Content="{Binding displayName}">
                                     <Button.Style>
                                         <Style 
                                             TargetType="Button"
-                                            BasedOn="{StaticResource MaterialDesignRaisedDarkButton}">
+                                            BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                             <Style.Triggers>
                                                 <DataTrigger Binding="{Binding status}" Value="Sẵn sàng">
                                                     <Setter Property="Background" Value="Green"/>
@@ -124,7 +130,13 @@
                                                 <DataTrigger Binding="{Binding status}" Value="Hỏng">
                                                     <Setter Property="Background" Value="Red"/>
                                                     <Setter Property="BorderBrush" Value="Red"/>
+                                                    <Setter Property="IsEnabled" Value="True"/>
                                                 </DataTrigger>
+                                                <MultiTrigger>
+                                                    <MultiTrigger.Conditions>
+                                                        
+                                                    </MultiTrigger.Conditions>
+                                                </MultiTrigger>
                                             </Style.Triggers>
                                         </Style>
                                     </Button.Style>
@@ -141,10 +153,10 @@
                 <RowDefinition Height="400"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label Content="aaa" FontSize="30" Margin="20"
+            <Label Content="{Binding SelectedRoom.displayName}" FontSize="30" Margin="20"
                            VerticalAlignment="Center" HorizontalAlignment="Center"
                            FontWeight="SemiBold" Foreground="White" Grid.Row="0"/>
-            <materialDesign:Card Grid.Row="1" Margin="10">
+            <materialDesign:Card Grid.Row="1" Margin="10,10,9.6,10">
                 <StackPanel>
                     <Label Content="Danh sách dịch vụ" FontSize="20" FontWeight="SemiBold"
                                    VerticalAlignment="Center" HorizontalAlignment="Center"/>
