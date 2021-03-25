@@ -102,8 +102,7 @@
                             <DataTemplate>
                                 <Button 
                                     Margin="10" 
-                                    Content="{Binding displayName}"
-                                    Click="{Binding SelectRoomCommand}">
+                                    Content="{Binding displayName}">
                                     <Button.Style>
                                         <Style 
                                             TargetType="Button"
@@ -142,7 +141,7 @@
                 <RowDefinition Height="400"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label Content="{Binding SelectedRoom.displayName}" FontSize="30" Margin="20"
+            <Label Content="aaa" FontSize="30" Margin="20"
                            VerticalAlignment="Center" HorizontalAlignment="Center"
                            FontWeight="SemiBold" Foreground="White" Grid.Row="0"/>
             <materialDesign:Card Grid.Row="1" Margin="10">
