@@ -34,7 +34,6 @@ namespace Hotel_JustFriend.ViewModels
                 ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms.Where(x => x.isDelete == false).OrderBy(x => x.floor).ThenBy(x => x.number));
                 ListRoomStatus = new ObservableCollection<string>(ListRoom.Select(x => x.status).Distinct());
                 ListRoomType = new ObservableCollection<string>(ListRoom.Select(x => x.type).Distinct());
-                
             }
             catch { return; }
         }
@@ -111,15 +110,24 @@ namespace Hotel_JustFriend.ViewModels
 
                 if (string.IsNullOrEmpty(p.txtFilterStatus.Text) && !string.IsNullOrEmpty(p.txtFilterType.Text))
                 {
-                    ListRoom = new ObservableCollection<Room>(ListRoom.Where(x => x.type == p.txtFilterType.Text));
+                    ListRoom = new ObservableCollection<Room>(ListRoom
+                        .Where(x => x.type == p.txtFilterType.Text)
+                        .OrderBy(x => x.floor)
+                        .ThenBy(x => x.number));
                 }
                 else if (!string.IsNullOrEmpty(p.txtFilterStatus.Text) && string.IsNullOrEmpty(p.txtFilterType.Text))
                 {
-                    ListRoom = new ObservableCollection<Room>(ListRoom.Where(x => x.status == p.txtFilterStatus.Text));
+                    ListRoom = new ObservableCollection<Room>(ListRoom
+                        .Where(x => x.status == p.txtFilterStatus.Text)
+                        .OrderBy(x => x.floor)
+                        .ThenBy(x => x.number));
                 }
                 else if (!string.IsNullOrEmpty(p.txtFilterStatus.Text) && !string.IsNullOrEmpty(p.txtFilterType.Text))
                 {
-                    ListRoom = new ObservableCollection<Room>(ListRoom.Where(x => x.type == p.txtFilterType.Text && x.status == p.txtFilterStatus.Text));
+                    ListRoom = new ObservableCollection<Room>(ListRoom
+                        .Where(x => x.type == p.txtFilterType.Text && x.status == p.txtFilterStatus.Text)
+                        .OrderBy(x => x.floor)
+                        .ThenBy(x => x.number));
                 }
 
                 p.txtFilterStatus.Text = string.Empty;
@@ -138,7 +146,11 @@ namespace Hotel_JustFriend.ViewModels
                 if (string.IsNullOrEmpty(p.txtSearch.Text))
                     return;
 
-                ListRoom = new ObservableCollection<Room>(ListRoom.Where(x => x.displayName.Contains(p.txtSearch.Text)).ToList());
+                ListRoom = new ObservableCollection<Room>(ListRoom
+                    .Where(x => x.displayName.Contains(p.txtSearch.Text))
+                    .OrderBy(x => x.floor)
+                    .ThenBy(x => x.number)
+                    .ToList());
 
                 p.txtSearch.Text = string.Empty;
             }

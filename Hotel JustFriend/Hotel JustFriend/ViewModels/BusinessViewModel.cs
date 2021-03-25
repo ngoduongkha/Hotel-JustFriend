@@ -17,7 +17,16 @@ namespace Hotel_JustFriend.ViewModels
 
         public BusinessViewModel()
         {
-            ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms.Where(x => x.isDelete == false));
+            LoadDB();
+        }
+
+        private void LoadDB()
+        {
+            try
+            {
+                ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms.Where(x => x.isDelete == false).OrderBy(x => x.floor).ThenBy(x => x.number));
+            }
+            catch { return; }
         }
     }
 }

@@ -98,11 +98,38 @@
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Vertical">
-                                    <Button Content="{Binding displayName}" Background="Pink"/>
-                                </StackPanel>
-                            </DataTemplate>
+                            <HierarchicalDataTemplate>
+                                <TextBlock Text="{Binding floor}"/>
+                            </HierarchicalDataTemplate>
+                            <!--<DataTemplate>
+                                <Button Margin="10" Content="{Binding displayName}">
+                                    <Button.Style>
+                                        <Style 
+                                            TargetType="Button"
+                                            BasedOn="{StaticResource MaterialDesignRaisedDarkButton}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding status}" Value="Sẵn sàng">
+                                                    <Setter Property="Background" Value="Green"/>
+                                                    <Setter Property="BorderBrush" Value="Green"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding status}" Value="Đang thuê">
+                                                    <Setter Property="Background" Value="Yellow"/>
+                                                    <Setter Property="BorderBrush" Value="Yellow"/>
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding status}" Value="Không sẵn sàng">
+                                                    <Setter Property="Background" Value="Purple"/>
+                                                    <Setter Property="BorderBrush" Value="Purple"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding status}" Value="Hỏng">
+                                                    <Setter Property="Background" Value="Red"/>
+                                                    <Setter Property="BorderBrush" Value="Red"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </DataTemplate>-->
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </materialDesign:Card>
