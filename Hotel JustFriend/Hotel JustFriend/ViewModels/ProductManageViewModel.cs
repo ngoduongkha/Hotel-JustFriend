@@ -36,5 +36,26 @@ namespace Hotel_JustFriend.ViewModels
             catch { return; }
         }
 
+        [Command]
+        public void MouseEnter(Grid p)
+        {
+            try
+            {
+                p.Children[1].Visibility = System.Windows.Visibility.Visible;
+                p.Children[2].Visibility = System.Windows.Visibility.Visible;
+            }
+            catch { return; }
+        }
+
+        [Command]
+        public void MouseLeave(Grid p)
+        {
+            try
+            {
+                p.Children[1].Visibility = System.Windows.Visibility.Hidden;
+                p.Children[2].Visibility = System.Windows.Visibility.Hidden;
+            }
+            catch { return; }
+        }
     }
 }
