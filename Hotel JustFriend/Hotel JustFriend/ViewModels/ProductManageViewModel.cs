@@ -30,8 +30,8 @@ namespace Hotel_JustFriend.ViewModels
         {
             try
             {
-                ProductDetailView addproduct = new ProductDetailView();
-                addproduct.ShowDialog();
+                ProductDetailView addProduct = new ProductDetailView();
+                addProduct.ShowDialog();
             }
             catch { return; }
         }

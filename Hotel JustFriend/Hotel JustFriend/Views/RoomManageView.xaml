@@ -44,13 +44,11 @@
                 Margin="10 0 0 0"
                 Content="Xóa" FontWeight="SemiBold" FontSize="15"
                 HorizontalAlignment="Left"
-                Foreground="Black"
-                Background="#ff9494" BorderBrush="#ff9494"
                 Width="85" Height="50"
                 Command="{Binding DeleteRoomCommand}"
                 materialDesign:ButtonAssist.CornerRadius="10">
                 <Button.Style>
-                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                    <Style TargetType="Button" BasedOn="{StaticResource MyDeclineButtonStyle}">
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding SelectedItems.Count,ElementName=dGrid}"
                                  Value="0">
@@ -62,12 +60,11 @@
                 </Button.Style>
             </Button>
             <Button
+                Style="{StaticResource MyAcceptButtonStyle}"
                 DockPanel.Dock="Right"
                 Margin="10 0 0 0"
                 Content="Thêm" FontWeight="SemiBold" FontSize="15"
                 HorizontalAlignment="Left"
-                Foreground="Black"                
-                Background="#9df587" BorderBrush="#9df587"
                 Width="85" Height="50"
                 Command="{Binding AddRoomCommand}"
                 materialDesign:ButtonAssist.CornerRadius="10"/>

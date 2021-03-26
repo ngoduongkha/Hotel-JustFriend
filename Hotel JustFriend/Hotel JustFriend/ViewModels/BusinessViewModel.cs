@@ -33,7 +33,7 @@ namespace Hotel_JustFriend.ViewModels
         }
 
         [Command]
-        private void SelectRoom(Room x)
+        public void SelectRoom(Room x)
         {
             try
             {

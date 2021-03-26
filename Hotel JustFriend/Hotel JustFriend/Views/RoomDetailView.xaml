@@ -118,7 +118,8 @@
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                             materialDesign:HintAssist.Hint="Tên phòng"
                             Text="{Binding DisplayName, Mode=OneWay}"
-                            IsEnabled="False"/>
+                            IsReadOnly="True"
+                            IsHitTestVisible="False"/>
                     </DockPanel>
                     <DockPanel Grid.Row="1" LastChildFill="True">
                         <ComboBox
@@ -218,11 +219,10 @@
                                 Content="Lưu" Width="100" Height="50"
                                 VerticalAlignment="Center" HorizontalAlignment="Right"
                                 Margin="0 0 40 20" materialDesign:ButtonAssist.CornerRadius="10"
-                                Background="#fa91d7" BorderBrush="#fa91d7"
                                 Command="{Binding SaveCommand}"
                                 CommandParameter="{Binding ElementName=window}">
                                 <Button.Style>
-                                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                                    <Style TargetType="Button" BasedOn="{StaticResource MyAcceptButtonStyle}">
                                         <Setter Property="IsEnabled" Value="False"/>
                                         <Style.Triggers>
                                             <MultiDataTrigger>
@@ -241,10 +241,10 @@
                         </Grid>
                         <Grid Grid.Column="1">
                             <Button
+                                Style="{StaticResource MyDeclineButtonStyle}"
                                 Content="Hủy" Width="100" Height="50"
                                 VerticalAlignment="Center" HorizontalAlignment="Left"
                                 Margin="40 0 0 20" materialDesign:ButtonAssist.CornerRadius="10"
-                                BorderBrush="#ff7383" Background="#ff7383"
                                 Command="{Binding CloseCommand}"
                                 CommandParameter="{Binding ElementName=window}"/>
                         </Grid>

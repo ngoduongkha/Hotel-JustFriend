@@ -17,59 +17,13 @@
         <DockPanel Grid.Row="0" LastChildFill="True">
             <Button
                 DockPanel.Dock="Right"
-                Margin="10 0 10 0"
-                HorizontalAlignment="Left"
-                Content="Sửa" FontWeight="SemiBold" FontSize="15"
-                Foreground="Black"
-                Background="#faf896" BorderBrush="#faf896"
-                Width="85" Height="50"
-                Command="{Binding FixRoomCommand}"
-                materialDesign:ButtonAssist.CornerRadius="10">
-                <Button.Style>
-                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
-                        <Style.Triggers>
-                            <DataTrigger
-                                Binding="{Binding SelectedItems.Count,ElementName=dGrid}"
-                                Value="0">
-                                <Setter 
-                                    Property="IsEnabled"
-                                    Value="False" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
-            <Button
-                DockPanel.Dock="Right"
-                Margin="10 0 0 0"
-                Content="Xóa" FontWeight="SemiBold" FontSize="15"
-                HorizontalAlignment="Left"
-                Foreground="Black"
-                Background="#ff9494" BorderBrush="#ff9494"
-                Width="85" Height="50"
-                Command="{Binding DeleteRoomCommand}"
-                materialDesign:ButtonAssist.CornerRadius="10">
-                <Button.Style>
-                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding SelectedItems.Count,ElementName=dGrid}"
-                                 Value="0">
-                                <Setter Property="IsEnabled"
-                                Value="False" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
-            <Button
-                DockPanel.Dock="Right"
                 Margin="10 0 0 0"
                 Content="Thêm" FontWeight="SemiBold" FontSize="15"
                 HorizontalAlignment="Left"
                 Foreground="Black"                
                 Background="#9df587" BorderBrush="#9df587"
                 Width="85" Height="50"
-                Command="{Binding AddRoomCommand}"
+                Command="{Binding AddProductCommand}"
                 materialDesign:ButtonAssist.CornerRadius="10"/>
             <materialDesign:Card Margin="10 0 0 0" DockPanel.Dock="Right">
                 <DockPanel>
@@ -165,23 +119,22 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
                             <Grid
-                            x:Name="gridVisible"
-                            Grid.Row="0" Background="Red">
+                                Grid.Row="0" Background="Red">
                             </Grid>
                             <TextBlock
-                            Grid.Row="1"
-                            Text="Tên"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Center"
-                            TextAlignment="Center"
-                            FontSize="15"/>
+                                Grid.Row="1"
+                                Text="Tên"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center"
+                                TextAlignment="Center"
+                                FontSize="15"/>
                             <TextBlock
-                            Grid.Row="2"
-                            Text="Số lượng"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Center"
-                            TextAlignment="Center"
-                            FontSize="15"/>
+                                Grid.Row="2"
+                                Text="Số lượng"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center"
+                                TextAlignment="Center"
+                                FontSize="15"/>
                         </Grid>
                         <Grid Visibility="Hidden"
                               Opacity="0.5"
@@ -192,8 +145,18 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Button Content="Edit" Grid.Column="0" Margin="5"/>
-                            <Button Content="Delete" Grid.Column="1" Margin="5"/>
+                            <Button 
+                                Content="{materialDesign:PackIcon Kind=Edit}"
+                                Grid.Column="0" Margin="5"
+                                Background="Green"
+                                BorderBrush="Green"
+                                ToolTip="Sửa"/>
+                            <Button
+                                Content="{materialDesign:PackIcon Kind=Delete}"
+                                Grid.Column="1" Margin="5"
+                                Background="Red"
+                                BorderBrush="Red"
+                                ToolTip="Xóa"/>
                         </Grid>
                     </Grid>
                 </materialDesign:Card>

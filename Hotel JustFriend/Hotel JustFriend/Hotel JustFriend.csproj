@@ -237,6 +237,14 @@
     <Compile Include="Views\RoomManageView.xaml.cs">
       <DependentUpon>RoomManageView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Resources\ButtonResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ColorResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Resources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

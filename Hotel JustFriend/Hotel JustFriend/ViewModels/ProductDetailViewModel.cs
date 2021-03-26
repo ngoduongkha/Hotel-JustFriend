@@ -40,7 +40,6 @@ namespace Hotel_JustFriend.ViewModels
                 if (openFileDialog.ShowDialog() == true)
                 {
                     Uri fileUri = new Uri(openFileDialog.FileName);
-                    p.imgField.Source = new BitmapImage(fileUri);
                     tg = ImageHelper.Instance.ConvertBitMapImageToByteArray(new BitmapImage(fileUri));
                 }
             }
