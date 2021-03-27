@@ -57,8 +57,8 @@ namespace Hotel_JustFriend.ViewModels
                     number = RoomNumber,
                     displayName = DisplayName,
                     status = RoomStatus,
-                    type = RoomType, 
-                    price = RoomPrice, 
+                    type = RoomType,
+                    price = RoomPrice,
                     note = RoomNote
                 };
 

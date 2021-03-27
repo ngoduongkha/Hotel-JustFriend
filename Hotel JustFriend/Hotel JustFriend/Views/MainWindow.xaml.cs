@@ -1,5 +1,4 @@
-﻿using Hotel_JustFriend.ViewModels;
-using System.Windows;
+﻿using System.Windows;
 
 namespace Hotel_JustFriend.Views
 {

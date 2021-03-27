@@ -1,11 +1,9 @@
 ﻿using DevExpress.Mvvm;
 using DevExpress.Mvvm.DataAnnotations;
 using Hotel_JustFriend.Models;
-using Hotel_JustFriend.Utility;
 using Hotel_JustFriend.Views;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows.Controls;
 
 namespace Hotel_JustFriend.ViewModels
 {

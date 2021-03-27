@@ -134,7 +134,7 @@
                                 x:Name="imageHolder"
                                 Height="125"
                                 Width="125"
-                                Stretch="UniformToFill"
+                                Stretch="Fill"
                                 Source="{Binding Image, Mode=OneWay}"/>
                             <Button
                                 Style="{StaticResource MyPrimaryButtonStyle}"

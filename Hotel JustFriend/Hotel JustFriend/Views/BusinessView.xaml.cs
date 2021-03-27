@@ -1,6 +1,4 @@
-﻿using Hotel_JustFriend.Models;
-using Hotel_JustFriend.ViewModels;
-using System.Windows;
+﻿using Hotel_JustFriend.ViewModels;
 using System.Windows.Controls;
 
 namespace Hotel_JustFriend.Views

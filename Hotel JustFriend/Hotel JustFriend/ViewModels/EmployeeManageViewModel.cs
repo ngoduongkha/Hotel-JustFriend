@@ -1,6 +1,4 @@
-﻿using DevExpress.Mvvm;
-using DevExpress.Mvvm.DataAnnotations;
-using System;
+﻿using DevExpress.Mvvm.DataAnnotations;
 namespace Hotel_JustFriend.Views
 {
     [POCOViewModel]
