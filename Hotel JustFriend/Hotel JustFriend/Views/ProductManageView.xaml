@@ -27,16 +27,14 @@
                 <DockPanel>
                     <ComboBox 
                         DockPanel.Dock="Left"
-                        x:Name="txtFilterStatus"
-                        ItemsSource="{Binding ListStatus}"
+                        ItemsSource="{Binding Path=ListStatus}"
                         materialDesign:HintAssist.Hint="Trạng thái"
                         Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                         HorizontalContentAlignment="Left"
                         FontSize="15" Width="150" MaxWidth="250"
                         Margin="20 0 10 0" />
                     <ComboBox 
-                        x:Name="txtFilterType"
-                        ItemsSource="{Binding ListUnit}"
+                        ItemsSource="{Binding Path=ListUnit}"
                         materialDesign:HintAssist.Hint="Đơn giá"                     
                         Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                         HorizontalContentAlignment="Left" 

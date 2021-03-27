@@ -1,17 +1,16 @@
-﻿using Hotel_JustFriend.ViewModels;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace Hotel_JustFriend.Views
 {
     /// <summary>
-    /// Interaction logic for ProductManageWindow.xaml
+    /// Interaction logic for ProductManageView.xaml
     /// </summary>
     public partial class ProductManageView : UserControl
     {
         public ProductManageView()
         {
             InitializeComponent();
-            this.DataContext = new ProductManageViewModel();
+            this.DataContext = new ViewModels.ProductManageViewModel();
         }
     }
 }
