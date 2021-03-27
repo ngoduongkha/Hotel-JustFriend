@@ -13,7 +13,7 @@ namespace Hotel_JustFriend.ViewModels
     {
         private ObservableCollection<Product> _ListProduct;
 
-        public ObservableCollection<Product> ListProduct { get => _ListProduct; set => _ListProduct = value; }
+        public ObservableCollection<Product> ListProduct { get => _ListProduct; set { _ListProduct = value; RaisePropertyChanged(); } }
 
         public ProductManageViewModel()
         {
@@ -32,6 +32,8 @@ namespace Hotel_JustFriend.ViewModels
             {
                 ProductDetailView addProduct = new ProductDetailView();
                 addProduct.ShowDialog();
+
+                LoadDB();
             }
             catch { return; }
         }

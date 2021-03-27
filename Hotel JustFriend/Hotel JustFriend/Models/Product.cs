@@ -26,9 +26,9 @@ namespace Hotel_JustFriend.Models
         public string unit { get; set; }
         public decimal pricePerUnit { get; set; }
         public byte[] image { get; set; }
-        public Nullable<int> quantity { get; set; }
-        public string status { get; set; }
-        public Nullable<bool> isDelete { get; set; }
+        public Nullable<int> quantity { get; set; } = 0;
+        public string status { get; set; } = "Hết hàng";
+        public Nullable<bool> isDelete { get; set; } = false;
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Billinfo> Billinfoes { get; set; }

@@ -205,7 +205,7 @@
     </Compile>
     <Compile Include="Utility\Converter.cs" />
     <Compile Include="Utility\Encryption.cs" />
-    <Compile Include="Utility\ImageHelper.cs" />
+    <Compile Include="Utility\ImageToByteConverter.cs" />
     <Compile Include="Validations\MoneyValidation.cs" />
     <Compile Include="Validations\NotNullValidation.cs" />
     <Compile Include="Validations\NumberValidation.cs" />

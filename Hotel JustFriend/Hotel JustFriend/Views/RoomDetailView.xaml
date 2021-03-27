@@ -163,12 +163,12 @@
                     <Grid Grid.Row="2">
                         <TextBox
                             x:Name="txtPrice"
-                            FontSize="20"
-                            materialDesign:ValidationAssist.HorizontalAlignment="Right"
+                            FontSize="20"                            
                             materialDesign:HintAssist.Hint="Giá"
                             Margin="30 25 30 0"
                             materialDesign:TextFieldAssist.SuffixText="VNĐ/ngày"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            materialDesign:ValidationAssist.HorizontalAlignment="Right"
                             materialDesign:ValidationAssist.Background="White"
                             MaxLines="1" MaxLength="11" Grid.ColumnSpan="2">
                             <TextBox.Text>

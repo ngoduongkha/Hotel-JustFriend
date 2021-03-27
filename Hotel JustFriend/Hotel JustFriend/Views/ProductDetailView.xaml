@@ -3,11 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Hotel_JustFriend.Views" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d"
-        x:Name="window"
-        WindowStyle="None"
-        Title="Thêm sản phẩm" Height="500" Width="550">
+        xmlns:local="clr-namespace:Hotel_JustFriend.Views" 
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:validation="clr-namespace:Hotel_JustFriend.Validations"
+        mc:Ignorable="d" x:Name="window" WindowStyle="None"
+        Title="Thêm sản phẩm" Height="500" Width="550"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize" ShowInTaskbar="False"
+        AllowsTransparency="True" Background="Transparent">
     <Border BorderBrush="Black" BorderThickness="0.5" CornerRadius="10" Background="Pink">
         <i:Interaction.Triggers>
             <i:EventTrigger EventName="MouseLeftButtonDown">
@@ -45,25 +49,47 @@
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
+                            <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBox
                             Grid.Row="0"
+                            x:Name="tbID"
                             materialDesign:HintAssist.Hint="Mã sản phẩm"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                             FontSize="20"
                             IsReadOnly="True"
-                            IsHitTestVisible="False"/>
+                            IsHitTestVisible="False"
+                            Text="{Binding ProductNumber, Mode=OneWay}">
+                        </TextBox>
                         <TextBox
                             Grid.Row="1"
+                            x:Name="tbDisplayName"
                             materialDesign:HintAssist.Hint="Tên sản phẩm"
+                            materialDesign:ValidationAssist.HorizontalAlignment="Right"
+                            materialDesign:ValidationAssist.Background="White"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                            FontSize="20"/>
+                            FontSize="20">
+                            <TextBox.Text>
+                                <Binding
+                                    Path="DisplayName"
+                                    Mode="OneWayToSource"
+                                    UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <validation:NotNullValidation
+                                            ValidatesOnTargetUpdated="True"
+                                            ErrorMessage="Vui lòng nhập tên sản phẩm!"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
                         <ComboBox
                             Grid.Row="2"
+                            x:Name="cbUnit"
                             Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                             materialDesign:HintAssist.Hint="Đơn vị tính"
                             FontSize="20"
-                            SelectedIndex="0">
+                            SelectedIndex="0"
+                            Text="{Binding Unit, Mode=OneWayToSource}">
                             <ComboBoxItem Content="Chai"/>
                             <ComboBoxItem Content="Dĩa"/>
                             <ComboBoxItem Content="Lon"/>
@@ -72,30 +98,81 @@
                         </ComboBox>
                         <TextBox
                             Grid.Row="3"
+                            x:Name="tbPrice"
                             materialDesign:HintAssist.Hint="Đơn giá"
+                            materialDesign:TextFieldAssist.SuffixText="{Binding Path=Text, ElementName=cbUnit, StringFormat='VNĐ/{0}'}"
+                            materialDesign:ValidationAssist.HorizontalAlignment="Right"
+                            materialDesign:ValidationAssist.Background="White"
+                            MaxLength="11"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                            FontSize="20"/>
+                            FontSize="20">
+                            <TextBox.Text>
+                                <Binding
+                                    Path="PricePerUnit"
+                                    Mode="OneWayToSource"
+                                    UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <validation:NotNullValidation
+                                            ValidatesOnTargetUpdated="True"
+                                            ErrorMessage="Vui lòng nhập đơn giá!"/>
+                                        <validation:MoneyValidation
+                                            ValidatesOnTargetUpdated="True"
+                                            Divisor="1000"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction
+                                        Command="{Binding SeparateThousandsCommand}"
+                                        CommandParameter="{Binding ElementName=tbPrice}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                        <Grid Grid.Row="4">
+                            <Image
+                                x:Name="imageHolder"
+                                Height="125"
+                                Width="125"
+                                Stretch="UniformToFill"
+                                Source="{Binding Image, Mode=OneWay}"/>
+                            <Button
+                                Style="{StaticResource MyPrimaryButtonStyle}"
+                                Content="Chọn ảnh" Width="100" Height="50"
+                                HorizontalAlignment="Left"
+                                materialDesign:ButtonAssist.CornerRadius="10"
+                                Command="{Binding SelectImageCommand}"/>
+                        </Grid>
                     </Grid>
                     <Grid>
                         <Button
-                            Style="{StaticResource MyAcceptButtonStyle}"
                             Content="Lưu" Width="100" Height="50"
                             HorizontalAlignment="Left"
                             materialDesign:ButtonAssist.CornerRadius="10"
                             Command="{Binding SaveCommand}"
-                            CommandParameter="{Binding ElementName=window}"/>
+                            CommandParameter="{Binding ElementName=window}">
+                            <Button.Style>
+                                <Style TargetType="Button" BasedOn="{StaticResource MyAcceptButtonStyle}">
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                    <Style.Triggers>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=tbDisplayName}" Value="False"/>
+                                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=tbPrice}" Value="False"/>
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="IsEnabled" Value="True"/>
+                                        </MultiDataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
                         <Button
                             Style="{StaticResource MyDeclineButtonStyle}"
                             Content="Hủy" Width="100" Height="50"
                             HorizontalAlignment="Right"
                             materialDesign:ButtonAssist.CornerRadius="10"
-                            Command="{Binding CloseCommand}"/>
-                    </Grid>
-                    <Grid>
-                        <Rectangle 
-                            Width="25"
-                            Height="25"/>
-                         
+                            Command="{Binding CloseCommand}"
+                            CommandParameter="{Binding ElementName=window}"/>
                     </Grid>
                 </StackPanel>
             </materialDesign:Card>
