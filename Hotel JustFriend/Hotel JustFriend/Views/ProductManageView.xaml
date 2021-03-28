@@ -106,25 +106,26 @@
                                         <Style TargetType="materialDesign:Card">
                                             <Style.Triggers>
                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                    <!--<Setter Property="Effect">
+                                                    <Setter Property="Effect">
                                                         <Setter.Value>
                                                             <DropShadowEffect Color="White" Opacity="0.5"/>
                                                         </Setter.Value>
-                                                    </Setter>-->
+                                                    </Setter>
                                                     <Setter Property="Opacity" Value="0.5"/>
                                                 </Trigger>
                                             </Style.Triggers>
                                         </Style>
                                     </materialDesign:Card.Style>
-                                    <Grid x:Name="grid">
-                                        <!--<i:Interaction.Triggers>
+                                    <Grid x:Name="grid" MouseEnter="grid_MouseEnter"
+                                          MouseLeave="grid_MouseLeave">
+                                        <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="MouseEnter">
-                                                <i:InvokeCommandAction Command="{Binding MouseEnterCommand}" CommandParameter="{Binding ElementName=grid}"/>
+                                                <i:InvokeCommandAction Command="{Binding MouseEnterCommand}" CommandParameter="{Binding}"/>
                                             </i:EventTrigger>
                                             <i:EventTrigger EventName="MouseLeave">
-                                                <i:InvokeCommandAction Command="{Binding MouseLeaveCommand}" CommandParameter="{Binding ElementName=grid}"/>
+                                                <i:InvokeCommandAction Command="{Binding MouseLeaveCommand}" CommandParameter="{Binding}"/>
                                             </i:EventTrigger>
-                                        </i:Interaction.Triggers>-->
+                                        </i:Interaction.Triggers>
                                         <Grid Margin="5">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="140"/>
