@@ -147,6 +147,18 @@ namespace Hotel_JustFriend.ViewModels
             }
             catch { return; }
         }
+        [Command]
+        public void OpenTabEmployeeManage(MainWindow p)
+        {
+            try
+            {
+                p.gridMain.Children.Clear();
+                EmployeeManageView uc = new EmployeeManageView();
+                CloseMenuByClick(p);
+                p.gridMain.Children.Add(uc);
+            }
+            catch { return; }
+        }
         #endregion
     }
 }

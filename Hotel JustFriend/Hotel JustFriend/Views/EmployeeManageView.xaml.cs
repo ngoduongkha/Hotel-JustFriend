@@ -22,6 +22,7 @@ namespace Hotel_JustFriend.Views
         public EmployeeManageView()
         {
             InitializeComponent();
+            this.DataContext = new EmployeeManageViewModel();
         }
     }
 }

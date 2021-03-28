@@ -469,3 +469,15 @@ D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\Emp
 D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\EmployeeManageView.baml
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Resources\ButtonResources.baml
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Resources\ColorResources.baml
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Resources\ButtonResources.baml
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\AccountManageView.g.cs
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\EmployeeManageView.g.cs
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\ProductDetailView.g.cs
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\ProductManageView.g.cs
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Resources\ColorResources.baml
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\AccountManageView.baml
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\EmployeeManageView.baml
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\ProductDetailView.baml
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\ProductManageView.baml
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\EmployeeDetailView.g.cs
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\EmployeeDetailView.baml

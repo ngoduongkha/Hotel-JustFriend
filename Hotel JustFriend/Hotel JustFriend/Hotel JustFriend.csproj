@@ -171,8 +171,12 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AccountManageViewModel.cs" />
+    <Compile Include="ViewModels\EmployeeDetailViewModel.cs" />
     <Compile Include="Views\AccountManageView.xaml.cs">
       <DependentUpon>AccountManageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeeDetailView.xaml.cs">
+      <DependentUpon>EmployeeDetailView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EmployeeManageView.xaml.cs">
       <DependentUpon>EmployeeManageView.xaml</DependentUpon>
@@ -254,6 +258,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\AccountManageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EmployeeDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
