@@ -469,3 +469,5 @@ D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\Emp
 D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\EmployeeManageView.baml
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Resources\ButtonResources.baml
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Resources\ColorResources.baml
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Resources\ButtonResources.baml
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Resources\ColorResources.baml
