@@ -19,6 +19,14 @@
                 Style="{StaticResource MyAcceptButtonStyle}"
                 DockPanel.Dock="Right"
                 Margin="10 0 0 0"
+                Content="Nhập hàng" FontSize="15"
+                Width="120" Height="50"
+                Command="{Binding AddProductCommand}"
+                materialDesign:ButtonAssist.CornerRadius="5"/>
+            <Button
+                Style="{StaticResource MyAcceptButtonStyle}"
+                DockPanel.Dock="Right"
+                Margin="10 0 0 0"
                 Content="Thêm" FontSize="15"
                 Width="85" Height="50"
                 Command="{Binding AddProductCommand}"
@@ -182,9 +190,6 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </Grid>
-            </materialDesign:Card>
-            <materialDesign:Card Grid.Column="1" Margin="10 0 0 0">
-
             </materialDesign:Card>
         </Grid>
     </Grid>
