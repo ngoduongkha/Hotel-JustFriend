@@ -1,5 +1,4 @@
-﻿using Hotel_JustFriend.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,15 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Hotel_JustFriend.Models;
+using Hotel_JustFriend.ViewModels;
 
 namespace Hotel_JustFriend.Views
 {
     /// <summary>
-    /// Interaction logic for EmployeeDetailView.xaml
+    /// Interaction logic for EmployeeUpdateView.xaml
     /// </summary>
-    public partial class EmployeeDetailView : Window
+    public partial class EmployeeUpdateView : Window
     {
-        public EmployeeDetailView(Employee a)
+        public EmployeeUpdateView(Employee a)
         {
             InitializeComponent();
             this.DataContext = new EmployeeDetailViewModel(a);

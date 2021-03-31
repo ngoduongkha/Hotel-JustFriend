@@ -3,8 +3,10 @@ using DevExpress.Mvvm.DataAnnotations;
 using Hotel_JustFriend.Models;
 using Hotel_JustFriend.Utility;
 using Hotel_JustFriend.Views;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 namespace Hotel_JustFriend.Views
 {
@@ -14,10 +16,9 @@ namespace Hotel_JustFriend.Views
         private ObservableCollection<Employee> _ListEmployee;
         private Employee _SelectEmployee;
         private ObservableCollection<EmployeeRole> _ListEmployeeRole;
-        public ObservableCollection<Employee> ListEmployee { get => _ListEmployee; set => _ListEmployee = value; }
+        public ObservableCollection<Employee> ListEmployee { get => _ListEmployee; set { _ListEmployee = value; RaisePropertyChanged(); } }
         public Employee SelectEmployee { get => _SelectEmployee; set => _SelectEmployee = value; }
         public ObservableCollection<EmployeeRole> ListEmployeeRole { get => _ListEmployeeRole; set => _ListEmployeeRole = value; }
-
         private void LoadDB()
         {
             try
@@ -30,6 +31,7 @@ namespace Hotel_JustFriend.Views
         {
             LoadDB();
         }
+
         [Command]
         public void DeleteEmployee()
         {
@@ -46,11 +48,22 @@ namespace Hotel_JustFriend.Views
             }
         }
         [Command]
+        public void UpdateEmployee()
+        {
+            try
+            {
+                EmployeeUpdateView updateEmployee = new EmployeeUpdateView(SelectEmployee);
+                updateEmployee.ShowDialog();
+                LoadDB();
+            }
+            catch { return; }
+        }
+        [Command]
         public void AddEmployee()
         {
             try
             {
-                EmployeeDetailView addemployee = new EmployeeDetailView();
+                EmployeeDetailView addemployee = new EmployeeDetailView(null);
                 addemployee.ShowDialog();
                 LoadDB();
             }

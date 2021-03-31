@@ -481,3 +481,5 @@ E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\ProductDet
 E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\ProductManageView.baml
 E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\EmployeeDetailView.g.cs
 E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\EmployeeDetailView.baml
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\EmployeeUpdateView.g.cs
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\EmployeeUpdateView.baml
