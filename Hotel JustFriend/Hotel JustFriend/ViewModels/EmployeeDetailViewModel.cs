@@ -44,18 +44,21 @@ namespace Hotel_JustFriend.ViewModels
         public Employee SelectEmployee { get => _SelectEmployee; set => _SelectEmployee = value; }
         public EmployeeDetailViewModel(Employee a)
         {
-            SelectEmployee = a;
-            IdEmployeeRole = (int)a.idEmployeeRole;
-            IdEmployee = a.idEmployee;
-            FullName = a.fullName;
-            IdCard = a.idCard;
-            Gender = a.gender;
-            Phone = a.phone;
-            DateOfBirth = a.dateOfBirth;
-            StartDate = a.startDate;
-            EndDate = (DateTime)a.endDate;
-            Image = a.image;
-            isDelete = (bool)a.isDelete;
+            if (a != null)
+            {
+                SelectEmployee = a;
+                IdEmployeeRole = (int)a.idEmployeeRole;
+                IdEmployee = a.idEmployee;
+                FullName = a.fullName;
+                IdCard = a.idCard;
+                Gender = a.gender;
+                Phone = a.phone;
+                DateOfBirth = a.dateOfBirth;
+                StartDate = a.startDate;
+                EndDate = (DateTime)a.endDate;
+                Image = a.image;
+                isDelete = (bool)a.isDelete;
+            }
         }
         [Command]
         public void SelectImage(EmployeeDetailView p)
