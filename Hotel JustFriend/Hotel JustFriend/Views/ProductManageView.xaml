@@ -161,12 +161,14 @@
                                                 <ColumnDefinition/>
                                             </Grid.ColumnDefinitions>
                                             <Button 
+                                                Grid.Row="3"
                                                 Content="{materialDesign:PackIcon Kind=Edit}"
                                                 Grid.Column="0" Margin="5"
                                                 Background="Green"
                                                 BorderBrush="Green"
                                                 ToolTip="Sửa"/>
                                             <Button
+                                                Grid.Row="3"
                                                 Content="{materialDesign:PackIcon Kind=Delete}"
                                                 Grid.Column="1" Margin="5"
                                                 Background="Red"

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\App.xaml
-1645538599
+21-993140828
 21628168987
-54-539445731
-40656514732
-Resources\ButtonResources.xaml;Resources\ColorResources.xaml;Resources\Resources.xaml;Template\BillTemplate.xaml;Views\AccountManageView.xaml;Views\EmployeeDetailView.xaml;Views\EmployeeManageView.xaml;Views\EmployeeUpdateView.xaml;Views\LoginWindow.xaml;Views\MainWindow.xaml;Views\MyMessageBoxes\MyMessageBoxWindow.xaml;Views\ProductDetailView.xaml;Views\ProductManageView.xaml;Views\RoomDetailView.xaml;Views\BusinessView.xaml;Views\RoomManageView.xaml;
+601828344283
+149-164209341
+Resources\ButtonResources.xaml;Resources\ColorResources.xaml;Resources\Resources.xaml;Template\BillTemplate.xaml;Template\ImportBill.xaml;UserControls\NumericSpinner.xaml;UserControls\ProductDetailUC.xaml;UserControls\SellProductUC.xaml;Views\AccountManageView.xaml;Views\EmployeeDetailView.xaml;Views\EmployeeManageView.xaml;Views\EmployeeUpdateView.xaml;Views\LoginWindow.xaml;Views\MainWindow.xaml;Views\MyMessageBoxes\MyMessageBoxWindow.xaml;Views\ProductDetailView.xaml;Views\ProductManageView.xaml;Views\RoomDetailView.xaml;Views\BusinessView.xaml;Views\RoomManageView.xaml;Views\WarehouseView.xaml;
 
 False
 

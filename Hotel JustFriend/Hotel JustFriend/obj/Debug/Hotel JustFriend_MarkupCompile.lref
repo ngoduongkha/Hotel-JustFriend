@@ -3,8 +3,13 @@
 FE:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Resources\ColorResources.xaml;;
 FE:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Resources\Resources.xaml;;
 FE:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Template\BillTemplate.xaml;;
+FE:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\UserControls\NumericSpinner.xaml;;
+FE:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\UserControls\ProductDetailUC.xaml;;
+FE:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\UserControls\SellProductUC.xaml;;
 FE:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\AccountManageView.xaml;;
+FE:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\EmployeeDetailView.xaml;;
 FE:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\EmployeeManageView.xaml;;
+FE:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\EmployeeUpdateView.xaml;;
 FE:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\LoginWindow.xaml;;
 FE:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\MainWindow.xaml;;
 FE:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\MyMessageBoxes\MyMessageBoxWindow.xaml;;
@@ -13,6 +18,6 @@ FE:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\ProductManageView.x
 FE:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\RoomDetailView.xaml;;
 FE:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\BusinessView.xaml;;
 FE:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\RoomManageView.xaml;;
-FE:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\EmployeeDetailView.xaml;;
-FE:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\EmployeeUpdateView.xaml;;
+FE:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\WarehouseView.xaml;;
+FE:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Template\ImportBill.xaml;;
 
