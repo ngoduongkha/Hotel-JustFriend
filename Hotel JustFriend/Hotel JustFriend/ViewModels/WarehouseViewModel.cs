@@ -14,6 +14,7 @@ using GalaSoft.MvvmLight.Command;
 using System.Windows.Media;
 using System.Windows.Input;
 using System.ComponentModel;
+using Hotel_JustFriend.Template;
 using MvvmHelpers;
 
 namespace Hotel_JustFriend.ViewModels
@@ -23,17 +24,12 @@ namespace Hotel_JustFriend.ViewModels
     {
          ProductDetailUC temp;
         static SellProductUC pp;
-
-        private WarehouseView _WarehouseView;
         private ObservableCollection<Product> _ListProduct;
         private ObservableCollection<ProductImport> _ListProductImport;
         private ObservableCollection<ProductImportInfo> _ListProductImportInfo;
         public ObservableCollection<Product> ListProduct { get => _ListProduct; set { _ListProduct = value; RaisePropertyChanged(); } }
-
-        public WarehouseView WarehouseView { get => _WarehouseView; set => _WarehouseView = value; }
         public ObservableCollection<ProductImport> ListProductImport { get => _ListProductImport; set => _ListProductImport = value; }
         public ObservableCollection<ProductImportInfo> ListProductImportInfo { get => _ListProductImportInfo; set => _ListProductImportInfo = value; }
-
         public WarehouseViewModel()
         {
         }
@@ -120,6 +116,32 @@ namespace Hotel_JustFriend.ViewModels
                     k = k + int.Parse(xoadau(childid));
                 }
             }
+            // xuat bill
+            ImportBill billimport = new ImportBill();
+            billimport.tbl_mahd.Text = '#' + p.tbl_mahd.Text;
+            billimport.tbl_date.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            billimport.total_money.Text = k.ToString("#,##0");
+            int d = 0;
+            foreach (object child in p.stp_SelectedProduct.Children)
+            {
+                string chilid = null;
+                ImportProductDetailUC aa = new ImportProductDetailUC();
+                if (child is ProductDetailUC)
+                {
+                    d++;
+                    chilid = (child as ProductDetailUC).id.Text;
+                    Product Product = DataProvider.Instance.DB.Products.Single(x => x.idProduct == chilid);
+                    aa.STT.Text = d.ToString();
+                    aa.ProductName.Text = (child as ProductDetailUC).ProductName.Text;
+                    aa.Price.Text = (child as ProductDetailUC).money.Text;
+                    aa.quantity.Text = (child as ProductDetailUC).NumericSpinner.tb_soluong.Text;
+                    aa.total_money.Text = (child as ProductDetailUC).TotalMoney.Text;
+                    aa.unit.Text = Product.unit.ToString();
+                    billimport.stp_listview.Children.Add(aa);
+                }
+            }
+            billimport.ShowDialog();
+            //---
             ProductImport newProductImport = new ProductImport();
             newProductImport.idImport = p.tbl_mahd.Text;
             newProductImport.idEmployee = 13;
@@ -150,6 +172,7 @@ namespace Hotel_JustFriend.ViewModels
                 }
             }
         }
+
         [Command] 
         public void PickProduct(SellProductUC p)
         {
@@ -212,11 +235,6 @@ namespace Hotel_JustFriend.ViewModels
             ((StackPanel)p.Parent).Children.Remove(p);
 
         }
-        [Command]
-        public void MouseDown()
-        {
-            ListProduct = new ObservableCollection<Product>(DataProvider.Instance.DB.Products.Where(x => x.isDelete == false));
 
-        }
     }
 }

@@ -36,6 +36,7 @@
                            />
                     <TextBlock Text="Admin" 
                            FontSize="15"
+                               x:Name="tbl_name"
                            HorizontalAlignment="Right"
                            TextWrapping="Wrap"
                            FontWeight="SemiBold"
@@ -48,6 +49,7 @@
                            FontWeight="SemiBold"/>
                     <TextBlock Text="10/03/2001 " 
                            FontSize="15"
+                           x:Name="tbl_date"
                            HorizontalAlignment="Right"
                            TextWrapping="Wrap"
                            FontWeight="SemiBold"/>
@@ -61,6 +63,7 @@
                        Foreground="Black"
                        Margin="30,20,10,10"/>
             <TextBlock Text="#123"
+                       x:Name="tbl_mahd"
                      VerticalAlignment="Bottom"
                      HorizontalAlignment="Left"
                      FontSize="14"
@@ -182,51 +185,13 @@
                     FontWeight="SemiBold"/>
             </Grid>
             <Grid Margin="0,25,0,0" Background="#FFFAFA">
+                <ScrollViewer>
+                    <StackPanel 
+                            x:Name="stp_listview" Width="525"
+                               >
+                    </StackPanel>
+                </ScrollViewer>
 
-                <ItemsControl ItemsSource="{Binding ListBillInfo}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate >
-                            <StackPanel Orientation="Horizontal" >
-                                <TextBlock Text="1"
-                                           Margin="0"
-                                           TextWrapping="Wrap"
-                                           Width="35"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"></TextBlock>
-                                <TextBlock Text="{Binding idProduct}"
-                                           TextWrapping="Wrap"
-                                           Margin="0"
-                                           HorizontalAlignment="Center"
-                                           Width="180"
-                                            VerticalAlignment="Center"></TextBlock>
-                                <TextBlock Text="{Binding quantity}" 
-                                           TextWrapping="Wrap"
-                                           Width="85"
-                                           Margin="0"
-                                           HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"></TextBlock>
-                                <TextBlock Text="{Binding price}" 
-                                           TextWrapping="Wrap"
-                                           HorizontalAlignment="Center"
-                                           Margin="0"
-                                           Width="71"
-                                            VerticalAlignment="Center"></TextBlock>
-                                <TextBlock Text="{Binding price}" 
-                                           TextWrapping="Wrap"
-                                           Margin="0"
-                                           HorizontalAlignment="Center"
-                                           Width="70"
-                                            VerticalAlignment="Center"></TextBlock>
-                                <TextBlock Text="{Binding price}"
-                                           TextWrapping="Wrap"
-                                           Margin="0"
-                                           HorizontalAlignment="Center"
-                                           Width="85"
-                                            VerticalAlignment="Center"></TextBlock>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
             </Grid>
         </Grid>
         <Grid Grid.Row="3">
@@ -238,7 +203,6 @@
                 <StackPanel>
                     <TextBlock FontSize="18"></TextBlock>
                     <TextBlock FontSize="18"></TextBlock>
-                    <TextBlock FontSize="18" Margin="30,0,0,0" Background="Pink"></TextBlock>
                 </StackPanel>
 
             </Grid>
@@ -249,16 +213,7 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
                     <StackPanel >
-                        <TextBlock Text="Tổng tiền: "
-                                   FontSize="18"
-                                   Background="#FEECED"
-                                   FontWeight="Medium"
-                                   TextWrapping="Wrap"/>
-                        <TextBlock Text="Giảm: "
-                                   FontSize="18"
-                                   Background="#FEECED"
-                                   FontWeight="Medium"
-                                   TextWrapping="Wrap"/>
+                    
                         <TextBlock Text="Thực thanh toán: "
                                    FontSize="18"
                                    FontWeight="Medium"
@@ -268,18 +223,10 @@
                 </Grid>
                 <Grid Grid.Column="1" Margin="0,0,30,0">
                     <StackPanel>
-                        <TextBlock Text="1.200.000 "
-                                   FontSize="18"
-                                   FontWeight="Medium"
-                                   Background="#FEECED"
-                                   TextWrapping="Wrap"/>
-                        <TextBlock Text="200.000 "
-                                   FontSize="18"
-                                   Background="#FEECED"
-                                   TextWrapping="Wrap"
-                                   FontWeight="Medium"/>
+                        
                         <TextBlock Text="1.000.000 "
                                    FontSize="18"
+                                   x:Name="total_money"
                                    TextWrapping="Wrap"
                                    Background="Pink"
                                    FontWeight="Medium"/>

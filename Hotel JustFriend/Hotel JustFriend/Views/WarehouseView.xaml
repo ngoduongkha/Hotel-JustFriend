@@ -9,6 +9,13 @@
         x:Name="WHView"
         Title="WarehouseView" Height="600" Width="826.667">
     <Grid>
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="MouseDown">
+                <i:InvokeCommandAction 
+                                    Command="{Binding TotalCommand}" 
+                                    CommandParameter="{Binding ElementName=WHView}"/>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="600"></ColumnDefinition>
             <ColumnDefinition Width="193.333"></ColumnDefinition>
@@ -131,7 +138,6 @@
                                     Command="{Binding UpdateSelectedCommand}" 
                                     CommandParameter="{Binding ElementName=WHView}"/>
                                 </i:EventTrigger>
-                               
                             </i:Interaction.Triggers>
                         </StackPanel>
                     </WrapPanel>
