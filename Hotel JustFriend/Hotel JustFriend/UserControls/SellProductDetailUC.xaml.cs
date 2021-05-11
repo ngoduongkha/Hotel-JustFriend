@@ -12,15 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Hotel_JustFriend.ViewModels;
+
 namespace Hotel_JustFriend.UserControls
 {
     /// <summary>
-    /// Interaction logic for SellProductUC.xaml
+    /// Interaction logic for SellProductDetailUC.xaml
     /// </summary>
-    public partial class SellProductUC : UserControl
+    public partial class SellProductDetailUC : UserControl
     {
-        public SellProductUC()
+        public SellProductDetailUC()
         {
             InitializeComponent();
         }

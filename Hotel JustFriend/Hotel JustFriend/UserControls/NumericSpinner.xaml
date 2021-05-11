@@ -13,6 +13,9 @@
             <ColumnDefinition Width="2*"></ColumnDefinition>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
+        <TextBlock Text="aaaa"
+                   x:Name="status"
+                   Visibility="Hidden"></TextBlock>
         <Button
             Style="{StaticResource MaterialDesignIconForegroundButton}"
             ToolTip="MaterialDesignIconForegroundButton"

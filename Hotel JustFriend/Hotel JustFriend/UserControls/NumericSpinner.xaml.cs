@@ -34,6 +34,7 @@ namespace Hotel_JustFriend.UserControls
             s++;
             if (s > 99) s = 99;
             tb_soluong.Text = s.ToString();
+            status.Text = "1";
             ValueChanged(this, new EventArgs());
         }
         private void tb_soluong_TextChanged(object sender, RoutedEventArgs e)
@@ -49,6 +50,7 @@ namespace Hotel_JustFriend.UserControls
                 }
                 soluong = soluong + i;
             }
+            if (tb_soluong.Text == "") tb_soluong.Text = "0";
             if (int.Parse(tb_soluong.Text) > 99) tb_soluong.Text = "99";
             if (int.Parse(tb_soluong.Text) < 0) tb_soluong.Text = "0";
         }
@@ -59,6 +61,7 @@ namespace Hotel_JustFriend.UserControls
             s--;
             if (s < 0) s = 0;
             tb_soluong.Text = s.ToString();
+            status.Text = "0";
             ValueChanged(this, new EventArgs());
         }
     }

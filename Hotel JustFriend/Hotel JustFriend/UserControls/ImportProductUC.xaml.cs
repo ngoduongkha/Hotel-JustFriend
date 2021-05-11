@@ -16,13 +16,14 @@ using Hotel_JustFriend.ViewModels;
 namespace Hotel_JustFriend.UserControls
 {
     /// <summary>
-    /// Interaction logic for SellProductUC.xaml
+    /// Interaction logic for ImportProductUC.xaml
     /// </summary>
-    public partial class SellProductUC : UserControl
+    public partial class ImportProductUC : UserControl
     {
-        public SellProductUC()
+        public ImportProductUC()
         {
             InitializeComponent();
+            this.DataContext = new WarehouseViewModel();
         }
     }
 }

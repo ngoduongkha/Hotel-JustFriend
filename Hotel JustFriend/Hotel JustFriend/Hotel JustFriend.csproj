@@ -194,17 +194,24 @@
     <Compile Include="UserControls\ImportProductDetailUC.xaml.cs">
       <DependentUpon>ImportProductDetailUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ImportProductUC.xaml.cs">
+      <DependentUpon>ImportProductUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\NumericSpinner.xaml.cs">
       <DependentUpon>NumericSpinner.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ProductDetailUC.xaml.cs">
       <DependentUpon>ProductDetailUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\SellProductDetailUC.xaml.cs">
+      <DependentUpon>SellProductDetailUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SellProductUC.xaml.cs">
       <DependentUpon>SellProductUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AccountManageViewModel.cs" />
     <Compile Include="ViewModels\EmployeeDetailViewModel.cs" />
+    <Compile Include="ViewModels\SellProductViewModel.cs" />
     <Compile Include="ViewModels\WarehouseViewModel.cs" />
     <Compile Include="Views\AccountManageView.xaml.cs">
       <DependentUpon>AccountManageView.xaml</DependentUpon>
@@ -278,6 +285,9 @@
     <Compile Include="Views\RoomManageView.xaml.cs">
       <DependentUpon>RoomManageView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SellProductView.xaml.cs">
+      <DependentUpon>SellProductView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\WarehouseView.xaml.cs">
       <DependentUpon>WarehouseView.xaml</DependentUpon>
     </Compile>
@@ -305,11 +315,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\ImportProductUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\NumericSpinner.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\ProductDetailUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SellProductDetailUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -370,6 +388,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\RoomManageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SellProductView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -10,19 +10,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Hotel_JustFriend.ViewModels;
-namespace Hotel_JustFriend.UserControls
+
+namespace Hotel_JustFriend.Views
 {
     /// <summary>
-    /// Interaction logic for SellProductUC.xaml
+    /// Interaction logic for SellProductView.xaml
     /// </summary>
-    public partial class SellProductUC : UserControl
+    public partial class SellProductView : Window
     {
-        public SellProductUC()
+        public SellProductView()
         {
             InitializeComponent();
+            this.DataContext = new SellProductViewModel();
         }
     }
 }

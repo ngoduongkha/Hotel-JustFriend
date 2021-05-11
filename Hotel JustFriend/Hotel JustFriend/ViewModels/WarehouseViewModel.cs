@@ -16,20 +16,39 @@ using System.Windows.Input;
 using System.ComponentModel;
 using Hotel_JustFriend.Template;
 using MvvmHelpers;
+using System.Runtime.CompilerServices;
 
 namespace Hotel_JustFriend.ViewModels
 {
     [POCOViewModel]
-    class WarehouseViewModel : ViewModelBase
+    class WarehouseViewModel : ViewModelBase,INotifyPropertyChanged
     {
-         ProductDetailUC temp;
-        static SellProductUC pp;
+        static WarehouseView whview;
+        ProductDetailUC temp;
+        static ImportProductUC pp;
+        static int TotalMoney_int = 0;
+        private string totalMoney_string = "0";
         private ObservableCollection<Product> _ListProduct;
         private ObservableCollection<ProductImport> _ListProductImport;
         private ObservableCollection<ProductImportInfo> _ListProductImportInfo;
         public ObservableCollection<Product> ListProduct { get => _ListProduct; set { _ListProduct = value; RaisePropertyChanged(); } }
         public ObservableCollection<ProductImport> ListProductImport { get => _ListProductImport; set => _ListProductImport = value; }
         public ObservableCollection<ProductImportInfo> ListProductImportInfo { get => _ListProductImportInfo; set => _ListProductImportInfo = value; }
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+        public string TotalMoney_string 
+        {
+            get => totalMoney_string;
+            set
+            {
+                totalMoney_string = value;
+                OnPropertyChanged();
+            }
+        }
+
         public WarehouseViewModel()
         {
         }
@@ -50,6 +69,8 @@ namespace Hotel_JustFriend.ViewModels
             }
             int k = int.Parse(temp.NumericSpinner.tb_soluong.Text) * int.Parse(tg);
             temp.TotalMoney.Text = string.Format("{0:N0}",k);
+            TotalMoney_int = TotalMoney_int + k;
+            totalMoney_string = TotalMoney_int.ToString("#,##0");
             foreach (object child in p.stp_SelectedProduct.Children)
             {
                 string childid = null;
@@ -60,7 +81,17 @@ namespace Hotel_JustFriend.ViewModels
                 }
             }
             if (temp!=null) p.stp_SelectedProduct.Children.Add(temp);
+            whview = p;
+            whview.total_money.Text = totalMoney_string;
         }
+        string xoadau(string x)
+        {
+            string res = "";
+            for (int i = 0; i < x.Length; i++)
+                if (x[i] != ',') res = res + x[i];
+            return (res);
+        }
+
         [Command]
         public void MoneyChanged(ProductDetailUC p)
         {
@@ -90,19 +121,16 @@ namespace Hotel_JustFriend.ViewModels
                     return;
                 }
             }
+            TotalMoney_int = TotalMoney_int - int.Parse(xoadau(p.TotalMoney.Text));
             k = int.Parse(tg);
             p.money.Text = k.ToString("#,##0");
             k = k * int.Parse(p.NumericSpinner.tb_soluong.Text);
             p.TotalMoney.Text = k.ToString("#,##0");
-
+            TotalMoney_int = TotalMoney_int + k;
+            TotalMoney_string = TotalMoney_int.ToString("#,##0");
+            whview.total_money.Text = totalMoney_string;
         }
-        string xoadau(string x)
-        {
-            string res = "";
-            for (int i = 0; i < x.Length; i++)
-                if (x[i] != ',') res = res + x[i];
-            return (res);
-        }
+ 
         [Command]
         public void btn_thanhtoan(WarehouseView p)
         {
@@ -174,14 +202,14 @@ namespace Hotel_JustFriend.ViewModels
         }
 
         [Command] 
-        public void PickProduct(SellProductUC p)
+        public void PickProduct(ImportProductUC p)
         {
             pp = p;
         }
         [Command]
         public void ChangeQuantity(ProductDetailUC p)
         {
-            if ((p.NumericSpinner.tb_soluong.Text == "") || (p.money.Text=="")) return;
+            TotalMoney_int = TotalMoney_int - int.Parse(xoadau(p.TotalMoney.Text));
             string tg = "";
             int l = p.money.Text.Length;
             for (int i = 0; i < l; i++)
@@ -190,20 +218,9 @@ namespace Hotel_JustFriend.ViewModels
             }
             int k= (int.Parse(p.NumericSpinner.tb_soluong.Text) * int.Parse(tg));
             p.TotalMoney.Text = k.ToString("#,##0");
-        }
-        [Command] 
-        public void Total(WarehouseView p)
-        {
-            long k=0;
-            foreach (object child in p.stp_SelectedProduct.Children)
-            {
-                string childid = null;
-                if (child is ProductDetailUC)
-                {
-                    childid = (child as ProductDetailUC).TotalMoney.Text;
-                    k = k + int.Parse(childid);
-                }
-            }
+            TotalMoney_int = TotalMoney_int + k;
+            totalMoney_string = TotalMoney_int.ToString("#,##0");
+            whview.total_money.Text = totalMoney_string;
         }
         [Command]
         public void LoadDB(WarehouseView p)
@@ -220,18 +237,22 @@ namespace Hotel_JustFriend.ViewModels
             ListProduct = new ObservableCollection<Product>(DataProvider.Instance.DB.Products.Where(x => x.isDelete == false));
              for (int i = 0; i < ListProduct.Count; i++)
              {
-                 SellProductUC product = new SellProductUC();
+                 ImportProductUC product = new ImportProductUC();
+                product.amount.Text = ListProduct[i].quantity.ToString();
                  product.id.Text = ListProduct[i].idProduct.ToString();
                  product.name.Text = ListProduct[i].displayName.ToString();
                  product.money.Text = ListProduct[i].pricePerUnit.ToString("#,##0");
                  product.img.Source = (ImageSource)new Utility.ImageToByteConverter().ConvertBack(ListProduct[i].image as object,null,null,null);
                  p.stp_ListProduct.Children.Add(product);
              }
+            whview = p;
         }
-
         [Command]
         public void DeleteBillInfo(ProductDetailUC p)
         {
+            TotalMoney_int = TotalMoney_int- int.Parse(xoadau(p.TotalMoney.Text));
+            totalMoney_string = TotalMoney_int.ToString("#,##0");
+            whview.total_money.Text = totalMoney_string;
             ((StackPanel)p.Parent).Children.Remove(p);
 
         }
