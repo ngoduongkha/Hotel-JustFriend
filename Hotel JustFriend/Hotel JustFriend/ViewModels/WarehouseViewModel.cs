@@ -123,7 +123,9 @@ namespace Hotel_JustFriend.ViewModels
             }
             TotalMoney_int = TotalMoney_int - int.Parse(xoadau(p.TotalMoney.Text));
             k = int.Parse(tg);
+            int cr = p.money.SelectionStart;
             p.money.Text = k.ToString("#,##0");
+            p.money.Select(cr, 0);
             k = k * int.Parse(p.NumericSpinner.tb_soluong.Text);
             p.TotalMoney.Text = k.ToString("#,##0");
             TotalMoney_int = TotalMoney_int + k;

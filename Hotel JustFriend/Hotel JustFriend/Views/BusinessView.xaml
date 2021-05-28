@@ -105,9 +105,10 @@
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Button 
+                                    x:Name="btn"
                                     Width="120"
                                     Height="50"
-                                    Margin="5"
+                                    Margin="5"                                    
                                     Content="{Binding displayName}">
                                     <Button.Style>
                                         <Style 
@@ -134,7 +135,7 @@
                                                 </DataTrigger>
                                                 <MultiTrigger>
                                                     <MultiTrigger.Conditions>
-                                                        
+
                                                     </MultiTrigger.Conditions>
                                                 </MultiTrigger>
                                             </Style.Triggers>

@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using Hotel_JustFriend.Views;
 
 namespace Hotel_JustFriend.ViewModels
 {
@@ -13,10 +14,10 @@ namespace Hotel_JustFriend.ViewModels
     {
 
         private ObservableCollection<Room> _ListRoom;
-        private Room _SelectedRoom;
+        //private Room _SelectedRoom;
 
         public ObservableCollection<Room> ListRoom { get => _ListRoom; set => _ListRoom = value; }
-        public Room SelectedRoom { get => _SelectedRoom; set { _SelectedRoom = value; RaisePropertyChanged(); } }
+        //public Room SelectedRoom { get => _SelectedRoom; set { _SelectedRoom = value; RaisePropertyChanged(); } }
 
         public BusinessViewModel()
         {
@@ -31,13 +32,19 @@ namespace Hotel_JustFriend.ViewModels
             }
             catch { return; }
         }
+        [Command]
+        public void ClickRoom()
+        {
+            BookingWindow a = new BookingWindow();
+            a.ShowDialog();
+        }
 
         [Command]
         public void SelectRoom(Room x)
         {
             try
             {
-                SelectedRoom = x;
+                //SelectedRoom = x;
                 MessageBox.Show("a");
             }
             catch { return; }

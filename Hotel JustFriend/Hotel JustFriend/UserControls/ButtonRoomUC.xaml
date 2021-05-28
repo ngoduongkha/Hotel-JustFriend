@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="Hotel_JustFriend.UserControls.ButtonRoomUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Hotel_JustFriend.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="120" Margin="5">
+    <Grid>
+        <TextBlock Text="idroom"
+                   x:Name="id_room"
+                   Visibility="Hidden"></TextBlock>
+        <TextBlock Text="0"
+                   x:Name="id_billtemp"
+                   Visibility="Hidden"></TextBlock>
+        <Button Content="name room" x:Name="btn_room"
+                Click="btn_room_Click">
+        </Button>
+    </Grid>
+</UserControl>

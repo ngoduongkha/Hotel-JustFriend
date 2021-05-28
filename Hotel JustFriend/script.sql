@@ -104,7 +104,6 @@ CREATE TABLE [Bill] (
   [idBill] char(32) PRIMARY KEY,
   [idRoom] int,
   [idEmployee] int,
-  [idCustomer] int,
   [checkIn] datetime NOT NULL,
   [checkOut] datetime NOT NULL,
   [totalMoney] money NOT NULL
@@ -156,6 +155,13 @@ CREATE TABLE [SalaryRecordInfo] (
 )
 GO
 
+CREATE TABLE [BillinfoCustomer](
+	[idBill] char(32),
+	[idCustomer] int,
+	PRIMARY KEY ([idBill],[idCustomer])
+)
+GO
+
 ALTER TABLE [Account] ADD FOREIGN KEY ([idEmployee]) REFERENCES [Employee] ([idEmployee])
 GO
 
@@ -180,13 +186,16 @@ GO
 ALTER TABLE [Bill] ADD FOREIGN KEY ([idEmployee]) REFERENCES [Employee] ([idEmployee])
 GO
 
-ALTER TABLE [Bill] ADD FOREIGN KEY ([idCustomer]) REFERENCES [Customer] ([idCustomer])
-GO
-
 ALTER TABLE [Billinfo] ADD FOREIGN KEY ([idBill]) REFERENCES [Bill] ([idBill])
 GO
 
 ALTER TABLE [Billinfo] ADD FOREIGN KEY ([idProduct]) REFERENCES [Product] ([idProduct])
+GO
+
+ALTER TABLE [BillinfoCustomer] ADD FOREIGN KEY ([idBill]) REFERENCES [Bill] ([idBill])
+GO
+
+ALTER TABLE [BillinfoCustomer] ADD FOREIGN KEY ([idCustomer]) REFERENCES [Customer] ([idCustomer])
 GO
 
 ALTER TABLE [Attendance] ADD FOREIGN KEY ([idEmployee]) REFERENCES [Employee] ([idEmployee])

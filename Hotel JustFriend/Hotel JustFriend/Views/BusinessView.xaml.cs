@@ -15,5 +15,6 @@ namespace Hotel_JustFriend.Views
             InitializeComponent();
             this.DataContext = new BusinessViewModel();
         }
+
     }
 }

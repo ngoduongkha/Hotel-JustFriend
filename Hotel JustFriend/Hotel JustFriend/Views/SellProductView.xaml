@@ -12,6 +12,46 @@
             <ColumnDefinition Width="600"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1">
+            <StackPanel>
+                <TextBlock Text="Ban hang"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="30">
+                </TextBlock>
+                <Grid>
+                    <TextBlock Text="Ten nguoi ban"
+                             FontSize="12"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Center"></TextBlock>
+                    <TextBlock Text="Phuc dz"
+                             FontSize="12"
+                             HorizontalAlignment="Right"
+                             VerticalAlignment="Center"></TextBlock>
+                </Grid>
+                <Grid>
+                    <TextBlock Text="Ngay nhap"></TextBlock>
+                    <TextBlock Text="xx.xx.xx"
+                                   x:Name="tbl_date"
+                                   HorizontalAlignment="Right"></TextBlock>
+                </Grid>
+                <Grid>
+                    <TextBlock Text="Ma hoa don"></TextBlock>
+                    <TextBlock Text="xxxxx"
+                                   x:Name="tbl_mahd"
+                                   HorizontalAlignment="Right"></TextBlock>
+                </Grid>
+                <Grid>
+                    <TextBlock Text="Tong tiền: "></TextBlock>
+                    <TextBlock x:Name="total_money"
+                            Text="{Binding Path=TotalMoney_string, 
+                                   Mode=TwoWay,
+                                   UpdateSourceTrigger=PropertyChanged}"
+                                   HorizontalAlignment="Right"></TextBlock>
+                </Grid>
+
+            </StackPanel>
+        </Grid>
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"></RowDefinition>

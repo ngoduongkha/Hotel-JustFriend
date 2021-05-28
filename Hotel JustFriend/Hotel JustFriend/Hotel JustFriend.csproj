@@ -191,6 +191,9 @@
     <Compile Include="Template\ImportBill.xaml.cs">
       <DependentUpon>ImportBill.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ButtonRoomUC.xaml.cs">
+      <DependentUpon>ButtonRoomUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ImportProductDetailUC.xaml.cs">
       <DependentUpon>ImportProductDetailUC.xaml</DependentUpon>
     </Compile>
@@ -215,6 +218,9 @@
     <Compile Include="ViewModels\WarehouseViewModel.cs" />
     <Compile Include="Views\AccountManageView.xaml.cs">
       <DependentUpon>AccountManageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BookingWindow.xaml.cs">
+      <DependentUpon>BookingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EmployeeDetailView.xaml.cs">
       <DependentUpon>EmployeeDetailView.xaml</DependentUpon>
@@ -311,6 +317,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\ButtonRoomUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\ImportProductDetailUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -336,6 +346,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AccountManageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BookingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
