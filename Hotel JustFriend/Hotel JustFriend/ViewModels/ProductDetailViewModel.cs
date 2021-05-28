@@ -1,7 +1,6 @@
 ﻿using DevExpress.Mvvm;
 using DevExpress.Mvvm.DataAnnotations;
 using Hotel_JustFriend.Models;
-using Hotel_JustFriend.Views;
 using Microsoft.Win32;
 using System;
 using System.Collections.ObjectModel;
@@ -12,7 +11,7 @@ using System.Windows.Media.Imaging;
 namespace Hotel_JustFriend.ViewModels
 {
     [POCOViewModel]
-    class ProductDetailViewModel: ViewModelBase
+    class ProductDetailViewModel : ViewModelBase
     {
         private ObservableCollection<Product> _ListProduct;
         private int _ProductNumber;
@@ -27,7 +26,7 @@ namespace Hotel_JustFriend.ViewModels
         public string DisplayName { get => _DisplayName; set => _DisplayName = value; }
         public string Unit { get => _Unit; set => _Unit = value; }
         public decimal PricePerUnit { get => _PricePerUnit; set => _PricePerUnit = value; }
-        public byte[] Image { get => _Image; set { _Image = value; RaisePropertyChanged(); } }        
+        public byte[] Image { get => _Image; set { _Image = value; RaisePropertyChanged(); } }
 
         public ProductDetailViewModel()
         {

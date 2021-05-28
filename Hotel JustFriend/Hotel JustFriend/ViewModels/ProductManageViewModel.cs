@@ -12,17 +12,28 @@ namespace Hotel_JustFriend.ViewModels
     class ProductManageViewModel : ViewModelBase
     {
         private ObservableCollection<Product> _ListProduct;
+        private ObservableCollection<string> _ListUnit;
+        private ObservableCollection<string> _ListStatus;
 
         public ObservableCollection<Product> ListProduct { get => _ListProduct; set { _ListProduct = value; RaisePropertyChanged(); } }
+        public ObservableCollection<string> ListUnit { get => _ListUnit; set { _ListUnit = value; RaisePropertyChanged(); } }
+        public ObservableCollection<string> ListStatus { get => _ListStatus; set { _ListStatus = value; RaisePropertyChanged(); } }
 
         public ProductManageViewModel()
         {
             LoadDB();
+            ListStatus = new ObservableCollection<string>() { "Hết hàng", "Còn hàng", "Sắp hết" };
         }
 
         private void LoadDB()
         {
-            ListProduct = new ObservableCollection<Product>(DataProvider.Instance.DB.Products.Where(x => x.isDelete == false));
+            ListProduct = new ObservableCollection<Product>(DataProvider.Instance.DB.Products
+                .Where(x => x.isDelete == false)
+                .OrderBy(x => x.displayName)
+                .ThenBy(x => x.unit));
+            ListUnit = new ObservableCollection<string>(DataProvider.Instance.DB.Products
+                .Select(x => x.unit)
+                .Distinct());
         }
 
         [Command]
@@ -34,6 +45,30 @@ namespace Hotel_JustFriend.ViewModels
                 addProduct.ShowDialog();
 
                 LoadDB();
+            }
+            catch { return; }
+        }
+
+        [Command]
+        public void SearchProduct(ProductManageView p)
+        {
+            try
+            {
+                ListProduct = new ObservableCollection<Product>(DataProvider.Instance.DB.Products
+                    .Where(x => x.isDelete == false)
+                    .OrderBy(x => x.displayName)
+                    .ThenBy(x => x.unit));
+
+                if (string.IsNullOrEmpty(p.tbSearch.Text))
+                    return;
+
+                ListProduct = new ObservableCollection<Product>(ListProduct
+                    .Where(x => x.displayName.Contains(p.tbSearch.Text))
+                    .OrderBy(x => x.displayName)
+                    .ThenBy(x => x.unit)
+                    .ToList());
+
+                p.tbSearch.Text = string.Empty;
             }
             catch { return; }
         }

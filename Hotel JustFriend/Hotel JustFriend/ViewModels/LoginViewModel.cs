@@ -2,7 +2,6 @@
 using DevExpress.Mvvm.DataAnnotations;
 using Hotel_JustFriend.Models;
 using Hotel_JustFriend.Views;
-using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;

@@ -16,36 +16,48 @@
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0" LastChildFill="True">
             <Button
+                Style="{StaticResource MyAcceptButtonStyle}"
                 DockPanel.Dock="Right"
                 Margin="10 0 0 0"
-                Content="Thêm" FontWeight="SemiBold" FontSize="15"
-                HorizontalAlignment="Left"
-                Foreground="Black"                
-                Background="#9df587" BorderBrush="#9df587"
+                Content="Nhập hàng" FontSize="15"
+                Width="120" Height="50"
+                Command="{Binding AddProductCommand}"
+                materialDesign:ButtonAssist.CornerRadius="5"/>
+            <Button
+                Style="{StaticResource MyAcceptButtonStyle}"
+                DockPanel.Dock="Right"
+                Margin="10 0 0 0"
+                Content="Thêm" FontSize="15"
                 Width="85" Height="50"
                 Command="{Binding AddProductCommand}"
-                materialDesign:ButtonAssist.CornerRadius="10"/>
+                materialDesign:ButtonAssist.CornerRadius="5"/>
             <materialDesign:Card Margin="10 0 0 0" DockPanel.Dock="Right">
                 <DockPanel>
                     <ComboBox 
                         DockPanel.Dock="Left"
-                        x:Name="txtFilterStatus"
-                        ItemsSource="{Binding ListRoomStatus}"
+                        ItemsSource="{Binding Path=ListStatus}"
                         materialDesign:HintAssist.Hint="Trạng thái"
                         Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                         HorizontalContentAlignment="Left"
                         FontSize="15" Width="150" MaxWidth="250"
                         Margin="20 0 10 0" />
                     <ComboBox 
-                        x:Name="txtFilterType"
-                        ItemsSource="{Binding ListRoomType}"
-                        materialDesign:HintAssist.Hint="Loại phòng"                     
+                        ItemsSource="{Binding Path=ListUnit}"
+                        materialDesign:HintAssist.Hint="Đơn giá"                     
                         Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                         HorizontalContentAlignment="Left" 
                         FontSize="15" Width="150" MaxWidth="250"
                         Margin="10 0 10 0">
                     </ComboBox>
-                    <Button DockPanel.Dock="Right" Content="Lọc" Margin="10 0 20 0" FontSize="15" Width="70" Height="35" Background="{DynamicResource PrimaryHueMidBrush}" BorderBrush="{DynamicResource PrimaryHueMidBrush}" materialDesign:ButtonAssist.CornerRadius="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding RoomFilterCommand}" CommandParameter="{Binding ElementName=RoomManageUC}" />
+                    <Button
+                        Style="{StaticResource MyPrimaryButtonStyle}"
+                        DockPanel.Dock="Right" 
+                        Content="Lọc" 
+                        Margin="10 0 20 0" 
+                        FontSize="15" 
+                        Width="70" 
+                        Height="35"
+                        materialDesign:ButtonAssist.CornerRadius="5" />
                 </DockPanel>
             </materialDesign:Card>
             <materialDesign:Card Margin="10 0 0 0">
@@ -59,27 +71,25 @@
                         HorizontalContentAlignment="Center" 
                         VerticalContentAlignment="Center" />
                     <Button 
+                        Style="{StaticResource MyPrimaryButtonStyle}"
                         DockPanel.Dock="Right" 
-                        Content="Tìm" VerticalAlignment="Center" 
-                        HorizontalAlignment="Center" 
-                        HorizontalContentAlignment="Center" 
-                        VerticalContentAlignment="Center" 
-                        Margin="10 0 20 0" Width="70" Height="35" 
+                        Content="Tìm"
+                        Margin="10 0 20 0" 
+                        Width="70" 
+                        Height="35" 
                         FontSize="15"
-                        Background="{DynamicResource PrimaryHueMidBrush}" 
-                        BorderBrush="{DynamicResource PrimaryHueMidBrush}"
                         materialDesign:ButtonAssist.CornerRadius="5" 
-                        Command="{Binding SearchRoomCommand}"
-                        CommandParameter="{Binding ElementName=RoomManageUC}"/>
+                        Command="{Binding SearchProductCommand}"
+                        CommandParameter="{Binding ElementName=ProductManageUC}"/>
                     <TextBox 
-                        x:Name="txtSearch"
+                        x:Name="tbSearch"
                         DockPanel.Dock="Left" Margin="5 0 10 0" 
                         materialDesign:HintAssist.Hint="Tìm phòng"
                         FontSize="15" Background="Transparent" 
                         MaxLength="50" VerticalAlignment="Center" 
                         HorizontalAlignment="Stretch" 
                         HorizontalContentAlignment="Left" 
-                        VerticalContentAlignment="Center" />
+                        VerticalContentAlignment="Center"/>
                 </DockPanel>
             </materialDesign:Card>
         </DockPanel>
@@ -94,7 +104,7 @@
                         ItemsSource="{Binding ListProduct}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <StackPanel Orientation="Horizontal"/>
+                                <WrapPanel Orientation="Horizontal"/>
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
@@ -104,23 +114,24 @@
                                         <Style TargetType="materialDesign:Card">
                                             <Style.Triggers>
                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                    <!--<Setter Property="Effect">
+                                                    <Setter Property="Effect">
                                                         <Setter.Value>
                                                             <DropShadowEffect Color="White" Opacity="0.5"/>
                                                         </Setter.Value>
-                                                    </Setter>-->
+                                                    </Setter>
                                                     <Setter Property="Opacity" Value="0.5"/>
                                                 </Trigger>
                                             </Style.Triggers>
                                         </Style>
                                     </materialDesign:Card.Style>
-                                    <Grid x:Name="grid">
+                                    <Grid x:Name="grid" MouseEnter="grid_MouseEnter"
+                                          MouseLeave="grid_MouseLeave">
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="MouseEnter">
-                                                <i:InvokeCommandAction Command="{Binding MouseEnterCommand}" CommandParameter="{Binding ElementName=grid}"/>
+                                                <i:InvokeCommandAction Command="{Binding MouseEnterCommand}" CommandParameter="{Binding}"/>
                                             </i:EventTrigger>
                                             <i:EventTrigger EventName="MouseLeave">
-                                                <i:InvokeCommandAction Command="{Binding MouseLeaveCommand}" CommandParameter="{Binding ElementName=grid}"/>
+                                                <i:InvokeCommandAction Command="{Binding MouseLeaveCommand}" CommandParameter="{Binding}"/>
                                             </i:EventTrigger>
                                         </i:Interaction.Triggers>
                                         <Grid Margin="5">
@@ -181,9 +192,6 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </Grid>
-            </materialDesign:Card>
-            <materialDesign:Card Grid.Column="1" Margin="10 0 0 0">
-
             </materialDesign:Card>
         </Grid>
     </Grid>
