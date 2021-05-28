@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:Hotel_JustFriend.Template"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        DataContext="{StaticResource BillVM}"
         WindowStartupLocation="CenterScreen"
     Title="Hóa đơn bán hàng" Height="840" Width="592">
     <Grid>

@@ -1,0 +1,143 @@
+﻿<Window x:Class="Hotel_JustFriend.Views.WarehouseView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hotel_JustFriend.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        x:Name="WHView"
+        Title="WarehouseView" Height="600" Width="826.667">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="600"></ColumnDefinition>
+            <ColumnDefinition Width="193.333"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+  
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <StackPanel>
+                    <TextBlock Text="Nhap hang"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="30">
+                    </TextBlock>
+                    <Grid>
+                        <TextBlock Text="Nguoi nhap"
+                             FontSize="12"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Center"></TextBlock>
+                        <TextBlock Text="Phuc dz"
+                             FontSize="12"
+                             HorizontalAlignment="Right"
+                             VerticalAlignment="Center"></TextBlock>
+                    </Grid>
+                    <Grid>
+                        <TextBlock Text="Ngay nhap"></TextBlock>
+                        <TextBlock Text="xx.xx.xx"
+                                   x:Name="tbl_date"
+                                   HorizontalAlignment="Right"></TextBlock>
+                    </Grid>
+                    <Grid>
+                        <TextBlock Text="Ma hoa don"></TextBlock>
+                        <TextBlock Text="xxxxx"
+                                   x:Name="tbl_mahd"
+                                   HorizontalAlignment="Right"></TextBlock>
+                    </Grid>
+                    <Grid>
+                        <TextBlock Text="Tong tiền: "></TextBlock>
+                        <TextBlock x:Name="total_money"
+                            Text="{Binding Path=TotalMoney_string, 
+                                   Mode=TwoWay,
+                                   UpdateSourceTrigger=PropertyChanged}"
+                                   HorizontalAlignment="Right"></TextBlock>
+                    </Grid>
+
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Button Content="Thanh toan"
+                        Command="{Binding btn_thanhtoanCommand}"
+                        CommandParameter="{Binding ElementName=WHView}"></Button>                
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="0" Margin="0,0,0,-0.333" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Border>
+                <Grid Grid.Row="0" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0"
+                           Text="Ma sp"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Column="1"
+                           Text="Tên sản phẩm"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Column="2"
+                           Text="Số lượng"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Column="3"
+                           Text="Đơn giá"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Column="4"
+                           Text="Thành tiền"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Column="5"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Center"></TextBlock>
+                </Grid>
+            </Border>
+            <Grid Grid.Row="1">
+                <ScrollViewer>
+                    <StackPanel 
+                        x:Name="stp_SelectedProduct" 
+                        Width="600">
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+            <Grid Grid.Row="3">
+                <ScrollViewer>
+                    <WrapPanel>
+                        <StackPanel 
+                                x:Name="stp_ListProduct"
+                                Margin="10">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Loaded">
+                                    <i:InvokeCommandAction 
+                                    Command="{Binding LoadDBCommand}" 
+                                    CommandParameter="{Binding ElementName=WHView}"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseDown">
+                                    <i:InvokeCommandAction 
+                                    Command="{Binding UpdateSelectedCommand}" 
+                                    CommandParameter="{Binding ElementName=WHView}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </StackPanel>
+                    </WrapPanel>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
