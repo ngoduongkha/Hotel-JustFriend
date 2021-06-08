@@ -59,10 +59,10 @@
                     Background="Pink" x:Name="borderMain">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
@@ -71,26 +71,25 @@
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0"
                                     Orientation="Horizontal"
-                                    Margin="20">
+                                    Margin="50,10">
                             <Label Content="Phòng:"
                                    FontSize="25"
-                                   VerticalAlignment="Center"
-                                   Margin="15">
+                                   VerticalAlignment="Center">
                             </Label>
                             <TextBox materialDesign:HintAssist.Hint="Tên phòng"
-                                     FontSize="20" VerticalAlignment="Center"/>
+                                     FontSize="20" VerticalAlignment="Center"
+                                     Margin="15,0" Width="150"/>
                         </StackPanel>
                         <StackPanel Grid.Column="1"
-                                    Orientation="Horizontal"
-                                    Margin="20">
+                                    Orientation="Horizontal">
                             <Label Content="Ngày thuê:"
                                    FontSize="25"
-                                   VerticalAlignment="Center"
-                                   Margin="15">
+                                   VerticalAlignment="Center">
                             </Label>
                             <DatePicker materialDesign:HintAssist.Hint="Ngày bắt đầu thuê"
                                         FontSize="20"
-                                        VerticalAlignment="Center"/>
+                                        VerticalAlignment="Center"
+                                        Margin="15"/>
                         </StackPanel>
                     </Grid>
                 </Grid>
