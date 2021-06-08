@@ -291,6 +291,9 @@
     <Compile Include="Views\RoomManageView.xaml.cs">
       <DependentUpon>RoomManageView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\RoomRentalView.xaml.cs">
+      <DependentUpon>RoomRentalView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SellProductView.xaml.cs">
       <DependentUpon>SellProductView.xaml</DependentUpon>
     </Compile>
@@ -402,6 +405,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\RoomManageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RoomRentalView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
