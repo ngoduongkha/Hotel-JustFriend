@@ -57,6 +57,43 @@
             </Border>
             <Border Grid.Row="1" BorderBrush="{x:Null}" CornerRadius="0,0,10,10" BorderThickness="0"
                     Background="Pink" x:Name="borderMain">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0"
+                                    Orientation="Horizontal"
+                                    Margin="20">
+                            <Label Content="Phòng:"
+                                   FontSize="25"
+                                   VerticalAlignment="Center"
+                                   Margin="15">
+                            </Label>
+                            <TextBox materialDesign:HintAssist.Hint="Tên phòng"
+                                     FontSize="20" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1"
+                                    Orientation="Horizontal"
+                                    Margin="20">
+                            <Label Content="Ngày thuê:"
+                                   FontSize="25"
+                                   VerticalAlignment="Center"
+                                   Margin="15">
+                            </Label>
+                            <DatePicker materialDesign:HintAssist.Hint="Ngày bắt đầu thuê"
+                                        FontSize="20"
+                                        VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
             </Border>
         </Grid>
     </Border>
