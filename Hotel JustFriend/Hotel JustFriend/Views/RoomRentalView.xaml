@@ -9,7 +9,7 @@
     xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts"
     x:Class="Hotel_JustFriend.Views.RoomRentalView" DataContext="{StaticResource MainVM}"
     mc:Ignorable="d" WindowStyle="None" WindowStartupLocation="CenterScreen"
-    x:Name="window" Title="Hotel Just Friend" Height="500" Width="800" 
+    x:Name="window" Title="Hotel Just Friend" Height="500" Width="600" 
     ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True"
     >
 
@@ -59,9 +59,9 @@
                     Background="Pink" x:Name="borderMain">
                 <Grid>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="5*"/>
                         <RowDefinition Height="1*"/>
-                        <RowDefinition Height="4*"/>
-                        <RowDefinition Height="0.8*"/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
@@ -73,23 +73,22 @@
                                     Orientation="Horizontal"
                                     Margin="50,10">
                             <Label Content="Phòng:"
-                                   FontSize="25"
+                                   FontSize="20"
                                    VerticalAlignment="Center">
                             </Label>
                             <TextBox materialDesign:HintAssist.Hint="Tên phòng"
                                      FontSize="20" VerticalAlignment="Center"
-                                     Margin="15,0" Width="150"/>
+                                     Margin="15,0" Width="150" IsReadOnly="True"/>
                         </StackPanel>
                         <StackPanel Grid.Column="1"
                                     Orientation="Horizontal">
                             <Label Content="Ngày thuê:"
-                                   FontSize="25"
+                                   FontSize="20"
                                    VerticalAlignment="Center">
                             </Label>
-                            <DatePicker materialDesign:HintAssist.Hint="Ngày bắt đầu thuê"
-                                        FontSize="20"
-                                        VerticalAlignment="Center"
-                                        Margin="15"/>
+                            <TextBox materialDesign:HintAssist.Hint="dd/mm/yyyy"
+                                     FontSize="20" VerticalAlignment="Center"
+                                     Margin="15,0" Width="120" IsReadOnly="True"/>
                         </StackPanel>
                     </Grid>
                     <Grid Grid.Row="1">
@@ -99,6 +98,43 @@
                             <DataGrid>
                             </DataGrid>
                         </GroupBox>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Button Content="Chi tiết phiếu thuê"
+                                FontSize="15" Background="#d0f000"
+                                Foreground="black"
+                                VerticalAlignment="Center"
+                                Height="40"
+                                HorizontalAlignment="Right" Margin="30,0"
+                                BorderBrush="Transparent"/>
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" 
+                                Content="Thêm"
+                                Width="150"
+                                FontSize="18"
+                                Background="{DynamicResource AcceptBrush}"
+                                Foreground="Black"
+                                BorderBrush="Transparent"/>
+                        <Button Grid.Column="1" 
+                                Content="Xóa"
+                                Width="150"
+                                FontSize="18"
+                                Background="{DynamicResource DeclineBrush}"
+                                Foreground="Black"
+                                BorderBrush="Transparent"/>
+                        <Button Grid.Column="2" 
+                                Content="Sửa"
+                                Width="150"
+                                FontSize="18"
+                                Background="{DynamicResource UpdateBrush}"
+                                Foreground="Black"
+                                BorderBrush="Transparent"/>
                     </Grid>
                 </Grid>
             </Border>
