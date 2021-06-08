@@ -59,10 +59,10 @@
                     Background="Pink" x:Name="borderMain">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="70"/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="0.8*"/>
+                        <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
@@ -91,6 +91,14 @@
                                         VerticalAlignment="Center"
                                         Margin="15"/>
                         </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <GroupBox Header="Thông tin chung"
+                                  FontSize="25"
+                                  Margin="30,10">
+                            <DataGrid>
+                            </DataGrid>
+                        </GroupBox>
                     </Grid>
                 </Grid>
             </Border>
