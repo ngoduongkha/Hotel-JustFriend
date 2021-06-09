@@ -47,7 +47,6 @@ namespace Hotel_JustFriend.ViewModels
             {
                 RoomDetailView addRoom = new RoomDetailView();
                 addRoom.ShowDialog();
-
                 LoadDB();
             }
             catch { return; }

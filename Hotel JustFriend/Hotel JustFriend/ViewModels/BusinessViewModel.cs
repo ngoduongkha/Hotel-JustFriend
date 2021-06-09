@@ -33,6 +33,11 @@ namespace Hotel_JustFriend.ViewModels
             catch { return; }
         }
         [Command]
+        public void test()
+        {
+            MessageBox.Show("aaaaaaaaaaaaaa");
+        }
+        [Command]
         public void ClickRoom()
         {
             BookingWindow a = new BookingWindow();
