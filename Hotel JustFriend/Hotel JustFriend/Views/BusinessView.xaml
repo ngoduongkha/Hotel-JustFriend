@@ -105,39 +105,45 @@
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Button 
+                                    Padding="10"
                                     x:Name="btn"
-                                    Width="120"
-                                    Height="50"
-                                    Margin="5"                                    
-                                    Content="{Binding displayName}"
+                                    Width="180"
+                                    Height="150"
+                                    Margin="5"
                                     Command="{Binding ElementName=MyItems, Path=DataContext.SelectRoomCommand}"
-                                    CommandParameter="{Binding}">
+                                    CommandParameter="{Binding}"
+                                    materialDesign:ButtonAssist.CornerRadius="10">
                                     <Button.Style>
                                         <Style 
                                             TargetType="Button"
                                             BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                             <Style.Triggers>
                                                 <DataTrigger Binding="{Binding status}" Value="Sẵn sàng">
-                                                    <Setter Property="Background" Value="Green"/>
-                                                    <Setter Property="BorderBrush" Value="Green"/>
+                                                    <Setter Property="Background" Value="{DynamicResource AcceptBrush}"/>
+                                                    <Setter Property="BorderBrush" Value="{DynamicResource AcceptBrush}"/>
                                                 </DataTrigger>
                                                 <DataTrigger Binding="{Binding status}" Value="Đang thuê">
-                                                    <Setter Property="Background" Value="Yellow"/>
-                                                    <Setter Property="BorderBrush" Value="Yellow"/>
+                                                    <Setter Property="Background" Value="{DynamicResource UpdateBrush}"/>
+                                                    <Setter Property="BorderBrush" Value="{DynamicResource UpdateBrush}"/>
                                                     <Setter Property="Foreground" Value="Black"/>
                                                 </DataTrigger>
                                                 <DataTrigger Binding="{Binding status}" Value="Không sẵn sàng">
-                                                    <Setter Property="Background" Value="Purple"/>
-                                                    <Setter Property="BorderBrush" Value="Purple"/>
+                                                    <Setter Property="Background" Value="#DAB5FF"/>
+                                                    <Setter Property="BorderBrush" Value="#DAB5FF"/>
                                                 </DataTrigger>
                                                 <DataTrigger Binding="{Binding status}" Value="Hỏng">
-                                                    <Setter Property="Background" Value="Red"/>
-                                                    <Setter Property="BorderBrush" Value="Red"/>
+                                                    <Setter Property="Background" Value="{DynamicResource DeclineBrush}"/>
+                                                    <Setter Property="BorderBrush" Value="{DynamicResource DeclineBrush}"/>
                                                     <Setter Property="IsEnabled" Value="True"/>
                                                 </DataTrigger>
                                             </Style.Triggers>
                                         </Style>
                                     </Button.Style>
+                                    <Grid>
+                                        <Image Source="/Hotel JustFriend;component/Resources/Images/room.png"/>
+                                        <Label Content="{Binding displayName}" FontSize="18" Foreground="Black"
+                                               HorizontalAlignment="Center" Margin="0, 20"/>
+                                    </Grid>
                                 </Button>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>

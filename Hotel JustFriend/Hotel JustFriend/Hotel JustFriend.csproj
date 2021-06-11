@@ -476,6 +476,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Images\room.png" />
     <Resource Include="Icon\up.png" />
     <Resource Include="Icon\down.png" />
     <Content Include="Models\Model1.Context.tt">
