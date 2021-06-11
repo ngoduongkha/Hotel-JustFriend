@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Hotel_JustFriend1ModelStoreContainer" CdmEntityContainer="Hotel_JustFriend1Entities">
+  <EntityContainerMapping StorageEntityContainer="Hotel_JustFriendModelStoreContainer" CdmEntityContainer="Hotel_JustFriendEntities">
     <EntitySetMapping Name="Accounts">
-      <EntityTypeMapping TypeName="Hotel_JustFriend1Model.Account">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.Account">
         <MappingFragment StoreEntitySet="Account">
           <ScalarProperty Name="idAccount" ColumnName="idAccount" />
           <ScalarProperty Name="username" ColumnName="username" />
@@ -11,7 +11,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Bills">
-      <EntityTypeMapping TypeName="Hotel_JustFriend1Model.Bill">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.Bill">
         <MappingFragment StoreEntitySet="Bill">
           <ScalarProperty Name="idBill" ColumnName="idBill" />
           <ScalarProperty Name="TotalMoney" ColumnName="TotalMoney" />
@@ -19,7 +19,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Customers">
-      <EntityTypeMapping TypeName="Hotel_JustFriend1Model.Customer">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.Customer">
         <MappingFragment StoreEntitySet="Customer">
           <ScalarProperty Name="idCustomer" ColumnName="idCustomer" />
           <ScalarProperty Name="fullname" ColumnName="fullname" />
@@ -31,7 +31,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="RentInvoices">
-      <EntityTypeMapping TypeName="Hotel_JustFriend1Model.RentInvoice">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.RentInvoice">
         <MappingFragment StoreEntitySet="RentInvoice">
           <ScalarProperty Name="idRentInvoice" ColumnName="idRentInvoice" />
           <ScalarProperty Name="DateStart" ColumnName="DateStart" />
@@ -40,7 +40,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Revenues">
-      <EntityTypeMapping TypeName="Hotel_JustFriend1Model.Revenue">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.Revenue">
         <MappingFragment StoreEntitySet="Revenue">
           <ScalarProperty Name="idRevenue" ColumnName="idRevenue" />
           <ScalarProperty Name="TotalMoney" ColumnName="TotalMoney" />
@@ -48,7 +48,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="RevenuePercentages">
-      <EntityTypeMapping TypeName="Hotel_JustFriend1Model.RevenuePercentage">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.RevenuePercentage">
         <MappingFragment StoreEntitySet="RevenuePercentage">
           <ScalarProperty Name="idrevenuePrecentage" ColumnName="idrevenuePrecentage" />
           <ScalarProperty Name="Percent" ColumnName="Percent" />
@@ -59,7 +59,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Rooms">
-      <EntityTypeMapping TypeName="Hotel_JustFriend1Model.Room">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.Room">
         <MappingFragment StoreEntitySet="Room">
           <ScalarProperty Name="idRoom" ColumnName="idRoom" />
           <ScalarProperty Name="floor" ColumnName="floor" />
@@ -71,19 +71,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="Hotel_JustFriend1Model.sysdiagram">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="definition" ColumnName="definition" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="TypeCustomers">
-      <EntityTypeMapping TypeName="Hotel_JustFriend1Model.TypeCustomer">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.TypeCustomer">
         <MappingFragment StoreEntitySet="TypeCustomer">
           <ScalarProperty Name="idType" ColumnName="idType" />
           <ScalarProperty Name="fullname" ColumnName="fullname" />
@@ -91,7 +80,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TypeRooms">
-      <EntityTypeMapping TypeName="Hotel_JustFriend1Model.TypeRoom">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.TypeRoom">
         <MappingFragment StoreEntitySet="TypeRoom">
           <ScalarProperty Name="idType" ColumnName="idType" />
           <ScalarProperty Name="fullname" ColumnName="fullname" />

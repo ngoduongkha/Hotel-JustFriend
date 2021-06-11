@@ -13,10 +13,10 @@ namespace Hotel_JustFriend.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Hotel_JustFriend1Entities : DbContext
+    public partial class Hotel_JustFriendEntities : DbContext
     {
-        public Hotel_JustFriend1Entities()
-            : base("name=Hotel_JustFriend1Entities")
+        public Hotel_JustFriendEntities()
+            : base("name=Hotel_JustFriendEntities")
         {
         }
     
@@ -32,7 +32,6 @@ namespace Hotel_JustFriend.Models
         public virtual DbSet<Revenue> Revenues { get; set; }
         public virtual DbSet<RevenuePercentage> RevenuePercentages { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TypeCustomer> TypeCustomers { get; set; }
         public virtual DbSet<TypeRoom> TypeRooms { get; set; }
     }

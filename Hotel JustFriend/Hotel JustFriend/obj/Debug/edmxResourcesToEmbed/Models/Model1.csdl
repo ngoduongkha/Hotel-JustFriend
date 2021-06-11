@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Hotel_JustFriend1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="Hotel_JustFriendModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Account">
     <Key>
       <PropertyRef Name="idAccount" />
@@ -67,16 +67,6 @@
     <NavigationProperty Name="RentInvoices" Relationship="Self.FK__RentInvoi__idRoo__3E52440B" FromRole="Room" ToRole="RentInvoice" />
     <NavigationProperty Name="TypeRoom" Relationship="Self.FK__Room__idType__3D5E1FD2" FromRole="Room" ToRole="TypeRoom" />
   </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <EntityType Name="TypeCustomer">
     <Key>
       <PropertyRef Name="idType" />
@@ -130,7 +120,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="Hotel_JustFriend1Entities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="Hotel_JustFriendEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Accounts" EntityType="Self.Account" />
     <EntitySet Name="Bills" EntityType="Self.Bill" />
     <EntitySet Name="Customers" EntityType="Self.Customer" />
@@ -138,7 +128,6 @@
     <EntitySet Name="Revenues" EntityType="Self.Revenue" />
     <EntitySet Name="RevenuePercentages" EntityType="Self.RevenuePercentage" />
     <EntitySet Name="Rooms" EntityType="Self.Room" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="TypeCustomers" EntityType="Self.TypeCustomer" />
     <EntitySet Name="TypeRooms" EntityType="Self.TypeRoom" />
     <AssociationSet Name="FK__Customer__idType__403A8C7D" Association="Self.FK__Customer__idType__403A8C7D">
