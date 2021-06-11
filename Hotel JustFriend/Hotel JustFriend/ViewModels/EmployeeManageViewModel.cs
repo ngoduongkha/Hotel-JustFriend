@@ -13,6 +13,7 @@ namespace Hotel_JustFriend.Views
     [POCOViewModel]
     public class EmployeeManageViewModel : ViewModelBase
     {
+        /*
         private ObservableCollection<Employee> _ListEmployee;
         private Employee _SelectEmployee;
         private ObservableCollection<EmployeeRole> _ListEmployeeRole;
@@ -69,6 +70,7 @@ namespace Hotel_JustFriend.Views
             }
             catch { return; }
         }
+        */
 
     }
 }

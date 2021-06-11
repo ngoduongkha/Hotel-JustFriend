@@ -14,12 +14,11 @@
             }
             set { _Instance = value; }
         }
-
-        public Hotel_JustFriendEntities DB { get; set; }
+        public Hotel_JustFriend1Entities DB { get; set; }
 
         private DataProvider()
         {
-            DB = new Hotel_JustFriendEntities();
+            DB = new Hotel_JustFriend1Entities();
         }
     }
 }

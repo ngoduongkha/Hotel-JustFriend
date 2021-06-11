@@ -1,437 +1,196 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Hotel_JustFriendModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="Hotel_JustFriend1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Account">
     <Key>
       <PropertyRef Name="idAccount" />
     </Key>
     <Property Name="idAccount" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="idAccountRole" Type="int" />
-    <Property Name="idEmployee" Type="int" />
     <Property Name="username" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="password" Type="char" MaxLength="64" Nullable="false" />
-  </EntityType>
-  <EntityType Name="AccountRole">
-    <Key>
-      <PropertyRef Name="idAccountRole" />
-    </Key>
-    <Property Name="idAccountRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="displayName" Type="nvarchar" MaxLength="100" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Attendance">
-    <Key>
-      <PropertyRef Name="idEmployee" />
-      <PropertyRef Name="dateAbsence" />
-    </Key>
-    <Property Name="idEmployee" Type="int" Nullable="false" />
-    <Property Name="dateAbsence" Type="date" Nullable="false" />
   </EntityType>
   <EntityType Name="Bill">
     <Key>
       <PropertyRef Name="idBill" />
     </Key>
-    <Property Name="idBill" Type="varchar" MaxLength="64" Nullable="false" />
-    <Property Name="idRoom" Type="int" />
-    <Property Name="idEmployee" Type="int" />
-    <Property Name="idCustomer" Type="int" />
-    <Property Name="checkIn" Type="datetime" Nullable="false" />
-    <Property Name="checkOut" Type="datetime" Nullable="false" />
-    <Property Name="totalMoney" Type="money" Nullable="false" />
+    <Property Name="idBill" Type="int" Nullable="false" />
+    <Property Name="TotalMoney" Type="money" />
   </EntityType>
-  <EntityType Name="Billinfo">
-    <Key>
-      <PropertyRef Name="idBill" />
-      <PropertyRef Name="idProduct" />
-    </Key>
-    <Property Name="idBill" Type="varchar" MaxLength="64" Nullable="false" />
-    <Property Name="idProduct" Type="varchar" MaxLength="64" Nullable="false" />
-    <Property Name="quantity" Type="int" Nullable="false" />
-    <Property Name="price" Type="money" Nullable="false" />
-  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Hotel_JustFriend1.dbo.BillInfo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="BillInfo">
+          <Property Name="NumberDay" Type="int" />
+          <Property Name="Price" Type="money" />
+          <Property Name="idBill" Type="int" />
+          <Property Name="idRoom" Type="int" />
+          <Property Name="idCustomer" Type="int" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Hotel_JustFriend1.dbo.Constant' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Constant">
+          <Property Name="MaxCustomer" Type="int" />
+          <Property Name="Percent" Type="float" />
+          <Property Name="number" Type="float" />
+        </EntityType>-->
   <EntityType Name="Customer">
     <Key>
       <PropertyRef Name="idCustomer" />
     </Key>
-    <Property Name="idCustomer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idCustomer" Type="int" Nullable="false" />
     <Property Name="fullname" Type="nvarchar(max)" Nullable="false" />
     <Property Name="idCard" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="phone" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="gender" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="idType" Type="int" Nullable="false" />
     <Property Name="address" Type="nvarchar(max)" />
     <Property Name="dateOfBirth" Type="date" />
   </EntityType>
-  <EntityType Name="Employee">
+  <EntityType Name="RentInvoice">
     <Key>
-      <PropertyRef Name="idEmployee" />
+      <PropertyRef Name="idRentInvoice" />
     </Key>
-    <Property Name="idEmployee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="idEmployeeRole" Type="int" />
-    <Property Name="fullName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="idCard" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="gender" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="phone" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="dateOfBirth" Type="date" Nullable="false" />
-    <Property Name="startDate" Type="date" Nullable="false" />
-    <Property Name="endDate" Type="date" />
-    <Property Name="image" Type="varbinary(max)" Nullable="false" />
-    <Property Name="isDelete" Type="bit" />
+    <Property Name="idRentInvoice" Type="int" Nullable="false" />
+    <Property Name="DateStart" Type="date" />
+    <Property Name="idRoom" Type="int" />
   </EntityType>
-  <EntityType Name="EmployeeRole">
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Hotel_JustFriend1.dbo.RentInvoiceInfo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="RentInvoiceInfo">
+          <Property Name="idRentInvoice" Type="int" />
+          <Property Name="idCustomer" Type="int" />
+        </EntityType>-->
+  <EntityType Name="Revenue">
     <Key>
-      <PropertyRef Name="idEmployeeRole" />
+      <PropertyRef Name="idRevenue" />
     </Key>
-    <Property Name="idEmployeeRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="displayName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="idRevenue" Type="int" Nullable="false" />
+    <Property Name="TotalMoney" Type="money" />
   </EntityType>
-  <EntityType Name="Product">
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Hotel_JustFriend1.dbo.RevenueInfo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="RevenueInfo">
+          <Property Name="Percent" Type="float" />
+          <Property Name="Month" Type="int" />
+          <Property Name="Year" Type="int" />
+          <Property Name="idRoom" Type="int" />
+        </EntityType>-->
+  <EntityType Name="RevenuePercentage">
     <Key>
-      <PropertyRef Name="idProduct" />
+      <PropertyRef Name="idrevenuePrecentage" />
     </Key>
-    <Property Name="idProduct" Type="varchar" MaxLength="64" Nullable="false" />
-    <Property Name="displayName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="unit" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="pricePerUnit" Type="money" Nullable="false" />
-    <Property Name="image" Type="varbinary(max)" Nullable="false" />
-    <Property Name="quantity" Type="int" />
-    <Property Name="status" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="isDelete" Type="bit" />
-  </EntityType>
-  <EntityType Name="ProductImport">
-    <Key>
-      <PropertyRef Name="idImport" />
-    </Key>
-    <Property Name="idImport" Type="varchar" MaxLength="64" Nullable="false" />
-    <Property Name="idEmployee" Type="int" />
-    <Property Name="dateImport" Type="datetime" Nullable="false" />
-    <Property Name="importPrice" Type="money" Nullable="false" />
-  </EntityType>
-  <EntityType Name="ProductImportInfo">
-    <Key>
-      <PropertyRef Name="idImport" />
-      <PropertyRef Name="idProduct" />
-    </Key>
-    <Property Name="idImport" Type="varchar" MaxLength="64" Nullable="false" />
-    <Property Name="idProduct" Type="varchar" MaxLength="64" Nullable="false" />
-    <Property Name="quantity" Type="int" Nullable="false" />
-    <Property Name="price" Type="money" Nullable="false" />
+    <Property Name="idrevenuePrecentage" Type="int" Nullable="false" />
+    <Property Name="Percent" Type="float" />
+    <Property Name="Month" Type="int" />
+    <Property Name="Year" Type="int" />
+    <Property Name="idRoom" Type="int" />
   </EntityType>
   <EntityType Name="Room">
     <Key>
       <PropertyRef Name="idRoom" />
     </Key>
-    <Property Name="idRoom" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idRoom" Type="int" Nullable="false" />
+    <Property Name="floor" Type="int" Nullable="false" />
     <Property Name="displayName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="floor" Type="tinyint" />
-    <Property Name="number" Type="tinyint" />
-    <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="price" Type="money" Nullable="false" />
-    <Property Name="status" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="idType" Type="int" Nullable="false" />
+    <Property Name="status" Type="int" Nullable="false" />
     <Property Name="note" Type="nvarchar(max)" />
     <Property Name="isDelete" Type="bit" />
   </EntityType>
-  <EntityType Name="SalaryRecord">
+  <EntityType Name="sysdiagrams">
     <Key>
-      <PropertyRef Name="idSalaryRecord" />
+      <PropertyRef Name="diagram_id" />
     </Key>
-    <Property Name="idSalaryRecord" Type="varchar" MaxLength="64" Nullable="false" />
-    <Property Name="idAccount" Type="int" />
-    <Property Name="salaryRecordDate" Type="datetime" />
-    <Property Name="total" Type="money" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
-  <EntityType Name="SalaryRecordInfo">
+  <EntityType Name="TypeCustomer">
     <Key>
-      <PropertyRef Name="idEmployee" />
-      <PropertyRef Name="salaryMonth" />
+      <PropertyRef Name="idType" />
     </Key>
-    <Property Name="idSalaryRecord" Type="varchar" MaxLength="64" />
-    <Property Name="idEmployee" Type="int" Nullable="false" />
-    <Property Name="numOfShift" Type="int" />
-    <Property Name="numOfFault" Type="int" />
-    <Property Name="totalSalary" Type="money" />
-    <Property Name="salaryMonth" Type="date" Nullable="false" />
-    <Property Name="coefficients" Type="real" />
+    <Property Name="idType" Type="int" Nullable="false" />
+    <Property Name="fullname" Type="nvarchar(max)" />
   </EntityType>
-  <EntityType Name="SalaryTable">
+  <EntityType Name="TypeRoom">
     <Key>
-      <PropertyRef Name="idEmployeeRole" />
+      <PropertyRef Name="idType" />
     </Key>
-    <Property Name="idEmployeeRole" Type="int" Nullable="false" />
-    <Property Name="salaryBase" Type="money" Nullable="false" />
-    <Property Name="moneyPerShift" Type="money" Nullable="false" />
-    <Property Name="moneyPerFault" Type="money" Nullable="false" />
-    <Property Name="standardWorkDays" Type="tinyint" Nullable="false" />
+    <Property Name="idType" Type="int" Nullable="false" />
+    <Property Name="fullname" Type="nvarchar(max)" />
+    <Property Name="price" Type="money" />
   </EntityType>
-  <Association Name="FK__Account__idAccou__5441852A">
-    <End Role="AccountRole" Type="Self.AccountRole" Multiplicity="0..1" />
-    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+  <!--Errors Found During Generation:
+error 6004: The table 'Hotel_JustFriend1.dbo.BillInfo' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__BillInfo__idBill__440B1D61" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'Hotel_JustFriend1.dbo.BillInfo' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__BillInfo__idCust__4222D4EF" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'Hotel_JustFriend1.dbo.BillInfo' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__BillInfo__idRoom__3F466844" />-->
+  <Association Name="FK__Customer__idType__403A8C7D">
+    <End Role="TypeCustomer" Type="Self.TypeCustomer" Multiplicity="1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="AccountRole">
-        <PropertyRef Name="idAccountRole" />
+      <Principal Role="TypeCustomer">
+        <PropertyRef Name="idType" />
       </Principal>
-      <Dependent Role="Account">
-        <PropertyRef Name="idAccountRole" />
+      <Dependent Role="Customer">
+        <PropertyRef Name="idType" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Account__idEmplo__534D60F1">
-    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-    <End Role="Account" Type="Self.Account" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Employee">
-        <PropertyRef Name="idEmployee" />
-      </Principal>
-      <Dependent Role="Account">
-        <PropertyRef Name="idEmployee" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Attendanc__idEmp__5DCAEF64">
-    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-    <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Employee">
-        <PropertyRef Name="idEmployee" />
-      </Principal>
-      <Dependent Role="Attendance">
-        <PropertyRef Name="idEmployee" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Bill__idCustomer__5AEE82B9">
-    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
-    <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Customer">
-        <PropertyRef Name="idCustomer" />
-      </Principal>
-      <Dependent Role="Bill">
-        <PropertyRef Name="idCustomer" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Bill__idEmployee__59FA5E80">
-    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-    <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Employee">
-        <PropertyRef Name="idEmployee" />
-      </Principal>
-      <Dependent Role="Bill">
-        <PropertyRef Name="idEmployee" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Bill__idRoom__59063A47">
+  <!--Errors Found During Generation:
+error 6004: The table 'Hotel_JustFriend1.dbo.RentInvoiceInfo' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__RentInvoi__idCus__412EB0B6" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'Hotel_JustFriend1.dbo.RentInvoiceInfo' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__RentInvoi__idRen__4316F928" />-->
+  <Association Name="FK__RentInvoi__idRoo__3E52440B">
     <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
-    <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+    <End Role="RentInvoice" Type="Self.RentInvoice" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Room">
         <PropertyRef Name="idRoom" />
       </Principal>
-      <Dependent Role="Bill">
+      <Dependent Role="RentInvoice">
         <PropertyRef Name="idRoom" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Billinfo__idBill__5BE2A6F2">
-    <End Role="Bill" Type="Self.Bill" Multiplicity="1" />
-    <End Role="Billinfo" Type="Self.Billinfo" Multiplicity="*" />
+  <Association Name="FK__Room__idType__3D5E1FD2">
+    <End Role="TypeRoom" Type="Self.TypeRoom" Multiplicity="1" />
+    <End Role="Room" Type="Self.Room" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Bill">
-        <PropertyRef Name="idBill" />
+      <Principal Role="TypeRoom">
+        <PropertyRef Name="idType" />
       </Principal>
-      <Dependent Role="Billinfo">
-        <PropertyRef Name="idBill" />
+      <Dependent Role="Room">
+        <PropertyRef Name="idType" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Billinfo__idProd__5CD6CB2B">
-    <End Role="Product" Type="Self.Product" Multiplicity="1" />
-    <End Role="Billinfo" Type="Self.Billinfo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Product">
-        <PropertyRef Name="idProduct" />
-      </Principal>
-      <Dependent Role="Billinfo">
-        <PropertyRef Name="idProduct" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Employee__idEmpl__5535A963">
-    <End Role="EmployeeRole" Type="Self.EmployeeRole" Multiplicity="0..1" />
-    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="EmployeeRole">
-        <PropertyRef Name="idEmployeeRole" />
-      </Principal>
-      <Dependent Role="Employee">
-        <PropertyRef Name="idEmployeeRole" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ProductIm__idEmp__5629CD9C">
-    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-    <End Role="ProductImport" Type="Self.ProductImport" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Employee">
-        <PropertyRef Name="idEmployee" />
-      </Principal>
-      <Dependent Role="ProductImport">
-        <PropertyRef Name="idEmployee" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ProductIm__idImp__571DF1D5">
-    <End Role="ProductImport" Type="Self.ProductImport" Multiplicity="1" />
-    <End Role="ProductImportInfo" Type="Self.ProductImportInfo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ProductImport">
-        <PropertyRef Name="idImport" />
-      </Principal>
-      <Dependent Role="ProductImportInfo">
-        <PropertyRef Name="idImport" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ProductIm__idPro__5812160E">
-    <End Role="Product" Type="Self.Product" Multiplicity="1" />
-    <End Role="ProductImportInfo" Type="Self.ProductImportInfo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Product">
-        <PropertyRef Name="idProduct" />
-      </Principal>
-      <Dependent Role="ProductImportInfo">
-        <PropertyRef Name="idProduct" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__SalaryRec__idAcc__5FB337D6">
-    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
-    <End Role="SalaryRecord" Type="Self.SalaryRecord" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Account">
-        <PropertyRef Name="idAccount" />
-      </Principal>
-      <Dependent Role="SalaryRecord">
-        <PropertyRef Name="idAccount" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__SalaryRec__idEmp__619B8048">
-    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-    <End Role="SalaryRecordInfo" Type="Self.SalaryRecordInfo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Employee">
-        <PropertyRef Name="idEmployee" />
-      </Principal>
-      <Dependent Role="SalaryRecordInfo">
-        <PropertyRef Name="idEmployee" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__SalaryRec__idSal__60A75C0F">
-    <End Role="SalaryRecord" Type="Self.SalaryRecord" Multiplicity="0..1" />
-    <End Role="SalaryRecordInfo" Type="Self.SalaryRecordInfo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SalaryRecord">
-        <PropertyRef Name="idSalaryRecord" />
-      </Principal>
-      <Dependent Role="SalaryRecordInfo">
-        <PropertyRef Name="idSalaryRecord" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__SalaryTab__idEmp__5EBF139D">
-    <End Role="EmployeeRole" Type="Self.EmployeeRole" Multiplicity="1" />
-    <End Role="SalaryTable" Type="Self.SalaryTable" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="EmployeeRole">
-        <PropertyRef Name="idEmployeeRole" />
-      </Principal>
-      <Dependent Role="SalaryTable">
-        <PropertyRef Name="idEmployeeRole" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityContainer Name="Hotel_JustFriendModelStoreContainer">
+  <EntityContainer Name="Hotel_JustFriend1ModelStoreContainer">
     <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="AccountRole" EntityType="Self.AccountRole" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Attendance" EntityType="Self.Attendance" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Billinfo" EntityType="Self.Billinfo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="EmployeeRole" EntityType="Self.EmployeeRole" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ProductImport" EntityType="Self.ProductImport" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ProductImportInfo" EntityType="Self.ProductImportInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RentInvoice" EntityType="Self.RentInvoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Revenue" EntityType="Self.Revenue" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RevenuePercentage" EntityType="Self.RevenuePercentage" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="SalaryRecord" EntityType="Self.SalaryRecord" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="SalaryRecordInfo" EntityType="Self.SalaryRecordInfo" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="SalaryTable" EntityType="Self.SalaryTable" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Account__idAccou__5441852A" Association="Self.FK__Account__idAccou__5441852A">
-      <End Role="AccountRole" EntitySet="AccountRole" />
-      <End Role="Account" EntitySet="Account" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Account__idEmplo__534D60F1" Association="Self.FK__Account__idEmplo__534D60F1">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="Account" EntitySet="Account" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Attendanc__idEmp__5DCAEF64" Association="Self.FK__Attendanc__idEmp__5DCAEF64">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="Attendance" EntitySet="Attendance" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Bill__idCustomer__5AEE82B9" Association="Self.FK__Bill__idCustomer__5AEE82B9">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypeCustomer" EntityType="Self.TypeCustomer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypeRoom" EntityType="Self.TypeRoom" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Customer__idType__403A8C7D" Association="Self.FK__Customer__idType__403A8C7D">
+      <End Role="TypeCustomer" EntitySet="TypeCustomer" />
       <End Role="Customer" EntitySet="Customer" />
-      <End Role="Bill" EntitySet="Bill" />
     </AssociationSet>
-    <AssociationSet Name="FK__Bill__idEmployee__59FA5E80" Association="Self.FK__Bill__idEmployee__59FA5E80">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="Bill" EntitySet="Bill" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Bill__idRoom__59063A47" Association="Self.FK__Bill__idRoom__59063A47">
+    <AssociationSet Name="FK__RentInvoi__idRoo__3E52440B" Association="Self.FK__RentInvoi__idRoo__3E52440B">
       <End Role="Room" EntitySet="Room" />
-      <End Role="Bill" EntitySet="Bill" />
+      <End Role="RentInvoice" EntitySet="RentInvoice" />
     </AssociationSet>
-    <AssociationSet Name="FK__Billinfo__idBill__5BE2A6F2" Association="Self.FK__Billinfo__idBill__5BE2A6F2">
-      <End Role="Bill" EntitySet="Bill" />
-      <End Role="Billinfo" EntitySet="Billinfo" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Billinfo__idProd__5CD6CB2B" Association="Self.FK__Billinfo__idProd__5CD6CB2B">
-      <End Role="Product" EntitySet="Product" />
-      <End Role="Billinfo" EntitySet="Billinfo" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Employee__idEmpl__5535A963" Association="Self.FK__Employee__idEmpl__5535A963">
-      <End Role="EmployeeRole" EntitySet="EmployeeRole" />
-      <End Role="Employee" EntitySet="Employee" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ProductIm__idEmp__5629CD9C" Association="Self.FK__ProductIm__idEmp__5629CD9C">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="ProductImport" EntitySet="ProductImport" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ProductIm__idImp__571DF1D5" Association="Self.FK__ProductIm__idImp__571DF1D5">
-      <End Role="ProductImport" EntitySet="ProductImport" />
-      <End Role="ProductImportInfo" EntitySet="ProductImportInfo" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ProductIm__idPro__5812160E" Association="Self.FK__ProductIm__idPro__5812160E">
-      <End Role="Product" EntitySet="Product" />
-      <End Role="ProductImportInfo" EntitySet="ProductImportInfo" />
-    </AssociationSet>
-    <AssociationSet Name="FK__SalaryRec__idAcc__5FB337D6" Association="Self.FK__SalaryRec__idAcc__5FB337D6">
-      <End Role="Account" EntitySet="Account" />
-      <End Role="SalaryRecord" EntitySet="SalaryRecord" />
-    </AssociationSet>
-    <AssociationSet Name="FK__SalaryRec__idEmp__619B8048" Association="Self.FK__SalaryRec__idEmp__619B8048">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="SalaryRecordInfo" EntitySet="SalaryRecordInfo" />
-    </AssociationSet>
-    <AssociationSet Name="FK__SalaryRec__idSal__60A75C0F" Association="Self.FK__SalaryRec__idSal__60A75C0F">
-      <End Role="SalaryRecord" EntitySet="SalaryRecord" />
-      <End Role="SalaryRecordInfo" EntitySet="SalaryRecordInfo" />
-    </AssociationSet>
-    <AssociationSet Name="FK__SalaryTab__idEmp__5EBF139D" Association="Self.FK__SalaryTab__idEmp__5EBF139D">
-      <End Role="EmployeeRole" EntitySet="EmployeeRole" />
-      <End Role="SalaryTable" EntitySet="SalaryTable" />
+    <AssociationSet Name="FK__Room__idType__3D5E1FD2" Association="Self.FK__Room__idType__3D5E1FD2">
+      <End Role="TypeRoom" EntitySet="TypeRoom" />
+      <End Role="Room" EntitySet="Room" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

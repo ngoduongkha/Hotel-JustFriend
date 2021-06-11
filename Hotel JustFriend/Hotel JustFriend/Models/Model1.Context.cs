@@ -13,10 +13,10 @@ namespace Hotel_JustFriend.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Hotel_JustFriendEntities : DbContext
+    public partial class Hotel_JustFriend1Entities : DbContext
     {
-        public Hotel_JustFriendEntities()
-            : base("name=Hotel_JustFriendEntities")
+        public Hotel_JustFriend1Entities()
+            : base("name=Hotel_JustFriend1Entities")
         {
         }
     
@@ -26,19 +26,14 @@ namespace Hotel_JustFriend.Models
         }
     
         public virtual DbSet<Account> Accounts { get; set; }
-        public virtual DbSet<AccountRole> AccountRoles { get; set; }
-        public virtual DbSet<Attendance> Attendances { get; set; }
         public virtual DbSet<Bill> Bills { get; set; }
-        public virtual DbSet<Billinfo> Billinfoes { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<Employee> Employees { get; set; }
-        public virtual DbSet<EmployeeRole> EmployeeRoles { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<ProductImport> ProductImports { get; set; }
-        public virtual DbSet<ProductImportInfo> ProductImportInfoes { get; set; }
+        public virtual DbSet<RentInvoice> RentInvoices { get; set; }
+        public virtual DbSet<Revenue> Revenues { get; set; }
+        public virtual DbSet<RevenuePercentage> RevenuePercentages { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }
-        public virtual DbSet<SalaryRecord> SalaryRecords { get; set; }
-        public virtual DbSet<SalaryRecordInfo> SalaryRecordInfoes { get; set; }
-        public virtual DbSet<SalaryTable> SalaryTables { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<TypeCustomer> TypeCustomers { get; set; }
+        public virtual DbSet<TypeRoom> TypeRooms { get; set; }
     }
 }

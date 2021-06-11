@@ -12,21 +12,18 @@ namespace Hotel_JustFriend.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SalaryRecord
+    public partial class TypeCustomer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SalaryRecord()
+        public TypeCustomer()
         {
-            this.SalaryRecordInfoes = new HashSet<SalaryRecordInfo>();
+            this.Customers = new HashSet<Customer>();
         }
     
-        public string idSalaryRecord { get; set; }
-        public Nullable<int> idAccount { get; set; }
-        public Nullable<System.DateTime> salaryRecordDate { get; set; }
-        public decimal total { get; set; }
+        public int idType { get; set; }
+        public string fullname { get; set; }
     
-        public virtual Account Account { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SalaryRecordInfo> SalaryRecordInfoes { get; set; }
+        public virtual ICollection<Customer> Customers { get; set; }
     }
 }

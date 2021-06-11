@@ -10,7 +10,7 @@ namespace Hotel_JustFriend.Views
         public ProductManageView()
         {
             InitializeComponent();
-            this.DataContext = new ViewModels.ProductManageViewModel();
+            //this.DataContext = new ViewModels.ProductManageViewModel();
         }
 
         private void grid_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)

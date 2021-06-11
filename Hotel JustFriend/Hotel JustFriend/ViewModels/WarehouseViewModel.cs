@@ -22,7 +22,7 @@ namespace Hotel_JustFriend.ViewModels
 {
     [POCOViewModel]
     class WarehouseViewModel : ViewModelBase,INotifyPropertyChanged
-    {
+    {/*
         static WarehouseView whview;
         ProductDetailUC temp;
         static ImportProductUC pp;
@@ -258,6 +258,6 @@ namespace Hotel_JustFriend.ViewModels
             ((StackPanel)p.Parent).Children.Remove(p);
 
         }
-
+        */
     }
 }

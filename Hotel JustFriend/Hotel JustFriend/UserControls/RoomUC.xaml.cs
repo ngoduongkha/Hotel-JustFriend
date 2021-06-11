@@ -10,22 +10,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Hotel_JustFriend.Models;
 using Hotel_JustFriend.ViewModels;
-
-namespace Hotel_JustFriend.Views
+namespace Hotel_JustFriend.UserControls
 {
     /// <summary>
-    /// Interaction logic for EmployeeUpdateView.xaml
+    /// Interaction logic for RoomUC.xaml
     /// </summary>
-    public partial class EmployeeUpdateView : Window
+    public partial class RoomUC : UserControl
     {
-        public EmployeeUpdateView()
+        public RoomUC()
         {
-         
             InitializeComponent();
-            //this.DataContext = new EmployeeDetailViewModel();
+            this.DataContext = new RoomManageViewModel();
         }
     }
 }

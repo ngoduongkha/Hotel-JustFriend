@@ -14,24 +14,7 @@ namespace Hotel_JustFriend.Models
     
     public partial class Bill
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Bill()
-        {
-            this.Billinfoes = new HashSet<Billinfo>();
-        }
-    
-        public string idBill { get; set; }
-        public Nullable<int> idRoom { get; set; }
-        public Nullable<int> idEmployee { get; set; }
-        public Nullable<int> idCustomer { get; set; }
-        public System.DateTime checkIn { get; set; }
-        public System.DateTime checkOut { get; set; }
-        public decimal totalMoney { get; set; }
-    
-        public virtual Customer Customer { get; set; }
-        public virtual Employee Employee { get; set; }
-        public virtual Room Room { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Billinfo> Billinfoes { get; set; }
+        public int idBill { get; set; }
+        public Nullable<decimal> TotalMoney { get; set; }
     }
 }
