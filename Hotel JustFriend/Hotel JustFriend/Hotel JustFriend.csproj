@@ -214,6 +214,7 @@
     </Compile>
     <Compile Include="ViewModels\AccountManageViewModel.cs" />
     <Compile Include="ViewModels\EmployeeDetailViewModel.cs" />
+    <Compile Include="ViewModels\RoomRentalViewModel.cs" />
     <Compile Include="ViewModels\SellProductViewModel.cs" />
     <Compile Include="ViewModels\WarehouseViewModel.cs" />
     <Compile Include="Views\AccountManageView.xaml.cs">
