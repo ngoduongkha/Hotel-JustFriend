@@ -13,7 +13,7 @@ namespace Hotel_JustFriend.ViewModels
     [POCOViewModel]
     class ProductDetailViewModel : ViewModelBase
     {
-        private ObservableCollection<Product> _ListProduct;
+        /*private ObservableCollection<Product> _ListProduct;
         private int _ProductNumber;
         private string _ProductID;
         private string _DisplayName;
@@ -116,5 +116,6 @@ namespace Hotel_JustFriend.ViewModels
             }
             catch { return; }
         }
+        */
     }
 }

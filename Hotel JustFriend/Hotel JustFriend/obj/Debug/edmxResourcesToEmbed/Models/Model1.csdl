@@ -1,469 +1,157 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Hotel_JustFriendModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="Hotel_JustFriend1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Account">
     <Key>
       <PropertyRef Name="idAccount" />
     </Key>
     <Property Name="idAccount" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="idAccountRole" Type="Int32" />
-    <Property Name="idEmployee" Type="Int32" />
     <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="password" Type="String" MaxLength="64" FixedLength="true" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="AccountRole" Relationship="Self.FK__Account__idAccou__5441852A" FromRole="Account" ToRole="AccountRole" />
-    <NavigationProperty Name="Employee" Relationship="Self.FK__Account__idEmplo__534D60F1" FromRole="Account" ToRole="Employee" />
-    <NavigationProperty Name="SalaryRecords" Relationship="Self.FK__SalaryRec__idAcc__5FB337D6" FromRole="Account" ToRole="SalaryRecord" />
-  </EntityType>
-  <EntityType Name="AccountRole">
-    <Key>
-      <PropertyRef Name="idAccountRole" />
-    </Key>
-    <Property Name="idAccountRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="displayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Accounts" Relationship="Self.FK__Account__idAccou__5441852A" FromRole="AccountRole" ToRole="Account" />
-  </EntityType>
-  <EntityType Name="Attendance">
-    <Key>
-      <PropertyRef Name="idEmployee" />
-      <PropertyRef Name="dateAbsence" />
-    </Key>
-    <Property Name="idEmployee" Type="Int32" Nullable="false" />
-    <Property Name="dateAbsence" Type="DateTime" Nullable="false" Precision="0" />
-    <NavigationProperty Name="Employee" Relationship="Self.FK__Attendanc__idEmp__5DCAEF64" FromRole="Attendance" ToRole="Employee" />
   </EntityType>
   <EntityType Name="Bill">
     <Key>
       <PropertyRef Name="idBill" />
     </Key>
-    <Property Name="idBill" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="idRoom" Type="Int32" />
-    <Property Name="idEmployee" Type="Int32" />
-    <Property Name="idCustomer" Type="Int32" />
-    <Property Name="checkIn" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="checkOut" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="totalMoney" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <NavigationProperty Name="Customer" Relationship="Self.FK__Bill__idCustomer__5AEE82B9" FromRole="Bill" ToRole="Customer" />
-    <NavigationProperty Name="Employee" Relationship="Self.FK__Bill__idEmployee__59FA5E80" FromRole="Bill" ToRole="Employee" />
-    <NavigationProperty Name="Room" Relationship="Self.FK__Bill__idRoom__59063A47" FromRole="Bill" ToRole="Room" />
-    <NavigationProperty Name="Billinfoes" Relationship="Self.FK__Billinfo__idBill__5BE2A6F2" FromRole="Bill" ToRole="Billinfo" />
-  </EntityType>
-  <EntityType Name="Billinfo">
-    <Key>
-      <PropertyRef Name="idBill" />
-      <PropertyRef Name="idProduct" />
-    </Key>
-    <Property Name="idBill" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="idProduct" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="quantity" Type="Int32" Nullable="false" />
-    <Property Name="price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <NavigationProperty Name="Bill" Relationship="Self.FK__Billinfo__idBill__5BE2A6F2" FromRole="Billinfo" ToRole="Bill" />
-    <NavigationProperty Name="Product" Relationship="Self.FK__Billinfo__idProd__5CD6CB2B" FromRole="Billinfo" ToRole="Product" />
+    <Property Name="idBill" Type="Int32" Nullable="false" />
+    <Property Name="TotalMoney" Type="Decimal" Precision="19" Scale="4" />
   </EntityType>
   <EntityType Name="Customer">
     <Key>
       <PropertyRef Name="idCustomer" />
     </Key>
-    <Property Name="idCustomer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCustomer" Type="Int32" Nullable="false" />
     <Property Name="fullname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="idCard" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="gender" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="idType" Type="Int32" Nullable="false" />
     <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="dateOfBirth" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__idCustomer__5AEE82B9" FromRole="Customer" ToRole="Bill" />
+    <NavigationProperty Name="TypeCustomer" Relationship="Self.FK__Customer__idType__403A8C7D" FromRole="Customer" ToRole="TypeCustomer" />
   </EntityType>
-  <EntityType Name="Employee">
+  <EntityType Name="RentInvoice">
     <Key>
-      <PropertyRef Name="idEmployee" />
+      <PropertyRef Name="idRentInvoice" />
     </Key>
-    <Property Name="idEmployee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="idEmployeeRole" Type="Int32" />
-    <Property Name="fullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="idCard" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="gender" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="dateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="startDate" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="endDate" Type="DateTime" Precision="0" />
-    <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-    <Property Name="isDelete" Type="Boolean" />
-    <NavigationProperty Name="Accounts" Relationship="Self.FK__Account__idEmplo__534D60F1" FromRole="Employee" ToRole="Account" />
-    <NavigationProperty Name="Attendances" Relationship="Self.FK__Attendanc__idEmp__5DCAEF64" FromRole="Employee" ToRole="Attendance" />
-    <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__idEmployee__59FA5E80" FromRole="Employee" ToRole="Bill" />
-    <NavigationProperty Name="EmployeeRole" Relationship="Self.FK__Employee__idEmpl__5535A963" FromRole="Employee" ToRole="EmployeeRole" />
-    <NavigationProperty Name="ProductImports" Relationship="Self.FK__ProductIm__idEmp__5629CD9C" FromRole="Employee" ToRole="ProductImport" />
-    <NavigationProperty Name="SalaryRecordInfoes" Relationship="Self.FK__SalaryRec__idEmp__619B8048" FromRole="Employee" ToRole="SalaryRecordInfo" />
+    <Property Name="idRentInvoice" Type="Int32" Nullable="false" />
+    <Property Name="DateStart" Type="DateTime" Precision="0" />
+    <Property Name="idRoom" Type="Int32" />
+    <NavigationProperty Name="Room" Relationship="Self.FK__RentInvoi__idRoo__3E52440B" FromRole="RentInvoice" ToRole="Room" />
   </EntityType>
-  <EntityType Name="EmployeeRole">
+  <EntityType Name="Revenue">
     <Key>
-      <PropertyRef Name="idEmployeeRole" />
+      <PropertyRef Name="idRevenue" />
     </Key>
-    <Property Name="idEmployeeRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="displayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__idEmpl__5535A963" FromRole="EmployeeRole" ToRole="Employee" />
-    <NavigationProperty Name="SalaryTable" Relationship="Self.FK__SalaryTab__idEmp__5EBF139D" FromRole="EmployeeRole" ToRole="SalaryTable" />
+    <Property Name="idRevenue" Type="Int32" Nullable="false" />
+    <Property Name="TotalMoney" Type="Decimal" Precision="19" Scale="4" />
   </EntityType>
-  <EntityType Name="Product">
+  <EntityType Name="RevenuePercentage">
     <Key>
-      <PropertyRef Name="idProduct" />
+      <PropertyRef Name="idrevenuePrecentage" />
     </Key>
-    <Property Name="idProduct" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="displayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="unit" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="pricePerUnit" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-    <Property Name="quantity" Type="Int32" />
-    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="isDelete" Type="Boolean" />
-    <NavigationProperty Name="Billinfoes" Relationship="Self.FK__Billinfo__idProd__5CD6CB2B" FromRole="Product" ToRole="Billinfo" />
-    <NavigationProperty Name="ProductImportInfoes" Relationship="Self.FK__ProductIm__idPro__5812160E" FromRole="Product" ToRole="ProductImportInfo" />
-  </EntityType>
-  <EntityType Name="ProductImport">
-    <Key>
-      <PropertyRef Name="idImport" />
-    </Key>
-    <Property Name="idImport" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="idEmployee" Type="Int32" />
-    <Property Name="dateImport" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="importPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <NavigationProperty Name="Employee" Relationship="Self.FK__ProductIm__idEmp__5629CD9C" FromRole="ProductImport" ToRole="Employee" />
-    <NavigationProperty Name="ProductImportInfoes" Relationship="Self.FK__ProductIm__idImp__571DF1D5" FromRole="ProductImport" ToRole="ProductImportInfo" />
-  </EntityType>
-  <EntityType Name="ProductImportInfo">
-    <Key>
-      <PropertyRef Name="idImport" />
-      <PropertyRef Name="idProduct" />
-    </Key>
-    <Property Name="idImport" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="idProduct" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="quantity" Type="Int32" Nullable="false" />
-    <Property Name="price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <NavigationProperty Name="Product" Relationship="Self.FK__ProductIm__idPro__5812160E" FromRole="ProductImportInfo" ToRole="Product" />
-    <NavigationProperty Name="ProductImport" Relationship="Self.FK__ProductIm__idImp__571DF1D5" FromRole="ProductImportInfo" ToRole="ProductImport" />
+    <Property Name="idrevenuePrecentage" Type="Int32" Nullable="false" />
+    <Property Name="Percent" Type="Double" />
+    <Property Name="Month" Type="Int32" />
+    <Property Name="Year" Type="Int32" />
+    <Property Name="idRoom" Type="Int32" />
   </EntityType>
   <EntityType Name="Room">
     <Key>
       <PropertyRef Name="idRoom" />
     </Key>
-    <Property Name="idRoom" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idRoom" Type="Int32" Nullable="false" />
+    <Property Name="floor" Type="Int32" Nullable="false" />
     <Property Name="displayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="floor" Type="Byte" />
-    <Property Name="number" Type="Byte" />
-    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="idType" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="Int32" Nullable="false" />
     <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="isDelete" Type="Boolean" />
-    <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__idRoom__59063A47" FromRole="Room" ToRole="Bill" />
+    <NavigationProperty Name="RentInvoices" Relationship="Self.FK__RentInvoi__idRoo__3E52440B" FromRole="Room" ToRole="RentInvoice" />
+    <NavigationProperty Name="TypeRoom" Relationship="Self.FK__Room__idType__3D5E1FD2" FromRole="Room" ToRole="TypeRoom" />
   </EntityType>
-  <EntityType Name="SalaryRecord">
+  <EntityType Name="sysdiagram">
     <Key>
-      <PropertyRef Name="idSalaryRecord" />
+      <PropertyRef Name="diagram_id" />
     </Key>
-    <Property Name="idSalaryRecord" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="idAccount" Type="Int32" />
-    <Property Name="salaryRecordDate" Type="DateTime" Precision="3" />
-    <Property Name="total" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <NavigationProperty Name="Account" Relationship="Self.FK__SalaryRec__idAcc__5FB337D6" FromRole="SalaryRecord" ToRole="Account" />
-    <NavigationProperty Name="SalaryRecordInfoes" Relationship="Self.FK__SalaryRec__idSal__60A75C0F" FromRole="SalaryRecord" ToRole="SalaryRecordInfo" />
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
-  <EntityType Name="SalaryRecordInfo">
+  <EntityType Name="TypeCustomer">
     <Key>
-      <PropertyRef Name="idEmployee" />
-      <PropertyRef Name="salaryMonth" />
+      <PropertyRef Name="idType" />
     </Key>
-    <Property Name="idSalaryRecord" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
-    <Property Name="idEmployee" Type="Int32" Nullable="false" />
-    <Property Name="numOfShift" Type="Int32" />
-    <Property Name="numOfFault" Type="Int32" />
-    <Property Name="totalSalary" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="salaryMonth" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="coefficients" Type="Single" />
-    <NavigationProperty Name="Employee" Relationship="Self.FK__SalaryRec__idEmp__619B8048" FromRole="SalaryRecordInfo" ToRole="Employee" />
-    <NavigationProperty Name="SalaryRecord" Relationship="Self.FK__SalaryRec__idSal__60A75C0F" FromRole="SalaryRecordInfo" ToRole="SalaryRecord" />
+    <Property Name="idType" Type="Int32" Nullable="false" />
+    <Property Name="fullname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__idType__403A8C7D" FromRole="TypeCustomer" ToRole="Customer" />
   </EntityType>
-  <EntityType Name="SalaryTable">
+  <EntityType Name="TypeRoom">
     <Key>
-      <PropertyRef Name="idEmployeeRole" />
+      <PropertyRef Name="idType" />
     </Key>
-    <Property Name="idEmployeeRole" Type="Int32" Nullable="false" />
-    <Property Name="salaryBase" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <Property Name="moneyPerShift" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <Property Name="moneyPerFault" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <Property Name="standardWorkDays" Type="Byte" Nullable="false" />
-    <NavigationProperty Name="EmployeeRole" Relationship="Self.FK__SalaryTab__idEmp__5EBF139D" FromRole="SalaryTable" ToRole="EmployeeRole" />
+    <Property Name="idType" Type="Int32" Nullable="false" />
+    <Property Name="fullname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="price" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Rooms" Relationship="Self.FK__Room__idType__3D5E1FD2" FromRole="TypeRoom" ToRole="Room" />
   </EntityType>
-  <Association Name="FK__Account__idAccou__5441852A">
-    <End Role="AccountRole" Type="Self.AccountRole" Multiplicity="0..1" />
-    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+  <Association Name="FK__Customer__idType__403A8C7D">
+    <End Role="TypeCustomer" Type="Self.TypeCustomer" Multiplicity="1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="AccountRole">
-        <PropertyRef Name="idAccountRole" />
+      <Principal Role="TypeCustomer">
+        <PropertyRef Name="idType" />
       </Principal>
-      <Dependent Role="Account">
-        <PropertyRef Name="idAccountRole" />
+      <Dependent Role="Customer">
+        <PropertyRef Name="idType" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Account__idEmplo__534D60F1">
-    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-    <End Role="Account" Type="Self.Account" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Employee">
-        <PropertyRef Name="idEmployee" />
-      </Principal>
-      <Dependent Role="Account">
-        <PropertyRef Name="idEmployee" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__SalaryRec__idAcc__5FB337D6">
-    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
-    <End Role="SalaryRecord" Type="Self.SalaryRecord" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Account">
-        <PropertyRef Name="idAccount" />
-      </Principal>
-      <Dependent Role="SalaryRecord">
-        <PropertyRef Name="idAccount" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Attendanc__idEmp__5DCAEF64">
-    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-    <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Employee">
-        <PropertyRef Name="idEmployee" />
-      </Principal>
-      <Dependent Role="Attendance">
-        <PropertyRef Name="idEmployee" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Bill__idCustomer__5AEE82B9">
-    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
-    <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Customer">
-        <PropertyRef Name="idCustomer" />
-      </Principal>
-      <Dependent Role="Bill">
-        <PropertyRef Name="idCustomer" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Bill__idEmployee__59FA5E80">
-    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-    <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Employee">
-        <PropertyRef Name="idEmployee" />
-      </Principal>
-      <Dependent Role="Bill">
-        <PropertyRef Name="idEmployee" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Bill__idRoom__59063A47">
+  <Association Name="FK__RentInvoi__idRoo__3E52440B">
     <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
-    <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+    <End Role="RentInvoice" Type="Self.RentInvoice" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Room">
         <PropertyRef Name="idRoom" />
       </Principal>
-      <Dependent Role="Bill">
+      <Dependent Role="RentInvoice">
         <PropertyRef Name="idRoom" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Billinfo__idBill__5BE2A6F2">
-    <End Role="Bill" Type="Self.Bill" Multiplicity="1" />
-    <End Role="Billinfo" Type="Self.Billinfo" Multiplicity="*" />
+  <Association Name="FK__Room__idType__3D5E1FD2">
+    <End Role="TypeRoom" Type="Self.TypeRoom" Multiplicity="1" />
+    <End Role="Room" Type="Self.Room" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Bill">
-        <PropertyRef Name="idBill" />
+      <Principal Role="TypeRoom">
+        <PropertyRef Name="idType" />
       </Principal>
-      <Dependent Role="Billinfo">
-        <PropertyRef Name="idBill" />
+      <Dependent Role="Room">
+        <PropertyRef Name="idType" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Billinfo__idProd__5CD6CB2B">
-    <End Role="Product" Type="Self.Product" Multiplicity="1" />
-    <End Role="Billinfo" Type="Self.Billinfo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Product">
-        <PropertyRef Name="idProduct" />
-      </Principal>
-      <Dependent Role="Billinfo">
-        <PropertyRef Name="idProduct" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Employee__idEmpl__5535A963">
-    <End Role="EmployeeRole" Type="Self.EmployeeRole" Multiplicity="0..1" />
-    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="EmployeeRole">
-        <PropertyRef Name="idEmployeeRole" />
-      </Principal>
-      <Dependent Role="Employee">
-        <PropertyRef Name="idEmployeeRole" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ProductIm__idEmp__5629CD9C">
-    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-    <End Role="ProductImport" Type="Self.ProductImport" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Employee">
-        <PropertyRef Name="idEmployee" />
-      </Principal>
-      <Dependent Role="ProductImport">
-        <PropertyRef Name="idEmployee" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__SalaryRec__idEmp__619B8048">
-    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-    <End Role="SalaryRecordInfo" Type="Self.SalaryRecordInfo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Employee">
-        <PropertyRef Name="idEmployee" />
-      </Principal>
-      <Dependent Role="SalaryRecordInfo">
-        <PropertyRef Name="idEmployee" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__SalaryTab__idEmp__5EBF139D">
-    <End Role="EmployeeRole" Type="Self.EmployeeRole" Multiplicity="1" />
-    <End Role="SalaryTable" Type="Self.SalaryTable" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="EmployeeRole">
-        <PropertyRef Name="idEmployeeRole" />
-      </Principal>
-      <Dependent Role="SalaryTable">
-        <PropertyRef Name="idEmployeeRole" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ProductIm__idPro__5812160E">
-    <End Role="Product" Type="Self.Product" Multiplicity="1" />
-    <End Role="ProductImportInfo" Type="Self.ProductImportInfo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Product">
-        <PropertyRef Name="idProduct" />
-      </Principal>
-      <Dependent Role="ProductImportInfo">
-        <PropertyRef Name="idProduct" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ProductIm__idImp__571DF1D5">
-    <End Role="ProductImport" Type="Self.ProductImport" Multiplicity="1" />
-    <End Role="ProductImportInfo" Type="Self.ProductImportInfo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ProductImport">
-        <PropertyRef Name="idImport" />
-      </Principal>
-      <Dependent Role="ProductImportInfo">
-        <PropertyRef Name="idImport" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__SalaryRec__idSal__60A75C0F">
-    <End Role="SalaryRecord" Type="Self.SalaryRecord" Multiplicity="0..1" />
-    <End Role="SalaryRecordInfo" Type="Self.SalaryRecordInfo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SalaryRecord">
-        <PropertyRef Name="idSalaryRecord" />
-      </Principal>
-      <Dependent Role="SalaryRecordInfo">
-        <PropertyRef Name="idSalaryRecord" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityContainer Name="Hotel_JustFriendEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="Hotel_JustFriend1Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Accounts" EntityType="Self.Account" />
-    <EntitySet Name="AccountRoles" EntityType="Self.AccountRole" />
-    <EntitySet Name="Attendances" EntityType="Self.Attendance" />
     <EntitySet Name="Bills" EntityType="Self.Bill" />
-    <EntitySet Name="Billinfoes" EntityType="Self.Billinfo" />
     <EntitySet Name="Customers" EntityType="Self.Customer" />
-    <EntitySet Name="Employees" EntityType="Self.Employee" />
-    <EntitySet Name="EmployeeRoles" EntityType="Self.EmployeeRole" />
-    <EntitySet Name="Products" EntityType="Self.Product" />
-    <EntitySet Name="ProductImports" EntityType="Self.ProductImport" />
-    <EntitySet Name="ProductImportInfoes" EntityType="Self.ProductImportInfo" />
+    <EntitySet Name="RentInvoices" EntityType="Self.RentInvoice" />
+    <EntitySet Name="Revenues" EntityType="Self.Revenue" />
+    <EntitySet Name="RevenuePercentages" EntityType="Self.RevenuePercentage" />
     <EntitySet Name="Rooms" EntityType="Self.Room" />
-    <EntitySet Name="SalaryRecords" EntityType="Self.SalaryRecord" />
-    <EntitySet Name="SalaryRecordInfoes" EntityType="Self.SalaryRecordInfo" />
-    <EntitySet Name="SalaryTables" EntityType="Self.SalaryTable" />
-    <AssociationSet Name="FK__Account__idAccou__5441852A" Association="Self.FK__Account__idAccou__5441852A">
-      <End Role="AccountRole" EntitySet="AccountRoles" />
-      <End Role="Account" EntitySet="Accounts" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Account__idEmplo__534D60F1" Association="Self.FK__Account__idEmplo__534D60F1">
-      <End Role="Employee" EntitySet="Employees" />
-      <End Role="Account" EntitySet="Accounts" />
-    </AssociationSet>
-    <AssociationSet Name="FK__SalaryRec__idAcc__5FB337D6" Association="Self.FK__SalaryRec__idAcc__5FB337D6">
-      <End Role="Account" EntitySet="Accounts" />
-      <End Role="SalaryRecord" EntitySet="SalaryRecords" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Attendanc__idEmp__5DCAEF64" Association="Self.FK__Attendanc__idEmp__5DCAEF64">
-      <End Role="Employee" EntitySet="Employees" />
-      <End Role="Attendance" EntitySet="Attendances" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Bill__idCustomer__5AEE82B9" Association="Self.FK__Bill__idCustomer__5AEE82B9">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TypeCustomers" EntityType="Self.TypeCustomer" />
+    <EntitySet Name="TypeRooms" EntityType="Self.TypeRoom" />
+    <AssociationSet Name="FK__Customer__idType__403A8C7D" Association="Self.FK__Customer__idType__403A8C7D">
+      <End Role="TypeCustomer" EntitySet="TypeCustomers" />
       <End Role="Customer" EntitySet="Customers" />
-      <End Role="Bill" EntitySet="Bills" />
     </AssociationSet>
-    <AssociationSet Name="FK__Bill__idEmployee__59FA5E80" Association="Self.FK__Bill__idEmployee__59FA5E80">
-      <End Role="Employee" EntitySet="Employees" />
-      <End Role="Bill" EntitySet="Bills" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Bill__idRoom__59063A47" Association="Self.FK__Bill__idRoom__59063A47">
+    <AssociationSet Name="FK__RentInvoi__idRoo__3E52440B" Association="Self.FK__RentInvoi__idRoo__3E52440B">
       <End Role="Room" EntitySet="Rooms" />
-      <End Role="Bill" EntitySet="Bills" />
+      <End Role="RentInvoice" EntitySet="RentInvoices" />
     </AssociationSet>
-    <AssociationSet Name="FK__Billinfo__idBill__5BE2A6F2" Association="Self.FK__Billinfo__idBill__5BE2A6F2">
-      <End Role="Bill" EntitySet="Bills" />
-      <End Role="Billinfo" EntitySet="Billinfoes" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Billinfo__idProd__5CD6CB2B" Association="Self.FK__Billinfo__idProd__5CD6CB2B">
-      <End Role="Product" EntitySet="Products" />
-      <End Role="Billinfo" EntitySet="Billinfoes" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Employee__idEmpl__5535A963" Association="Self.FK__Employee__idEmpl__5535A963">
-      <End Role="EmployeeRole" EntitySet="EmployeeRoles" />
-      <End Role="Employee" EntitySet="Employees" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ProductIm__idEmp__5629CD9C" Association="Self.FK__ProductIm__idEmp__5629CD9C">
-      <End Role="Employee" EntitySet="Employees" />
-      <End Role="ProductImport" EntitySet="ProductImports" />
-    </AssociationSet>
-    <AssociationSet Name="FK__SalaryRec__idEmp__619B8048" Association="Self.FK__SalaryRec__idEmp__619B8048">
-      <End Role="Employee" EntitySet="Employees" />
-      <End Role="SalaryRecordInfo" EntitySet="SalaryRecordInfoes" />
-    </AssociationSet>
-    <AssociationSet Name="FK__SalaryTab__idEmp__5EBF139D" Association="Self.FK__SalaryTab__idEmp__5EBF139D">
-      <End Role="EmployeeRole" EntitySet="EmployeeRoles" />
-      <End Role="SalaryTable" EntitySet="SalaryTables" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ProductIm__idPro__5812160E" Association="Self.FK__ProductIm__idPro__5812160E">
-      <End Role="Product" EntitySet="Products" />
-      <End Role="ProductImportInfo" EntitySet="ProductImportInfoes" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ProductIm__idImp__571DF1D5" Association="Self.FK__ProductIm__idImp__571DF1D5">
-      <End Role="ProductImport" EntitySet="ProductImports" />
-      <End Role="ProductImportInfo" EntitySet="ProductImportInfoes" />
-    </AssociationSet>
-    <AssociationSet Name="FK__SalaryRec__idSal__60A75C0F" Association="Self.FK__SalaryRec__idSal__60A75C0F">
-      <End Role="SalaryRecord" EntitySet="SalaryRecords" />
-      <End Role="SalaryRecordInfo" EntitySet="SalaryRecordInfoes" />
+    <AssociationSet Name="FK__Room__idType__3D5E1FD2" Association="Self.FK__Room__idType__3D5E1FD2">
+      <End Role="TypeRoom" EntitySet="TypeRooms" />
+      <End Role="Room" EntitySet="Rooms" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

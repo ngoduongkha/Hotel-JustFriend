@@ -28,9 +28,14 @@ namespace Hotel_JustFriend.ViewModels
         {
             try
             {
-                ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms.Where(x => x.isDelete == false).OrderBy(x => x.floor).ThenBy(x => x.number));
+                ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms.Where(x => x.isDelete == false).OrderBy(x => x.floor).ThenBy(x => x.displayName));
             }
             catch { return; }
+        }
+        [Command]
+        public void test()
+        {
+            MessageBox.Show("aaaaaaaaaaaaaa");
         }
         [Command]
         public void ClickRoom()

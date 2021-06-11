@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="Hotel_JustFriend.UserControls.RoomUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Hotel_JustFriend.UserControls" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             x:Name="ucDetail"
+             d:DesignHeight="50" d:DesignWidth="1210">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="180"></ColumnDefinition>
+            <ColumnDefinition Width="220"></ColumnDefinition>
+            <ColumnDefinition Width="180"></ColumnDefinition>
+            <ColumnDefinition Width="250"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="id"
+                   Visibility="Hidden"></TextBlock>
+        <TextBlock Grid.Column="0"
+                   Text="Tang"
+                   x:Name="floor"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   ></TextBlock>
+        <TextBlock Grid.Column="1"
+                   Text="Ten phong"
+                   x:Name="displayname"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"></TextBlock>
+        <TextBlock Grid.Column="2"
+                   Text="Loai phong"
+                   x:Name="Type"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"></TextBlock>
+        <TextBlock Grid.Column="3"
+                   Text="trang thai"
+                   x:Name="status"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"></TextBlock>
+        <TextBlock Grid.Column="4"
+                   Text="price"
+                   x:Name="price"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"></TextBlock>
+        <TextBlock Grid.Column="5"
+                   Text="Ghi chu"
+                   x:Name="note"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"></TextBlock>
+        <Button
+            Padding="0"
+            Style="{StaticResource MaterialDesignIconForegroundButton}"
+            ToolTip="MaterialDesignIconForegroundButton"
+            Height="50"
+            Width="50"
+            Command="{Binding DeleteRoomCommand}"
+            CommandParameter="{Binding ElementName=ucDetail}"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Grid.Column="6">
+            <materialDesign:PackIcon Kind="Delete" />
+        </Button>
+    </Grid>
+</UserControl>

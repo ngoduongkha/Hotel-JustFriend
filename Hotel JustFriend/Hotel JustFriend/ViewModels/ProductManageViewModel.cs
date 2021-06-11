@@ -8,6 +8,7 @@ using System.Windows.Controls;
 
 namespace Hotel_JustFriend.ViewModels
 {
+    /*
     [POCOViewModel]
     class ProductManageViewModel : ViewModelBase
     {
@@ -95,4 +96,5 @@ namespace Hotel_JustFriend.ViewModels
             catch { return; }
         }
     }
+    */
 }

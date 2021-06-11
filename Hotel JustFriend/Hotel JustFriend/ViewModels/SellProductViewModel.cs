@@ -21,6 +21,7 @@ namespace Hotel_JustFriend.ViewModels
 {
     class SellProductViewModel : ViewModelBase, INotifyPropertyChanged
     {
+        /*
         SellProductDetailUC temp;
         static SellProductUC pp;
         private ObservableCollection<Bill> _ListBill;
@@ -113,5 +114,6 @@ namespace Hotel_JustFriend.ViewModels
             int k = (int.Parse(p.NumericSpinner.tb_soluong.Text) * int.Parse(tg));
             p.TotalMoney.Text = k.ToString("#,##0");
         }
+        */
     }
 }

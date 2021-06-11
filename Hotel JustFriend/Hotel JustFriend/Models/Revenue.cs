@@ -12,14 +12,9 @@ namespace Hotel_JustFriend.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SalaryTable
+    public partial class Revenue
     {
-        public int idEmployeeRole { get; set; }
-        public decimal salaryBase { get; set; }
-        public decimal moneyPerShift { get; set; }
-        public decimal moneyPerFault { get; set; }
-        public byte standardWorkDays { get; set; }
-    
-        public virtual EmployeeRole EmployeeRole { get; set; }
+        public int idRevenue { get; set; }
+        public Nullable<decimal> TotalMoney { get; set; }
     }
 }
