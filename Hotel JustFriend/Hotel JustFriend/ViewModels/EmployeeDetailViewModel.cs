@@ -16,7 +16,7 @@ namespace Hotel_JustFriend.ViewModels
 {
     class EmployeeDetailViewModel : ViewModelBase
     {
-        private ObservableCollection<Employee> _ListEmployee;
+        //private ObservableCollection<Employee> _ListEmployee;
         private int _IdEmployeeRole;
         private int _IdEmployee;
         private string _FullName;
@@ -28,8 +28,8 @@ namespace Hotel_JustFriend.ViewModels
         private DateTime _EndDate;
         private byte[] _Image;
         private bool isDelete;
-        private Employee _SelectEmployee;
-        public ObservableCollection<Employee> ListEmployee { get => _ListEmployee; set => _ListEmployee = value; }
+       //private Employee _SelectEmployee;
+        //public ObservableCollection<Employee> ListEmployee { get => _ListEmployee; set => _ListEmployee = value; }
         public int IdEmployee { get => _IdEmployee; set => _IdEmployee = value; }
         public string FullName { get => _FullName; set => _FullName = value; }
         public string IdCard { get => _IdCard; set => _IdCard = value; }
@@ -40,8 +40,9 @@ namespace Hotel_JustFriend.ViewModels
         public DateTime EndDate { get => _EndDate; set => _EndDate = value; }
         public byte[] Image { get => _Image; set { _Image = value; RaisePropertyChanged(); } }
         public bool IsDelete { get => isDelete; set => isDelete = value; }
+        /*
         public int IdEmployeeRole { get => _IdEmployeeRole; set => _IdEmployeeRole = value; }
-        public Employee SelectEmployee { get => _SelectEmployee; set => _SelectEmployee = value; }
+        //public Employee SelectEmployee { get => _SelectEmployee; set => _SelectEmployee = value; }
         public EmployeeDetailViewModel(Employee a)
         {
             if (a != null)
@@ -152,6 +153,6 @@ namespace Hotel_JustFriend.ViewModels
                 return;
             }
             }
-        
+        */
     }
 }

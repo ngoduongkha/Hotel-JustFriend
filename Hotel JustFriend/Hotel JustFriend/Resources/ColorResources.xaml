@@ -19,4 +19,5 @@
 
     <SolidColorBrush x:Key="AcceptBrush" Color="#9df587" />
     <SolidColorBrush x:Key="DeclineBrush" Color="#ff9494" />
+    <SolidColorBrush x:Key="UpdateBrush" Color="#f5fc6f"/>
 </ResourceDictionary>

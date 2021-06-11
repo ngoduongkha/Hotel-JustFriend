@@ -12,19 +12,19 @@ namespace Hotel_JustFriend.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class EmployeeRole
+    public partial class TypeRoom
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public EmployeeRole()
+        public TypeRoom()
         {
-            this.Employees = new HashSet<Employee>();
+            this.Rooms = new HashSet<Room>();
         }
     
-        public int idEmployeeRole { get; set; }
-        public string displayName { get; set; }
+        public int idType { get; set; }
+        public string fullname { get; set; }
+        public Nullable<decimal> price { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee> Employees { get; set; }
-        public virtual SalaryTable SalaryTable { get; set; }
+        public virtual ICollection<Room> Rooms { get; set; }
     }
 }

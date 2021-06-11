@@ -519,3 +519,7 @@ E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\BookingWin
 E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\BookingWindow.baml
 E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\UserControls\ButtonRoomUC.g.cs
 E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\UserControls\ButtonRoomUC.baml
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\RoomRentalView.g.cs
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\RoomRentalView.baml
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\UserControls\RoomUC.g.cs
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\UserControls\RoomUC.baml

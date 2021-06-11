@@ -17,20 +17,19 @@ namespace Hotel_JustFriend.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Room()
         {
-            this.Bills = new HashSet<Bill>();
+            this.RentInvoices = new HashSet<RentInvoice>();
         }
     
         public int idRoom { get; set; }
+        public int floor { get; set; }
         public string displayName { get; set; }
-        public Nullable<byte> floor { get; set; }
-        public Nullable<byte> number { get; set; }
-        public string type { get; set; }
-        public decimal price { get; set; }
-        public string status { get; set; } = "Sẵn sàng";
-        public string note { get; set; } = string.Empty;
-        public Nullable<bool> isDelete { get; set; } = false;
+        public int idType { get; set; }
+        public int status { get; set; }
+        public string note { get; set; }
+        public Nullable<bool> isDelete { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bill> Bills { get; set; }
+        public virtual ICollection<RentInvoice> RentInvoices { get; set; }
+        public virtual TypeRoom TypeRoom { get; set; }
     }
 }

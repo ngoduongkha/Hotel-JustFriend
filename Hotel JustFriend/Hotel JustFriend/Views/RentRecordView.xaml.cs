@@ -11,21 +11,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Hotel_JustFriend.Models;
-using Hotel_JustFriend.ViewModels;
 
 namespace Hotel_JustFriend.Views
 {
     /// <summary>
-    /// Interaction logic for EmployeeUpdateView.xaml
+    /// Interaction logic for RentRecord.xaml
     /// </summary>
-    public partial class EmployeeUpdateView : Window
+    public partial class RentRecord : Window
     {
-        public EmployeeUpdateView()
+        public RentRecord()
         {
-         
             InitializeComponent();
-            //this.DataContext = new EmployeeDetailViewModel();
         }
     }
 }

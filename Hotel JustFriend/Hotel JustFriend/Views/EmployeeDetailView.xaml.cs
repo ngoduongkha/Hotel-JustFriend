@@ -21,10 +21,10 @@ namespace Hotel_JustFriend.Views
     /// </summary>
     public partial class EmployeeDetailView : Window
     {
-        public EmployeeDetailView(Employee a)
+        public EmployeeDetailView()
         {
             InitializeComponent();
-            this.DataContext = new EmployeeDetailViewModel(a);
+           // this.DataContext = new EmployeeDetailViewModel(a);
         }
     }
 }

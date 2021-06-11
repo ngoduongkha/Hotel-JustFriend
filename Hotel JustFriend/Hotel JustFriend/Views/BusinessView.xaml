@@ -10,8 +10,8 @@
              d:DesignHeight="651.2" d:DesignWidth="1200">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="810"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="390"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
@@ -112,13 +112,17 @@
                                     Width="120"
                                     Height="50"
                                     Margin="5"                                    
-                                    Content="{Binding displayName}">
+                                     Content="{Binding displayName}"
+                                    Command="{Binding ElementName=MyItems, Path=DataContext.SelectRoomCommand}"
+                                    CommandParameter="{Binding}">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="MouseDown">
                                             <i:InvokeCommandAction Command="{Binding testCommand}">
                                             </i:InvokeCommandAction>
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
+
+                                   
                                     <Button.Style>
                                         <Style 
                                             TargetType="Button"
@@ -142,11 +146,6 @@
                                                     <Setter Property="BorderBrush" Value="Red"/>
                                                     <Setter Property="IsEnabled" Value="True"/>
                                                 </DataTrigger>
-                                                <MultiTrigger>
-                                                    <MultiTrigger.Conditions>
-
-                                                    </MultiTrigger.Conditions>
-                                                </MultiTrigger>
                                             </Style.Triggers>
                                         </Style>
                                     </Button.Style>

@@ -132,9 +132,7 @@
                             Width="200" Margin="30 25 15 0"
                             SelectedIndex="0" Text="{Binding RoomStatus, Mode=OneWayToSource}">
                             <ComboBoxItem Content="Sẵn sàng"/>
-                            <ComboBoxItem Content="Đang thuê"/>
-                            <ComboBoxItem Content="Không sẵn sàng"/>
-                            <ComboBoxItem Content="Hỏng"/>
+                            />
                         </ComboBox>
                         <ComboBox
                             DockPanel.Dock="Left"
@@ -145,7 +143,10 @@
                             materialDesign:ValidationAssist.HorizontalAlignment="Right"
                             FontSize="20" Margin="15 25 30 0"
                             IsEditable="True"
-                            ItemsSource="{Binding Path=ListRoomType}">
+                            ItemsSource="{Binding Path=ListRoomType}"
+                            DisplayMemberPath="fullname"
+                            SelectedValuePath="idType"
+                            SelectedValue="{Binding Path=idType}">
                             <ComboBox.Text>
                                 <Binding
                                     Path="RoomType"
@@ -158,41 +159,33 @@
                                     </Binding.ValidationRules>
                                 </Binding>
                             </ComboBox.Text>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction
+                                            Command="{Binding GeneratePriceCommand}"
+                                        CommandParameter="{Binding ElementName=window}"
+                                           />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
                         </ComboBox>
                     </DockPanel>
                     <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="59*"/>
+                            <ColumnDefinition Width="18*"/>
+                        </Grid.ColumnDefinitions>
                         <TextBox
+                            IsReadOnly="True"
                             x:Name="txtPrice"
-                            FontSize="20"                            
+                            FontSize="20"       
                             materialDesign:HintAssist.Hint="Giá"
-                            Margin="30 25 30 0"
+                            Margin="30,25,29.667,0"
                             materialDesign:TextFieldAssist.SuffixText="VNĐ/ngày"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                             materialDesign:ValidationAssist.HorizontalAlignment="Right"
                             materialDesign:ValidationAssist.Background="White"
-                            MaxLines="1" MaxLength="11" Grid.ColumnSpan="2">
-                            <TextBox.Text>
-                                <Binding
-                                    Path="RoomPrice"
-                                    Mode="OneWayToSource"
-                                    UpdateSourceTrigger="PropertyChanged">
-                                    <Binding.ValidationRules>
-                                        <validation:NotNullValidation
-                                            ValidatesOnTargetUpdated="True"
-                                            ErrorMessage="Vui lòng nhập giá!"/>
-                                        <validation:MoneyValidation
-                                            ValidatesOnTargetUpdated="True"
-                                            Divisor="1000"/>
-                                    </Binding.ValidationRules>
-                                </Binding>
-                            </TextBox.Text>
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="TextChanged">
-                                    <i:InvokeCommandAction
-                                        Command="{Binding SeparateThousandsCommand}"
-                                        CommandParameter="{Binding ElementName=txtPrice}"/>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
+                            MaxLines="1" MaxLength="11" Grid.ColumnSpan="2"
+                           Text="{Binding RoomPrice, Mode=OneWay}">
                         </TextBox>
                     </Grid>
                     <TextBox 
