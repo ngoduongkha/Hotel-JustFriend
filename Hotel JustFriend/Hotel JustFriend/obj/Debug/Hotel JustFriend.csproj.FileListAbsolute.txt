@@ -570,3 +570,5 @@ E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\RoomRental
 E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\UserControls\RoomUC.g.cs
 E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\UserControls\RoomUC.baml
 >>>>>>> phuc
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\UserControls\RoomUC.g.cs
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\UserControls\RoomUC.baml
