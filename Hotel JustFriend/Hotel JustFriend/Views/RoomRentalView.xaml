@@ -1,143 +1,159 @@
-﻿<Window
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:Hotel_JustFriend.Views"
-    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-    xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts"
-    x:Class="Hotel_JustFriend.Views.RoomRentalView"
-    mc:Ignorable="d" WindowStyle="None" WindowStartupLocation="CenterScreen"
-    x:Name="window" Title="Hotel Just Friend" Height="500" Width="600" 
-    ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True"
-    >
-
-    <Border Background="Pink" BorderBrush="Black" BorderThickness="1" CornerRadius="10">
-        <Grid Background="{x:Null}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Border BorderBrush="{x:Null}" CornerRadius="10,10,0,0" BorderThickness="0"
-            Background="Pink" Grid.Row="0">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="MouseLeftButtonDown">
-                        <i:InvokeCommandAction Command="{Binding MouseMoveWindowCommand}" CommandParameter="{Binding ElementName=window}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-                <Grid Background="{x:Null}" Height="Auto">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="50"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0">
-                            <Label Content="{Binding Title, ElementName=window}"
-                                   VerticalAlignment="Center" HorizontalAlignment="Center"
-                                   Foreground="WhiteSmoke"
-                                   FontSize="25" FontWeight="Bold"/>
-                        </Grid>
-                        <Grid Grid.Column="1">
-                            <Button ToolTip="Thoát"
-                                    Width="50"
-                                    Margin="0,0,0,20"
-                                    BorderThickness="0"
-                                    Background="Transparent"
-                                    Foreground="Black"
-                                    Padding="0"
-                                    Command="{Binding CloseWindowCommand}"
-                                    CommandParameter="{Binding ElementName=window}">
-                                <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"
-                                                         HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Button>
-                        </Grid>
-                    </Grid>
-                </Grid>
-            </Border>
-            <Border Grid.Row="1" BorderBrush="{x:Null}" CornerRadius="0,0,10,10" BorderThickness="0"
-                    Background="Pink" x:Name="borderMain">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="5*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <StackPanel Grid.Column="0"
-                                    Orientation="Horizontal"
-                                    Margin="50,10">
-                            <Label Content="Phòng:"
-                                   FontSize="20"
-                                   VerticalAlignment="Center">
-                            </Label>
-                            <TextBox materialDesign:HintAssist.Hint="Tên phòng"
-                                     FontSize="20" VerticalAlignment="Center"
-                                     Margin="15,0" Width="150" IsReadOnly="True"/>
-                        </StackPanel>
-                        <StackPanel Grid.Column="1"
-                                    Orientation="Horizontal">
-                            <Label Content="Ngày thuê:"
-                                   FontSize="20"
-                                   VerticalAlignment="Center">
-                            </Label>
-                            <TextBox materialDesign:HintAssist.Hint="dd/mm/yyyy"
-                                     FontSize="20" VerticalAlignment="Center"
-                                     Margin="15,0" Width="120" IsReadOnly="True"/>
-                        </StackPanel>
-                    </Grid>
-                    <Grid Grid.Row="1">
-                        <GroupBox Header="Thông tin chung"
-                                  FontSize="25"
-                                  Margin="30,10">
-                            <DataGrid>
-                            </DataGrid>
-                        </GroupBox>
-                    </Grid>
-                    <Grid Grid.Row="2">
-                        <Button Content="Chi tiết phiếu thuê"
-                                FontSize="15" Background="#d0f000"
-                                Foreground="black"
-                                VerticalAlignment="Center"
-                                Height="40"
-                                HorizontalAlignment="Right" Margin="30,0"
-                                BorderBrush="Transparent"/>
-                    </Grid>
-                    <Grid Grid.Row="3">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" 
-                                Content="Thêm"
-                                Width="150"
-                                FontSize="18"
-                                Background="{DynamicResource AcceptBrush}"
-                                Foreground="Black"
-                                BorderBrush="Transparent"/>
-                        <Button Grid.Column="1" 
-                                Content="Xóa"
-                                Width="150"
-                                FontSize="18"
-                                Background="{DynamicResource DeclineBrush}"
-                                Foreground="Black"
-                                BorderBrush="Transparent"/>
-                        <Button Grid.Column="2" 
-                                Content="Sửa"
-                                Width="150"
-                                FontSize="18"
-                                Background="{DynamicResource UpdateBrush}"
-                                Foreground="Black"
-                                BorderBrush="Transparent"/>
-                    </Grid>
-                </Grid>
-            </Border>
+﻿<UserControl x:Class="Hotel_JustFriend.Views.RoomRentalView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Hotel_JustFriend.Views"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="651" d:DesignWidth="450">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2.5*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0"
+                        Orientation="Horizontal"
+                        Margin="10">
+                <Label Content="Phòng:"
+                       FontSize="20"
+                       VerticalAlignment="Center">
+                </Label>
+                <TextBox materialDesign:HintAssist.Hint="Tên phòng"
+                         FontSize="20" VerticalAlignment="Center"
+                         Margin="10,0" Width="150" IsReadOnly="True"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1"
+                        Orientation="Horizontal">
+                <Label Content="Ngày thuê:"
+                       FontSize="20"
+                       VerticalAlignment="Center">
+                </Label>
+                <TextBox materialDesign:HintAssist.Hint="dd/mm/yyyy"
+                         FontSize="20" VerticalAlignment="Center"
+                         Margin="10,0" Width="120" IsReadOnly="True"/>
+            </StackPanel>
         </Grid>
-    </Border>
-</Window>
+        <Grid Grid.Row="1">
+            <GroupBox Header="Thông tin chung"
+                      FontSize="25"
+                      Margin="0">
+                <DataGrid>
+                </DataGrid>
+            </GroupBox>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <WrapPanel>
+                    <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}"
+                                        materialDesign:ButtonAssist.CornerRadius="10"
+                                        Width="120" Height="70" BorderBrush="#fa91d7"
+                                        Background="#fa91d7" Margin="5" Padding="0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Label Content="Thêm khách" FontSize="15"/>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <materialDesign:PackIcon Height="30" Width="30" Kind="AccountAdd"
+                                                                     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Grid>
+                        </Grid>
+                    </Button>
+                    <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}"
+                                        materialDesign:ButtonAssist.CornerRadius="10"
+                                        Width="120" Height="70" BorderBrush="#ff7383"
+                                        Background="#ff7383" Margin="5" Padding="0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Label Content="Xóa khách" FontSize="15"/>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <materialDesign:PackIcon Height="30" Width="30" Kind="AccountRemove"
+                                                                     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Grid>
+                        </Grid>
+                    </Button>
+                    <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}"
+                                        materialDesign:ButtonAssist.CornerRadius="10"
+                                        Width="120" Height="70" BorderBrush="#ffe396"
+                                        Background="#ffe396" Margin="5" Padding="0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Label Content="Sửa thông tin" FontSize="15"/>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <materialDesign:PackIcon Height="30" Width="30" Kind="AccountEdit"
+                                                                     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Grid>
+                        </Grid>
+                    </Button>
+                    <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}"
+                                        materialDesign:ButtonAssist.CornerRadius="10"
+                                        Width="120" Height="70" BorderBrush="#9ce8ff"
+                                        Background="#9ce8ff" Margin="5" Padding="0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Label Content="Chi tiết" FontSize="15"/>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <materialDesign:PackIcon Height="30" Width="30" Kind="AccountDetails"
+                                                                     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Grid>
+                        </Grid>
+                    </Button>
+                </WrapPanel>
+            </Grid>
+            <Grid Grid.Column="1" Margin="5">
+                <Button Height="100" Background="#8fffab" BorderBrush="#8fffab"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Center"
+                                    materialDesign:ButtonAssist.CornerRadius="10" Width="110"
+                                    Padding="0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Label Content="Thanh toán" FontSize="15"/>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <materialDesign:PackIcon Kind="Money" Height="30" Width="30" Foreground="Black"
+                                                                 VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Label Content="$$$" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15"/>
+                        </Grid>
+                    </Grid>
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
