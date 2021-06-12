@@ -49,8 +49,7 @@ namespace Hotel_JustFriend.ViewModels
         {
             try
             {
-                RoomRentalView window = new RoomRentalView();
-                window.ShowDialog();
+                
             }
             catch { return; }
         }
