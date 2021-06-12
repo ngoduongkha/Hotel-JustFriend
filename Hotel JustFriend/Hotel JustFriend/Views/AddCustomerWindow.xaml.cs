@@ -11,20 +11,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Hotel_JustFriend.Views
 {
     /// <summary>
-    /// Interaction logic for RoomRentalView.xaml
+    /// Interaction logic for AddCustomerWindow.xaml
     /// </summary>
-    public partial class RoomRentalView : UserControl
+    public partial class AddCustomerWindow : Window
     {
-        public RoomRentalView()
+        public AddCustomerWindow()
         {
             InitializeComponent();
-            this.DataContext = new RoomRentalViewModel();
+            this.DataContext = new AddCustomerViewModel();
         }
     }
 }

@@ -1,0 +1,154 @@
+﻿<Window x:Class="Hotel_JustFriend.Views.AddCustomerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:ei ="http://schemas.microsoft.com/expression/2010/interactions"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:validation="clr-namespace:Hotel_JustFriend.Validations"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize" WindowStyle="None"
+        AllowsTransparency="True" Background="Transparent"
+        Title="Thêm khách hàng" Height="600" Width="550"
+        x:Name="window" ShowInTaskbar="False">
+    <Border BorderBrush="Black" BorderThickness="0.5" CornerRadius="10" Background="Pink">
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="MouseLeftButtonDown">
+                <i:InvokeCommandAction Command="{Binding MouseMoveWindowCommand}" CommandParameter="{Binding ElementName=window}"/>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Margin="0 0 0 5">
+                <Label 
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Foreground="White"
+                    FontSize="25" FontWeight="Bold"
+                    Content="{Binding Title, ElementName=window}"/>
+                <Button
+                    HorizontalAlignment="Right" VerticalAlignment="Center"
+                    ToolTip="Thoát"
+                    Command="{Binding CloseCommand}" Padding="0"
+                    CommandParameter="{Binding ElementName=window}"
+                    Background="Transparent" BorderBrush="Transparent">
+                    <materialDesign:PackIcon
+                        Kind="WindowClose" Width="30" Height="30" 
+                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                </Button>
+            </Grid>
+            <materialDesign:Card Grid.Row="1" Background="White">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <materialDesign:Card Margin="10" Grid.Row="0">
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="10">
+                            <Label Content="Họ và tên khách hàng:" 
+                                   FontSize="20"
+                                   VerticalAlignment="Center"/>
+                            <TextBox materialDesign:ValidationAssist.HorizontalAlignment="Right"
+                                     materialDesign:ValidationAssist.Background="White"
+                                     Width="270" FontSize="20"
+                                     Margin="15 0"
+                                     Padding="5"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </materialDesign:Card>
+                    <materialDesign:Card Margin="10" Grid.Row="1">
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="10">
+                            <Label Content="Số CMND/CCCD:" 
+                                   FontSize="20"
+                                   VerticalAlignment="Center"/>
+                            <TextBox materialDesign:ValidationAssist.HorizontalAlignment="Right"
+                                     materialDesign:ValidationAssist.Background="White"
+                                     Width="270" FontSize="20"
+                                     Margin="63 0"
+                                     Padding="5"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </materialDesign:Card>
+                    <materialDesign:Card Margin="10" Grid.Row="2">
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="10">
+                            <Label Content="Loại khách hàng:" 
+                                   FontSize="20"
+                                   VerticalAlignment="Center"/>
+                            <ComboBox materialDesign:HintAssist.Hint="Loại khách hàng"
+                                      FontSize="20"
+                                      Margin="65 0">
+                                <ComboBoxItem>
+                                    VIP
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    Thường
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    Khách vãng lai
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    Phò
+                                </ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+                    </materialDesign:Card>
+                    <materialDesign:Card Margin="10" Grid.Row="3">
+                        <TextBox x:Name="txtNote"
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                 materialDesign:HintAssist.Background="White"
+                                 VerticalAlignment="Stretch"
+                                 HorizontalAlignment="Stretch"
+                                 FontSize="15"
+                                 Margin="30 25 30 25"
+                                 AcceptsReturn="True"
+                                 TextWrapping="Wrap"
+                                 VerticalScrollBarVisibility="Auto"
+                                 materialDesign:HintAssist.Hint="Địa chỉ liên lạc"
+                                 Text="{Binding RoomNote, Mode=OneWayToSource}"/>
+                    </materialDesign:Card>
+                    <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Button
+                                Content="Lưu" Width="100" Height="50"
+                                VerticalAlignment="Center" HorizontalAlignment="Right"
+                                Margin="0 0 40 20" materialDesign:ButtonAssist.CornerRadius="10"
+                                Command="{Binding SaveCommand}"
+                                CommandParameter="{Binding ElementName=window}">
+                                <Button.Style>
+                                    <Style TargetType="Button" BasedOn="{StaticResource MyAcceptButtonStyle}">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Button
+                                Style="{StaticResource MyDeclineButtonStyle}"
+                                Content="Hủy" Width="100" Height="50"
+                                VerticalAlignment="Center" HorizontalAlignment="Left"
+                                Margin="40 0 0 20" materialDesign:ButtonAssist.CornerRadius="10"
+                                Command="{Binding CloseCommand}"
+                                CommandParameter="{Binding ElementName=window}"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </materialDesign:Card>
+        </Grid>
+    </Border>
+</Window>

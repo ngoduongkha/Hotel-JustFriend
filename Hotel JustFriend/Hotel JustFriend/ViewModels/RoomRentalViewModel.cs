@@ -1,5 +1,6 @@
 ﻿using DevExpress.Mvvm;
 using DevExpress.Mvvm.DataAnnotations;
+using Hotel_JustFriend.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,23 +14,10 @@ namespace Hotel_JustFriend.ViewModels
     class RoomRentalViewModel : ViewModelBase
     {
         [Command]
-        public void MouseMoveWindow(Window p)
+        public void AddCustomer()
         {
-            try
-            {
-                p.DragMove();
-            }
-            catch { return; }
-        }
-
-        [Command]
-        public void CloseWindow(Window p)
-        {
-            try
-            {
-                p.Close();
-            }
-            catch { return; }
+            AddCustomerWindow window = new AddCustomerWindow();
+            window.ShowDialog();
         }
     }
 }
