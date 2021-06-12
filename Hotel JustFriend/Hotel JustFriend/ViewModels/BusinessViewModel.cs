@@ -49,7 +49,7 @@ namespace Hotel_JustFriend.ViewModels
         {
             try
             {
-                MessageBox.Show(selectedRoom.idRoom.ToString());
+                
             }
             catch { return; }
         }

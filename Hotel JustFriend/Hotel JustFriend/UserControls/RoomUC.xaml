@@ -9,14 +9,19 @@
              d:DesignHeight="50" d:DesignWidth="1210">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="80"></ColumnDefinition>
-            <ColumnDefinition Width="200"></ColumnDefinition>
-            <ColumnDefinition Width="180"></ColumnDefinition>
-            <ColumnDefinition Width="220"></ColumnDefinition>
-            <ColumnDefinition Width="180"></ColumnDefinition>
-            <ColumnDefinition Width="250"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width=".5*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize" Value="18"/>
+            </Style>
+        </Grid.Resources>
         <TextBlock x:Name="id"
                    Visibility="Hidden"></TextBlock>
         <TextBlock Grid.Column="0"

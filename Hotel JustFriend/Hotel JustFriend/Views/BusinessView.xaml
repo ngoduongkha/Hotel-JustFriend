@@ -10,8 +10,8 @@
              d:DesignHeight="651.2" d:DesignWidth="1200">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="390"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1.2*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
@@ -105,50 +105,52 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                            
-                                 
                                 <Button 
+                                    Padding="10"
                                     x:Name="btn"
-                                    Width="120"
-                                    Height="50"
-                                    Margin="5"                                    
-                                     Content="{Binding displayName}"
+                                    Width="180"
+                                    Height="150"
+                                    Margin="5"
                                     Command="{Binding ElementName=MyItems, Path=DataContext.SelectRoomCommand}"
-                                    CommandParameter="{Binding}">
+                                    CommandParameter="{Binding}"
+                                    materialDesign:ButtonAssist.CornerRadius="10">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="MouseDown">
                                             <i:InvokeCommandAction Command="{Binding testCommand}">
                                             </i:InvokeCommandAction>
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
-
-                                   
                                     <Button.Style>
                                         <Style 
                                             TargetType="Button"
                                             BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                             <Style.Triggers>
                                                 <DataTrigger Binding="{Binding status}" Value="Sẵn sàng">
-                                                    <Setter Property="Background" Value="Green"/>
-                                                    <Setter Property="BorderBrush" Value="Green"/>
+                                                    <Setter Property="Background" Value="{DynamicResource AcceptBrush}"/>
+                                                    <Setter Property="BorderBrush" Value="{DynamicResource AcceptBrush}"/>
                                                 </DataTrigger>
                                                 <DataTrigger Binding="{Binding status}" Value="Đang thuê">
-                                                    <Setter Property="Background" Value="Yellow"/>
-                                                    <Setter Property="BorderBrush" Value="Yellow"/>
+                                                    <Setter Property="Background" Value="{DynamicResource UpdateBrush}"/>
+                                                    <Setter Property="BorderBrush" Value="{DynamicResource UpdateBrush}"/>
                                                     <Setter Property="Foreground" Value="Black"/>
                                                 </DataTrigger>
                                                 <DataTrigger Binding="{Binding status}" Value="Không sẵn sàng">
-                                                    <Setter Property="Background" Value="Purple"/>
-                                                    <Setter Property="BorderBrush" Value="Purple"/>
+                                                    <Setter Property="Background" Value="#DAB5FF"/>
+                                                    <Setter Property="BorderBrush" Value="#DAB5FF"/>
                                                 </DataTrigger>
                                                 <DataTrigger Binding="{Binding status}" Value="Hỏng">
-                                                    <Setter Property="Background" Value="Red"/>
-                                                    <Setter Property="BorderBrush" Value="Red"/>
+                                                    <Setter Property="Background" Value="{DynamicResource DeclineBrush}"/>
+                                                    <Setter Property="BorderBrush" Value="{DynamicResource DeclineBrush}"/>
                                                     <Setter Property="IsEnabled" Value="True"/>
                                                 </DataTrigger>
                                             </Style.Triggers>
                                         </Style>
                                     </Button.Style>
+                                    <Grid>
+                                        <Image Source="/Hotel JustFriend;component/Resources/Images/room.png"/>
+                                        <Label Content="{Binding displayName}" FontSize="18" Foreground="Black"
+                                               HorizontalAlignment="Center" Margin="0, 20"/>
+                                    </Grid>
                                 </Button>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
@@ -156,157 +158,8 @@
                 </materialDesign:Card>
             </Grid>
         </Grid>
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="400"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Label Content="{Binding SelectedRoom.displayName}" FontSize="30" Margin="20"
-                           VerticalAlignment="Center" HorizontalAlignment="Center"
-                           FontWeight="SemiBold" Foreground="White" Grid.Row="0"/>
-            <materialDesign:Card Grid.Row="1" Margin="10,10,9.6,10">
-                <StackPanel>
-                    <Label Content="Danh sách dịch vụ" FontSize="20" FontWeight="SemiBold"
-                                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <ListView>
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="STT" Width="Auto"/>
-                                <GridViewColumn Header="Tên dịch vụ" Width="Auto"/>
-                                <GridViewColumn Header="SL" Width="Auto"/>
-                                <GridViewColumn Header="Giá" Width="Auto"/>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                </StackPanel>
-            </materialDesign:Card>
-            <Grid Grid.Row="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="130"/>
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0">
-                    <WrapPanel>
-                        <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}"
-                                        materialDesign:ButtonAssist.CornerRadius="10"
-                                        Width="120" Height="70" BorderBrush="#fa91d7"
-                                        Background="#fa91d7" Margin="5" Padding="0">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <Grid Grid.Row="0">
-                                    <Label Content="Thêm dịch vụ" FontSize="15"/>
-                                </Grid>
-                                <Grid Grid.Row="1">
-                                    <materialDesign:PackIcon Height="30" Width="30" Kind="BellPlus"
-                                                                     VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                </Grid>
-                            </Grid>
-                        </Button>
-                        <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}"
-                                        materialDesign:ButtonAssist.CornerRadius="10"
-                                        Width="120" Height="70" BorderBrush="#ff7383"
-                                        Background="#ff7383" Margin="5" Padding="0">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <Grid Grid.Row="0">
-                                    <Label Content="Xóa dịch vụ" FontSize="15"/>
-                                </Grid>
-                                <Grid Grid.Row="1">
-                                    <materialDesign:PackIcon Height="30" Width="30" Kind="Delete"
-                                                                     VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                </Grid>
-                            </Grid>
-                        </Button>
-                        <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}"
-                                        materialDesign:ButtonAssist.CornerRadius="10"
-                                        Width="120" Height="70" BorderBrush="#ffe396"
-                                        Background="#ffe396" Margin="5" Padding="0">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <Grid Grid.Row="0">
-                                    <Label Content="Dọn phòng" FontSize="15"/>
-                                </Grid>
-                                <Grid Grid.Row="1">
-                                    <materialDesign:PackIcon Height="30" Width="30" Kind="Broom"
-                                                                     VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                </Grid>
-                            </Grid>
-                        </Button>
-                        <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}"
-                                        materialDesign:ButtonAssist.CornerRadius="10"
-                                        Width="120" Height="70" BorderBrush="#9ce8ff"
-                                        Background="#9ce8ff" Margin="5" Padding="0">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <Grid Grid.Row="0">
-                                    <Label Content="Chuyển phòng" FontSize="15"/>
-                                </Grid>
-                                <Grid Grid.Row="1">
-                                    <materialDesign:PackIcon Height="30" Width="30" Kind="Sync"
-                                                                     VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                </Grid>
-                            </Grid>
-                        </Button>
-                    </WrapPanel>
-                </Grid>
-                <Grid Grid.Column="1" Margin="5">
-                    <materialDesign:PopupBox PlacementMode="BottomAndAlignCentres"
-                                                     VerticalAlignment="Top"
-                                                     HorizontalAlignment="Center"
-                                                     Background="Transparent">
-                        <materialDesign:PopupBox.ToggleContent>
-                            <materialDesign:PackIcon Kind="PlusCircle" Height="30" Width="25"/>
-                        </materialDesign:PopupBox.ToggleContent>
-                        <StackPanel>
-                            <Button ToolTip="Sửa chữa phòng" Background="Transparent">
-                                <materialDesign:PackIcon Kind="Wrench" Height="30" Width="25"/>
-                            </Button>
-                            <Button ToolTip="Thông tin phòng" Background="Transparent">
-                                <materialDesign:PackIcon Kind="Information" Height="30" Width="25"/>
-                            </Button>
-                        </StackPanel>
-                    </materialDesign:PopupBox>
-                </Grid>
-                <Grid Grid.Column="2" Margin="5">
-                    <Button Height="100" Background="#8fffab" BorderBrush="#8fffab"
-                                        VerticalAlignment="Top"
-                                        HorizontalAlignment="Center"
-                                    materialDesign:ButtonAssist.CornerRadius="10" Width="110"
-                                    Padding="0">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Grid Grid.Row="0">
-                                <Label Content="Thanh toán" FontSize="15"/>
-                            </Grid>
-                            <Grid Grid.Row="1">
-                                <materialDesign:PackIcon Kind="Money" Height="30" Width="30" Foreground="Black"
-                                                                 VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            </Grid>
-                            <Grid Grid.Row="2">
-                                <Label Content="$$$" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15"/>
-                            </Grid>
-                        </Grid>
-                    </Button>
-                </Grid>
-            </Grid>
+        <Grid Grid.Column="1" Margin="5">
+            <local:RoomRentalView/>
         </Grid>
     </Grid>
 </UserControl>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Hotel_JustFriend1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="Hotel_JustFriendModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Account">
     <Key>
       <PropertyRef Name="idAccount" />
@@ -16,7 +16,7 @@
     <Property Name="TotalMoney" Type="money" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6013: The table/view 'Hotel_JustFriend1.dbo.BillInfo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+warning 6013: The table/view 'Hotel_JustFriend.dbo.BillInfo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="BillInfo">
           <Property Name="NumberDay" Type="int" />
           <Property Name="Price" Type="money" />
@@ -25,7 +25,7 @@ warning 6013: The table/view 'Hotel_JustFriend1.dbo.BillInfo' does not have a pr
           <Property Name="idCustomer" Type="int" />
         </EntityType>-->
   <!--Errors Found During Generation:
-warning 6013: The table/view 'Hotel_JustFriend1.dbo.Constant' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+warning 6013: The table/view 'Hotel_JustFriend.dbo.Constant' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="Constant">
           <Property Name="MaxCustomer" Type="int" />
           <Property Name="Percent" Type="float" />
@@ -51,7 +51,7 @@ warning 6013: The table/view 'Hotel_JustFriend1.dbo.Constant' does not have a pr
     <Property Name="idRoom" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6013: The table/view 'Hotel_JustFriend1.dbo.RentInvoiceInfo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+warning 6013: The table/view 'Hotel_JustFriend.dbo.RentInvoiceInfo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="RentInvoiceInfo">
           <Property Name="idRentInvoice" Type="int" />
           <Property Name="idCustomer" Type="int" />
@@ -64,7 +64,7 @@ warning 6013: The table/view 'Hotel_JustFriend1.dbo.RentInvoiceInfo' does not ha
     <Property Name="TotalMoney" Type="money" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6013: The table/view 'Hotel_JustFriend1.dbo.RevenueInfo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="RevenueInfo">
           <Property Name="Percent" Type="float" />
           <Property Name="Month" Type="int" />
@@ -93,16 +93,6 @@ warning 6013: The table/view 'Hotel_JustFriend1.dbo.RevenueInfo' does not have a
     <Property Name="note" Type="nvarchar(max)" />
     <Property Name="isDelete" Type="bit" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
   <EntityType Name="TypeCustomer">
     <Key>
       <PropertyRef Name="idType" />
@@ -119,13 +109,13 @@ warning 6013: The table/view 'Hotel_JustFriend1.dbo.RevenueInfo' does not have a
     <Property Name="price" Type="money" />
   </EntityType>
   <!--Errors Found During Generation:
-error 6004: The table 'Hotel_JustFriend1.dbo.BillInfo' is referenced by a relationship, but cannot be found.
+error 6004: The table 'Hotel_JustFriend.dbo.BillInfo' is referenced by a relationship, but cannot be found.
         <Association Name="FK__BillInfo__idBill__440B1D61" />-->
   <!--Errors Found During Generation:
-error 6004: The table 'Hotel_JustFriend1.dbo.BillInfo' is referenced by a relationship, but cannot be found.
+error 6004: The table 'Hotel_JustFriend.dbo.BillInfo' is referenced by a relationship, but cannot be found.
         <Association Name="FK__BillInfo__idCust__4222D4EF" />-->
   <!--Errors Found During Generation:
-error 6004: The table 'Hotel_JustFriend1.dbo.BillInfo' is referenced by a relationship, but cannot be found.
+error 6004: The table 'Hotel_JustFriend.dbo.BillInfo' is referenced by a relationship, but cannot be found.
         <Association Name="FK__BillInfo__idRoom__3F466844" />-->
   <Association Name="FK__Customer__idType__403A8C7D">
     <End Role="TypeCustomer" Type="Self.TypeCustomer" Multiplicity="1" />
@@ -140,10 +130,10 @@ error 6004: The table 'Hotel_JustFriend1.dbo.BillInfo' is referenced by a relati
     </ReferentialConstraint>
   </Association>
   <!--Errors Found During Generation:
-error 6004: The table 'Hotel_JustFriend1.dbo.RentInvoiceInfo' is referenced by a relationship, but cannot be found.
+error 6004: The table 'Hotel_JustFriend.dbo.RentInvoiceInfo' is referenced by a relationship, but cannot be found.
         <Association Name="FK__RentInvoi__idCus__412EB0B6" />-->
   <!--Errors Found During Generation:
-error 6004: The table 'Hotel_JustFriend1.dbo.RentInvoiceInfo' is referenced by a relationship, but cannot be found.
+error 6004: The table 'Hotel_JustFriend.dbo.RentInvoiceInfo' is referenced by a relationship, but cannot be found.
         <Association Name="FK__RentInvoi__idRen__4316F928" />-->
   <Association Name="FK__RentInvoi__idRoo__3E52440B">
     <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
@@ -169,7 +159,7 @@ error 6004: The table 'Hotel_JustFriend1.dbo.RentInvoiceInfo' is referenced by a
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="Hotel_JustFriend1ModelStoreContainer">
+  <EntityContainer Name="Hotel_JustFriendModelStoreContainer">
     <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
@@ -177,7 +167,6 @@ error 6004: The table 'Hotel_JustFriend1.dbo.RentInvoiceInfo' is referenced by a
     <EntitySet Name="Revenue" EntityType="Self.Revenue" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RevenuePercentage" EntityType="Self.RevenuePercentage" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TypeCustomer" EntityType="Self.TypeCustomer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TypeRoom" EntityType="Self.TypeRoom" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__Customer__idType__403A8C7D" Association="Self.FK__Customer__idType__403A8C7D">

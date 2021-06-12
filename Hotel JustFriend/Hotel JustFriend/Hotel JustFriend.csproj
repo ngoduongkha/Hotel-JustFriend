@@ -158,7 +158,6 @@
     <Compile Include="Models\Customer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataProvider.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -174,6 +173,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataProvider.cs" />
     <Compile Include="Models\RentInvoice.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -186,17 +186,14 @@
     <Compile Include="Models\Room.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="Template\ImportBill.xaml.cs">
+      <DependentUpon>ImportBill.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\TypeCustomer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TypeRoom.cs">
       <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Template\ImportBill.xaml.cs">
-      <DependentUpon>ImportBill.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ButtonRoomUC.xaml.cs">
       <DependentUpon>ButtonRoomUC.xaml</DependentUpon>
@@ -223,11 +220,16 @@
       <DependentUpon>SellProductUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AccountManageViewModel.cs" />
+    <Compile Include="ViewModels\AddCustomerViewModel.cs" />
     <Compile Include="ViewModels\EmployeeDetailViewModel.cs" />
+    <Compile Include="ViewModels\RoomRentalViewModel.cs" />
     <Compile Include="ViewModels\SellProductViewModel.cs" />
     <Compile Include="ViewModels\WarehouseViewModel.cs" />
     <Compile Include="Views\AccountManageView.xaml.cs">
       <DependentUpon>AccountManageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddCustomerWindow.xaml.cs">
+      <DependentUpon>AddCustomerWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\BookingWindow.xaml.cs">
       <DependentUpon>BookingWindow.xaml</DependentUpon>
@@ -345,6 +347,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\AddCustomerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\BookingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -455,18 +461,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
@@ -479,12 +473,25 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Images\room.png" />
     <Resource Include="Icon\up.png" />
     <Resource Include="Icon\down.png" />
     <Resource Include="Resources\Images\demo.jpg" />
     <Resource Include="Resources\Images\logo.png" />
     <Resource Include="Resources\Images\banner.png" />
     <Resource Include="Resources\Images\hotel_cam_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />
