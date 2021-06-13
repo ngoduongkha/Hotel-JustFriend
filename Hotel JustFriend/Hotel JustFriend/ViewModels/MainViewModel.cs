@@ -159,6 +159,17 @@ namespace Hotel_JustFriend.ViewModels
             }
             catch { return; }
         }
+        public void OpenTabCustomizeParameters(MainWindow p)
+        {
+            try
+            {
+                p.gridMain.Children.Clear();
+                CustomizeParametersView uc = new CustomizeParametersView();
+                CloseMenuByClick(p);
+                p.gridMain.Children.Add(uc);
+            }
+            catch { return; }
+        }
         #endregion
     }
 }

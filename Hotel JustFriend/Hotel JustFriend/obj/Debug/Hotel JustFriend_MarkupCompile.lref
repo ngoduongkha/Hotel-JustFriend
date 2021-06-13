@@ -12,7 +12,9 @@ FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\UserControls\Produ
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\UserControls\RoomUC.xaml;;
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\UserControls\SellProductDetailUC.xaml;;
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\UserControls\SellProductUC.xaml;;
+FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\CustomizeParametersView.xaml;;
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\AccountManageView.xaml;;
+FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\AddCustomerWindow.xaml;;
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\BookingWindow.xaml;;
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\EmployeeDetailView.xaml;;
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\EmployeeManageView.xaml;;
@@ -28,5 +30,4 @@ FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\RoomManageVi
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\RoomRentalView.xaml;;
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\SellProductView.xaml;;
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\WarehouseView.xaml;;
-FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\AddCustomerWindow.xaml;;
 

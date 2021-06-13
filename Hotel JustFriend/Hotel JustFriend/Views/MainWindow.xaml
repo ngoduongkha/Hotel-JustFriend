@@ -195,6 +195,14 @@
                             <Label Content="Quản lý nhân viên" Grid.Column="0"/>
                         </StackPanel>
                     </Button>
+                    <Button
+                        Command="{Binding OpenTabCustomizeParametersCommand}"
+                        CommandParameter="{Binding ElementName=window}">
+                        <StackPanel Orientation="Horizontal" Width="250">
+                            <materialDesign:PackIcon Kind="SettingsApplications" Grid.Column="0"/>
+                            <Label Content="Tùy chỉnh thông số" Grid.Column="0"/>
+                        </StackPanel>
+                    </Button>
                 </StackPanel>
             </Border>
             <Grid Opacity="0.5" Grid.Column="1">
