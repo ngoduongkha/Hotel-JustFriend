@@ -159,6 +159,7 @@ namespace Hotel_JustFriend.ViewModels
             }
             catch { return; }
         }
+        [Command]
         public void OpenTabCustomizeParameters(MainWindow p)
         {
             try

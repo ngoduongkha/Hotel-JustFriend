@@ -119,7 +119,7 @@
                            FontSize="20"
                            VerticalAlignment="Center"
                            Margin="15"/>
-                    <TextBox Width="250"
+                    <TextBox Width="80"
                              VerticalAlignment="Center"
                              FontSize="20"
                              Margin="95 0"/>
