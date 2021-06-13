@@ -220,10 +220,15 @@
       <DependentUpon>SellProductUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AccountManageViewModel.cs" />
+    <Compile Include="ViewModels\AddCustomerTypeViewModel.cs" />
     <Compile Include="ViewModels\AddCustomerViewModel.cs" />
+    <Compile Include="ViewModels\CustomizeParametersViewModel.cs" />
     <Compile Include="ViewModels\EmployeeDetailViewModel.cs" />
     <Compile Include="ViewModels\RoomRentalViewModel.cs" />
     <Compile Include="ViewModels\SellProductViewModel.cs" />
+    <Compile Include="Views\AddCustomerTypeWindow.xaml.cs">
+      <DependentUpon>AddCustomerTypeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CustomizeParametersView.xaml.cs">
       <DependentUpon>CustomizeParametersView.xaml</DependentUpon>
     </Compile>
@@ -343,6 +348,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\SellProductUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddCustomerTypeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
