@@ -48,7 +48,8 @@
                     </ComboBox>
                     <Button Content="Thêm"
                             FontSize="20"
-                            Margin="15"/>
+                            Margin="15"
+                            Command="{Binding CallAddRoomTypeCommand}"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1"
                             Orientation="Horizontal">
@@ -111,7 +112,8 @@
                     </ComboBox>
                     <Button Content="Thêm"
                             FontSize="20"
-                            Margin="15"/>
+                            Margin="15"
+                            Command="{Binding CallAddRoomTypeCommand}"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1"
                             Orientation="Horizontal">
