@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\App.xaml
-311873231548
+33211665422
 21628168987
-69-946602784
+73-1215480902
 15050177395
-Resources\ButtonResources.xaml;Resources\ColorResources.xaml;Resources\Resources.xaml;Template\BillTemplate.xaml;Template\ImportBill.xaml;UserControls\ButtonRoomUC.xaml;UserControls\CustomerUC.xaml;UserControls\ImportProductDetailUC.xaml;UserControls\ImportProductUC.xaml;UserControls\NumericSpinner.xaml;UserControls\ProductDetailUC.xaml;UserControls\RoomUC.xaml;UserControls\SellProductDetailUC.xaml;UserControls\SellProductUC.xaml;Views\AccountManageView.xaml;Views\AddCustomerWindow.xaml;Views\BookingWindow.xaml;Views\EmployeeDetailView.xaml;Views\EmployeeManageView.xaml;Views\EmployeeUpdateView.xaml;Views\LoginWindow.xaml;Views\MainWindow.xaml;Views\MyMessageBoxes\MyMessageBoxWindow.xaml;Views\ProductDetailView.xaml;Views\ProductManageView.xaml;Views\RoomDetailView.xaml;Views\BusinessView.xaml;Views\RoomManageView.xaml;Views\RoomRentalView.xaml;Views\SellProductView.xaml;Views\WarehouseView.xaml;
+Resources\ButtonResources.xaml;Resources\ColorResources.xaml;Resources\Resources.xaml;Template\BillTemplate.xaml;Template\ImportBill.xaml;UserControls\ButtonRoomUC.xaml;UserControls\CustomerUC.xaml;UserControls\ImportProductDetailUC.xaml;UserControls\ImportProductUC.xaml;UserControls\NumericSpinner.xaml;UserControls\ProductDetailUC.xaml;UserControls\RoomUC.xaml;UserControls\SellProductDetailUC.xaml;UserControls\SellProductUC.xaml;Views\AddCustomerTypeWindow.xaml;Views\CustomizeParametersView.xaml;Views\AccountManageView.xaml;Views\AddCustomerWindow.xaml;Views\BookingWindow.xaml;Views\EmployeeDetailView.xaml;Views\EmployeeManageView.xaml;Views\EmployeeUpdateView.xaml;Views\LoginWindow.xaml;Views\MainWindow.xaml;Views\MyMessageBoxes\MyMessageBoxWindow.xaml;Views\ProductDetailView.xaml;Views\ProductManageView.xaml;Views\RoomDetailView.xaml;Views\BusinessView.xaml;Views\RoomManageView.xaml;Views\RoomRentalView.xaml;Views\SellProductView.xaml;Views\WarehouseView.xaml;
 
 False
 
