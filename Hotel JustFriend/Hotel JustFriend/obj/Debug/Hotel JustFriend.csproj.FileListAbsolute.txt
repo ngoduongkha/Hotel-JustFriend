@@ -578,3 +578,7 @@ E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\AddCustome
 E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\AddCustomerWindow.baml
 E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\UserControls\CustomerUC.g.cs
 E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\UserControls\CustomerUC.baml
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\AddCustomerTypeWindow.g.cs
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\CustomizeParametersView.g.cs
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\AddCustomerTypeWindow.baml
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\CustomizeParametersView.baml

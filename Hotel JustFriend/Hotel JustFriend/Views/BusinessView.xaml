@@ -198,9 +198,9 @@
                 <GroupBox Header="Thông tin chung"
                       FontSize="25"
                       Margin="0">
-                    <StackPanel x:Name="stp">
                     <DataGrid ItemsSource="{Binding ListRentInvoiceInfo}"
-                              AutoGenerateColumns="False">
+                              AutoGenerateColumns="False"
+                              SelectedItem="{Binding SelectedCustomer}">
                         <DataGrid.Resources>
                             <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
                                 <Setter Property="Background" Value="LightPink" />
@@ -228,11 +228,8 @@
                         </DataGrid.Resources>
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Tên khách hàng" Width="2*" Binding="{Binding idCustomer}"/>
-                            <DataGridTextColumn Header="Loại khách" Width="1*" />
-                            <DataGridTextColumn Width="1*"/>
                             </DataGrid.Columns>
                     </DataGrid>
-                    </StackPanel>
                 </GroupBox>
             </Grid>
             <Grid Grid.Row="2">
@@ -265,7 +262,9 @@
                         <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}"
                                         materialDesign:ButtonAssist.CornerRadius="10"
                                         Width="120" Height="70" BorderBrush="#ff7383"
-                                        Background="#ff7383" Margin="5" Padding="0">
+                                        Background="#ff7383" Margin="5" Padding="0"
+                                        Command="{Binding DeleteCustomerCommand}"
+                                >
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
@@ -283,7 +282,8 @@
                         <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}"
                                         materialDesign:ButtonAssist.CornerRadius="10"
                                         Width="120" Height="70" BorderBrush="#ffe396"
-                                        Background="#ffe396" Margin="5" Padding="0">
+                                        Background="#ffe396" Margin="5" Padding="0"
+                                        Command="{Binding EditCustomerCommand}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
@@ -301,7 +301,8 @@
                         <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}"
                                         materialDesign:ButtonAssist.CornerRadius="10"
                                         Width="120" Height="70" BorderBrush="#9ce8ff"
-                                        Background="#9ce8ff" Margin="5" Padding="0">
+                                        Background="#9ce8ff" Margin="5" Padding="0"
+                                        Command="{Binding DetailCustomerCommand}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
