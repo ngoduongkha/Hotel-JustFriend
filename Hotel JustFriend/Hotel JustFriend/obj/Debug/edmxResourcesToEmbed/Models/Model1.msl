@@ -14,15 +14,15 @@
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.Bill">
         <MappingFragment StoreEntitySet="Bill">
           <ScalarProperty Name="idBill" ColumnName="idBill" />
-          <ScalarProperty Name="TotalMoney" ColumnName="TotalMoney" />
+          <ScalarProperty Name="totalMoney" ColumnName="totalMoney" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="BillInfoes">
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.BillInfo">
         <MappingFragment StoreEntitySet="BillInfo">
-          <ScalarProperty Name="NumberDay" ColumnName="NumberDay" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="numberDay" ColumnName="numberDay" />
+          <ScalarProperty Name="price" ColumnName="price" />
           <ScalarProperty Name="idBill" ColumnName="idBill" />
           <ScalarProperty Name="idRoom" ColumnName="idRoom" />
           <ScalarProperty Name="idCustomer" ColumnName="idCustomer" />
@@ -37,7 +37,6 @@
           <ScalarProperty Name="idCard" ColumnName="idCard" />
           <ScalarProperty Name="idType" ColumnName="idType" />
           <ScalarProperty Name="address" ColumnName="address" />
-          <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -45,7 +44,7 @@
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.RentInvoice">
         <MappingFragment StoreEntitySet="RentInvoice">
           <ScalarProperty Name="idRentInvoice" ColumnName="idRentInvoice" />
-          <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+          <ScalarProperty Name="date" ColumnName="date" />
           <ScalarProperty Name="idRoom" ColumnName="idRoom" />
           <ScalarProperty Name="purchase" ColumnName="purchase" />
         </MappingFragment>
@@ -64,7 +63,7 @@
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.Revenue">
         <MappingFragment StoreEntitySet="Revenue">
           <ScalarProperty Name="idRevenue" ColumnName="idRevenue" />
-          <ScalarProperty Name="TotalMoney" ColumnName="TotalMoney" />
+          <ScalarProperty Name="totalMoney" ColumnName="totalMoney" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -72,9 +71,9 @@
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.RevenuePercentage">
         <MappingFragment StoreEntitySet="RevenuePercentage">
           <ScalarProperty Name="idrevenuePrecentage" ColumnName="idrevenuePrecentage" />
-          <ScalarProperty Name="Percent" ColumnName="Percent" />
-          <ScalarProperty Name="Month" ColumnName="Month" />
-          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="percent" ColumnName="percent" />
+          <ScalarProperty Name="month" ColumnName="month" />
+          <ScalarProperty Name="year" ColumnName="year" />
           <ScalarProperty Name="idRoom" ColumnName="idRoom" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -96,7 +95,7 @@
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.TypeCustomer">
         <MappingFragment StoreEntitySet="TypeCustomer">
           <ScalarProperty Name="idType" ColumnName="idType" />
-          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="displayname" ColumnName="displayname" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

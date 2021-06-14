@@ -12,8 +12,8 @@
     <Key>
       <PropertyRef Name="idBill" />
     </Key>
-    <Property Name="idBill" Type="Int32" Nullable="false" />
-    <Property Name="TotalMoney" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="idBill" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="totalMoney" Type="Decimal" Precision="19" Scale="4" />
     <NavigationProperty Name="BillInfoes" Relationship="Self.FK__BillInfo__idBill__46E78A0C" FromRole="Bill" ToRole="BillInfo" />
   </EntityType>
   <EntityType Name="BillInfo">
@@ -22,8 +22,8 @@
       <PropertyRef Name="idRoom" />
       <PropertyRef Name="idCustomer" />
     </Key>
-    <Property Name="NumberDay" Type="Int32" />
-    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="numberDay" Type="Int32" />
+    <Property Name="price" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="idBill" Type="Int32" Nullable="false" />
     <Property Name="idRoom" Type="Int32" Nullable="false" />
     <Property Name="idCustomer" Type="Int32" Nullable="false" />
@@ -35,12 +35,11 @@
     <Key>
       <PropertyRef Name="idCustomer" />
     </Key>
-    <Property Name="idCustomer" Type="Int32" Nullable="false" />
+    <Property Name="idCustomer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="fullname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="idCard" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="idType" Type="Int32" Nullable="false" />
     <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="dateOfBirth" Type="DateTime" Precision="0" />
     <NavigationProperty Name="BillInfoes" Relationship="Self.FK__BillInfo__idCust__44FF419A" FromRole="Customer" ToRole="BillInfo" />
     <NavigationProperty Name="TypeCustomer" Relationship="Self.FK__Customer__idType__4316F928" FromRole="Customer" ToRole="TypeCustomer" />
     <NavigationProperty Name="RentInvoiceInfoes" Relationship="Self.FK__RentInvoi__idCus__440B1D61" FromRole="Customer" ToRole="RentInvoiceInfo" />
@@ -50,7 +49,7 @@
       <PropertyRef Name="idRentInvoice" />
     </Key>
     <Property Name="idRentInvoice" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="DateStart" Type="DateTime" Precision="0" />
+    <Property Name="date" Type="DateTime" Precision="0" />
     <Property Name="idRoom" Type="Int32" />
     <Property Name="purchase" Type="Boolean" />
     <NavigationProperty Name="RentInvoiceInfoes" Relationship="Self.FK__RentInvoi__idRen__45F365D3" FromRole="RentInvoice" ToRole="RentInvoiceInfo" />
@@ -71,17 +70,17 @@
     <Key>
       <PropertyRef Name="idRevenue" />
     </Key>
-    <Property Name="idRevenue" Type="Int32" Nullable="false" />
-    <Property Name="TotalMoney" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="idRevenue" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="totalMoney" Type="Decimal" Precision="19" Scale="4" />
   </EntityType>
   <EntityType Name="RevenuePercentage">
     <Key>
       <PropertyRef Name="idrevenuePrecentage" />
     </Key>
-    <Property Name="idrevenuePrecentage" Type="Int32" Nullable="false" />
-    <Property Name="Percent" Type="Double" />
-    <Property Name="Month" Type="Int32" />
-    <Property Name="Year" Type="Int32" />
+    <Property Name="idrevenuePrecentage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="percent" Type="Double" />
+    <Property Name="month" Type="Int32" />
+    <Property Name="year" Type="Int32" />
     <Property Name="idRoom" Type="Int32" />
   </EntityType>
   <EntityType Name="Room">
@@ -92,7 +91,7 @@
     <Property Name="floor" Type="Int32" Nullable="false" />
     <Property Name="displayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="idType" Type="Int32" Nullable="false" />
-    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="Boolean" Nullable="false" />
     <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="isDelete" Type="Boolean" />
     <NavigationProperty Name="BillInfoes" Relationship="Self.FK__BillInfo__idRoom__4222D4EF" FromRole="Room" ToRole="BillInfo" />
@@ -103,8 +102,8 @@
     <Key>
       <PropertyRef Name="idType" />
     </Key>
-    <Property Name="idType" Type="Int32" Nullable="false" />
-    <Property Name="fullname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="idType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="displayname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__idType__4316F928" FromRole="TypeCustomer" ToRole="Customer" />
   </EntityType>
   <EntityType Name="TypeRoom">

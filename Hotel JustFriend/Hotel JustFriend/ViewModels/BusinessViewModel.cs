@@ -124,7 +124,7 @@ namespace Hotel_JustFriend.ViewModels
                     RentInvoice r = new RentInvoice()
                     {
                         idRoom = SelectedRoom.idRoom,
-                        DateStart= DateTime.Now,
+                        date= DateTime.Now,
                         purchase = true,
                     };
                     DataProvider.Instance.DB.RentInvoices.Add(r);
@@ -149,12 +149,14 @@ namespace Hotel_JustFriend.ViewModels
             DataProvider.Instance.DB.Customers.Remove(a);
             DataProvider.Instance.DB.SaveChanges();
         }
-        [Command] void DetailCustomer()
+        [Command] 
+        public void DetailCustomer()
         {
             Customer a = ListCustomer.Where((p) => p.idCustomer == SelectedCustomer.idCustomer).FirstOrDefault();
             
         }
-        [Command] void EditCustomer()
+        [Command] 
+        public void EditCustomer()
         {
         }
         [Command]
