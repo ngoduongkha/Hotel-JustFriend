@@ -69,7 +69,7 @@ namespace Hotel_JustFriend.ViewModels
                     idRoom = IdRoom,
                     floor = RoomFloor,
                     displayName = DisplayName,
-                    status = 0,
+                    status = false,
                     idType = int.Parse(p.txtType.SelectedValue.ToString()),
                     note = RoomNote,
                     isDelete=false

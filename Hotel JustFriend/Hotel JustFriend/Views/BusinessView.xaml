@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Hotel_JustFriend.Views"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
+             x:Name="business"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DesignHeight="651.2" d:DesignWidth="1200">
     <Grid>
@@ -13,6 +14,8 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="1.2*"/>
         </Grid.ColumnDefinitions>
+        <TextBlock x:Name="idRentInvoice"
+                   Visibility="Hidden"></TextBlock>
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -94,7 +97,6 @@
                     Background="White"
                     MaxWidth="1050"
                     Padding="5">
-                   
                     <ItemsControl
                         ItemsSource="{Binding ListRoom}"
                         x:Name="MyItems">
@@ -125,20 +127,12 @@
                                             TargetType="Button"
                                             BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                             <Style.Triggers>
-                                                <DataTrigger Binding="{Binding status}" Value="Sẵn sàng">
+                                                <DataTrigger Binding="{Binding status}" Value="false">
                                                     <Setter Property="Background" Value="{DynamicResource AcceptBrush}"/>
                                                     <Setter Property="BorderBrush" Value="{DynamicResource AcceptBrush}"/>
                                                 </DataTrigger>
-                                                <DataTrigger Binding="{Binding status}" Value="Đang thuê">
-                                                    <Setter Property="Background" Value="{DynamicResource UpdateBrush}"/>
-                                                    <Setter Property="BorderBrush" Value="{DynamicResource UpdateBrush}"/>
-                                                    <Setter Property="Foreground" Value="Black"/>
-                                                </DataTrigger>
-                                                <DataTrigger Binding="{Binding status}" Value="Không sẵn sàng">
-                                                    <Setter Property="Background" Value="#DAB5FF"/>
-                                                    <Setter Property="BorderBrush" Value="#DAB5FF"/>
-                                                </DataTrigger>
-                                                <DataTrigger Binding="{Binding status}" Value="Hỏng">
+                                           
+                                                <DataTrigger Binding="{Binding status}" >
                                                     <Setter Property="Background" Value="{DynamicResource DeclineBrush}"/>
                                                     <Setter Property="BorderBrush" Value="{DynamicResource DeclineBrush}"/>
                                                     <Setter Property="IsEnabled" Value="True"/>
@@ -159,7 +153,201 @@
             </Grid>
         </Grid>
         <Grid Grid.Column="1" Margin="5">
-            <local:RoomRentalView/>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="idRoom"
+                   Visibility="Hidden"
+                  Text="{Binding Path=SelectedRoom.idRoom}"
+></TextBlock>
+           
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2.5*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0"
+                        Orientation="Horizontal"
+                        Margin="10">
+                    <Label Content="Phòng:"
+                       FontSize="20"
+                       VerticalAlignment="Center">
+                    </Label>
+                    <TextBox materialDesign:HintAssist.Hint="Tên phòng"
+                         FontSize="20" VerticalAlignment="Center"
+                         Text="{Binding Path=SelectedRoom.displayName}"
+                         Margin="10,0" Width="150" IsReadOnly="True"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1"
+                        Orientation="Horizontal">
+                    <Label Content="Ngày thuê:"
+                       FontSize="20"
+                       VerticalAlignment="Center">
+                    </Label>
+                    <TextBox materialDesign:HintAssist.Hint="dd/mm/yyyy"
+                         FontSize="20" VerticalAlignment="Center"
+                         x:Name="date"
+                         Margin="10,0" Width="120" IsReadOnly="True"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <materialDesign:Card></materialDesign:Card>
+                <GroupBox Header="Thông tin chung"
+                      FontSize="25"
+                      Margin="0">
+                    <StackPanel x:Name="stp">
+                    <DataGrid ItemsSource="{Binding ListRentInvoiceInfo}"
+                              AutoGenerateColumns="False">
+                        <DataGrid.Resources>
+                            <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+                                <Setter Property="Background" Value="LightPink" />
+                                <Setter Property="FontWeight" Value="SemiBold"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="FontSize" Value="20"/>
+                                <Setter Property="BorderBrush" Value="White"/>
+                                <Setter Property="BorderThickness" Value="0 0 1 0"/>
+                                <Setter Property="Padding" Value="3"/>
+                            </Style>
+                            <Style TargetType="DataGridCell" BasedOn="{StaticResource MaterialDesignDataGridCell}">
+                                <Setter Property="FontSize" Value="20"/>
+                                <Setter Property="Height" Value="35"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                            <Grid Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center"
+                                                                      VerticalAlignment="Center"/>
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DataGrid.Resources>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Tên khách hàng" Width="2*" Binding="{Binding idCustomer}"/>
+                            <DataGridTextColumn Header="Loại khách" Width="1*" />
+                            <DataGridTextColumn Width="1*"/>
+                            </DataGrid.Columns>
+                    </DataGrid>
+                    </StackPanel>
+                </GroupBox>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <WrapPanel>
+                        <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}"
+                            materialDesign:ButtonAssist.CornerRadius="10"
+                            Width="120" Height="70" BorderBrush="#fa91d7"
+                            Background="#fa91d7" Margin="5" Padding="0"
+                            Command="{Binding AddCustomerCommand}"
+                            CommandParameter="{Binding ElementName=business}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0">
+                                    <Label Content="Thêm khách" FontSize="15"/>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <materialDesign:PackIcon Height="30" Width="30" Kind="AccountAdd"
+                                                                     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Grid>
+                            </Grid>
+                        </Button>
+                        <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}"
+                                        materialDesign:ButtonAssist.CornerRadius="10"
+                                        Width="120" Height="70" BorderBrush="#ff7383"
+                                        Background="#ff7383" Margin="5" Padding="0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0">
+                                    <Label Content="Xóa khách" FontSize="15"/>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <materialDesign:PackIcon Height="30" Width="30" Kind="AccountRemove"
+                                                                     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Grid>
+                            </Grid>
+                        </Button>
+                        <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}"
+                                        materialDesign:ButtonAssist.CornerRadius="10"
+                                        Width="120" Height="70" BorderBrush="#ffe396"
+                                        Background="#ffe396" Margin="5" Padding="0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0">
+                                    <Label Content="Sửa thông tin" FontSize="15"/>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <materialDesign:PackIcon Height="30" Width="30" Kind="AccountEdit"
+                                                                     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Grid>
+                            </Grid>
+                        </Button>
+                        <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}"
+                                        materialDesign:ButtonAssist.CornerRadius="10"
+                                        Width="120" Height="70" BorderBrush="#9ce8ff"
+                                        Background="#9ce8ff" Margin="5" Padding="0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0">
+                                    <Label Content="Chi tiết" FontSize="15"/>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <materialDesign:PackIcon Height="30" Width="30" Kind="AccountDetails"
+                                                                     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Grid>
+                            </Grid>
+                        </Button>
+                    </WrapPanel>
+                </Grid>
+                <Grid Grid.Column="1" Margin="5">
+                    <Button Height="67" Background="#8fffab" BorderBrush="#8fffab"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Center"
+                                    materialDesign:ButtonAssist.CornerRadius="10" Width="110"
+                                    Padding="0" Margin="30,0">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Label Content="Thanh toán" FontSize="15"/>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <materialDesign:PackIcon Kind="Money" Height="30" Width="30" Foreground="Black"
+                                                                 VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Label Content="$$$" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15"/>
+                            </Grid>
+                        </Grid>
+                    </Button>
+                    <Button Content="Cho thue" Height="Auto" Margin="0,72,0,45"
+                        Command="{Binding RentCommand}"
+                        CommandParameter="{Binding ElementName=business}"></Button>
+                </Grid>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

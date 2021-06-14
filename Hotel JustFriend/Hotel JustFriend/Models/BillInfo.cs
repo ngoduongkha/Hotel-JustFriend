@@ -12,18 +12,16 @@ namespace Hotel_JustFriend.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Bill
+    public partial class BillInfo
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Bill()
-        {
-            this.BillInfoes = new HashSet<BillInfo>();
-        }
-    
+        public Nullable<int> numberDay { get; set; }
+        public Nullable<decimal> price { get; set; }
         public int idBill { get; set; }
-        public Nullable<decimal> totalMoney { get; set; }
+        public int idRoom { get; set; }
+        public int idCustomer { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BillInfo> BillInfoes { get; set; }
+        public virtual Bill Bill { get; set; }
+        public virtual Customer Customer { get; set; }
+        public virtual Room Room { get; set; }
     }
 }

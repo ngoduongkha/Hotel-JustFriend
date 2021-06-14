@@ -14,13 +14,23 @@ namespace Hotel_JustFriend.Models
     
     public partial class Customer
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Customer()
+        {
+            this.BillInfoes = new HashSet<BillInfo>();
+            this.RentInvoiceInfoes = new HashSet<RentInvoiceInfo>();
+        }
+    
         public int idCustomer { get; set; }
         public string fullname { get; set; }
         public string idCard { get; set; }
         public int idType { get; set; }
         public string address { get; set; }
-        public Nullable<System.DateTime> dateOfBirth { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BillInfo> BillInfoes { get; set; }
         public virtual TypeCustomer TypeCustomer { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RentInvoiceInfo> RentInvoiceInfoes { get; set; }
     }
 }

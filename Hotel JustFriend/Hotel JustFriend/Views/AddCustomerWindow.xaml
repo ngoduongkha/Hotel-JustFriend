@@ -23,6 +23,10 @@
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+            <TextBlock x:Name="idroom"
+                       Visibility="Hidden"></TextBlock>
+            <TextBlock x:Name="idrentiv"
+                       Visibility="Hidden"></TextBlock>
             <Grid Margin="0 0 0 5">
                 <Label 
                     HorizontalContentAlignment="Center"
@@ -33,7 +37,7 @@
                 <Button
                     HorizontalAlignment="Right" VerticalAlignment="Center"
                     ToolTip="Thoát"
-                    Command="{Binding CloseCommand}" Padding="0"
+                    Command="{Binding Close1Command}" Padding="0"
                     CommandParameter="{Binding ElementName=window}"
                     Background="Transparent" BorderBrush="Transparent">
                     <materialDesign:PackIcon
@@ -56,13 +60,26 @@
                             <Label Content="Họ và tên khách hàng:" 
                                    FontSize="20"
                                    VerticalAlignment="Center"/>
-                            <TextBox materialDesign:ValidationAssist.HorizontalAlignment="Right"
-                                     materialDesign:ValidationAssist.Background="White"
+                            <TextBox
+                                    x:Name="txtname"
                                      Width="270" FontSize="20"
                                      Margin="15 0"
                                      Padding="5"
                                      VerticalAlignment="Center"
-                                     HorizontalAlignment="Left"/>
+                                     HorizontalAlignment="Left">
+                                <TextBox.Text>
+                                    <Binding
+                                    Path="Fullname"
+                                    Mode="OneWayToSource"
+                                    UpdateSourceTrigger="PropertyChanged">
+                                        <Binding.ValidationRules>
+                                            <validation:NotNullValidation
+                                            ErrorMessage="Vui lòng nhập họ tên!"/>
+                                           
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
                         </StackPanel>
                     </materialDesign:Card>
                     <materialDesign:Card Margin="10" Grid.Row="1">
@@ -71,13 +88,26 @@
                             <Label Content="Số CMND/CCCD:" 
                                    FontSize="20"
                                    VerticalAlignment="Center"/>
-                            <TextBox materialDesign:ValidationAssist.HorizontalAlignment="Right"
-                                     materialDesign:ValidationAssist.Background="White"
-                                     Width="270" FontSize="20"
+                            <TextBox
+                                x:Name="txtidcard"
+                                Width="270" FontSize="20"
                                      Margin="63 0"
                                      Padding="5"
                                      VerticalAlignment="Center"
-                                     HorizontalAlignment="Left"/>
+                                     HorizontalAlignment="Left">
+                                <TextBox.Text>
+                                    <Binding
+                                    Path="IdCard"
+                                    Mode="OneWayToSource"
+                                    UpdateSourceTrigger="PropertyChanged">
+                                        <Binding.ValidationRules>
+                                            <validation:NotNullValidation
+                                            ErrorMessage="Vui lòng nhập CMND/CCCD!"/>
+                                          
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
                         </StackPanel>
                     </materialDesign:Card>
                     <materialDesign:Card Margin="10" Grid.Row="2">
@@ -88,19 +118,24 @@
                                    VerticalAlignment="Center"/>
                             <ComboBox materialDesign:HintAssist.Hint="Loại khách hàng"
                                       FontSize="20"
-                                      Margin="65 0">
-                                <ComboBoxItem>
-                                    VIP
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Thường
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Khách vãng lai
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Phò
-                                </ComboBoxItem>
+                                      Margin="65 0"
+                                      x:Name="txtType"
+                                       ItemsSource="{Binding Path=ListCustomerType}"
+                                       DisplayMemberPath="displayname"
+                                       SelectedValuePath="idType"
+                                       SelectedValue="{Binding Path=idType}">
+                                <ComboBox.Text>
+                                    <Binding
+                                    Path="CustomerType"
+                                    Mode="OneWayToSource"
+                                    UpdateSourceTrigger="PropertyChanged">
+                                        <Binding.ValidationRules>
+                                            <validation:NotNullValidation
+                                            ValidatesOnTargetUpdated="True"
+                                            ErrorMessage="Vui lòng nhập loại khách hàng!"/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </ComboBox.Text>
                             </ComboBox>
                         </StackPanel>
                     </materialDesign:Card>
@@ -108,6 +143,7 @@
                         <TextBox x:Name="txtNote"
                                  Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                  materialDesign:HintAssist.Background="White"
+                                 Text="{Binding Address, Mode=OneWayToSource}"
                                  VerticalAlignment="Stretch"
                                  HorizontalAlignment="Stretch"
                                  FontSize="15"
@@ -116,7 +152,7 @@
                                  TextWrapping="Wrap"
                                  VerticalScrollBarVisibility="Auto"
                                  materialDesign:HintAssist.Hint="Địa chỉ liên lạc"
-                                 Text="{Binding RoomNote, Mode=OneWayToSource}"/>
+                                 />
                     </materialDesign:Card>
                     <Grid Grid.Row="4">
                         <Grid.ColumnDefinitions>
@@ -133,6 +169,16 @@
                                 <Button.Style>
                                     <Style TargetType="Button" BasedOn="{StaticResource MyAcceptButtonStyle}">
                                         <Setter Property="IsEnabled" Value="False"/>
+                                        <Style.Triggers>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=txtname}" Value="False"/>
+                                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=txtidcard}" Value="False"/>
+                                                    <Condition Binding="{Binding Path=(Validation.HasError), ElementName=txtType}" Value="False"/>
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="IsEnabled" Value="True"/>
+                                            </MultiDataTrigger>
+                                        </Style.Triggers>
                                     </Style>
                                 </Button.Style>
                             </Button>
@@ -143,7 +189,7 @@
                                 Content="Hủy" Width="100" Height="50"
                                 VerticalAlignment="Center" HorizontalAlignment="Left"
                                 Margin="40 0 0 20" materialDesign:ButtonAssist.CornerRadius="10"
-                                Command="{Binding CloseCommand}"
+                                Command="{Binding Close1Command}"
                                 CommandParameter="{Binding ElementName=window}"/>
                         </Grid>
                     </Grid>

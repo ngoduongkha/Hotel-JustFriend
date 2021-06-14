@@ -1,5 +1,4 @@
-﻿using Hotel_JustFriend.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,19 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Hotel_JustFriend.Views
+namespace Hotel_JustFriend.UserControls
 {
     /// <summary>
-    /// Interaction logic for AddCustomerWindow.xaml
+    /// Interaction logic for CustomerUC.xaml
     /// </summary>
-    public partial class AddCustomerWindow : Window
+    public partial class CustomerUC : UserControl
     {
-        public AddCustomerWindow()
+        public CustomerUC()
         {
             InitializeComponent();
-            this.DataContext = new BusinessViewModel();
         }
     }
 }
