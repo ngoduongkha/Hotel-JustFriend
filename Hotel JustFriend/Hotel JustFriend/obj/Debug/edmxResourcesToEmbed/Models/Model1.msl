@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Hotel_JustFriendModelStoreContainer" CdmEntityContainer="Hotel_JustFriendEntities1">
+  <EntityContainerMapping StorageEntityContainer="Hotel_JustFriendModelStoreContainer" CdmEntityContainer="Hotel_JustFriendEntities">
     <EntitySetMapping Name="Accounts">
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.Account">
         <MappingFragment StoreEntitySet="Account">
@@ -14,15 +14,15 @@
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.Bill">
         <MappingFragment StoreEntitySet="Bill">
           <ScalarProperty Name="idBill" ColumnName="idBill" />
-          <ScalarProperty Name="totalMoney" ColumnName="totalMoney" />
+          <ScalarProperty Name="TotalMoney" ColumnName="TotalMoney" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="BillInfoes">
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.BillInfo">
         <MappingFragment StoreEntitySet="BillInfo">
-          <ScalarProperty Name="numberDay" ColumnName="numberDay" />
-          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="NumberDay" ColumnName="NumberDay" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="idBill" ColumnName="idBill" />
           <ScalarProperty Name="idRoom" ColumnName="idRoom" />
           <ScalarProperty Name="idCustomer" ColumnName="idCustomer" />
@@ -37,6 +37,7 @@
           <ScalarProperty Name="idCard" ColumnName="idCard" />
           <ScalarProperty Name="idType" ColumnName="idType" />
           <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -44,7 +45,7 @@
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.RentInvoice">
         <MappingFragment StoreEntitySet="RentInvoice">
           <ScalarProperty Name="idRentInvoice" ColumnName="idRentInvoice" />
-          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="DateStart" ColumnName="DateStart" />
           <ScalarProperty Name="idRoom" ColumnName="idRoom" />
           <ScalarProperty Name="purchase" ColumnName="purchase" />
         </MappingFragment>
@@ -63,7 +64,7 @@
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.Revenue">
         <MappingFragment StoreEntitySet="Revenue">
           <ScalarProperty Name="idRevenue" ColumnName="idRevenue" />
-          <ScalarProperty Name="totalMoney" ColumnName="totalMoney" />
+          <ScalarProperty Name="TotalMoney" ColumnName="TotalMoney" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -71,9 +72,9 @@
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.RevenuePercentage">
         <MappingFragment StoreEntitySet="RevenuePercentage">
           <ScalarProperty Name="idrevenuePrecentage" ColumnName="idrevenuePrecentage" />
-          <ScalarProperty Name="percent" ColumnName="percent" />
-          <ScalarProperty Name="month" ColumnName="month" />
-          <ScalarProperty Name="year" ColumnName="year" />
+          <ScalarProperty Name="Percent" ColumnName="Percent" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
           <ScalarProperty Name="idRoom" ColumnName="idRoom" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -95,7 +96,7 @@
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.TypeCustomer">
         <MappingFragment StoreEntitySet="TypeCustomer">
           <ScalarProperty Name="idType" ColumnName="idType" />
-          <ScalarProperty Name="displayname" ColumnName="displayname" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

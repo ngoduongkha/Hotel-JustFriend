@@ -25,7 +25,7 @@ namespace Hotel_JustFriend.Models
         public int floor { get; set; }
         public string displayName { get; set; }
         public int idType { get; set; }
-        public bool status { get; set; }
+        public int status { get; set; }
         public string note { get; set; }
         public Nullable<bool> isDelete { get; set; }
     

@@ -161,7 +161,6 @@
     <Compile Include="Models\Customer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataProvider.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -177,6 +176,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataProvider.cs" />
     <Compile Include="Models\RentInvoice.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -192,14 +192,14 @@
     <Compile Include="Models\Room.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Template\ImportBill.xaml.cs">
+      <DependentUpon>ImportBill.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\TypeCustomer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TypeRoom.cs">
       <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Template\ImportBill.xaml.cs">
-      <DependentUpon>ImportBill.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ButtonRoomUC.xaml.cs">
       <DependentUpon>ButtonRoomUC.xaml</DependentUpon>

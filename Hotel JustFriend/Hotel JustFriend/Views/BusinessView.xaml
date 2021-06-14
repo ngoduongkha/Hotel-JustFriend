@@ -242,12 +242,23 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
                     <WrapPanel>
-                        <Button Style="{StaticResource MaterialDesignFlatAccentBgButton}"
-                            materialDesign:ButtonAssist.CornerRadius="10"
-                            Width="120" Height="70" BorderBrush="#fa91d7"
-                            Background="#fa91d7" Margin="5" Padding="0"
-                            Command="{Binding AddCustomerCommand}"
-                            CommandParameter="{Binding ElementName=business}">
+                        <Button materialDesign:ButtonAssist.CornerRadius="10"
+                                Width="120" Height="70" BorderBrush="#fa91d7"
+                                Background="#fa91d7" Margin="5" Padding="0"
+                                Command="{Binding AddCustomerCommand}"
+                                CommandParameter="{Binding ElementName=business}">
+                            <Button.Style>
+                                <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatAccentBgButton}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding status}" Value="false">
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding status}" Value="true">
+                                            <Setter Property="IsEnabled" Value="True"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>

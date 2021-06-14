@@ -122,7 +122,7 @@ namespace Hotel_JustFriend.ViewModels
                     RentInvoice r = new RentInvoice()
                     {
                         idRoom = SelectedRoom.idRoom,
-                        date= DateTime.Now,
+                        DateStart= DateTime.Now,
                         purchase = true,
                     };
                     DataProvider.Instance.DB.RentInvoices.Add(r);

@@ -21,7 +21,7 @@ namespace Hotel_JustFriend.Models
         }
     
         public int idRentInvoice { get; set; }
-        public Nullable<System.DateTime> date { get; set; }
+        public Nullable<System.DateTime> DateStart { get; set; }
         public Nullable<int> idRoom { get; set; }
         public Nullable<bool> purchase { get; set; }
     

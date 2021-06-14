@@ -15,6 +15,6 @@ namespace Hotel_JustFriend.Models
     public partial class Revenue
     {
         public int idRevenue { get; set; }
-        public Nullable<decimal> totalMoney { get; set; }
+        public Nullable<decimal> TotalMoney { get; set; }
     }
 }

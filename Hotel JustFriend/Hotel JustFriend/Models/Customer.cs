@@ -26,6 +26,7 @@ namespace Hotel_JustFriend.Models
         public string idCard { get; set; }
         public int idType { get; set; }
         public string address { get; set; }
+        public Nullable<System.DateTime> dateOfBirth { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BillInfo> BillInfoes { get; set; }
