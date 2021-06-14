@@ -55,7 +55,7 @@ namespace Hotel_JustFriend.ViewModels
                         break;
                     }
                 }
-                if (ListRoom[i].status > 0) a.status.Text = "Chưa sẵn sàng";
+                if (ListRoom[i].status == true) a.status.Text = "Chưa sẵn sàng";
                 else a.status.Text = "Sẵn sàng";
                 a.note.Text = ListRoom[i].note.ToString();
                 p.stp_ListRoom.Children.Add(a);
@@ -86,7 +86,7 @@ namespace Hotel_JustFriend.ViewModels
                             break;
                         }
                     }
-                    if (ListRoom[i].status > 0) a.status.Text = "Chưa sẵn sàng";
+                    if (ListRoom[i].status == true) a.status.Text = "Chưa sẵn sàng";
                     else a.status.Text = "Sẵn sàng";
                     a.note.Text = ListRoom[i].note.ToString();
                     p.stp_ListRoom.Children.Add(a);
@@ -141,7 +141,7 @@ namespace Hotel_JustFriend.ViewModels
                     MyMessageBox.Show("Không có gì để sửa chữa!", "Thông báo", System.Windows.MessageBoxButton.OK);
                     return;
                 }
-                if (SelectedRoom.status != 0)
+                if (SelectedRoom.status == true)
                 {
                     MyMessageBox.Show("Phòng không hỏng!", "Thông báo", System.Windows.MessageBoxButton.OK);
                     return;
@@ -183,7 +183,7 @@ namespace Hotel_JustFriend.ViewModels
                     if (id == 0)
                     {
                         ListRoom = new ObservableCollection<Room>(ListRoom
-                            .Where(x => x.status == 0)
+                            .Where(x => x.status == false)
                             .OrderBy(x => x.floor)
                             .ThenBy(x => x.displayName));
                         ham_da_nang(p);
@@ -191,7 +191,7 @@ namespace Hotel_JustFriend.ViewModels
                     else
                     {
                         ListRoom = new ObservableCollection<Room>(ListRoom
-                          .Where(x => x.status > 0)
+                          .Where(x => x.status == true)
                           .OrderBy(x => x.floor)
                           .ThenBy(x => x.displayName));
                         ham_da_nang(p);
@@ -206,7 +206,7 @@ namespace Hotel_JustFriend.ViewModels
                     if (id == 0)
                     {
                         ListRoom = new ObservableCollection<Room>(ListRoom
-                        .Where(x => x.idType == k && x.status == id)
+                        .Where(x => x.idType == k && x.status == false)
                         .OrderBy(x => x.floor)
                         .ThenBy(x => x.displayName));
                         ham_da_nang(p);
@@ -214,7 +214,7 @@ namespace Hotel_JustFriend.ViewModels
                     else
                     {
                         ListRoom = new ObservableCollection<Room>(ListRoom
-                        .Where(x => x.idType == k && x.status > 0)
+                        .Where(x => x.idType == k && x.status == true)
                         .OrderBy(x => x.floor)
                         .ThenBy(x => x.displayName));
                         ham_da_nang(p);

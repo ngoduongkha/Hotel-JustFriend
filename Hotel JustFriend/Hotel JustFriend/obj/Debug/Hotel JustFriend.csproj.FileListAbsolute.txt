@@ -574,3 +574,7 @@ D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\UserContr
 D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\UserControls\RoomUC.baml
 D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\AddCustomerWindow.g.cs
 D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\AddCustomerWindow.baml
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\AddCustomerWindow.g.cs
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\AddCustomerWindow.baml
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\UserControls\CustomerUC.g.cs
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\UserControls\CustomerUC.baml

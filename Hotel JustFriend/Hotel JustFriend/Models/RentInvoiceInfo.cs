@@ -12,12 +12,13 @@ namespace Hotel_JustFriend.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class RevenuePercentage
+    public partial class RentInvoiceInfo
     {
-        public int idrevenuePrecentage { get; set; }
-        public Nullable<double> percent { get; set; }
-        public Nullable<int> month { get; set; }
-        public Nullable<int> year { get; set; }
-        public Nullable<int> idRoom { get; set; }
+        public Nullable<int> idRentInvoiceInfo { get; set; }
+        public int idRentInvoice { get; set; }
+        public int idCustomer { get; set; }
+    
+        public virtual Customer Customer { get; set; }
+        public virtual RentInvoice RentInvoice { get; set; }
     }
 }

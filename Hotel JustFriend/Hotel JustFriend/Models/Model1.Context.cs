@@ -13,10 +13,10 @@ namespace Hotel_JustFriend.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Hotel_JustFriendEntities : DbContext
+    public partial class Hotel_JustFriendEntities1 : DbContext
     {
-        public Hotel_JustFriendEntities()
-            : base("name=Hotel_JustFriendEntities")
+        public Hotel_JustFriendEntities1()
+            : base("name=Hotel_JustFriendEntities1")
         {
         }
     
@@ -27,8 +27,10 @@ namespace Hotel_JustFriend.Models
     
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Bill> Bills { get; set; }
+        public virtual DbSet<BillInfo> BillInfoes { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<RentInvoice> RentInvoices { get; set; }
+        public virtual DbSet<RentInvoiceInfo> RentInvoiceInfoes { get; set; }
         public virtual DbSet<Revenue> Revenues { get; set; }
         public virtual DbSet<RevenuePercentage> RevenuePercentages { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }

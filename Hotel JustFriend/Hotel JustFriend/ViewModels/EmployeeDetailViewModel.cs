@@ -17,7 +17,7 @@ namespace Hotel_JustFriend.ViewModels
     class EmployeeDetailViewModel : ViewModelBase
     {
         //private ObservableCollection<Employee> _ListEmployee;
-        private int _IdEmployeeRole;
+       // private int _IdEmployeeRole;
         private int _IdEmployee;
         private string _FullName;
         private string _IdCard;
