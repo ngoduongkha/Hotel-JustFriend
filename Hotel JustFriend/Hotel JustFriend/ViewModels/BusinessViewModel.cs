@@ -15,6 +15,7 @@ namespace Hotel_JustFriend.ViewModels
     [POCOViewModel]
     public class BusinessViewModel : ViewModelBase
     {
+        private ObservableCollection<Customer> _Trick;
         private ObservableCollection<RentInvoice> ListRentInvoice;
         private ObservableCollection<TypeCustomer> _ListCustomerType;
         private ObservableCollection<Customer> _ListCustomer;
@@ -39,6 +40,7 @@ namespace Hotel_JustFriend.ViewModels
         public ObservableCollection<RentInvoiceInfo> ListRentInvoiceInfo { get => _ListRentInvoiceInfo; set { _ListRentInvoiceInfo = value; RaisePropertiesChanged(); } }
 
         public string CustomerType { get => _CustomerType; set => _CustomerType = value; }
+        public ObservableCollection<Customer> Trick { get => _Trick; set { _Trick = value; RaisePropertyChanged(); } }
 
         public BusinessViewModel()
         {
