@@ -69,10 +69,10 @@ namespace Hotel_JustFriend.ViewModels
 
                         idrent = DataProvider.Instance.DB.RentInvoices.Where((p) => p.idRoom == SelectedRoom.idRoom).FirstOrDefault().idRentInvoice;
                     ListRentInvoiceInfo = new ObservableCollection<RentInvoiceInfo>(DataProvider.Instance.DB.RentInvoiceInfoes
-                                                                                        .Where((p) => p.idRentInvoice == idrent));
+                                                                                    .Where((p) => p.idRentInvoice == idrent));
                 }
                 else ListRentInvoiceInfo = null;
-                
+                //--------------------------//
             }
             catch { return; }
         }
@@ -136,6 +136,24 @@ namespace Hotel_JustFriend.ViewModels
         {
             AddCustomerWindow window = new AddCustomerWindow();
             window.ShowDialog();
+        }
+        [Command]
+        public void DeleteCustomer()
+        {
+            ListCustomer = new ObservableCollection<Customer>(DataProvider.Instance.DB.Customers);
+            Customer a = ListCustomer.Where((p) => p.idCustomer == SelectedCustomer.idCustomer).FirstOrDefault();
+            RentInvoiceInfo b = ListRentInvoiceInfo.Where((p) => p.idCustomer == SelectedCustomer.idCustomer).FirstOrDefault();
+            DataProvider.Instance.DB.RentInvoiceInfoes.Remove(b);
+            DataProvider.Instance.DB.Customers.Remove(a);
+            DataProvider.Instance.DB.SaveChanges();
+        }
+        [Command] void DetailCustomer()
+        {
+            Customer a = ListCustomer.Where((p) => p.idCustomer == SelectedCustomer.idCustomer).FirstOrDefault();
+            
+        }
+        [Command] void EditCustomer()
+        {
         }
         [Command]
         public void Save(AddCustomerWindow p)
