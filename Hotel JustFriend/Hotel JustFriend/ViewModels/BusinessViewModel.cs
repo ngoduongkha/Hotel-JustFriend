@@ -149,12 +149,14 @@ namespace Hotel_JustFriend.ViewModels
             DataProvider.Instance.DB.Customers.Remove(a);
             DataProvider.Instance.DB.SaveChanges();
         }
-        [Command] void DetailCustomer()
+        [Command] 
+        public void DetailCustomer()
         {
             Customer a = ListCustomer.Where((p) => p.idCustomer == SelectedCustomer.idCustomer).FirstOrDefault();
             
         }
-        [Command] void EditCustomer()
+        [Command] 
+        public void EditCustomer()
         {
         }
         [Command]

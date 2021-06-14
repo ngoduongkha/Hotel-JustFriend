@@ -476,7 +476,7 @@ warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Hotel_JustFriendEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Hotel_JustFriendEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Accounts" EntityType="Self.Account" />
           <EntitySet Name="Bills" EntityType="Self.Bill" />
           <EntitySet Name="BillInfoes" EntityType="Self.BillInfo" />
@@ -526,7 +526,7 @@ warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a 
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Hotel_JustFriendModelStoreContainer" CdmEntityContainer="Hotel_JustFriendEntities1">
+        <EntityContainerMapping StorageEntityContainer="Hotel_JustFriendModelStoreContainer" CdmEntityContainer="Hotel_JustFriendEntities">
           <EntitySetMapping Name="Accounts">
             <EntityTypeMapping TypeName="Hotel_JustFriendModel.Account">
               <MappingFragment StoreEntitySet="Account">

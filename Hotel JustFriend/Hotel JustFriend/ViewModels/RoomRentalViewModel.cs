@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using Hotel_JustFriend.Views;
 using System.Collections.ObjectModel;
 using Hotel_JustFriend.Models;
 

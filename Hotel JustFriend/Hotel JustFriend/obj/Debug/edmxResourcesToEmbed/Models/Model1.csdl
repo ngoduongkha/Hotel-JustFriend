@@ -211,7 +211,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="Hotel_JustFriendEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="Hotel_JustFriendEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Accounts" EntityType="Self.Account" />
     <EntitySet Name="Bills" EntityType="Self.Bill" />
     <EntitySet Name="BillInfoes" EntityType="Self.BillInfo" />
