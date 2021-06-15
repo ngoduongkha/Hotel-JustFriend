@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="Hotel_JustFriendModel.BillInfo" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.Customer" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.RentInvoice" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hotel_JustFriendModel.RentInvoiceInfo" Width="1.5" PointX="7.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.RentInvoiceInfo" Width="1.5" PointX="7.5" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.Revenue" Width="1.5" PointX="7.75" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.RevenuePercentage" Width="1.5" PointX="9.75" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.Room" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />

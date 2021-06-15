@@ -197,10 +197,12 @@
                 <materialDesign:Card></materialDesign:Card>
                 <GroupBox Header="Thông tin chung"
                       FontSize="25"
-                      Margin="0">
+                      Margin="0"
+                          >
                     <DataGrid ItemsSource="{Binding Trick}"
                               AutoGenerateColumns="False"
-                              SelectedItem="{Binding TrickCustomer}">
+                              SelectedItem="{Binding TrickCustomer}"
+                              IsReadOnly="True">
                         <DataGrid.Resources>
                             <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
                                 <Setter Property="Background" Value="LightPink" />
