@@ -231,6 +231,7 @@
     <Compile Include="ViewModels\AccountManageViewModel.cs" />
     <Compile Include="ViewModels\AddCustomerTypeViewModel.cs" />
     <Compile Include="ViewModels\AddCustomerViewModel.cs" />
+    <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\CustomizeParametersViewModel.cs" />
     <Compile Include="ViewModels\EmployeeDetailViewModel.cs" />
     <Compile Include="ViewModels\RoomRentalViewModel.cs" />
@@ -250,6 +251,12 @@
     </Compile>
     <Compile Include="Views\BookingWindow.xaml.cs">
       <DependentUpon>BookingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DetailCustomer.xaml.cs">
+      <DependentUpon>DetailCustomer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditCustomerView.xaml.cs">
+      <DependentUpon>EditCustomerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EmployeeDetailView.xaml.cs">
       <DependentUpon>EmployeeDetailView.xaml</DependentUpon>
@@ -381,6 +388,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\BookingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DetailCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditCustomerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
