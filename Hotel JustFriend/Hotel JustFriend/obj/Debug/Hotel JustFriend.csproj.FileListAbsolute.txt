@@ -586,3 +586,13 @@ E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\EditCustom
 E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\EditCustomerView.baml
 E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\DetailCustomer.g.cs
 E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\DetailCustomer.baml
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\UserControls\CustomerUC.g.cs
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\AddCustomerTypeWindow.g.cs
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\CustomizeParametersView.g.cs
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\DetailCustomer.g.cs
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\EditCustomerView.g.cs
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\UserControls\CustomerUC.baml
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\AddCustomerTypeWindow.baml
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\CustomizeParametersView.baml
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\DetailCustomer.baml
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\EditCustomerView.baml

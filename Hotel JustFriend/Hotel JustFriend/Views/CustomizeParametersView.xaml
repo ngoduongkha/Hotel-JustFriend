@@ -9,124 +9,135 @@
     mc:Ignorable="d" x:Name="window"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     d:DesignHeight="651.2" d:DesignWidth="1200">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <materialDesign:Card Grid.Column="0"
-                             Margin="10">
+    <materialDesign:Card Margin="15">
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
             <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1.5*"/>
-                </Grid.RowDefinitions>
-                <StackPanel Grid.Row="0"
-                            Orientation="Horizontal">
-                    <Label Content="Chọn loại phòng:" 
-                           FontSize="20"
-                           VerticalAlignment="Center"
-                           Margin="15"/>
-                    <ComboBox materialDesign:HintAssist.Hint="Loại phòng cần chỉnh sửa"
-                              VerticalAlignment="Center"
-                              FontSize="20"
-                              Width="250">
-                        <ComboBoxItem>
-                            Thường
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            Vip
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            Phòng three-some
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            Phòng gangbang
-                        </ComboBoxItem>
-                    </ComboBox>
-                    <Button Content="Thêm"
-                            FontSize="20"
-                            Margin="15"
-                            Command="{Binding CallAddRoomTypeCommand}"/>
-                </StackPanel>
-                <StackPanel Grid.Row="1"
-                            Orientation="Horizontal">
-                    <Label Content="Đơn giá:" 
-                           FontSize="20"
-                           VerticalAlignment="Center"
-                           Margin="15"/>
-                    <TextBox Width="250"
-                             VerticalAlignment="Center"
-                             FontSize="20"
-                             Margin="80 0"/>
-                </StackPanel>
-                <StackPanel Grid.Row="2"
-                            Orientation="Horizontal">
-                    <Label Content="Lượng khách tối đa:" 
-                           FontSize="20"
-                           VerticalAlignment="Center"
-                           Margin="15"/>
-                    <TextBox Width="100"
-                             VerticalAlignment="Center"
-                             FontSize="20"
-                             Margin="0"/>
-                    <Label Content="người" 
-                           FontSize="20"
-                           VerticalAlignment="Center"
-                           Margin="15"/>
-                </StackPanel>
+                <Grid.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="FontSize" Value="25"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                    </Style>
+                    <Style TargetType="StackPanel">
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="Orientation" Value="Horizontal"/>
+                        <Setter Property="Margin" Value="30 10 10 10"/>
+                    </Style>
+                    <Style TargetType="ComboBox" BasedOn="{StaticResource MaterialDesignComboBox}">
+                        <Setter Property="FontSize" Value="25"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="Margin" Value="30 0 0 0"/>
+                        <Setter Property="Width" Value="200"/>
+                    </Style>
+                    <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignTextBox}">
+                        <Setter Property="Width" Value="200"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="FontSize" Value="25"/>
+                        <Setter Property="Margin" Value="30 0 0 0"/>
+                        <Setter Property="Padding" Value="0"/>
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="1.5*"/>
+                    </Grid.RowDefinitions>
+                    <materialDesign:Card Grid.Row="0" Margin="15 15 7 7">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0">
+                                <Label Content="Loại phòng:"/>
+                                <ComboBox materialDesign:HintAssist.Hint="Chọn loại phòng"/>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Center"
+                                            Grid.Row="1">
+                                <Button Content="Thêm" Width="100"
+                                            FontSize="20"
+                                            Height="40" Margin="10 0"
+                                            Style="{StaticResource MyAcceptButtonStyle}"/>
+                                <Button Content="Xóa" Width="100"
+                                            FontSize="20"
+                                            Height="40" Margin="10 0"
+                                            Style="{StaticResource MyDeclineButtonStyle}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="2">
+                                <Label Content="Đơn giá:"/>
+                                <TextBox Margin="70 0 0 0"/>
+                            </StackPanel>
+                        </Grid>
+                    </materialDesign:Card>
+                    <materialDesign:Card Grid.Row="1" Margin="15 7 7 15">
+                        <StackPanel>
+                            <Label Content="Lượng khách tối đa:"/>
+                            <TextBox Width="50"/>
+                            <Label Content="người"
+                                       Margin="30 0 0 0"/>
+                        </StackPanel>
+                    </materialDesign:Card>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="1.5*"/>
+                    </Grid.RowDefinitions>
+                    <materialDesign:Card Grid.Row="0" Margin="7 15 7 7">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0">
+                                <Label Content="Loại khách:"/>
+                                <ComboBox materialDesign:HintAssist.Hint="Chọn loại khách"/>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Center"
+                                            Grid.Row="1">
+                                <Button Content="Thêm" Width="100"
+                                            FontSize="20"
+                                            Height="40" Margin="10 0"
+                                            Style="{StaticResource MyAcceptButtonStyle}"/>
+                                <Button Content="Xóa" Width="100"
+                                            FontSize="20"
+                                            Height="40" Margin="10 0"
+                                            Style="{StaticResource MyDeclineButtonStyle}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="2">
+                                <Label Content="Hệ số:"/>
+                                <TextBox Margin="85 0 0 0"/>
+                            </StackPanel>
+                        </Grid>
+                    </materialDesign:Card>
+                    <materialDesign:Card Grid.Row="1" Margin="7 7 7 15">
+                        <StackPanel>
+                            <Label Content="Phụ thu:"/>
+                            <TextBox Width="50"/>
+                            <Label Content="%"
+                                       Margin="30 0 0 0"/>
+                        </StackPanel>
+                    </materialDesign:Card>
+                </Grid>
             </Grid>
-        </materialDesign:Card>
-        <materialDesign:Card Grid.Column="1"
-                             Margin="10">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="2.5*"/>
-                </Grid.RowDefinitions>
-                <StackPanel Grid.Row="0"
-                            Orientation="Horizontal">
-                    <Label Content="Chọn loại khách:" 
-                           FontSize="20"
-                           VerticalAlignment="Center"
-                           Margin="15"/>
-                    <ComboBox materialDesign:HintAssist.Hint="Loại khách cần chỉnh sửa"
-                              VerticalAlignment="Center"
-                              FontSize="20"
-                              Width="250">
-                        <ComboBoxItem>
-                            Thường
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            Vip
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            Phò
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            Vãng lai
-                        </ComboBoxItem>
-                    </ComboBox>
-                    <Button Content="Thêm"
-                            FontSize="20"
-                            Margin="15"
-                            Command="{Binding CallAddRoomTypeCommand}"/>
-                </StackPanel>
-                <StackPanel Grid.Row="1"
-                            Orientation="Horizontal">
-                    <Label Content="Hệ số:" 
-                           FontSize="20"
-                           VerticalAlignment="Center"
-                           Margin="15"/>
-                    <TextBox Width="80"
-                             VerticalAlignment="Center"
-                             FontSize="20"
-                             Margin="95 0"/>
-                </StackPanel>
+            <Grid Grid.Row="1">
+                <Button Content="Lưu"
+                        FontSize="20"
+                        Height="50" Width="100"
+                        Style="{StaticResource MyAcceptButtonStyle}"
+                        materialDesign:ButtonAssist.CornerRadius="10"
+                        HorizontalAlignment="Center"/>
             </Grid>
-        </materialDesign:Card>
-    </Grid>
+        </Grid>
+    </materialDesign:Card>
 </UserControl>

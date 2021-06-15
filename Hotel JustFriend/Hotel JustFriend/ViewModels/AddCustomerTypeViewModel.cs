@@ -12,6 +12,10 @@ namespace Hotel_JustFriend.ViewModels
     [POCOViewModel]
     class AddCustomerTypeViewModel : ViewModelBase
     {
+        private string _type;
+
+        public string Type { get => _type; set { _type = value; RaisePropertiesChanged(); } }
+
         [Command]
         public void MouseMoveWindow(Window p)
         {
@@ -30,6 +34,11 @@ namespace Hotel_JustFriend.ViewModels
                 p.Close();
             }
             catch { return; }
+        }
+        [Command]
+        public void Add()
+        {
+
         }
     }
 }
