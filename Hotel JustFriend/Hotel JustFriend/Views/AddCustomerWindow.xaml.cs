@@ -1,4 +1,5 @@
-﻿using Hotel_JustFriend.ViewModels;
+﻿using Hotel_JustFriend.Models;
+using Hotel_JustFriend.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +21,10 @@ namespace Hotel_JustFriend.Views
     /// </summary>
     public partial class AddCustomerWindow : Window
     {
-        public AddCustomerWindow()
+        public AddCustomerWindow(Room selectedRoom)
         {
             InitializeComponent();
-            this.DataContext = new BusinessViewModel();
+            this.DataContext = new AddCustomerViewModel(selectedRoom);
         }
     }
 }

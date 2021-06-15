@@ -200,7 +200,9 @@
                       Margin="0">
                     <DataGrid ItemsSource="{Binding ListRentInvoiceInfo}"
                               AutoGenerateColumns="False"
-                              SelectedItem="{Binding SelectedCustomer}">
+                              SelectionUnit="FullRow"
+                              SelectionMode="Single"
+                              x:Name="datagridCustomer">
                         <DataGrid.Resources>
                             <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
                                 <Setter Property="Background" Value="LightPink" />
@@ -219,7 +221,7 @@
                                         <ControlTemplate TargetType="{x:Type DataGridCell}">
                                             <Grid Background="{TemplateBinding Background}">
                                                 <ContentPresenter HorizontalAlignment="Center"
-                                                                      VerticalAlignment="Center"/>
+                                                                  VerticalAlignment="Center"/>
                                             </Grid>
                                         </ControlTemplate>
                                     </Setter.Value>
@@ -228,7 +230,8 @@
                         </DataGrid.Resources>
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Tên khách hàng" Width="2*" Binding="{Binding idCustomer}"/>
-                            </DataGrid.Columns>
+                            <DataGridTextColumn Header="Loại khách" Width="1.2*" Binding="{Binding idCustomer}"/>
+                        </DataGrid.Columns>
                     </DataGrid>
                 </GroupBox>
             </Grid>
@@ -247,8 +250,7 @@
                         <Button materialDesign:ButtonAssist.CornerRadius="10"
                                 Width="120" Height="70" BorderBrush="#fa91d7"
                                 Background="#fa91d7" Margin="5" Padding="0"
-                                Command="{Binding AddCustomerCommand}"
-                                CommandParameter="{Binding ElementName=business}">
+                                Command="{Binding AddCustomerCommand}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
@@ -266,7 +268,8 @@
                         <Button materialDesign:ButtonAssist.CornerRadius="10"
                                 Width="120" Height="70" BorderBrush="#ff7383"
                                 Background="#ff7383" Margin="5" Padding="0"
-                                Command="{Binding DeleteCustomerCommand}">
+                                Command="{Binding DeleteCustomerCommand}"
+                                CommandParameter="{Binding ElementName=business}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
@@ -277,14 +280,15 @@
                                 </Grid>
                                 <Grid Grid.Row="1">
                                     <materialDesign:PackIcon Height="30" Width="30" Kind="AccountRemove"
-                                                                     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                                             VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 </Grid>
                             </Grid>
                         </Button>
                         <Button materialDesign:ButtonAssist.CornerRadius="10"
                                 Width="120" Height="70" BorderBrush="#ffe396"
                                 Background="#ffe396" Margin="5" Padding="0"
-                                Command="{Binding EditCustomerCommand}">
+                                Command="{Binding EditCustomerCommand}"
+                                CommandParameter="{Binding ElementName=business}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
@@ -322,7 +326,7 @@
                 <Grid Grid.Column="1" Margin="5">
                     <Button Height="80" Background="#8fffab" BorderBrush="#8fffab"
                             VerticalAlignment="Top" HorizontalAlignment="Center"
-                            materialDesign:ButtonAssist.CornerRadius="10" Width="110"
+                            materialDesign:ButtonAssist.CornerRadius="10" Width="120"
                             Padding="0" Margin="30,0">
                         <Button.Style>
                             <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
@@ -357,7 +361,7 @@
                     </Button>
                     <Button Height="80" Background="#f04d4d" BorderBrush="#f04d4d"
                             VerticalAlignment="Top" HorizontalAlignment="Center"
-                            materialDesign:ButtonAssist.CornerRadius="10" Width="110"
+                            materialDesign:ButtonAssist.CornerRadius="10" Width="120"
                             Padding="0" Margin="30,0"
                             Command="{Binding RentCommand}"
                             CommandParameter="{Binding ElementName=business}">

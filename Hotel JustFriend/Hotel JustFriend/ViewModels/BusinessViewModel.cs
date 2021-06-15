@@ -136,18 +136,23 @@ namespace Hotel_JustFriend.ViewModels
         [Command]
         public void AddCustomer(BusinessView p)
         {
-            AddCustomerWindow window = new AddCustomerWindow();
+            AddCustomerWindow window = new AddCustomerWindow(SelectedRoom);
             window.ShowDialog();
         }
         [Command]
-        public void DeleteCustomer()
+        public void DeleteCustomer(BusinessView window)
         {
             ListCustomer = new ObservableCollection<Customer>(DataProvider.Instance.DB.Customers);
-            Customer a = ListCustomer.Where((p) => p.idCustomer == SelectedCustomer.idCustomer).FirstOrDefault();
-            RentInvoiceInfo b = ListRentInvoiceInfo.Where((p) => p.idCustomer == SelectedCustomer.idCustomer).FirstOrDefault();
-            DataProvider.Instance.DB.RentInvoiceInfoes.Remove(b);
-            DataProvider.Instance.DB.Customers.Remove(a);
-            DataProvider.Instance.DB.SaveChanges();
+            if (window.datagridCustomer.SelectedItems.Count > 0)
+            {
+                RentInvoiceInfo selected = window.datagridCustomer.SelectedItem as RentInvoiceInfo;
+                Debug.WriteLine(selected.idCustomer);
+                Customer customer = ListCustomer.Where((p) => p.idCustomer == selected.idCustomer).FirstOrDefault();
+                RentInvoiceInfo rentInvoiceInfo = ListRentInvoiceInfo.Where((p) => p.idCustomer == selected.idCustomer).FirstOrDefault();
+                DataProvider.Instance.DB.RentInvoiceInfoes.Remove(rentInvoiceInfo);
+                DataProvider.Instance.DB.Customers.Remove(customer);
+                DataProvider.Instance.DB.SaveChanges();
+            }
         }
         [Command] 
         public void DetailCustomer()
@@ -158,47 +163,6 @@ namespace Hotel_JustFriend.ViewModels
         [Command] 
         public void EditCustomer()
         {
-        }
-        [Command]
-        public void Save(AddCustomerWindow p)
-        {
-            try
-            {
-                ListCustomer = new ObservableCollection<Customer>(DataProvider.Instance.DB.Customers);
-                for (int i=0;i<ListCustomer.Count;i++)
-                {
-                    if (ListCustomer[i].idCard==IdCard)
-                    {
-                        MyMessageBox.Show("Chứng minh nhân dân đã tồn tại", "Thông báo", MessageBoxButton.OK);
-                        return;
-                    }
-                }
-                Customer newCustomer = new Customer()
-                {
-                    fullname = Fullname,
-                    idCard = IdCard,
-                    idType = int.Parse(p.txtType.SelectedValue.ToString()),
-                    address = p.txtNote.Text,
-                };
-                DataProvider.Instance.DB.Customers.Add(newCustomer);
-                //-------
-                int ii = newCustomer.idCustomer;
-                int idd = SelectedRoom.idRoom;
-                RentInvoice ll = DataProvider.Instance.DB.RentInvoices.Where((o) => o.idRoom == SelectedRoom.idRoom).FirstOrDefault();
-                RentInvoiceInfo info = new RentInvoiceInfo()
-                {
-                    idCustomer = newCustomer.idCustomer,
-                    idRentInvoice = DataProvider.Instance.DB.RentInvoices.Where((o) => o.idRoom == SelectedRoom.idRoom).FirstOrDefault().idRentInvoice,
-                };
-                DataProvider.Instance.DB.RentInvoiceInfoes.Add(info);
-                DataProvider.Instance.DB.SaveChanges();
-                MyMessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButton.OK);
-                Close(p);
-            }
-            catch
-            {
-                return;
-            }
         }
     }
 }
