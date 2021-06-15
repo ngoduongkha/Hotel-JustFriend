@@ -65,7 +65,8 @@
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          materialDesign:HintAssist.Hint="Nhập tên loại"
                                          VerticalAlignment="Center"
-                                         FontSize="20"/>
+                                         FontSize="20"
+                                         Text="{Binding Path=Text, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
                             </Grid>
                             <Grid Grid.Row="1">
                                 <Grid.ColumnDefinitions>

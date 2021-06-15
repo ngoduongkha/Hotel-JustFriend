@@ -13,6 +13,12 @@ namespace Hotel_JustFriend.ViewModels
     class CustomizeParametersViewModel : ViewModelBase
     {
         [Command]
+        public void CallAddCustomerType()
+        {
+            AddCustomerTypeWindow window = new AddCustomerTypeWindow();
+            window.ShowDialog();
+        }
+        [Command]
         public void CallAddRoomType()
         {
             AddCustomerTypeWindow window = new AddCustomerTypeWindow();
