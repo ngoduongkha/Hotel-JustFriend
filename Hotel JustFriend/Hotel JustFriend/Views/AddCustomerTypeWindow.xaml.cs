@@ -23,7 +23,7 @@ namespace Hotel_JustFriend.Views
         public AddCustomerTypeWindow()
         {
             InitializeComponent();
-            this.DataContext = new AddCustomerTypeViewModel();
+            this.DataContext = new CustomizeParametersViewModel();
         }
     }
 }

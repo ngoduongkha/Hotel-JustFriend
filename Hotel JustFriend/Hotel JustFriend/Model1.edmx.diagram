@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="92ba729bc6504341b6a1048b2a0f82d1" Name="Diagram1">
+      <Diagram DiagramId="2288a8a9a35d49099f8134576e49dbb4" Name="Diagram1">
         <EntityTypeShape EntityType="Hotel_JustFriendModel.Account" Width="1.5" PointX="7.75" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.Bill" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.BillInfo" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.Customer" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.RentInvoice" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hotel_JustFriendModel.RentInvoiceInfo" Width="1.5" PointX="7.5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.RentInvoiceInfo" Width="1.5" PointX="7.5" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.Revenue" Width="1.5" PointX="7.75" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.RevenuePercentage" Width="1.5" PointX="9.75" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.Room" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />

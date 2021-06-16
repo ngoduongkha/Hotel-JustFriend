@@ -7,18 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Hotel_JustFriend.Models
+namespace Hotel_JustFriend
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class RentInvoiceInfo
+    public partial class BillInfo
     {
-        public Nullable<int> idRentInvoiceInfo { get; set; }
-        public int idRentInvoice { get; set; }
+        public Nullable<int> numberDay { get; set; }
+        public Nullable<decimal> price { get; set; }
+        public int idBill { get; set; }
+        public int idRoom { get; set; }
         public int idCustomer { get; set; }
     
+        public virtual Bill Bill { get; set; }
         public virtual Customer Customer { get; set; }
-        public virtual RentInvoice RentInvoice { get; set; }
+        public virtual Room Room { get; set; }
     }
 }

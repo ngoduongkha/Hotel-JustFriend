@@ -1,4 +1,4 @@
-CREATE DATABASE Hotel_JustFriend
+﻿CREATE DATABASE Hotel_JustFriend
 GO
 USE Hotel_JustFriend
 GO
@@ -36,7 +36,7 @@ CREATE TABLE [TypeCustomer] (
 GO
 
 CREATE TABLE [TypeRoom] (
-  [idType] int PRIMARY KEY,
+  [idType] int PRIMARY KEY IDENTITY(1, 1),
   [fullname] nvarchar(max),
   [price] money
 )
@@ -129,5 +129,5 @@ ALTER TABLE [BillInfo] ADD FOREIGN KEY ([idBill]) REFERENCES [Bill] ([idBill])
 GO
 
 INSERT INTO dbo.Account ( username, password) VALUES ( 'admin', '38D180985D1B2E7A6014190E2CBD3C967408837188354EC93D27BFD86D09A017')
-INSERT INTO dbo.TypeRoom (idType,fullname, price) VALUES (1,'VIP',20000)
-INSERT INTO dbo.TypeRoom (idType, fullname, price) VALUES (2,N'Th??ng',10000)
+INSERT INTO dbo.TypeRoom (fullname, price) VALUES (N'VIP',20000)
+INSERT INTO dbo.TypeRoom (fullname, price) VALUES (N'Thường',10000)

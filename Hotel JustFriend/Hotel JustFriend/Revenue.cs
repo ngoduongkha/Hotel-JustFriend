@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Hotel_JustFriend.Models
+namespace Hotel_JustFriend
 {
     using System;
     using System.Collections.Generic;
