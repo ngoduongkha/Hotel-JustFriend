@@ -69,7 +69,8 @@
                                         FontSize="20"
                                         Height="40" Margin="10 0"
                                         Style="{StaticResource MyAcceptButtonStyle}"
-                                        Command="{Binding CallAddRoomTypeCommand}"/>
+                                        Command="{Binding CallAddRoomTypeCommand}">
+                                </Button>
                                 <Button Content="Xóa" Width="100"
                                         FontSize="20"
                                         Height="40" Margin="10 0"
@@ -104,18 +105,20 @@
                             </Grid.RowDefinitions>
                             <StackPanel Grid.Row="0">
                                 <Label Content="Loại khách:"/>
-                                <ComboBox materialDesign:HintAssist.Hint="Chọn loại khách"/>
+                                <ComboBox materialDesign:HintAssist.Hint="Chọn loại khách"
+                                          ItemsSource="{Binding Path=ListCustomerType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                             </StackPanel>
                             <StackPanel HorizontalAlignment="Center"
                                             Grid.Row="1">
                                 <Button Content="Thêm" Width="100"
-                                            FontSize="20"
-                                            Height="40" Margin="10 0"
-                                            Style="{StaticResource MyAcceptButtonStyle}"/>
+                                        FontSize="20"
+                                        Height="40" Margin="10 0"
+                                        Style="{StaticResource MyAcceptButtonStyle}"
+                                        Command="{Binding CallAddCustomerTypeCommand}"/>
                                 <Button Content="Xóa" Width="100"
-                                            FontSize="20"
-                                            Height="40" Margin="10 0"
-                                            Style="{StaticResource MyDeclineButtonStyle}"/>
+                                        FontSize="20"
+                                        Height="40" Margin="10 0"
+                                        Style="{StaticResource MyDeclineButtonStyle}"/>
                             </StackPanel>
                             <StackPanel Grid.Row="2">
                                 <Label Content="Hệ số:"/>

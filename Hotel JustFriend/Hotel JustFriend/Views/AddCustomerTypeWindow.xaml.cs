@@ -20,9 +20,11 @@ namespace Hotel_JustFriend.Views
     /// </summary>
     public partial class AddCustomerTypeWindow : Window
     {
-        public AddCustomerTypeWindow()
+        public bool IsAddCustomerType { get; set; }
+        public AddCustomerTypeWindow(bool isAddCustomerType)
         {
             InitializeComponent();
+            IsAddCustomerType = isAddCustomerType;
             this.DataContext = new CustomizeParametersViewModel();
         }
     }
