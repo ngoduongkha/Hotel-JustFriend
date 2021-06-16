@@ -61,7 +61,8 @@
                                 <Label Content="Loại phòng:"/>
                                 <ComboBox materialDesign:HintAssist.Hint="Chọn loại phòng"
                                           ItemsSource="{Binding Path=ListRoomType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                          DisplayMemberPath="fullname"/>
+                                          DisplayMemberPath="fullname"
+                                          SelectedValuePath="idType"/>
                             </StackPanel>
                             <StackPanel HorizontalAlignment="Center"
                                             Grid.Row="1">
@@ -106,7 +107,9 @@
                             <StackPanel Grid.Row="0">
                                 <Label Content="Loại khách:"/>
                                 <ComboBox materialDesign:HintAssist.Hint="Chọn loại khách"
-                                          ItemsSource="{Binding Path=ListCustomerType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                          ItemsSource="{Binding Path=ListCustomerType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                          DisplayMemberPath="displayname"
+                                          SelectedValuePath="idType"/>
                             </StackPanel>
                             <StackPanel HorizontalAlignment="Center"
                                             Grid.Row="1">

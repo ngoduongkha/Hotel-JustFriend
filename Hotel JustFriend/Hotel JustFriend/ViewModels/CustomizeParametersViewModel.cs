@@ -95,5 +95,11 @@ namespace Hotel_JustFriend.ViewModels
             }
             catch { return; }
         }
+
+        [Command]
+        public void DeleteCustomerType()
+        {
+
+        }
     }
 }
