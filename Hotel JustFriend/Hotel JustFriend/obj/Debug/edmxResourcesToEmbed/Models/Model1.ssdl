@@ -110,7 +110,7 @@ warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a 
     <Key>
       <PropertyRef Name="idType" />
     </Key>
-    <Property Name="idType" Type="int" Nullable="false" />
+    <Property Name="idType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="fullname" Type="nvarchar(max)" />
     <Property Name="price" Type="money" />
   </EntityType>

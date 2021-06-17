@@ -2,12 +2,7 @@
 using DevExpress.Mvvm.DataAnnotations;
 using Hotel_JustFriend.Models;
 using Hotel_JustFriend.Views;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -97,9 +92,54 @@ namespace Hotel_JustFriend.ViewModels
         }
 
         [Command]
-        public void DeleteCustomerType()
+        public void DeleteRoomType(ComboBox cbbox)
         {
-
+            try
+            {
+                if (cbbox.SelectedItem != null)
+                {
+                    TypeRoom deleteRoom = cbbox.SelectedItem as TypeRoom;
+                    DataProvider.Instance.DB.TypeRooms.Remove(deleteRoom);
+                    DataProvider.Instance.DB.SaveChanges();
+                    ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms);
+                }
+            }
+            catch { return; }
+        }
+        [Command]
+        public void DeleteCustmerType(ComboBox cbbox)
+        {
+            try
+            {
+                if (cbbox.SelectedItem != null)
+                {
+                    TypeCustomer deleteCustomer = cbbox.SelectedItem as TypeCustomer;
+                    DataProvider.Instance.DB.TypeCustomers.Remove(deleteCustomer);
+                    DataProvider.Instance.DB.SaveChanges();
+                    ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers);
+                }
+            }
+            catch { return; }
+        }
+        [Command]
+        public void SaveEdited(object p)
+        {
+            try
+            {
+                var parameters = (object[])p;
+                TextBox tbox = parameters[0] as TextBox;
+                if (tbox.Name == "tboxPrice")
+                {
+                    ComboBox cbbox = parameters[1] as ComboBox;
+                    if (cbbox.SelectedItem != null && tbox.Text != null)
+                    {
+                        TypeRoom typeRoom = DataProvider.Instance.DB.TypeRooms.Find((cbbox.SelectedItem as TypeRoom).idType);
+                        typeRoom.price = int.Parse(tbox.Text);
+                        DataProvider.Instance.DB.SaveChanges();
+                    }
+                }
+            }
+            catch { return; }
         }
     }
 }

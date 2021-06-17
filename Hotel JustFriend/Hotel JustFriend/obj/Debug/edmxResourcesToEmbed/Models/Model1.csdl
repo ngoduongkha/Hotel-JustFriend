@@ -110,7 +110,7 @@
     <Key>
       <PropertyRef Name="idType" />
     </Key>
-    <Property Name="idType" Type="Int32" Nullable="false" />
+    <Property Name="idType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="fullname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="price" Type="Decimal" Precision="19" Scale="4" />
     <NavigationProperty Name="Rooms" Relationship="Self.FK__Room__idType__403A8C7D" FromRole="TypeRoom" ToRole="Room" />
