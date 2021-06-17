@@ -65,7 +65,8 @@
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          materialDesign:HintAssist.Hint="Nhập tên loại"
                                          VerticalAlignment="Center"
-                                         FontSize="20"/>
+                                         FontSize="20"
+                                         Text="{Binding Path=TypeName, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
                             </Grid>
                             <Grid Grid.Row="1">
                                 <Grid.ColumnDefinitions>
@@ -77,7 +78,9 @@
                                             FontSize="18"
                                             Content="Thêm"
                                             HorizontalAlignment="Center"
-                                            Width="80"/>
+                                            Width="80"
+                                            Command="{Binding AddCommand}"
+                                            CommandParameter="{Binding ElementName=window}"/>
                                 </Grid>
                                 <Grid Grid.Column="1">
                                     <Button Style="{DynamicResource MyDeclineButtonStyle}"
