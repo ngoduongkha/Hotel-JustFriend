@@ -23,41 +23,56 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <StackPanel Margin="30,20,30,0">
-                <TextBlock Text="Thông tin khách hàng:" 
+                <TextBlock Text="Thông tin phòng:" 
                            HorizontalAlignment="Left"
                            FontSize="20"
                            Foreground="Pink"
                            TextDecorations="underline"
                            FontWeight="Bold"/>
-                <TextBlock Text="Phúc" 
+                <Grid Margin="0,0,58,0">
+                    <TextBlock Text="Tên phòng: " 
                            FontSize="15"
                            TextWrapping="Wrap"
                            FontWeight="SemiBold"
                            />
-                <TextBlock Text="012312311" 
+                    <TextBlock Text="Phòng 101" 
+                           FontSize="15"
+                               x:Name="Roomname"
+                           TextWrapping="Wrap"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           FontWeight="SemiBold" Width="97"
+                           />
+                </Grid>
+                <Grid>
+                    <TextBlock Text="Đơn giá: " 
                            FontSize="15"
                            TextWrapping="Wrap"
                            FontWeight="SemiBold"/>
-                <TextBlock Text="Dia chi"
+                    <TextBlock Text="10000" 
+                           FontSize="15"
+                               x:Name="price"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                           TextWrapping="Wrap"
+                           FontWeight="SemiBold" Width="169"/>
+
+                </Grid>
+                <Grid>
+                    <TextBlock Text="Số ngày thuê: " 
                            FontSize="15"
                            TextWrapping="Wrap"
                            FontWeight="SemiBold"/>
+                    <TextBlock Text="3" 
+                           FontSize="15"
+                               x:Name="date"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                           TextWrapping="Wrap"
+                           FontWeight="SemiBold" Width="19" Margin="0,0,119,0"/>
+                </Grid>
             </StackPanel>
-            <TextBlock Text="Mã hóa đơn" 
-                       VerticalAlignment="Bottom"
-                       HorizontalAlignment="Left"
-                       FontSize="14"
-                       FontWeight="Bold"
-                       Foreground="Black"
-                       Margin="30,20,10,10"/>
-            <TextBlock Text="#123"
-                     VerticalAlignment="Bottom"
-                     HorizontalAlignment="Left"
-                     FontSize="14"
-                       FontWeight="Bold"
-                     TextWrapping="Wrap"
-                     Foreground="Black"
-                     Margin="116,0,0,10" />
+
 
             <Grid Grid.Column="1">
                 <Image Source="/Hotel JustFriend;component/Resources/Images/banner.png"
@@ -116,10 +131,9 @@
                 Height="25">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="35"/>
-                    <ColumnDefinition Width="180"/>
-                    <ColumnDefinition Width="85"/>
-                    <ColumnDefinition Width="71"/>
-                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="106"/>
                     <ColumnDefinition Width="85"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock 
@@ -132,7 +146,7 @@
                     FontWeight="SemiBold" />
                 <TextBlock 
                     Grid.Column="1"
-                    Text="Tên hàng hóa"
+                    Text="Tên khách hàng "
                     HorizontalAlignment="Left" 
                     Margin="10,0,0,0" 
                     TextWrapping="Wrap" 
@@ -140,7 +154,7 @@
                     FontWeight="SemiBold" />
                 <TextBlock 
                     Grid.Column="2"
-                    Text="Đơn giá"
+                    Text="Địa chỉ"
                     HorizontalAlignment="Center" 
                     Margin="0" 
                     TextWrapping="Wrap" 
@@ -148,15 +162,7 @@
                     FontWeight="SemiBold" />
                 <TextBlock 
                     Grid.Column="3"
-                    Text="Số lượng"
-                    HorizontalAlignment="Center" 
-                    Margin="0" 
-                    TextWrapping="Wrap" 
-                    VerticalAlignment="Center" 
-                    FontWeight="SemiBold" />
-                <TextBlock 
-                    Grid.Column="4"
-                    Text="Đơn vị tính"
+                    Text="Loại khách"
                     HorizontalAlignment="Center" 
                     Margin="0" 
                     TextWrapping="Wrap" 
@@ -164,59 +170,17 @@
                     FontWeight="SemiBold" />
                 <TextBlock 
                     Grid.Column="5"
-                    Text="Thành tiền"
+                    Text="Hệ số"
                     HorizontalAlignment="Center" 
                     Margin="0" 
                     TextWrapping="Wrap" 
                     VerticalAlignment="Center" 
-                    FontWeight="SemiBold"/>
+                    FontWeight="SemiBold" />
+
             </Grid>
             <Grid Margin="0,25,0,0" Background="#FFFAFA">
-
-                <ItemsControl ItemsSource="{Binding ListBillInfo}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate >
-                            <StackPanel Orientation="Horizontal" >
-                                <TextBlock Text="1"
-                                           Margin="0"
-                                           TextWrapping="Wrap"
-                                           Width="35"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"></TextBlock>
-                                <TextBlock Text="{Binding idProduct}"
-                                           TextWrapping="Wrap"
-                                           Margin="0"
-                                           HorizontalAlignment="Center"
-                                           Width="180"
-                                            VerticalAlignment="Center"></TextBlock>
-                                <TextBlock Text="{Binding quantity}" 
-                                           TextWrapping="Wrap"
-                                           Width="85"
-                                           Margin="0"
-                                           HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"></TextBlock>
-                                <TextBlock Text="{Binding price}" 
-                                           TextWrapping="Wrap"
-                                           HorizontalAlignment="Center"
-                                           Margin="0"
-                                           Width="71"
-                                            VerticalAlignment="Center"></TextBlock>
-                                <TextBlock Text="{Binding price}" 
-                                           TextWrapping="Wrap"
-                                           Margin="0"
-                                           HorizontalAlignment="Center"
-                                           Width="70"
-                                            VerticalAlignment="Center"></TextBlock>
-                                <TextBlock Text="{Binding price}"
-                                           TextWrapping="Wrap"
-                                           Margin="0"
-                                           HorizontalAlignment="Center"
-                                           Width="85"
-                                            VerticalAlignment="Center"></TextBlock>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
+                <StackPanel x:Name="stp">
+                </StackPanel>
             </Grid>
         </Grid>
         <Grid Grid.Row="3">
@@ -244,7 +208,7 @@
                                    Background="#FEECED"
                                    FontWeight="Medium"
                                    TextWrapping="Wrap"/>
-                        <TextBlock Text="Giảm: "
+                        <TextBlock Text="Phụ thu: "
                                    FontSize="18"
                                    Background="#FEECED"
                                    FontWeight="Medium"
@@ -260,16 +224,19 @@
                     <StackPanel>
                         <TextBlock Text="1.200.000 "
                                    FontSize="18"
+                                   x:Name="money"
                                    FontWeight="Medium"
                                    Background="#FEECED"
                                    TextWrapping="Wrap"/>
                         <TextBlock Text="200.000 "
                                    FontSize="18"
+                                   x:Name="surcharge"
                                    Background="#FEECED"
                                    TextWrapping="Wrap"
                                    FontWeight="Medium"/>
                         <TextBlock Text="1.000.000 "
                                    FontSize="18"
+                                   x:Name="totalmoney"
                                    TextWrapping="Wrap"
                                    Background="Pink"
                                    FontWeight="Medium"/>

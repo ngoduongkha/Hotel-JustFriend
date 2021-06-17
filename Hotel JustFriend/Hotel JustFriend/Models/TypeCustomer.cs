@@ -22,6 +22,8 @@ namespace Hotel_JustFriend.Models
     
         public int idType { get; set; }
         public string displayname { get; set; }
+        public Nullable<double> number { get; set; }
+        public Nullable<bool> isDelete { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }

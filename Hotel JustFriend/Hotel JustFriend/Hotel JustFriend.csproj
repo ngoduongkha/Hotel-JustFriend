@@ -158,9 +158,13 @@
     <Compile Include="Models\BillInfo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Constant.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Customer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataProvider.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -176,8 +180,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataProvider.cs" />
-    <Compile Include="Models\MyPropertyConverter.cs" />
     <Compile Include="Models\RentInvoice.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -193,14 +195,17 @@
     <Compile Include="Models\Room.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Template\ImportBill.xaml.cs">
-      <DependentUpon>ImportBill.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Models\TypeCustomer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TypeRoom.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Template\ImportBill.xaml.cs">
+      <DependentUpon>ImportBill.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\BillDetailUC.xaml.cs">
+      <DependentUpon>BillDetailUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ButtonRoomUC.xaml.cs">
       <DependentUpon>ButtonRoomUC.xaml</DependentUpon>
@@ -230,6 +235,7 @@
       <DependentUpon>SellProductUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AccountManageViewModel.cs" />
+    <Compile Include="ViewModels\AddCustomerTypeViewModel.cs" />
     <Compile Include="ViewModels\AddCustomerViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\CustomizeParametersViewModel.cs" />
@@ -332,6 +338,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Template\ImportBill.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\BillDetailUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

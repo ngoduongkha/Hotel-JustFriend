@@ -29,6 +29,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Constants">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.Constant">
+        <MappingFragment StoreEntitySet="Constant">
+          <ScalarProperty Name="idConstant" ColumnName="idConstant" />
+          <ScalarProperty Name="maxCustomer" ColumnName="maxCustomer" />
+          <ScalarProperty Name="percent" ColumnName="percent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Customers">
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.Customer">
         <MappingFragment StoreEntitySet="Customer">
@@ -96,6 +105,8 @@
         <MappingFragment StoreEntitySet="TypeCustomer">
           <ScalarProperty Name="idType" ColumnName="idType" />
           <ScalarProperty Name="displayname" ColumnName="displayname" />
+          <ScalarProperty Name="number" ColumnName="number" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -105,6 +116,7 @@
           <ScalarProperty Name="idType" ColumnName="idType" />
           <ScalarProperty Name="fullname" ColumnName="fullname" />
           <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
