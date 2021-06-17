@@ -11,7 +11,7 @@
     d:DesignHeight="651.2" d:DesignWidth="1200">
     <UserControl.Resources>
         <ResourceDictionary>
-            <converter:MyPropertyConverter x:Key="MyPropertyConverter"/>
+            <converter:PropertyConverter x:Key="PropertyConverter"/>
         </ResourceDictionary>
     </UserControl.Resources>
     <materialDesign:Card Margin="15">
@@ -94,7 +94,7 @@
                                 Style="{StaticResource MyUpdateButtonStyle}"
                                 Command="{Binding SaveEditedCommand}">
                                 <Button.CommandParameter>
-                                    <MultiBinding Converter="{StaticResource MyPropertyConverter}">
+                                    <MultiBinding Converter="{StaticResource PropertyConverter}">
                                         <Binding ElementName="tboxPrice"/>
                                         <Binding ElementName="cbboxRoomType"/>
                                     </MultiBinding>
@@ -106,10 +106,19 @@
                 <materialDesign:Card Grid.Row="1" Margin="15 7 7 15">
                     <StackPanel>
                         <Label Content="Lượng khách tối đa:"/>
-                        <TextBox Width="50"/>
+                        <TextBox Width="50"
+                                 x:Name="tboxMaxCustomer"
+                                 Text="{Binding Path=MaxCustomer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         <Label 
                             Content="người"
-                            Margin="30 0 0 0"/>
+                            Margin="20 0 10 0"/>
+                        <Button 
+                            Content="Lưu" Width="100"
+                            FontSize="20"
+                            Height="40" Margin="10 0"
+                            Style="{StaticResource MyUpdateButtonStyle}"
+                            Command="{Binding SaveEditedCommand}"
+                            CommandParameter="{Binding ElementName=tboxMaxCustomer}"/>
                     </StackPanel>
                 </materialDesign:Card>
             </Grid>
@@ -127,11 +136,12 @@
                         </Grid.RowDefinitions>
                         <StackPanel Grid.Row="0">
                             <Label Content="Loại khách:"/>
-                            <ComboBox materialDesign:HintAssist.Hint="Chọn loại khách"
-                                          ItemsSource="{Binding Path=ListCustomerType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                          DisplayMemberPath="displayname"
-                                          SelectedValuePath="idType"
-                                          x:Name="cbboxCustomerType"/>
+                            <ComboBox 
+                                materialDesign:HintAssist.Hint="Chọn loại khách"
+                                ItemsSource="{Binding Path=ListCustomerType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                DisplayMemberPath="displayname"
+                                SelectedValuePath="idType"
+                                x:Name="cbboxCustomerType"/>
                         </StackPanel>
                         <StackPanel HorizontalAlignment="Center"
                                             Grid.Row="1">
@@ -149,8 +159,10 @@
                         </StackPanel>
                         <StackPanel Grid.Row="2">
                             <Label Content="Hệ số:"/>
-                            <TextBox Margin="85 0 30 0"
-                                     x:Name="tboxNumber"/>
+                            <TextBox 
+                                Margin="85 0 30 0"
+                                x:Name="tboxNumber"
+                                Text="{Binding Path=SelectedItem.number, ElementName=cbboxCustomerType}"/>
                             <Button 
                                 Content="Lưu" Width="100"
                                 FontSize="20"
@@ -158,7 +170,7 @@
                                 Style="{StaticResource MyUpdateButtonStyle}"
                                 Command="{Binding SaveEditedCommand}">
                                 <Button.CommandParameter>
-                                    <MultiBinding Converter="{StaticResource MyPropertyConverter}">
+                                    <MultiBinding Converter="{StaticResource PropertyConverter}">
                                         <Binding ElementName="tboxNumber"/>
                                         <Binding ElementName="cbboxCustomerType"/>
                                     </MultiBinding>
@@ -170,9 +182,19 @@
                 <materialDesign:Card Grid.Row="1" Margin="7 7 7 15">
                     <StackPanel>
                         <Label Content="Phụ thu:"/>
-                        <TextBox Width="50"/>
-                        <Label Content="%"
-                                       Margin="30 0 0 0"/>
+                        <TextBox Width="50"
+                                 x:Name="tboxPercent"
+                                 Text="{Binding Path=Percent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label 
+                            Content="%"
+                            Margin="30 0 30 0"/>
+                        <Button 
+                            Content="Lưu" Width="100"
+                            FontSize="20"
+                            Height="40" Margin="10 0"
+                            Style="{StaticResource MyUpdateButtonStyle}"
+                            Command="{Binding SaveEditedCommand}"
+                            CommandParameter="{Binding ElementName=tboxPercent}"/>
                     </StackPanel>
                 </materialDesign:Card>
             </Grid>

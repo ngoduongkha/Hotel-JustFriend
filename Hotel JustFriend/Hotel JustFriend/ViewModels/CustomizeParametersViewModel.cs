@@ -14,21 +14,27 @@ namespace Hotel_JustFriend.ViewModels
         private ObservableCollection<TypeRoom> _listRoomType;
         private ObservableCollection<TypeCustomer> _listCustomerType;
         private string _typeName;
+        private string _maxCustomer;
+        private string _percent;
 
         public string TypeName { get => _typeName; set { _typeName = value; RaisePropertiesChanged(); } }
         public ObservableCollection<TypeRoom> ListRoomType { get => _listRoomType; set { _listRoomType = value; RaisePropertiesChanged(); } }
         public ObservableCollection<TypeCustomer> ListCustomerType { get => _listCustomerType; set { _listCustomerType = value; RaisePropertiesChanged(); } }
+        public string MaxCustomer { get => _maxCustomer; set { _maxCustomer = value; RaisePropertiesChanged(); } }
+        public string Percent { get => _percent;  set { _percent = value; RaisePropertiesChanged(); } }
 
         public CustomizeParametersViewModel()
         {
             ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms);
             ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers);
+            MaxCustomer = (DataProvider.Instance.DB.Constants.Find(0) as Constant).maxCustomer.ToString();
+            Percent = (DataProvider.Instance.DB.Constants.Find(0) as Constant).percent.ToString();
         }
 
         [Command]
         public void CallAddCustomerType()
         {
-            AddCustomerTypeWindow window = new AddCustomerTypeWindow(true);
+            AddTypeWindow window = new AddTypeWindow(true);
             window.ShowDialog();
             ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers);
         }
@@ -36,7 +42,7 @@ namespace Hotel_JustFriend.ViewModels
         [Command]
         public void CallAddRoomType()
         {
-            AddCustomerTypeWindow window = new AddCustomerTypeWindow(false);
+            AddTypeWindow window = new AddTypeWindow(false);
             window.ShowDialog();
             ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms);
         }
@@ -62,7 +68,7 @@ namespace Hotel_JustFriend.ViewModels
         }
 
         [Command]
-        public void Add(AddCustomerTypeWindow p)
+        public void Add(AddTypeWindow p)
         {
             try
             {
@@ -137,6 +143,34 @@ namespace Hotel_JustFriend.ViewModels
                         typeRoom.price = int.Parse(tbox.Text);
                         DataProvider.Instance.DB.SaveChanges();
                     }
+                    return;
+                }
+                if (tbox.Name == "tboxNumber")
+                {
+                    ComboBox cbbox = parameters[1] as ComboBox;
+                    if (cbbox.SelectedItem != null && tbox.Text != null)
+                    {
+                        TypeCustomer typeCustomer = DataProvider.Instance.DB.TypeCustomers.Find((cbbox.SelectedItem as TypeCustomer).idType);
+                        typeCustomer.number = double.Parse(tbox.Text);
+                        DataProvider.Instance.DB.SaveChanges();
+                    }
+                    return;
+                }
+                if (tbox.Name == "tboxMaxCustomer")
+                {
+                    if (tbox.Text != null)
+                    {
+                        (DataProvider.Instance.DB.Constants.Find(0) as Constant).maxCustomer = int.Parse(MaxCustomer);
+                    }
+                    return;
+                }
+                if (tbox.Name == "tboxPercent")
+                {
+                    if (tbox.Text != null)
+                    {
+                        (DataProvider.Instance.DB.Constants.Find(0) as Constant).percent = double.Parse(Percent);
+                    }
+                    return;
                 }
             }
             catch { return; }
