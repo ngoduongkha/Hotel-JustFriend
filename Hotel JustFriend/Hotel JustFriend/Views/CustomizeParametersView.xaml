@@ -62,7 +62,8 @@
                                 <ComboBox materialDesign:HintAssist.Hint="Chọn loại phòng"
                                           ItemsSource="{Binding Path=ListRoomType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                           DisplayMemberPath="fullname"
-                                          SelectedValuePath="idType"/>
+                                          SelectedValuePath="idType"
+                                          x:Name="cbboxRoomType"/>
                             </StackPanel>
                             <StackPanel HorizontalAlignment="Center"
                                             Grid.Row="1">
@@ -75,7 +76,9 @@
                                 <Button Content="Xóa" Width="100"
                                         FontSize="20"
                                         Height="40" Margin="10 0"
-                                        Style="{StaticResource MyDeclineButtonStyle}"/>
+                                        Style="{StaticResource MyDeclineButtonStyle}"
+                                        Command="{Binding DeleteRoomTypeCommand}"
+                                        CommandParameter="{Binding ElementName=cbboxRoomType}"/>
                             </StackPanel>
                             <StackPanel Grid.Row="2">
                                 <Label Content="Đơn giá:"/>
@@ -109,7 +112,8 @@
                                 <ComboBox materialDesign:HintAssist.Hint="Chọn loại khách"
                                           ItemsSource="{Binding Path=ListCustomerType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                           DisplayMemberPath="displayname"
-                                          SelectedValuePath="idType"/>
+                                          SelectedValuePath="idType"
+                                          x:Name="cbboxCustomerType"/>
                             </StackPanel>
                             <StackPanel HorizontalAlignment="Center"
                                             Grid.Row="1">
@@ -121,7 +125,9 @@
                                 <Button Content="Xóa" Width="100"
                                         FontSize="20"
                                         Height="40" Margin="10 0"
-                                        Style="{StaticResource MyDeclineButtonStyle}"/>
+                                        Style="{StaticResource MyDeclineButtonStyle}"
+                                        Command="{Binding DeleteCustomerTypeCommand}"
+                                        CommandParameter="{Binding ElementName=cbboxCustomerType}"/>
                             </StackPanel>
                             <StackPanel Grid.Row="2">
                                 <Label Content="Hệ số:"/>

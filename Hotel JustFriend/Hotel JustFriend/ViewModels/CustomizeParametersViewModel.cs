@@ -97,9 +97,34 @@ namespace Hotel_JustFriend.ViewModels
         }
 
         [Command]
-        public void DeleteCustomerType()
+        public void DeleteRoomType(ComboBox cbbox)
         {
-
+            try
+            {
+                if (cbbox.SelectedItem != null)
+                {
+                    TypeRoom deleteRoom = cbbox.SelectedItem as TypeRoom;
+                    DataProvider.Instance.DB.TypeRooms.Remove(deleteRoom);
+                    DataProvider.Instance.DB.SaveChanges();
+                    ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms);
+                }
+            }
+            catch { return; }
+        }
+        [Command]
+        public void DeleteCustmerType(ComboBox cbbox)
+        {
+            try
+            {
+                if (cbbox.SelectedItem != null)
+                {
+                    TypeCustomer deleteCustomer = cbbox.SelectedItem as TypeCustomer;
+                    DataProvider.Instance.DB.TypeCustomers.Remove(deleteCustomer);
+                    DataProvider.Instance.DB.SaveChanges();
+                    ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers);
+                }
+            }
+            catch { return; }
         }
     }
 }
