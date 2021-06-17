@@ -1,4 +1,4 @@
-CREATE DATABASE Hotel_JustFriend
+﻿CREATE DATABASE Hotel_JustFriend
 GO
 USE Hotel_JustFriend
 GO
@@ -31,14 +31,17 @@ GO
 
 CREATE TABLE [TypeCustomer] (
   [idType] int PRIMARY KEY IDENTITY(1, 1),
-  [displayname] nvarchar(max)
+  [displayname] nvarchar(max),
+  [number] float,
+  [isDelete] bit DEFAULT (0)
 )
 GO
 
 CREATE TABLE [TypeRoom] (
-  [idType] int PRIMARY KEY,
+  [idType] int PRIMARY KEY IDENTITY(1, 1),
   [fullname] nvarchar(max),
-  [price] money
+  [price] money,
+  [isDelete] bit DEFAULT (0)
 )
 GO
 
@@ -98,9 +101,9 @@ CREATE TABLE [RevenueInfo] (
 GO
 
 CREATE TABLE [Constant] (
+  [idConstant] int PRIMARY KEY,
   [maxCustomer] int,
   [percent] float,
-  [number] float
 )
 GO
 
@@ -128,6 +131,9 @@ GO
 ALTER TABLE [BillInfo] ADD FOREIGN KEY ([idBill]) REFERENCES [Bill] ([idBill])
 GO
 
-INSERT INTO dbo.Account ( username, password) VALUES ( 'admin', '38D180985D1B2E7A6014190E2CBD3C967408837188354EC93D27BFD86D09A017')
-INSERT INTO dbo.TypeRoom (idType,fullname, price) VALUES (1,'VIP',20000)
-INSERT INTO dbo.TypeRoom (idType, fullname, price) VALUES (2,N'Th??ng',10000)
+INSERT INTO dbo.Account (username, password) VALUES ( 'admin', '38D180985D1B2E7A6014190E2CBD3C967408837188354EC93D27BFD86D09A017')
+INSERT INTO dbo.TypeRoom (fullname, price) VALUES ('VIP',20000)
+INSERT INTO dbo.TypeRoom (fullname, price) VALUES (N'Thường',10000)
+INSERT INTO dbo.TypeCustomer(displayname, number) VALUES (N'Nội địa',1)
+INSERT INTO dbo.TypeCustomer(displayname, number) VALUES (N'Nước ngoài',1.25)
+INSERT INTO dbo.Constant VALUES (0,3,1.3)

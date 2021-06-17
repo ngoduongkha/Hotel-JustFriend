@@ -28,6 +28,7 @@ namespace Hotel_JustFriend.Models
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Bill> Bills { get; set; }
         public virtual DbSet<BillInfo> BillInfoes { get; set; }
+        public virtual DbSet<Constant> Constants { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<RentInvoice> RentInvoices { get; set; }
         public virtual DbSet<RentInvoiceInfo> RentInvoiceInfoes { get; set; }

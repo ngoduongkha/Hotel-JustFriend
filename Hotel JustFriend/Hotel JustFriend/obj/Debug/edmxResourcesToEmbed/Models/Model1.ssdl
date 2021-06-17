@@ -27,13 +27,14 @@
     <Property Name="idRoom" Type="int" Nullable="false" />
     <Property Name="idCustomer" Type="int" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'Hotel_JustFriend.dbo.Constant' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Constant">
-          <Property Name="maxCustomer" Type="int" />
-          <Property Name="percent" Type="float" />
-          <Property Name="number" Type="float" />
-        </EntityType>-->
+  <EntityType Name="Constant">
+    <Key>
+      <PropertyRef Name="idConstant" />
+    </Key>
+    <Property Name="idConstant" Type="int" Nullable="false" />
+    <Property Name="maxCustomer" Type="int" />
+    <Property Name="percent" Type="float" />
+  </EntityType>
   <EntityType Name="Customer">
     <Key>
       <PropertyRef Name="idCustomer" />
@@ -105,16 +106,19 @@ warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a 
     </Key>
     <Property Name="idType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="displayname" Type="nvarchar(max)" />
+    <Property Name="number" Type="float" />
+    <Property Name="isDelete" Type="bit" />
   </EntityType>
   <EntityType Name="TypeRoom">
     <Key>
       <PropertyRef Name="idType" />
     </Key>
-    <Property Name="idType" Type="int" Nullable="false" />
+    <Property Name="idType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="fullname" Type="nvarchar(max)" />
     <Property Name="price" Type="money" />
+    <Property Name="isDelete" Type="bit" />
   </EntityType>
-  <Association Name="FK__BillInfo__idBill__46E78A0C">
+  <Association Name="FK__BillInfo__idBill__49C3F6B7">
     <End Role="Bill" Type="Self.Bill" Multiplicity="1" />
     <End Role="BillInfo" Type="Self.BillInfo" Multiplicity="*" />
     <ReferentialConstraint>
@@ -126,7 +130,7 @@ warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__BillInfo__idCust__44FF419A">
+  <Association Name="FK__BillInfo__idCust__47DBAE45">
     <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
     <End Role="BillInfo" Type="Self.BillInfo" Multiplicity="*" />
     <ReferentialConstraint>
@@ -138,7 +142,7 @@ warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__BillInfo__idRoom__4222D4EF">
+  <Association Name="FK__BillInfo__idRoom__44FF419A">
     <End Role="Room" Type="Self.Room" Multiplicity="1" />
     <End Role="BillInfo" Type="Self.BillInfo" Multiplicity="*" />
     <ReferentialConstraint>
@@ -150,7 +154,7 @@ warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Customer__idType__4316F928">
+  <Association Name="FK__Customer__idType__45F365D3">
     <End Role="TypeCustomer" Type="Self.TypeCustomer" Multiplicity="1" />
     <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
     <ReferentialConstraint>
@@ -162,7 +166,7 @@ warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__RentInvoi__idCus__440B1D61">
+  <Association Name="FK__RentInvoi__idCus__46E78A0C">
     <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
     <End Role="RentInvoiceInfo" Type="Self.RentInvoiceInfo" Multiplicity="*" />
     <ReferentialConstraint>
@@ -174,7 +178,7 @@ warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__RentInvoi__idRen__45F365D3">
+  <Association Name="FK__RentInvoi__idRen__48CFD27E">
     <End Role="RentInvoice" Type="Self.RentInvoice" Multiplicity="1" />
     <End Role="RentInvoiceInfo" Type="Self.RentInvoiceInfo" Multiplicity="*" />
     <ReferentialConstraint>
@@ -186,7 +190,7 @@ warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__RentInvoi__idRoo__412EB0B6">
+  <Association Name="FK__RentInvoi__idRoo__440B1D61">
     <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
     <End Role="RentInvoice" Type="Self.RentInvoice" Multiplicity="*" />
     <ReferentialConstraint>
@@ -198,7 +202,7 @@ warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Room__idType__403A8C7D">
+  <Association Name="FK__Room__idType__4316F928">
     <End Role="TypeRoom" Type="Self.TypeRoom" Multiplicity="1" />
     <End Role="Room" Type="Self.Room" Multiplicity="*" />
     <ReferentialConstraint>
@@ -214,6 +218,7 @@ warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a 
     <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BillInfo" EntityType="Self.BillInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Constant" EntityType="Self.Constant" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RentInvoice" EntityType="Self.RentInvoice" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RentInvoiceInfo" EntityType="Self.RentInvoiceInfo" Schema="dbo" store:Type="Tables" />
@@ -222,35 +227,35 @@ warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a 
     <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TypeCustomer" EntityType="Self.TypeCustomer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TypeRoom" EntityType="Self.TypeRoom" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__BillInfo__idBill__46E78A0C" Association="Self.FK__BillInfo__idBill__46E78A0C">
+    <AssociationSet Name="FK__BillInfo__idBill__49C3F6B7" Association="Self.FK__BillInfo__idBill__49C3F6B7">
       <End Role="Bill" EntitySet="Bill" />
       <End Role="BillInfo" EntitySet="BillInfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__BillInfo__idCust__44FF419A" Association="Self.FK__BillInfo__idCust__44FF419A">
+    <AssociationSet Name="FK__BillInfo__idCust__47DBAE45" Association="Self.FK__BillInfo__idCust__47DBAE45">
       <End Role="Customer" EntitySet="Customer" />
       <End Role="BillInfo" EntitySet="BillInfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__BillInfo__idRoom__4222D4EF" Association="Self.FK__BillInfo__idRoom__4222D4EF">
+    <AssociationSet Name="FK__BillInfo__idRoom__44FF419A" Association="Self.FK__BillInfo__idRoom__44FF419A">
       <End Role="Room" EntitySet="Room" />
       <End Role="BillInfo" EntitySet="BillInfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__Customer__idType__4316F928" Association="Self.FK__Customer__idType__4316F928">
+    <AssociationSet Name="FK__Customer__idType__45F365D3" Association="Self.FK__Customer__idType__45F365D3">
       <End Role="TypeCustomer" EntitySet="TypeCustomer" />
       <End Role="Customer" EntitySet="Customer" />
     </AssociationSet>
-    <AssociationSet Name="FK__RentInvoi__idCus__440B1D61" Association="Self.FK__RentInvoi__idCus__440B1D61">
+    <AssociationSet Name="FK__RentInvoi__idCus__46E78A0C" Association="Self.FK__RentInvoi__idCus__46E78A0C">
       <End Role="Customer" EntitySet="Customer" />
       <End Role="RentInvoiceInfo" EntitySet="RentInvoiceInfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__RentInvoi__idRen__45F365D3" Association="Self.FK__RentInvoi__idRen__45F365D3">
+    <AssociationSet Name="FK__RentInvoi__idRen__48CFD27E" Association="Self.FK__RentInvoi__idRen__48CFD27E">
       <End Role="RentInvoice" EntitySet="RentInvoice" />
       <End Role="RentInvoiceInfo" EntitySet="RentInvoiceInfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__RentInvoi__idRoo__412EB0B6" Association="Self.FK__RentInvoi__idRoo__412EB0B6">
+    <AssociationSet Name="FK__RentInvoi__idRoo__440B1D61" Association="Self.FK__RentInvoi__idRoo__440B1D61">
       <End Role="Room" EntitySet="Room" />
       <End Role="RentInvoice" EntitySet="RentInvoice" />
     </AssociationSet>
-    <AssociationSet Name="FK__Room__idType__403A8C7D" Association="Self.FK__Room__idType__403A8C7D">
+    <AssociationSet Name="FK__Room__idType__4316F928" Association="Self.FK__Room__idType__4316F928">
       <End Role="TypeRoom" EntitySet="TypeRoom" />
       <End Role="Room" EntitySet="Room" />
     </AssociationSet>

@@ -138,7 +138,7 @@
                         <TextBox x:Name="txtNote"
                                  Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                  materialDesign:HintAssist.Background="White"
-                                 Text="{Binding Address, Mode=OneWayToSource}"
+                                 Text="{Binding Address, Mode=TwoWay}"
                                  VerticalAlignment="Stretch"
                                  HorizontalAlignment="Stretch"
                                  FontSize="15"

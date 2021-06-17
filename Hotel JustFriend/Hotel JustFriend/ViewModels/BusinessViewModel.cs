@@ -9,6 +9,7 @@ using Hotel_JustFriend.Views;
 using System.Diagnostics;
 using System;
 using Hotel_JustFriend.UserControls;
+using Hotel_JustFriend.Template;
 
 namespace Hotel_JustFriend.ViewModels
 {
@@ -33,6 +34,7 @@ namespace Hotel_JustFriend.ViewModels
         public ObservableCollection<Customer> ListCustomer { get => _ListCustomer; set { _ListCustomer = value; RaisePropertiesChanged(); } }
         private ObservableCollection<Room> _ListRoom;
         static private Room _SelectedRoom;
+        static private RentInvoice _SelectedRentInvoice;
         static private RentInvoiceInfo _SelectedCustomer;
         public ObservableCollection<Room> ListRoom { get => _ListRoom; set { _ListRoom = value; RaisePropertyChanged(); } }
         public Room SelectedRoom { get => _SelectedRoom; set { _SelectedRoom = value; RaisePropertyChanged(); } }
@@ -45,9 +47,11 @@ namespace Hotel_JustFriend.ViewModels
 
         public Customer TrickCustomer { get => _TrickCustomer; set { _TrickCustomer = value; RaisePropertiesChanged(); } }
 
+        public RentInvoice SelectedRentInvoice { get => _SelectedRentInvoice; set { _SelectedRentInvoice = value; RaisePropertyChanged(); } }
+
         public BusinessViewModel()
         {
-            ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers);
+            ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers.Where(p => p.isDelete == false));
             LoadDB();
         }
         private void loadcs()
@@ -83,12 +87,80 @@ namespace Hotel_JustFriend.ViewModels
             catch { return; }
         }
         [Command]
+        public void Pay()
+        {
+            if (SelectedRoom == null) return;
+            var da = new DateTime(2021, 6, 30);
+            DateTime a = (DateTime)SelectedRentInvoice.date;
+            int d = da.Subtract(a).Days;
+            Bill bill = new Bill
+            {
+                totalMoney = 0,
+            };
+            BillTemplate billtemp = new BillTemplate();
+            billtemp.date.Text = d.ToString();
+            billtemp.Roomname.Text= DataProvider.Instance.DB.Rooms.Where(c => c.idRoom == SelectedRoom.idRoom).FirstOrDefault().displayName;
+            DataProvider.Instance.DB.Bills.Add(bill);
+            decimal Price = (decimal)DataProvider.Instance.DB.TypeRooms.Where(c => c.idType == SelectedRoom.idType).FirstOrDefault().price; 
+            int idrent = DataProvider.Instance.DB.RentInvoices.Where((c) => c.idRoom == SelectedRoom.idRoom).FirstOrDefault().idRentInvoice;
+            ListRentInvoiceInfo = new ObservableCollection<RentInvoiceInfo>(DataProvider.Instance.DB.RentInvoiceInfoes
+                                                                                    .Where((c) => c.idRentInvoice == idrent));
+            double heso = 0;
+            
+            for (int i=0;i<ListRentInvoiceInfo.Count;i++)
+            {
+                BillInfo billinfo = new BillInfo
+                {
+                    numberDay = d,
+                    price = Price,
+                    idBill = bill.idBill,
+                    idRoom = SelectedRoom.idRoom,
+                    idCustomer = ListRentInvoiceInfo[i].idCustomer,
+                };
+                int idd = ListRentInvoiceInfo[i].idCustomer;
+                Customer cus = DataProvider.Instance.DB.Customers.Where(c => c.idCustomer == idd).FirstOrDefault();
+                double tg = (double)DataProvider.Instance.DB.TypeCustomers.Where(c => c.idType == cus.idType).FirstOrDefault().number;
+                if (tg > heso) heso = tg;
+                DataProvider.Instance.DB.BillInfoes.Add(billinfo);
+                DataProvider.Instance.DB.RentInvoiceInfoes.Remove(ListRentInvoiceInfo[i]);
+                BillDetailUC aa = new BillDetailUC();
+                aa.STT.Text = (i + 1).ToString();
+                aa.CustomerName.Text = cus.fullname.ToString();
+                if (cus.address != null) aa.Address.Text = cus.address.ToString();
+                else aa.Address.Text = "";
+                aa.Type.Text = DataProvider.Instance.DB.TypeCustomers.Where(c => c.idType == cus.idType).FirstOrDefault().displayname;
+                aa.number.Text = tg.ToString();
+                billtemp.stp.Children.Add(aa);
+            }
+            int maxcustomer = (int)DataProvider.Instance.DB.Constants.Where(c => c.idConstant == 0).FirstOrDefault().maxCustomer;
+            double percent= (double)DataProvider.Instance.DB.Constants.Where(c => c.idConstant == 0).FirstOrDefault().percent;
+            int sokhach = 0;
+            if (ListRentInvoiceInfo.Count > maxcustomer) sokhach = ListRentInvoice.Count - maxcustomer;
+            bill.totalMoney = d * (Price + ((decimal)(sokhach * percent) * Price) + (Price*(decimal)(heso-1)));
+            billtemp.totalmoney.Text = string.Format("{0:C}", bill.totalMoney);
+            billtemp.money.Text = string.Format("{0:C}", d * Price);
+            billtemp.price.Text = string.Format("{0:C}", Price);
+            billtemp.surcharge.Text = string.Format("{0:C}", ((decimal)(sokhach * percent) * Price) + (Price * (decimal)(heso - 1)) * d);
+            ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms
+                   .Where(x => x.isDelete == false)
+                   );
+            Room p = ListRoom.Where(c => c.idRoom == SelectedRoom.idRoom).FirstOrDefault();
+            p.status = false;
+            RentInvoice k = DataProvider.Instance.DB.RentInvoices.Where((c) => c.idRoom == p.idRoom).FirstOrDefault();
+            if (k != null) DataProvider.Instance.DB.RentInvoices.Remove(k);
+            DataProvider.Instance.DB.SaveChanges();
+            SelectedRentInvoice = null;
+            SelectRoom(p);
+            billtemp.ShowDialog();           
+        }
+        [Command]
         public void SelectRoom(Room selectedRoom)
         {
             try
             {
                 Debug.WriteLine(selectedRoom.displayName);
                 SelectedRoom = selectedRoom;
+                SelectedRentInvoice = DataProvider.Instance.DB.RentInvoices.Where(p => p.idRoom == selectedRoom.idRoom).FirstOrDefault();
                 //--------------------------//
                 if (selectedRoom.status == true)
                 {
@@ -105,13 +177,12 @@ namespace Hotel_JustFriend.ViewModels
                             {
                                 Customer a = new Customer();
                                 a = ListCustomer[i];
-                                Trick.Add(a);
-                                
+                                Trick.Add(a);  
                             }
                 }
                 else
                 {
-                    Trick = null;
+                    Trick.Clear();
                     ListRentInvoiceInfo = null;
                 }
                 //--------------------------//
@@ -149,6 +220,7 @@ namespace Hotel_JustFriend.ViewModels
         [Command]
         public void Rent()
         {
+            if (SelectedRoom == null) return;
             try
             {
                 ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms
@@ -170,15 +242,22 @@ namespace Hotel_JustFriend.ViewModels
                     DataProvider.Instance.DB.RentInvoices.Add(r);
                 }
                 DataProvider.Instance.DB.SaveChanges();
+                SelectRoom(result);
             }
             catch { return; }
         }
         [Command]
         public void AddCustomer(BusinessView p)
         {
-            AddCustomerWindow window = new AddCustomerWindow();
-            window.ShowDialog();
-            loadcs();
+            if (SelectedRoom == null) return;
+            try
+            {
+                AddCustomerWindow window = new AddCustomerWindow();
+                window.ShowDialog();
+                loadcs();
+            }
+            catch
+            { return; }
         }
         [Command]
         public void DeleteCustomer()

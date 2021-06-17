@@ -43,7 +43,7 @@ namespace Hotel_JustFriend.ViewModels
         {
             System.Data.Entity.DbSet<Room> data = DataProvider.Instance.DB.Rooms;
             ListRoomName = new ObservableCollection<string>(data.Where(x => x.isDelete == false).Select(x => x.displayName));
-            ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms);
+            ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where((p)=>p.isDelete==false));
             ListNameRoomType = new ObservableCollection<string>(DataProvider.Instance.DB.TypeRooms.Select(x => x.fullname));            
         }
         #region Command

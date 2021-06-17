@@ -586,3 +586,5 @@ E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\EditCustom
 E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\EditCustomerView.baml
 E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\DetailCustomer.g.cs
 E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\DetailCustomer.baml
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\UserControls\BillDetailUC.g.cs
+E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\UserControls\BillDetailUC.baml
