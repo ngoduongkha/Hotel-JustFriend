@@ -180,6 +180,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\MyPropertyConverter.cs" />
     <Compile Include="Models\RentInvoice.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
