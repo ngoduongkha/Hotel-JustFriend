@@ -5,153 +5,162 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:local="clr-namespace:Hotel_JustFriend.Views"
-    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:converter="clr-namespace:Hotel_JustFriend.Models"
     mc:Ignorable="d" x:Name="window"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     d:DesignHeight="651.2" d:DesignWidth="1200">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <converter:MyPropertyConverter x:Key="MyPropertyConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <materialDesign:Card Margin="15">
-        <Grid Margin="10">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
-
-            <Grid>
-                <Grid.Resources>
-                    <Style TargetType="Label">
-                        <Setter Property="FontSize" Value="25"/>
-                        <Setter Property="VerticalAlignment" Value="Center"/>
-                    </Style>
-                    <Style TargetType="StackPanel">
-                        <Setter Property="VerticalAlignment" Value="Center"/>
-                        <Setter Property="Orientation" Value="Horizontal"/>
-                        <Setter Property="Margin" Value="30 10 10 10"/>
-                    </Style>
-                    <Style TargetType="ComboBox" BasedOn="{StaticResource MaterialDesignComboBox}">
-                        <Setter Property="FontSize" Value="25"/>
-                        <Setter Property="VerticalAlignment" Value="Center"/>
-                        <Setter Property="Margin" Value="30 0 0 0"/>
-                        <Setter Property="Width" Value="200"/>
-                    </Style>
-                    <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignTextBox}">
-                        <Setter Property="Width" Value="200"/>
-                        <Setter Property="VerticalAlignment" Value="Center"/>
-                        <Setter Property="FontSize" Value="25"/>
-                        <Setter Property="Margin" Value="30 0 0 0"/>
-                        <Setter Property="Padding" Value="0"/>
-                    </Style>
-                </Grid.Resources>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="2*"/>
-                        <RowDefinition Height="1.5*"/>
-                    </Grid.RowDefinitions>
-                    <materialDesign:Card Grid.Row="0" Margin="15 15 7 7">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <StackPanel Grid.Row="0">
-                                <Label Content="Loại phòng:"/>
-                                <ComboBox materialDesign:HintAssist.Hint="Chọn loại phòng"
+        <Grid>
+            <Grid.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="FontSize" Value="25"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                </Style>
+                <Style TargetType="StackPanel">
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Orientation" Value="Horizontal"/>
+                    <Setter Property="Margin" Value="30 10 10 10"/>
+                </Style>
+                <Style TargetType="ComboBox" BasedOn="{StaticResource MaterialDesignComboBox}">
+                    <Setter Property="FontSize" Value="25"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Margin" Value="30 0 0 0"/>
+                    <Setter Property="Width" Value="200"/>
+                </Style>
+                <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignTextBox}">
+                    <Setter Property="Width" Value="200"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="FontSize" Value="25"/>
+                    <Setter Property="Margin" Value="30 0 0 0"/>
+                    <Setter Property="Padding" Value="0"/>
+                </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="1.5*"/>
+                </Grid.RowDefinitions>
+                <materialDesign:Card Grid.Row="0" Margin="15 15 7 7">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0">
+                            <Label Content="Loại phòng:"/>
+                            <ComboBox materialDesign:HintAssist.Hint="Chọn loại phòng"
                                           ItemsSource="{Binding Path=ListRoomType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                           DisplayMemberPath="fullname"
                                           SelectedValuePath="idType"
                                           x:Name="cbboxRoomType"/>
-                            </StackPanel>
-                            <StackPanel HorizontalAlignment="Center"
-                                            Grid.Row="1">
-                                <Button Content="Thêm" Width="100"
-                                        FontSize="20"
-                                        Height="40" Margin="10 0"
-                                        Style="{StaticResource MyAcceptButtonStyle}"
-                                        Command="{Binding CallAddRoomTypeCommand}">
-                                </Button>
-                                <Button Content="Xóa" Width="100"
-                                        FontSize="20"
-                                        Height="40" Margin="10 0"
-                                        Style="{StaticResource MyDeclineButtonStyle}"
-                                        Command="{Binding DeleteRoomTypeCommand}"
-                                        CommandParameter="{Binding ElementName=cbboxRoomType}"/>
-                            </StackPanel>
-                            <StackPanel Grid.Row="2">
-                                <Label Content="Đơn giá:"/>
-                                <TextBox Margin="70 0 0 0"/>
-                            </StackPanel>
-                        </Grid>
-                    </materialDesign:Card>
-                    <materialDesign:Card Grid.Row="1" Margin="15 7 7 15">
-                        <StackPanel>
-                            <Label Content="Lượng khách tối đa:"/>
-                            <TextBox Width="50"/>
-                            <Label Content="người"
-                                       Margin="30 0 0 0"/>
                         </StackPanel>
-                    </materialDesign:Card>
-                </Grid>
-                <Grid Grid.Column="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="2*"/>
-                        <RowDefinition Height="1.5*"/>
-                    </Grid.RowDefinitions>
-                    <materialDesign:Card Grid.Row="0" Margin="7 15 7 7">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <StackPanel Grid.Row="0">
-                                <Label Content="Loại khách:"/>
-                                <ComboBox materialDesign:HintAssist.Hint="Chọn loại khách"
+                        <StackPanel 
+                                HorizontalAlignment="Center"
+                                Grid.Row="1">
+                            <Button 
+                                Content="Thêm" Width="100"
+                                FontSize="20"
+                                Height="40" Margin="10 0"
+                                Style="{StaticResource MyAcceptButtonStyle}"
+                                Command="{Binding CallAddRoomTypeCommand}"/>
+                            <Button 
+                                Content="Xóa" Width="100"
+                                FontSize="20"
+                                Height="40" Margin="10 0"
+                                Style="{StaticResource MyDeclineButtonStyle}"
+                                Command="{Binding DeleteRoomTypeCommand}"
+                                CommandParameter="{Binding ElementName=cbboxRoomType}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="2">
+                            <Label Content="Đơn giá:"/>
+                            <TextBox 
+                                Margin="70 0 30 0"
+                                Text="{Binding Path=SelectedItem.price, ElementName=cbboxRoomType}"
+                                x:Name="tboxPrice"/>
+                            <Button 
+                                Content="Lưu" Width="100"
+                                FontSize="20"
+                                Height="40" Margin="10 0"
+                                Style="{StaticResource MyUpdateButtonStyle}"
+                                Command="{Binding SaveEditedWithComboBoxCommand}">
+                                <Button.CommandParameter>
+                                    <MultiBinding Converter="{StaticResource MyPropertyConverter}">
+                                        <Binding ElementName="tboxPrice"/>
+                                        <Binding ElementName="cbboxRoomType"/>
+                                    </MultiBinding>
+                                </Button.CommandParameter>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Grid.Row="1" Margin="15 7 7 15">
+                    <StackPanel>
+                        <Label Content="Lượng khách tối đa:"/>
+                        <TextBox Width="50"/>
+                        <Label 
+                            Content="người"
+                            Margin="30 0 0 0"/>
+                    </StackPanel>
+                </materialDesign:Card>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="1.5*"/>
+                </Grid.RowDefinitions>
+                <materialDesign:Card Grid.Row="0" Margin="7 15 7 7">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0">
+                            <Label Content="Loại khách:"/>
+                            <ComboBox materialDesign:HintAssist.Hint="Chọn loại khách"
                                           ItemsSource="{Binding Path=ListCustomerType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                           DisplayMemberPath="displayname"
                                           SelectedValuePath="idType"
                                           x:Name="cbboxCustomerType"/>
-                            </StackPanel>
-                            <StackPanel HorizontalAlignment="Center"
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Center"
                                             Grid.Row="1">
-                                <Button Content="Thêm" Width="100"
+                            <Button Content="Thêm" Width="100"
                                         FontSize="20"
                                         Height="40" Margin="10 0"
                                         Style="{StaticResource MyAcceptButtonStyle}"
                                         Command="{Binding CallAddCustomerTypeCommand}"/>
-                                <Button Content="Xóa" Width="100"
+                            <Button Content="Xóa" Width="100"
                                         FontSize="20"
                                         Height="40" Margin="10 0"
                                         Style="{StaticResource MyDeclineButtonStyle}"
                                         Command="{Binding DeleteCustomerTypeCommand}"
                                         CommandParameter="{Binding ElementName=cbboxCustomerType}"/>
-                            </StackPanel>
-                            <StackPanel Grid.Row="2">
-                                <Label Content="Hệ số:"/>
-                                <TextBox Margin="85 0 0 0"/>
-                            </StackPanel>
-                        </Grid>
-                    </materialDesign:Card>
-                    <materialDesign:Card Grid.Row="1" Margin="7 7 7 15">
-                        <StackPanel>
-                            <Label Content="Phụ thu:"/>
-                            <TextBox Width="50"/>
-                            <Label Content="%"
-                                       Margin="30 0 0 0"/>
                         </StackPanel>
-                    </materialDesign:Card>
-                </Grid>
-            </Grid>
-            <Grid Grid.Row="1">
-                <Button Content="Lưu"
-                        FontSize="20"
-                        Height="50" Width="100"
-                        Style="{StaticResource MyAcceptButtonStyle}"
-                        materialDesign:ButtonAssist.CornerRadius="10"
-                        HorizontalAlignment="Center"/>
+                        <StackPanel Grid.Row="2">
+                            <Label Content="Hệ số:"/>
+                            <TextBox Margin="85 0 0 0"/>
+                        </StackPanel>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Grid.Row="1" Margin="7 7 7 15">
+                    <StackPanel>
+                        <Label Content="Phụ thu:"/>
+                        <TextBox Width="50"/>
+                        <Label Content="%"
+                                       Margin="30 0 0 0"/>
+                    </StackPanel>
+                </materialDesign:Card>
             </Grid>
         </Grid>
     </materialDesign:Card>

@@ -2,12 +2,7 @@
 using DevExpress.Mvvm.DataAnnotations;
 using Hotel_JustFriend.Models;
 using Hotel_JustFriend.Views;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -123,6 +118,17 @@ namespace Hotel_JustFriend.ViewModels
                     DataProvider.Instance.DB.SaveChanges();
                     ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers);
                 }
+            }
+            catch { return; }
+        }
+        [Command]
+        public void SaveEditedWithComboBox(object p)
+        {
+            try
+            {
+                var parameters = (object[])p;
+                TextBox tbox = parameters[0] as TextBox;
+                ComboBox cbbox = parameters[1] as ComboBox;
             }
             catch { return; }
         }
