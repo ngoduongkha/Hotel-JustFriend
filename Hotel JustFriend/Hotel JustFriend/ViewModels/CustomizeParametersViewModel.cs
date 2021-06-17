@@ -28,7 +28,7 @@ namespace Hotel_JustFriend.ViewModels
         [Command]
         public void CallAddCustomerType()
         {
-            AddCustomerTypeWindow window = new AddCustomerTypeWindow(true);
+            AddTypeWindow window = new AddTypeWindow(true);
             window.ShowDialog();
             ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers);
         }
@@ -36,7 +36,7 @@ namespace Hotel_JustFriend.ViewModels
         [Command]
         public void CallAddRoomType()
         {
-            AddCustomerTypeWindow window = new AddCustomerTypeWindow(false);
+            AddTypeWindow window = new AddTypeWindow(false);
             window.ShowDialog();
             ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms);
         }
@@ -62,7 +62,7 @@ namespace Hotel_JustFriend.ViewModels
         }
 
         [Command]
-        public void Add(AddCustomerTypeWindow p)
+        public void Add(AddTypeWindow p)
         {
             try
             {

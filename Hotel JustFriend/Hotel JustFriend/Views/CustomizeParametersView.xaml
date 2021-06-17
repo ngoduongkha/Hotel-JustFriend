@@ -11,7 +11,7 @@
     d:DesignHeight="651.2" d:DesignWidth="1200">
     <UserControl.Resources>
         <ResourceDictionary>
-            <converter:MyPropertyConverter x:Key="MyPropertyConverter"/>
+            <converter:PropertyConverter x:Key="PropertyConverter"/>
         </ResourceDictionary>
     </UserControl.Resources>
     <materialDesign:Card Margin="15">
@@ -94,7 +94,7 @@
                                 Style="{StaticResource MyUpdateButtonStyle}"
                                 Command="{Binding SaveEditedCommand}">
                                 <Button.CommandParameter>
-                                    <MultiBinding Converter="{StaticResource MyPropertyConverter}">
+                                    <MultiBinding Converter="{StaticResource PropertyConverter}">
                                         <Binding ElementName="tboxPrice"/>
                                         <Binding ElementName="cbboxRoomType"/>
                                     </MultiBinding>
@@ -158,7 +158,7 @@
                                 Style="{StaticResource MyUpdateButtonStyle}"
                                 Command="{Binding SaveEditedCommand}">
                                 <Button.CommandParameter>
-                                    <MultiBinding Converter="{StaticResource MyPropertyConverter}">
+                                    <MultiBinding Converter="{StaticResource PropertyConverter}">
                                         <Binding ElementName="tboxNumber"/>
                                         <Binding ElementName="cbboxCustomerType"/>
                                     </MultiBinding>

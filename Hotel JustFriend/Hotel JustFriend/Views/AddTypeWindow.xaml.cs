@@ -18,10 +18,10 @@ namespace Hotel_JustFriend.Views
     /// <summary>
     /// Interaction logic for AddCustomerTypeWindow.xaml
     /// </summary>
-    public partial class AddCustomerTypeWindow : Window
+    public partial class AddTypeWindow : Window
     {
         public bool IsAddCustomerType { get; set; }
-        public AddCustomerTypeWindow(bool isAddCustomerType)
+        public AddTypeWindow(bool isAddCustomerType)
         {
             InitializeComponent();
             IsAddCustomerType = isAddCustomerType;

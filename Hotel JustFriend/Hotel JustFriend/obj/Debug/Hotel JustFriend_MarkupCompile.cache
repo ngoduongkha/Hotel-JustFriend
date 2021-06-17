@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\App.xaml
-36-170733536
+36-785922330
 21628168987
-79351851714
+791969968535
 1502045106477
-Resources\ButtonResources.xaml;Resources\ColorResources.xaml;Resources\Resources.xaml;Template\BillTemplate.xaml;Template\ImportBill.xaml;UserControls\BillDetailUC.xaml;UserControls\ButtonRoomUC.xaml;UserControls\CustomerUC.xaml;UserControls\ImportProductDetailUC.xaml;UserControls\ImportProductUC.xaml;UserControls\NumericSpinner.xaml;UserControls\ProductDetailUC.xaml;UserControls\RoomUC.xaml;UserControls\SellProductDetailUC.xaml;UserControls\SellProductUC.xaml;Views\AddCustomerTypeWindow.xaml;Views\CustomizeParametersView.xaml;Views\AccountManageView.xaml;Views\AddCustomerWindow.xaml;Views\BookingWindow.xaml;Views\DetailCustomer.xaml;Views\EditCustomerView.xaml;Views\EmployeeDetailView.xaml;Views\EmployeeManageView.xaml;Views\EmployeeUpdateView.xaml;Views\LoginWindow.xaml;Views\MainWindow.xaml;Views\MyMessageBoxes\MyMessageBoxWindow.xaml;Views\ProductDetailView.xaml;Views\ProductManageView.xaml;Views\RoomDetailView.xaml;Views\BusinessView.xaml;Views\RoomManageView.xaml;Views\RoomRentalView.xaml;Views\SellProductView.xaml;Views\WarehouseView.xaml;
+Resources\ButtonResources.xaml;Resources\ColorResources.xaml;Resources\Resources.xaml;Template\BillTemplate.xaml;Template\ImportBill.xaml;UserControls\BillDetailUC.xaml;UserControls\ButtonRoomUC.xaml;UserControls\CustomerUC.xaml;UserControls\ImportProductDetailUC.xaml;UserControls\ImportProductUC.xaml;UserControls\NumericSpinner.xaml;UserControls\ProductDetailUC.xaml;UserControls\RoomUC.xaml;UserControls\SellProductDetailUC.xaml;UserControls\SellProductUC.xaml;Views\AddTypeWindow.xaml;Views\CustomizeParametersView.xaml;Views\AccountManageView.xaml;Views\AddCustomerWindow.xaml;Views\BookingWindow.xaml;Views\DetailCustomer.xaml;Views\EditCustomerView.xaml;Views\EmployeeDetailView.xaml;Views\EmployeeManageView.xaml;Views\EmployeeUpdateView.xaml;Views\LoginWindow.xaml;Views\MainWindow.xaml;Views\MyMessageBoxes\MyMessageBoxWindow.xaml;Views\ProductDetailView.xaml;Views\ProductManageView.xaml;Views\RoomDetailView.xaml;Views\BusinessView.xaml;Views\RoomManageView.xaml;Views\RoomRentalView.xaml;Views\SellProductView.xaml;Views\WarehouseView.xaml;
 
 True
 
