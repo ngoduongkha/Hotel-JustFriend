@@ -122,13 +122,22 @@ namespace Hotel_JustFriend.ViewModels
             catch { return; }
         }
         [Command]
-        public void SaveEditedWithComboBox(object p)
+        public void SaveEdited(object p)
         {
             try
             {
                 var parameters = (object[])p;
                 TextBox tbox = parameters[0] as TextBox;
-                ComboBox cbbox = parameters[1] as ComboBox;
+                if (tbox.Name == "tboxPrice")
+                {
+                    ComboBox cbbox = parameters[1] as ComboBox;
+                    if (cbbox.SelectedItem != null && tbox.Text != null)
+                    {
+                        TypeRoom typeRoom = DataProvider.Instance.DB.TypeRooms.Find((cbbox.SelectedItem as TypeRoom).idType);
+                        typeRoom.price = int.Parse(tbox.Text);
+                        DataProvider.Instance.DB.SaveChanges();
+                    }
+                }
             }
             catch { return; }
         }

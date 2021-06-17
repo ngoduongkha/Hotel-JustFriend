@@ -92,7 +92,7 @@
                                 FontSize="20"
                                 Height="40" Margin="10 0"
                                 Style="{StaticResource MyUpdateButtonStyle}"
-                                Command="{Binding SaveEditedWithComboBoxCommand}">
+                                Command="{Binding SaveEditedCommand}">
                                 <Button.CommandParameter>
                                     <MultiBinding Converter="{StaticResource MyPropertyConverter}">
                                         <Binding ElementName="tboxPrice"/>
@@ -149,7 +149,21 @@
                         </StackPanel>
                         <StackPanel Grid.Row="2">
                             <Label Content="Hệ số:"/>
-                            <TextBox Margin="85 0 0 0"/>
+                            <TextBox Margin="85 0 30 0"
+                                     x:Name="tboxNumber"/>
+                            <Button 
+                                Content="Lưu" Width="100"
+                                FontSize="20"
+                                Height="40" Margin="10 0"
+                                Style="{StaticResource MyUpdateButtonStyle}"
+                                Command="{Binding SaveEditedCommand}">
+                                <Button.CommandParameter>
+                                    <MultiBinding Converter="{StaticResource MyPropertyConverter}">
+                                        <Binding ElementName="tboxNumber"/>
+                                        <Binding ElementName="cbboxCustomerType"/>
+                                    </MultiBinding>
+                                </Button.CommandParameter>
+                            </Button>
                         </StackPanel>
                     </Grid>
                 </materialDesign:Card>
