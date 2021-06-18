@@ -161,6 +161,8 @@ namespace Hotel_JustFriend.ViewModels
                     if (tbox.Text != null)
                     {
                         (DataProvider.Instance.DB.Constants.Find(0) as Constant).maxCustomer = int.Parse(MaxCustomer);
+                        MaxCustomer = (DataProvider.Instance.DB.Constants.Find(0) as Constant).maxCustomer.ToString();
+                        DataProvider.Instance.DB.SaveChanges();
                     }
                     return;
                 }
@@ -169,6 +171,8 @@ namespace Hotel_JustFriend.ViewModels
                     if (tbox.Text != null)
                     {
                         (DataProvider.Instance.DB.Constants.Find(0) as Constant).percent = double.Parse(Percent);
+                        Percent = (DataProvider.Instance.DB.Constants.Find(0) as Constant).percent.ToString();
+                        DataProvider.Instance.DB.SaveChanges();
                     }
                     return;
                 }

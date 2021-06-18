@@ -5,14 +5,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:local="clr-namespace:Hotel_JustFriend.Views"
-    xmlns:converter="clr-namespace:Hotel_JustFriend.Models"
+    xmlns:convert="clr-namespace:Hotel_JustFriend.Models"
     mc:Ignorable="d" x:Name="window"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     d:DesignHeight="651.2" d:DesignWidth="1200">
     <UserControl.Resources>
-        <ResourceDictionary>
-            <converter:PropertyConverter x:Key="PropertyConverter"/>
-        </ResourceDictionary>
+        <convert:PropertyConverter x:Key="PropertyConverter"/>
     </UserControl.Resources>
     <materialDesign:Card Margin="15">
         <Grid>
@@ -117,8 +115,13 @@
                             FontSize="20"
                             Height="40" Margin="10 0"
                             Style="{StaticResource MyUpdateButtonStyle}"
-                            Command="{Binding SaveEditedCommand}"
-                            CommandParameter="{Binding ElementName=tboxMaxCustomer}"/>
+                            Command="{Binding SaveEditedCommand}">
+                            <Button.CommandParameter>
+                                <MultiBinding Converter="{StaticResource PropertyConverter}">
+                                    <Binding ElementName="tboxMaxCustomer"/>
+                                </MultiBinding>
+                            </Button.CommandParameter>
+                        </Button>
                     </StackPanel>
                 </materialDesign:Card>
             </Grid>
@@ -193,8 +196,13 @@
                             FontSize="20"
                             Height="40" Margin="10 0"
                             Style="{StaticResource MyUpdateButtonStyle}"
-                            Command="{Binding SaveEditedCommand}"
-                            CommandParameter="{Binding ElementName=tboxPercent}"/>
+                            Command="{Binding SaveEditedCommand}">
+                            <Button.CommandParameter>
+                                <MultiBinding Converter="{StaticResource PropertyConverter}">
+                                    <Binding ElementName="tboxPercent"/>
+                                </MultiBinding>
+                            </Button.CommandParameter>
+                        </Button>
                     </StackPanel>
                 </materialDesign:Card>
             </Grid>

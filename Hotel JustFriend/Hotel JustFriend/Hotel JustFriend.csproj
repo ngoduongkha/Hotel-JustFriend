@@ -180,7 +180,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\DataProvider.cs" />
-    <Compile Include="Models\PropertyConverter.cs" />
     <Compile Include="Models\RentInvoice.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -196,6 +195,7 @@
     <Compile Include="Models\Room.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PropertyConverter.cs" />
     <Compile Include="Template\ImportBill.xaml.cs">
       <DependentUpon>ImportBill.xaml</DependentUpon>
     </Compile>
@@ -236,7 +236,6 @@
       <DependentUpon>SellProductUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AccountManageViewModel.cs" />
-    <Compile Include="ViewModels\AddCustomerTypeViewModel.cs" />
     <Compile Include="ViewModels\AddCustomerViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\CustomizeParametersViewModel.cs" />
