@@ -18,10 +18,8 @@ namespace Hotel_JustFriend.Models
         public Nullable<decimal> price { get; set; }
         public int idBill { get; set; }
         public int idRoom { get; set; }
-        public int idCustomer { get; set; }
     
         public virtual Bill Bill { get; set; }
-        public virtual Customer Customer { get; set; }
         public virtual Room Room { get; set; }
     }
 }

@@ -4,25 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1a2f96a559ce4f548bb44c565fc5831f" Name="Diagram1">
-        <EntityTypeShape EntityType="Hotel_JustFriendModel.Account" Width="1.5" PointX="7.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hotel_JustFriendModel.Bill" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hotel_JustFriendModel.BillInfo" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hotel_JustFriendModel.Constant" Width="1.5" PointX="7.75" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hotel_JustFriendModel.Customer" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hotel_JustFriendModel.RentInvoice" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hotel_JustFriendModel.RentInvoiceInfo" Width="1.5" PointX="7.5" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hotel_JustFriendModel.Revenue" Width="1.5" PointX="9.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hotel_JustFriendModel.RevenuePercentage" Width="1.5" PointX="9.75" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hotel_JustFriendModel.Room" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hotel_JustFriendModel.TypeCustomer" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hotel_JustFriendModel.TypeRoom" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
-        <AssociationConnector Association="Hotel_JustFriendModel.FK__BillInfo__idBill__49C3F6B7" ManuallyRouted="false" />
-        <AssociationConnector Association="Hotel_JustFriendModel.FK__BillInfo__idCust__47DBAE45" ManuallyRouted="false" />
+      <Diagram DiagramId="1bed89f64e0a4c1c99498bb4b0ce07be" Name="Diagram1">
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.Account" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.Bill" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.BillInfo" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.Constant" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.Customer" Width="1.5" PointX="5.25" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.RentInvoice" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.RentInvoiceInfo" Width="1.5" PointX="7.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.Revenue" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.RevenuePercentage" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.Room" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.TypeCustomer" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.TypeRoom" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__BillInfo__idBill__48CFD27E" ManuallyRouted="false" />
         <AssociationConnector Association="Hotel_JustFriendModel.FK__BillInfo__idRoom__44FF419A" ManuallyRouted="false" />
         <AssociationConnector Association="Hotel_JustFriendModel.FK__Customer__idType__45F365D3" ManuallyRouted="false" />
         <AssociationConnector Association="Hotel_JustFriendModel.FK__RentInvoi__idCus__46E78A0C" ManuallyRouted="false" />
-        <AssociationConnector Association="Hotel_JustFriendModel.FK__RentInvoi__idRen__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__RentInvoi__idRen__47DBAE45" ManuallyRouted="false" />
         <AssociationConnector Association="Hotel_JustFriendModel.FK__RentInvoi__idRoo__440B1D61" ManuallyRouted="false" />
         <AssociationConnector Association="Hotel_JustFriendModel.FK__Room__idType__4316F928" ManuallyRouted="false" />
       </Diagram>

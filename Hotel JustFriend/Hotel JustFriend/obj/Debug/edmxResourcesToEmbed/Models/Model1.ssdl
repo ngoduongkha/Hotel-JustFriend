@@ -13,19 +13,18 @@
       <PropertyRef Name="idBill" />
     </Key>
     <Property Name="idBill" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date" Type="date" />
     <Property Name="totalMoney" Type="money" />
   </EntityType>
   <EntityType Name="BillInfo">
     <Key>
       <PropertyRef Name="idBill" />
       <PropertyRef Name="idRoom" />
-      <PropertyRef Name="idCustomer" />
     </Key>
     <Property Name="numberDay" Type="int" />
     <Property Name="price" Type="money" />
     <Property Name="idBill" Type="int" Nullable="false" />
     <Property Name="idRoom" Type="int" Nullable="false" />
-    <Property Name="idCustomer" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Constant">
     <Key>
@@ -118,7 +117,7 @@ warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a 
     <Property Name="price" Type="money" />
     <Property Name="isDelete" Type="bit" />
   </EntityType>
-  <Association Name="FK__BillInfo__idBill__49C3F6B7">
+  <Association Name="FK__BillInfo__idBill__48CFD27E">
     <End Role="Bill" Type="Self.Bill" Multiplicity="1" />
     <End Role="BillInfo" Type="Self.BillInfo" Multiplicity="*" />
     <ReferentialConstraint>
@@ -127,18 +126,6 @@ warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a 
       </Principal>
       <Dependent Role="BillInfo">
         <PropertyRef Name="idBill" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__BillInfo__idCust__47DBAE45">
-    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
-    <End Role="BillInfo" Type="Self.BillInfo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Customer">
-        <PropertyRef Name="idCustomer" />
-      </Principal>
-      <Dependent Role="BillInfo">
-        <PropertyRef Name="idCustomer" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -178,7 +165,7 @@ warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__RentInvoi__idRen__48CFD27E">
+  <Association Name="FK__RentInvoi__idRen__47DBAE45">
     <End Role="RentInvoice" Type="Self.RentInvoice" Multiplicity="1" />
     <End Role="RentInvoiceInfo" Type="Self.RentInvoiceInfo" Multiplicity="*" />
     <ReferentialConstraint>
@@ -227,12 +214,8 @@ warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a 
     <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TypeCustomer" EntityType="Self.TypeCustomer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TypeRoom" EntityType="Self.TypeRoom" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__BillInfo__idBill__49C3F6B7" Association="Self.FK__BillInfo__idBill__49C3F6B7">
+    <AssociationSet Name="FK__BillInfo__idBill__48CFD27E" Association="Self.FK__BillInfo__idBill__48CFD27E">
       <End Role="Bill" EntitySet="Bill" />
-      <End Role="BillInfo" EntitySet="BillInfo" />
-    </AssociationSet>
-    <AssociationSet Name="FK__BillInfo__idCust__47DBAE45" Association="Self.FK__BillInfo__idCust__47DBAE45">
-      <End Role="Customer" EntitySet="Customer" />
       <End Role="BillInfo" EntitySet="BillInfo" />
     </AssociationSet>
     <AssociationSet Name="FK__BillInfo__idRoom__44FF419A" Association="Self.FK__BillInfo__idRoom__44FF419A">
@@ -247,7 +230,7 @@ warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a 
       <End Role="Customer" EntitySet="Customer" />
       <End Role="RentInvoiceInfo" EntitySet="RentInvoiceInfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__RentInvoi__idRen__48CFD27E" Association="Self.FK__RentInvoi__idRen__48CFD27E">
+    <AssociationSet Name="FK__RentInvoi__idRen__47DBAE45" Association="Self.FK__RentInvoi__idRen__47DBAE45">
       <End Role="RentInvoice" EntitySet="RentInvoice" />
       <End Role="RentInvoiceInfo" EntitySet="RentInvoiceInfo" />
     </AssociationSet>

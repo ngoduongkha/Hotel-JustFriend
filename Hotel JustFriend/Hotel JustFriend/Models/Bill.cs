@@ -21,6 +21,7 @@ namespace Hotel_JustFriend.Models
         }
     
         public int idBill { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
         public Nullable<decimal> totalMoney { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

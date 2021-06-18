@@ -204,6 +204,9 @@
     <Compile Include="Template\ImportBill.xaml.cs">
       <DependentUpon>ImportBill.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Template\ReportTemplate.xaml.cs">
+      <DependentUpon>ReportTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\BillDetailUC.xaml.cs">
       <DependentUpon>BillDetailUC.xaml</DependentUpon>
     </Compile>
@@ -225,6 +228,9 @@
     <Compile Include="UserControls\ProductDetailUC.xaml.cs">
       <DependentUpon>ProductDetailUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ReportUC.xaml.cs">
+      <DependentUpon>ReportUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\RoomUC.xaml.cs">
       <DependentUpon>RoomUC.xaml</DependentUpon>
     </Compile>
@@ -235,11 +241,11 @@
       <DependentUpon>SellProductUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AccountManageViewModel.cs" />
-    <Compile Include="ViewModels\AddCustomerTypeViewModel.cs" />
     <Compile Include="ViewModels\AddCustomerViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\CustomizeParametersViewModel.cs" />
     <Compile Include="ViewModels\EmployeeDetailViewModel.cs" />
+    <Compile Include="ViewModels\ReportViewModel.cs" />
     <Compile Include="ViewModels\RoomRentalViewModel.cs" />
     <Compile Include="ViewModels\SellProductViewModel.cs" />
     <Compile Include="Views\AddCustomerTypeWindow.xaml.cs">
@@ -303,6 +309,9 @@
     <Compile Include="Views\ProductManageView.xaml.cs">
       <DependentUpon>ProductManageView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ReportView.xaml.cs">
+      <DependentUpon>ReportView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RoomDetailView.xaml.cs">
       <DependentUpon>RoomDetailView.xaml</DependentUpon>
     </Compile>
@@ -341,6 +350,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Template\ReportTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\BillDetailUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -366,6 +379,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\ProductDetailUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ReportUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -448,6 +465,10 @@
     <Page Include="Views\ProductManageView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ReportView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\RoomDetailView.xaml">
       <SubType>Designer</SubType>

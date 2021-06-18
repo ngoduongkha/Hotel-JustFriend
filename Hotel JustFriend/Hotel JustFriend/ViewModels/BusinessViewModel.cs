@@ -90,11 +90,13 @@ namespace Hotel_JustFriend.ViewModels
         public void Pay()
         {
             if (SelectedRoom == null) return;
-            var da = new DateTime(2021, 6, 30);
+            DateTime da = new DateTime();
+            da = DateTime.Now;
             DateTime a = (DateTime)SelectedRentInvoice.date;
             int d = da.Subtract(a).Days;
             Bill bill = new Bill
             {
+                date = SelectedRentInvoice.date,
                 totalMoney = 0,
             };
             BillTemplate billtemp = new BillTemplate();
@@ -106,17 +108,16 @@ namespace Hotel_JustFriend.ViewModels
             ListRentInvoiceInfo = new ObservableCollection<RentInvoiceInfo>(DataProvider.Instance.DB.RentInvoiceInfoes
                                                                                     .Where((c) => c.idRentInvoice == idrent));
             double heso = 0;
-            
+            BillInfo billinfo = new BillInfo
+            {
+                numberDay = d,
+                price = Price,
+                idBill = bill.idBill,
+                idRoom = SelectedRoom.idRoom,
+            };
             for (int i=0;i<ListRentInvoiceInfo.Count;i++)
             {
-                BillInfo billinfo = new BillInfo
-                {
-                    numberDay = d,
-                    price = Price,
-                    idBill = bill.idBill,
-                    idRoom = SelectedRoom.idRoom,
-                    idCustomer = ListRentInvoiceInfo[i].idCustomer,
-                };
+             
                 int idd = ListRentInvoiceInfo[i].idCustomer;
                 Customer cus = DataProvider.Instance.DB.Customers.Where(c => c.idCustomer == idd).FirstOrDefault();
                 double tg = (double)DataProvider.Instance.DB.TypeCustomers.Where(c => c.idType == cus.idType).FirstOrDefault().number;
