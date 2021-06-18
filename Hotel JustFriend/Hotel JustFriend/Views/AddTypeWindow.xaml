@@ -79,7 +79,7 @@
                                             Content="Thêm"
                                             HorizontalAlignment="Center"
                                             Width="80"
-                                            Command="{Binding AddCommand}"
+                                            Command="{Binding AddTypeCommand}"
                                             CommandParameter="{Binding ElementName=window}"/>
                                 </Grid>
                                 <Grid Grid.Column="1">
