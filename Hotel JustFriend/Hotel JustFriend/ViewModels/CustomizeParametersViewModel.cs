@@ -5,6 +5,7 @@ using Hotel_JustFriend.Views;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Linq;
 
 namespace Hotel_JustFriend.ViewModels
 {
@@ -25,8 +26,8 @@ namespace Hotel_JustFriend.ViewModels
 
         public CustomizeParametersViewModel()
         {
-            ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms);
-            ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers);
+            ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where((p) => p.isDelete == false));
+            ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers.Where((p) => p.isDelete == false));
             MaxCustomer = (DataProvider.Instance.DB.Constants.Find(0) as Constant).maxCustomer.ToString();
             Percent = (DataProvider.Instance.DB.Constants.Find(0) as Constant).percent.ToString();
         }
@@ -36,7 +37,7 @@ namespace Hotel_JustFriend.ViewModels
         {
             AddTypeWindow window = new AddTypeWindow(true);
             window.ShowDialog();
-            ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers);
+            ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers.Where((p) => p.isDelete == false));
         }
 
         [Command]
@@ -44,7 +45,7 @@ namespace Hotel_JustFriend.ViewModels
         {
             AddTypeWindow window = new AddTypeWindow(false);
             window.ShowDialog();
-            ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms);
+            ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where((p) => p.isDelete == false));
         }
 
         [Command]
@@ -68,7 +69,7 @@ namespace Hotel_JustFriend.ViewModels
         }
 
         [Command]
-        public void Add(AddTypeWindow p)
+        public void AddType(AddTypeWindow p)
         {
             try
             {
@@ -77,6 +78,7 @@ namespace Hotel_JustFriend.ViewModels
                     TypeCustomer newType = new TypeCustomer()
                     {
                         displayname = TypeName,
+                        isDelete = false,
                     };
                     DataProvider.Instance.DB.TypeCustomers.Add(newType);
                     DataProvider.Instance.DB.SaveChanges();
@@ -88,6 +90,7 @@ namespace Hotel_JustFriend.ViewModels
                     {
                         fullname = TypeName,
                         price = 0,
+                        isDelete = false,
                     };
                     DataProvider.Instance.DB.TypeRooms.Add(newType);
                     DataProvider.Instance.DB.SaveChanges();
@@ -98,31 +101,26 @@ namespace Hotel_JustFriend.ViewModels
         }
 
         [Command]
-        public void DeleteRoomType(ComboBox cbbox)
+        public void DeleteType(ComboBox cbbox)
         {
             try
             {
                 if (cbbox.SelectedItem != null)
                 {
-                    TypeRoom deleteRoom = cbbox.SelectedItem as TypeRoom;
-                    DataProvider.Instance.DB.TypeRooms.Remove(deleteRoom);
-                    DataProvider.Instance.DB.SaveChanges();
-                    ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms);
-                }
-            }
-            catch { return; }
-        }
-        [Command]
-        public void DeleteCustmerType(ComboBox cbbox)
-        {
-            try
-            {
-                if (cbbox.SelectedItem != null)
-                {
-                    TypeCustomer deleteCustomer = cbbox.SelectedItem as TypeCustomer;
-                    DataProvider.Instance.DB.TypeCustomers.Remove(deleteCustomer);
-                    DataProvider.Instance.DB.SaveChanges();
-                    ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers);
+                    if (cbbox.Name == "cbboxRoomType")
+                    {
+                        TypeRoom deleteRoomType = cbbox.SelectedItem as TypeRoom;
+                        deleteRoomType.isDelete = true;
+                        DataProvider.Instance.DB.SaveChanges();
+                        ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where((p) => p.isDelete == false));
+                    }
+                    else
+                    {
+                        TypeCustomer deleteCustomerType = cbbox.SelectedItem as TypeCustomer;
+                        deleteCustomerType.isDelete = true;
+                        DataProvider.Instance.DB.SaveChanges();
+                        ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers.Where((p) => p.isDelete == false));
+                    }
                 }
             }
             catch { return; }

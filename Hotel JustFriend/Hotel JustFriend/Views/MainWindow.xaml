@@ -63,7 +63,7 @@
                             </Grid>
                             <Grid Grid.Column="2">
                                 <Grid.Resources>
-                                    <Style TargetType="{x:Type Button}">
+                                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignFlatButton}">
                                         <Setter Property="Width" Value="50"/>
                                         <Setter Property="Margin" Value="0,0,0,20"/>
                                         <Setter Property="BorderThickness" Value="0"/>
@@ -76,7 +76,9 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <Button Grid.Column="2" ToolTip="Thoát"
+                                <Button 
+                                    Grid.Column="2" ToolTip="Thoát"
+                                    HorizontalAlignment="Right" VerticalAlignment="Center"
                                     Command="{Binding CloseWindowCommand}"
                                     CommandParameter="{Binding ElementName=window}">
                                     <materialDesign:PackIcon Kind="WindowClose" Width="25" Height="25"

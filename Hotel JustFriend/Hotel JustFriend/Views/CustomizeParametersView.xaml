@@ -76,7 +76,7 @@
                                 FontSize="20"
                                 Height="40" Margin="10 0"
                                 Style="{StaticResource MyDeclineButtonStyle}"
-                                Command="{Binding DeleteRoomTypeCommand}"
+                                Command="{Binding DeleteTypeCommand}"
                                 CommandParameter="{Binding ElementName=cbboxRoomType}"/>
                         </StackPanel>
                         <StackPanel Grid.Row="2">
@@ -157,7 +157,7 @@
                                         FontSize="20"
                                         Height="40" Margin="10 0"
                                         Style="{StaticResource MyDeclineButtonStyle}"
-                                        Command="{Binding DeleteCustomerTypeCommand}"
+                                        Command="{Binding DeleteTypeCommand}"
                                         CommandParameter="{Binding ElementName=cbboxCustomerType}"/>
                         </StackPanel>
                         <StackPanel Grid.Row="2">
