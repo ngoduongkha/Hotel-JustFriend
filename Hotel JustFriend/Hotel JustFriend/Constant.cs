@@ -7,14 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Hotel_JustFriend.Models
+namespace Hotel_JustFriend
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Revenue
+    public partial class Constant
     {
-        public int idRevenue { get; set; }
-        public Nullable<decimal> totalMoney { get; set; }
+        public int idConstant { get; set; }
+        public Nullable<int> maxCustomer { get; set; }
+        public Nullable<double> percent { get; set; }
     }
 }
