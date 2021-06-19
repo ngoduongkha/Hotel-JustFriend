@@ -177,7 +177,7 @@
                         Command="{Binding OpenTabReportCommand}"
                         CommandParameter="{Binding ElementName=window}">
                         <StackPanel Orientation="Horizontal" Width="250">
-                            <materialDesign:PackIcon Kind="Report" Grid.Column="0"/>
+                            <materialDesign:PackIcon Kind="ChartBar" Grid.Column="0"/>
                             <Label Content="Báo cáo doanh thu" Grid.Column="0"/>
                         </StackPanel>
                     </Button>

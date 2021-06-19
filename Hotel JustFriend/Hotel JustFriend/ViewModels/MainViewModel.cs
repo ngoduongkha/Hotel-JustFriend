@@ -131,6 +131,7 @@ namespace Hotel_JustFriend.ViewModels
                 CloseMenuByClick(p);
                 p.gridMain.Children.Add(uc);
             }
+            catch { return; }
         }
         [Command]
         public void OpenTabCustomizeParameters(MainWindow p)
