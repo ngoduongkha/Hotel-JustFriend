@@ -149,60 +149,51 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\Account.cs">
+    <Compile Include="Account.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Bill.cs">
+    <Compile Include="Bill.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BillInfo.cs">
+    <Compile Include="BillInfo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Constant.cs">
+    <Compile Include="Constant.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Customer.cs">
+    <Compile Include="Customer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataProvider.cs" />
-    <Compile Include="Models\Model1.Context.cs">
+    <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1.cs">
+    <Compile Include="Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1.Designer.cs">
+    <Compile Include="Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataProvider.cs" />
     <Compile Include="Models\PropertyConverter.cs" />
-    <Compile Include="Models\RentInvoice.cs">
+    <Compile Include="RentInvoice.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\RentInvoiceInfo.cs">
+    <Compile Include="RentInvoiceInfo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Revenue.cs">
+    <Compile Include="Revenue.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\RevenuePercentage.cs">
+    <Compile Include="RevenuePercentage.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Room.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TypeCustomer.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TypeRoom.cs">
+    <Compile Include="Room.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Template\ImportBill.xaml.cs">
@@ -210,6 +201,12 @@
     </Compile>
     <Compile Include="Template\ReportTemplate.xaml.cs">
       <DependentUpon>ReportTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TypeCustomer.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TypeRoom.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="UserControls\BillDetailUC.xaml.cs">
       <DependentUpon>BillDetailUC.xaml</DependentUpon>
@@ -519,11 +516,11 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="App.config" />
-    <EntityDeploy Include="Models\Model1.edmx">
+    <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\Model1.edmx.diagram">
+    <None Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -561,12 +558,12 @@
     <Resource Include="Resources\Images\hotel_cam_icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\Model1.Context.tt">
+    <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model1.tt">
+    <Content Include="Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
