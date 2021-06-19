@@ -17,7 +17,6 @@ namespace Hotel_JustFriend.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customer()
         {
-            this.BillInfoes = new HashSet<BillInfo>();
             this.RentInvoiceInfoes = new HashSet<RentInvoiceInfo>();
         }
     
@@ -27,8 +26,6 @@ namespace Hotel_JustFriend.Models
         public int idType { get; set; }
         public string address { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BillInfo> BillInfoes { get; set; }
         public virtual TypeCustomer TypeCustomer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RentInvoiceInfo> RentInvoiceInfoes { get; set; }

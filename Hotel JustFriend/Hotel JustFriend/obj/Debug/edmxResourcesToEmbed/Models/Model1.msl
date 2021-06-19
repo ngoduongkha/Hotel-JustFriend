@@ -14,6 +14,7 @@
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.Bill">
         <MappingFragment StoreEntitySet="Bill">
           <ScalarProperty Name="idBill" ColumnName="idBill" />
+          <ScalarProperty Name="date" ColumnName="date" />
           <ScalarProperty Name="totalMoney" ColumnName="totalMoney" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -25,7 +26,6 @@
           <ScalarProperty Name="price" ColumnName="price" />
           <ScalarProperty Name="idBill" ColumnName="idBill" />
           <ScalarProperty Name="idRoom" ColumnName="idRoom" />
-          <ScalarProperty Name="idCustomer" ColumnName="idCustomer" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -97,6 +97,17 @@
           <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="note" ColumnName="note" />
           <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

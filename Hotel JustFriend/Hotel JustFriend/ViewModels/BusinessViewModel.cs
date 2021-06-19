@@ -16,7 +16,7 @@ namespace Hotel_JustFriend.ViewModels
     [POCOViewModel]
     public class BusinessViewModel : ViewModelBase
     {
-         private ObservableCollection<Customer> _Trick= new ObservableCollection<Customer>();
+        private ObservableCollection<Customer> _Trick = new ObservableCollection<Customer>();
         static private Customer _TrickCustomer;
         private ObservableCollection<RentInvoice> ListRentInvoice;
         private ObservableCollection<TypeCustomer> _ListCustomerType;
@@ -43,7 +43,7 @@ namespace Hotel_JustFriend.ViewModels
 
         public string CustomerType { get => _CustomerType; set => _CustomerType = value; }
         public ObservableCollection<Customer> Trick { get => _Trick; set { _Trick = value; RaisePropertyChanged(); } }
-        public RentInvoiceInfo SelectedCustomer { get => _SelectedCustomer; set { _SelectedCustomer = value; RaisePropertyChanged();} }
+        public RentInvoiceInfo SelectedCustomer { get => _SelectedCustomer; set { _SelectedCustomer = value; RaisePropertyChanged(); } }
 
         public Customer TrickCustomer { get => _TrickCustomer; set { _TrickCustomer = value; RaisePropertiesChanged(); } }
 
@@ -90,33 +90,36 @@ namespace Hotel_JustFriend.ViewModels
         public void Pay()
         {
             if (SelectedRoom == null) return;
-            var da = new DateTime(2021, 6, 30);
+            DateTime da = new DateTime();
+            da = DateTime.Now;
             DateTime a = (DateTime)SelectedRentInvoice.date;
             int d = da.Subtract(a).Days;
+            d = d + 1;
             Bill bill = new Bill
             {
+                date = SelectedRentInvoice.date,
                 totalMoney = 0,
             };
             BillTemplate billtemp = new BillTemplate();
             billtemp.date.Text = d.ToString();
-            billtemp.Roomname.Text= DataProvider.Instance.DB.Rooms.Where(c => c.idRoom == SelectedRoom.idRoom).FirstOrDefault().displayName;
+            billtemp.Roomname.Text = DataProvider.Instance.DB.Rooms.Where(c => c.idRoom == SelectedRoom.idRoom).FirstOrDefault().displayName;
             DataProvider.Instance.DB.Bills.Add(bill);
-            decimal Price = (decimal)DataProvider.Instance.DB.TypeRooms.Where(c => c.idType == SelectedRoom.idType).FirstOrDefault().price; 
+            decimal Price = (decimal)DataProvider.Instance.DB.TypeRooms.Where(c => c.idType == SelectedRoom.idType).FirstOrDefault().price;
             int idrent = DataProvider.Instance.DB.RentInvoices.Where((c) => c.idRoom == SelectedRoom.idRoom).FirstOrDefault().idRentInvoice;
             ListRentInvoiceInfo = new ObservableCollection<RentInvoiceInfo>(DataProvider.Instance.DB.RentInvoiceInfoes
                                                                                     .Where((c) => c.idRentInvoice == idrent));
             double heso = 0;
-            
-            for (int i=0;i<ListRentInvoiceInfo.Count;i++)
+            BillInfo billinfo = new BillInfo
             {
-                BillInfo billinfo = new BillInfo
-                {
-                    numberDay = d,
-                    price = Price,
-                    idBill = bill.idBill,
-                    idRoom = SelectedRoom.idRoom,
-                    idCustomer = ListRentInvoiceInfo[i].idCustomer,
-                };
+                numberDay = d,
+                price = Price,
+                idBill = bill.idBill,
+                idRoom = SelectedRoom.idRoom,
+            };
+            DataProvider.Instance.DB.BillInfoes.Add(billinfo);
+            for (int i = 0; i < ListRentInvoiceInfo.Count; i++)
+            {
+
                 int idd = ListRentInvoiceInfo[i].idCustomer;
                 Customer cus = DataProvider.Instance.DB.Customers.Where(c => c.idCustomer == idd).FirstOrDefault();
                 double tg = (double)DataProvider.Instance.DB.TypeCustomers.Where(c => c.idType == cus.idType).FirstOrDefault().number;
@@ -133,10 +136,10 @@ namespace Hotel_JustFriend.ViewModels
                 billtemp.stp.Children.Add(aa);
             }
             int maxcustomer = (int)DataProvider.Instance.DB.Constants.Where(c => c.idConstant == 0).FirstOrDefault().maxCustomer;
-            double percent= (double)DataProvider.Instance.DB.Constants.Where(c => c.idConstant == 0).FirstOrDefault().percent;
+            double percent = (double)DataProvider.Instance.DB.Constants.Where(c => c.idConstant == 0).FirstOrDefault().percent;
             int sokhach = 0;
             if (ListRentInvoiceInfo.Count > maxcustomer) sokhach = ListRentInvoice.Count - maxcustomer;
-            bill.totalMoney = d * (Price + ((decimal)(sokhach * percent) * Price) + (Price*(decimal)(heso-1)));
+            bill.totalMoney = d * (Price + ((decimal)(sokhach * percent) * Price) + (Price * (decimal)(heso - 1)));
             billtemp.totalmoney.Text = string.Format("{0:C}", bill.totalMoney);
             billtemp.money.Text = string.Format("{0:C}", d * Price);
             billtemp.price.Text = string.Format("{0:C}", Price);
@@ -151,7 +154,7 @@ namespace Hotel_JustFriend.ViewModels
             DataProvider.Instance.DB.SaveChanges();
             SelectedRentInvoice = null;
             SelectRoom(p);
-            billtemp.ShowDialog();           
+            billtemp.ShowDialog();
         }
         [Command]
         public void SelectRoom(Room selectedRoom)
@@ -164,7 +167,7 @@ namespace Hotel_JustFriend.ViewModels
                 //--------------------------//
                 if (selectedRoom.status == true)
                 {
-                    if (Trick!=null) Trick.Clear();
+                    if (Trick != null) Trick.Clear();
                     int idrent = -1;
                     if (SelectedRoom != null)
                         idrent = DataProvider.Instance.DB.RentInvoices.Where((p) => p.idRoom == SelectedRoom.idRoom).FirstOrDefault().idRentInvoice;
@@ -177,7 +180,7 @@ namespace Hotel_JustFriend.ViewModels
                             {
                                 Customer a = new Customer();
                                 a = ListCustomer[i];
-                                Trick.Add(a);  
+                                Trick.Add(a);
                             }
                 }
                 else
@@ -189,7 +192,7 @@ namespace Hotel_JustFriend.ViewModels
             }
             catch { return; }
         }
- 
+
         [Command]
         public void MouseMoveWindow(Window p)
         {
@@ -231,12 +234,12 @@ namespace Hotel_JustFriend.ViewModels
                 //---
                 ListRentInvoice = new ObservableCollection<RentInvoice>(DataProvider.Instance.DB.RentInvoices);
                 RentInvoice k = ListRentInvoice.Where((p) => p.idRoom == SelectedRoom.idRoom).FirstOrDefault();
-                if (k==null)
+                if (k == null)
                 {
                     RentInvoice r = new RentInvoice()
                     {
                         idRoom = SelectedRoom.idRoom,
-                        date= DateTime.Now,
+                        date = DateTime.Now,
                         purchase = true,
                     };
                     DataProvider.Instance.DB.RentInvoices.Add(r);
@@ -271,7 +274,7 @@ namespace Hotel_JustFriend.ViewModels
             DataProvider.Instance.DB.SaveChanges();
             loadcs();
         }
-        [Command] 
+        [Command]
         public void DetailCustomer()
         {
             ListCustomer = new ObservableCollection<Customer>(DataProvider.Instance.DB.Customers);
@@ -281,7 +284,7 @@ namespace Hotel_JustFriend.ViewModels
             c.ShowDialog();
             loadcs();
         }
-        [Command] 
+        [Command]
         public void EditCustomer()
         {
             ListCustomer = new ObservableCollection<Customer>(DataProvider.Instance.DB.Customers);
@@ -297,9 +300,9 @@ namespace Hotel_JustFriend.ViewModels
             try
             {
                 ListCustomer = new ObservableCollection<Customer>(DataProvider.Instance.DB.Customers);
-                for (int i=0;i<ListCustomer.Count;i++)
+                for (int i = 0; i < ListCustomer.Count; i++)
                 {
-                    if (ListCustomer[i].idCard==IdCard)
+                    if (ListCustomer[i].idCard == IdCard)
                     {
                         MyMessageBox.Show("Chứng minh nhân dân đã tồn tại", "Thông báo", MessageBoxButton.OK);
                         return;
