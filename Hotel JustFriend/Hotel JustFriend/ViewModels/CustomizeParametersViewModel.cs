@@ -97,7 +97,10 @@ namespace Hotel_JustFriend.ViewModels
                     p.Close();
                 }
             }
-            catch { return; }
+            catch {
+                MyMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButton.OK);
+                return;
+            }
         }
 
         [Command]
@@ -123,7 +126,10 @@ namespace Hotel_JustFriend.ViewModels
                     }
                 }
             }
-            catch { return; }
+            catch {
+                MyMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButton.OK);
+                return;
+            }
         }
         [Command]
         public void SaveEdited(object p)
@@ -175,7 +181,11 @@ namespace Hotel_JustFriend.ViewModels
                     return;
                 }
             }
-            catch { return; }
+            catch 
+            {
+                MyMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButton.OK);
+                return;
+            }
         }
     }
 }
