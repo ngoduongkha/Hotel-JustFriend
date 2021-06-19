@@ -26,9 +26,9 @@ namespace Hotel_JustFriend.ViewModels
         public string Month { get => _month; set => _month = value; }
 
         [Command]
-        public void report()
+        public void report(Grid grid)
         {
-            ReportTemplate aa = new ReportTemplate();
+            ReportTemplateUC aa = new ReportTemplateUC();
             aa.month.Text = Month.ToString();
             aa.year.Text = Year.ToString();
             decimal tt = 0;
@@ -70,7 +70,8 @@ namespace Hotel_JustFriend.ViewModels
                 aa.stp.Children.Add(c);
             }
             aa.totalmoney.Text = string.Format("{0:C}", tt);
-            aa.ShowDialog();
+            grid.Children.Clear();
+            grid.Children.Add(aa);
         }
 
     }
