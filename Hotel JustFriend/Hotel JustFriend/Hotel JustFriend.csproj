@@ -199,9 +199,6 @@
     <Compile Include="Template\ImportBill.xaml.cs">
       <DependentUpon>ImportBill.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Template\ReportTemplate.xaml.cs">
-      <DependentUpon>ReportTemplate.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Models\TypeCustomer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -351,10 +348,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Template\ImportBill.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Template\ReportTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
