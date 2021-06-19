@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Hotel_JustFriend.Template
+namespace Hotel_JustFriend.UserControls
 {
     /// <summary>
-    /// Interaction logic for ReportTemplate.xaml
+    /// Interaction logic for ReportTemplateUC.xaml
     /// </summary>
-    public partial class ReportTemplate : Window
+    public partial class ReportTemplateUC : UserControl
     {
-        public ReportTemplate()
+        public ReportTemplateUC()
         {
             InitializeComponent();
         }

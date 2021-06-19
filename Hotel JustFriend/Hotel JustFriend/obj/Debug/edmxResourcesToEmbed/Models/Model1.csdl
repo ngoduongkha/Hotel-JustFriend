@@ -103,16 +103,6 @@
     <NavigationProperty Name="RentInvoices" Relationship="Self.FK__RentInvoi__idRoo__440B1D61" FromRole="Room" ToRole="RentInvoice" />
     <NavigationProperty Name="TypeRoom" Relationship="Self.FK__Room__idType__4316F928" FromRole="Room" ToRole="TypeRoom" />
   </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <EntityType Name="TypeCustomer">
     <Key>
       <PropertyRef Name="idType" />
@@ -228,7 +218,6 @@
     <EntitySet Name="Revenues" EntityType="Self.Revenue" />
     <EntitySet Name="RevenuePercentages" EntityType="Self.RevenuePercentage" />
     <EntitySet Name="Rooms" EntityType="Self.Room" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="TypeCustomers" EntityType="Self.TypeCustomer" />
     <EntitySet Name="TypeRooms" EntityType="Self.TypeRoom" />
     <AssociationSet Name="FK__BillInfo__idBill__48CFD27E" Association="Self.FK__BillInfo__idBill__48CFD27E">

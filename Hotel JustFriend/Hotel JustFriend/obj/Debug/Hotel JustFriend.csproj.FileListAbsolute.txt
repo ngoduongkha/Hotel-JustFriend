@@ -832,3 +832,5 @@ D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\Rep
 D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Template\ReportTemplate.baml
 D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\UserControls\ReportUC.baml
 D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\ReportView.baml
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\UserControls\ReportTemplateUC.g.cs
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\UserControls\ReportTemplateUC.baml

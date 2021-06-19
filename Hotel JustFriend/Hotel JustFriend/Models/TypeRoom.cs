@@ -7,27 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Hotel_JustFriend
+namespace Hotel_JustFriend.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Customer
+    public partial class TypeRoom
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Customer()
+        public TypeRoom()
         {
-            this.RentInvoiceInfoes = new HashSet<RentInvoiceInfo>();
+            this.Rooms = new HashSet<Room>();
         }
     
-        public int idCustomer { get; set; }
-        public string fullname { get; set; }
-        public string idCard { get; set; }
         public int idType { get; set; }
-        public string address { get; set; }
+        public string fullname { get; set; }
+        public Nullable<decimal> price { get; set; }
+        public Nullable<bool> isDelete { get; set; }
     
-        public virtual TypeCustomer TypeCustomer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RentInvoiceInfo> RentInvoiceInfoes { get; set; }
+        public virtual ICollection<Room> Rooms { get; set; }
     }
 }

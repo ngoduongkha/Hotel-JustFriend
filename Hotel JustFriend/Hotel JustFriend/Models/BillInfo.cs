@@ -7,17 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Hotel_JustFriend
+namespace Hotel_JustFriend.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class RevenuePercentage
+    public partial class BillInfo
     {
-        public int idrevenuePrecentage { get; set; }
-        public Nullable<double> percent { get; set; }
-        public Nullable<int> month { get; set; }
-        public Nullable<int> year { get; set; }
-        public Nullable<int> idRoom { get; set; }
+        public Nullable<int> numberDay { get; set; }
+        public Nullable<decimal> price { get; set; }
+        public int idBill { get; set; }
+        public int idRoom { get; set; }
+    
+        public virtual Bill Bill { get; set; }
+        public virtual Room Room { get; set; }
     }
 }

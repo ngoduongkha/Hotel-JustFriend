@@ -121,39 +121,13 @@ namespace Hotel_JustFriend.ViewModels
             }
             catch { return; }
         }
-
         [Command]
-        public void OpenTabFoodManage(MainWindow p)
+        public void OpenTabReport(MainWindow p)
         {
             try
             {
                 p.gridMain.Children.Clear();
-                ProductManageView uc = new ProductManageView();
-                CloseMenuByClick(p);
-                p.gridMain.Children.Add(uc);
-            }
-            catch { return; }
-        }
-
-        [Command]
-        public void OpenTabAccountManage(MainWindow p)
-        {
-            try
-            {
-                p.gridMain.Children.Clear();
-                AccountManageView uc = new AccountManageView();
-                CloseMenuByClick(p);
-                p.gridMain.Children.Add(uc);
-            }
-            catch { return; }
-        }
-        [Command]
-        public void OpenTabEmployeeManage(MainWindow p)
-        {
-            try
-            {
-                p.gridMain.Children.Clear();
-                EmployeeManageView uc = new EmployeeManageView();
+                ReportView uc = new ReportView();
                 CloseMenuByClick(p);
                 p.gridMain.Children.Add(uc);
             }
