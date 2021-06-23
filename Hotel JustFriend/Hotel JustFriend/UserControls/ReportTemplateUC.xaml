@@ -59,8 +59,6 @@
                         FontWeight="SemiBold" Width="169"/>
                     </Grid>
                 </StackPanel>
-
-
                 <Grid Grid.Column="1">
                     <Image 
                     Source="/Hotel JustFriend;component/Resources/Images/banner.png"
@@ -81,34 +79,6 @@
                     HorizontalAlignment="Center"/>
                 </Grid>
             </Grid>
-            <!--<Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid >
-                <Rectangle Fill="Black"/>
-                <Rectangle Fill="Black" Margin="218,-34,-59.333,32" RenderTransformOrigin="0.107,-0.755">
-                    <Rectangle.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform Angle="45"/>
-                            <TranslateTransform X="12.098" Y="16.09"/>
-                        </TransformGroup>
-                    </Rectangle.RenderTransform>
-                </Rectangle>
-            </Grid>
-            <Grid Grid.Column="1">
-                <Rectangle Fill="#FEECED"></Rectangle>
-                <Rectangle Fill="Pink" Margin="-41,-72,178.667,59">
-                    <Rectangle.RenderTransform>
-                        <RotateTransform Angle="60"></RotateTransform>
-                    </Rectangle.RenderTransform>
-                </Rectangle>
-
-            </Grid>
-        </Grid>-->
             <Grid Grid.Row="1" Background="White">
 
             </Grid>
