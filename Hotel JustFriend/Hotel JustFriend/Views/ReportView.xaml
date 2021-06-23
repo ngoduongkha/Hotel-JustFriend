@@ -85,7 +85,7 @@
                     LegendLocation="Bottom"
                     Hoverable="False" 
                     DataTooltip="{x:Null}"
-                    Series="{Binding ListRevenue}">
+                    Series="{Binding PieSerieCollection}">
                 </lvc:PieChart>
             </materialDesign:Card>
         </Grid>
