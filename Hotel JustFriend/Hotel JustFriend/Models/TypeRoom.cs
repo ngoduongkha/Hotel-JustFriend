@@ -17,6 +17,7 @@ namespace Hotel_JustFriend.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TypeRoom()
         {
+            this.Revenues = new HashSet<Revenue>();
             this.Rooms = new HashSet<Room>();
         }
     
@@ -25,6 +26,8 @@ namespace Hotel_JustFriend.Models
         public Nullable<decimal> price { get; set; }
         public Nullable<bool> isDelete { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Revenue> Revenues { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Room> Rooms { get; set; }
     }

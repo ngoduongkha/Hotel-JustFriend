@@ -72,7 +72,8 @@
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.Revenue">
         <MappingFragment StoreEntitySet="Revenue">
           <ScalarProperty Name="idRevenue" ColumnName="idRevenue" />
-          <ScalarProperty Name="totalMoney" ColumnName="totalMoney" />
+          <ScalarProperty Name="idType" ColumnName="idType" />
+          <ScalarProperty Name="RevenueType" ColumnName="RevenueType" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

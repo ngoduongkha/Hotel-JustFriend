@@ -72,16 +72,9 @@
             <PropertyRef Name="idRevenue" />
           </Key>
           <Property Name="idRevenue" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="totalMoney" Type="money" />
+          <Property Name="idType" Type="int" />
+          <Property Name="RevenueType" Type="money" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="RevenueInfo">
-          <Property Name="percent" Type="float" />
-          <Property Name="month" Type="int" />
-          <Property Name="year" Type="int" />
-          <Property Name="idRoom" Type="int" />
-        </EntityType>-->
         <EntityType Name="RevenuePercentage">
           <Key>
             <PropertyRef Name="idrevenuePrecentage" />
@@ -194,6 +187,18 @@ warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Revenue__idType__4222D4EF">
+          <End Role="TypeRoom" Type="Self.TypeRoom" Multiplicity="0..1" />
+          <End Role="Revenue" Type="Self.Revenue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeRoom">
+              <PropertyRef Name="idType" />
+            </Principal>
+            <Dependent Role="Revenue">
+              <PropertyRef Name="idType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Room__idType__4316F928">
           <End Role="TypeRoom" Type="Self.TypeRoom" Multiplicity="1" />
           <End Role="Room" Type="Self.Room" Multiplicity="*" />
@@ -242,6 +247,10 @@ warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a 
           <AssociationSet Name="FK__RentInvoi__idRoo__440B1D61" Association="Self.FK__RentInvoi__idRoo__440B1D61">
             <End Role="Room" EntitySet="Room" />
             <End Role="RentInvoice" EntitySet="RentInvoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Revenue__idType__4222D4EF" Association="Self.FK__Revenue__idType__4222D4EF">
+            <End Role="TypeRoom" EntitySet="TypeRoom" />
+            <End Role="Revenue" EntitySet="Revenue" />
           </AssociationSet>
           <AssociationSet Name="FK__Room__idType__4316F928" Association="Self.FK__Room__idType__4316F928">
             <End Role="TypeRoom" EntitySet="TypeRoom" />
@@ -329,7 +338,9 @@ warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a 
             <PropertyRef Name="idRevenue" />
           </Key>
           <Property Name="idRevenue" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="totalMoney" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="idType" Type="Int32" />
+          <Property Name="RevenueType" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="TypeRoom" Relationship="Self.FK__Revenue__idType__4222D4EF" FromRole="Revenue" ToRole="TypeRoom" />
         </EntityType>
         <EntityType Name="RevenuePercentage">
           <Key>
@@ -374,6 +385,7 @@ warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a 
           <Property Name="fullname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="price" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="isDelete" Type="Boolean" />
+          <NavigationProperty Name="Revenues" Relationship="Self.FK__Revenue__idType__4222D4EF" FromRole="TypeRoom" ToRole="Revenue" />
           <NavigationProperty Name="Rooms" Relationship="Self.FK__Room__idType__4316F928" FromRole="TypeRoom" ToRole="Room" />
         </EntityType>
         <Association Name="FK__BillInfo__idBill__48CFD27E">
@@ -448,6 +460,18 @@ warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Revenue__idType__4222D4EF">
+          <End Role="TypeRoom" Type="Self.TypeRoom" Multiplicity="0..1" />
+          <End Role="Revenue" Type="Self.Revenue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeRoom">
+              <PropertyRef Name="idType" />
+            </Principal>
+            <Dependent Role="Revenue">
+              <PropertyRef Name="idType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Room__idType__4316F928">
           <End Role="TypeRoom" Type="Self.TypeRoom" Multiplicity="1" />
           <End Role="Room" Type="Self.Room" Multiplicity="*" />
@@ -496,6 +520,10 @@ warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a 
           <AssociationSet Name="FK__RentInvoi__idRoo__440B1D61" Association="Self.FK__RentInvoi__idRoo__440B1D61">
             <End Role="Room" EntitySet="Rooms" />
             <End Role="RentInvoice" EntitySet="RentInvoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Revenue__idType__4222D4EF" Association="Self.FK__Revenue__idType__4222D4EF">
+            <End Role="TypeRoom" EntitySet="TypeRooms" />
+            <End Role="Revenue" EntitySet="Revenues" />
           </AssociationSet>
           <AssociationSet Name="FK__Room__idType__4316F928" Association="Self.FK__Room__idType__4316F928">
             <End Role="TypeRoom" EntitySet="TypeRooms" />
@@ -579,7 +607,8 @@ warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a 
             <EntityTypeMapping TypeName="Hotel_JustFriendModel.Revenue">
               <MappingFragment StoreEntitySet="Revenue">
                 <ScalarProperty Name="idRevenue" ColumnName="idRevenue" />
-                <ScalarProperty Name="totalMoney" ColumnName="totalMoney" />
+                <ScalarProperty Name="idType" ColumnName="idType" />
+                <ScalarProperty Name="RevenueType" ColumnName="RevenueType" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

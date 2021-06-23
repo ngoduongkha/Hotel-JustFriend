@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Hotel_JustFriend.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:uc="clr-namespace:Hotel_JustFriend.UserControls"
-             xmlns:lvc="clr-namespace:LiveCharts;assembly=LiveCharts"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid
@@ -81,6 +81,12 @@
             <materialDesign:Card
                 Grid.Row="1"
                 Margin="0 15 0 0 ">
+                <lvc:PieChart 
+                    LegendLocation="Bottom"
+                    Hoverable="False" 
+                    DataTooltip="{x:Null}"
+                    Series="{Binding PieSerieCollection}">
+                </lvc:PieChart>
             </materialDesign:Card>
         </Grid>
         <Grid Grid.Column="1"

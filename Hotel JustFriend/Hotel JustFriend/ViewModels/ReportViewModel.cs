@@ -10,6 +10,8 @@ using System.Diagnostics;
 using System;
 using Hotel_JustFriend.UserControls;
 using Hotel_JustFriend.Template;
+using LiveCharts;
+using LiveCharts.Wpf;
 
 namespace Hotel_JustFriend.ViewModels
 {
@@ -21,9 +23,11 @@ namespace Hotel_JustFriend.ViewModels
         private ObservableCollection<BillInfo> _ListBillInfo;
         private string _month;
         private string _year;
+        private SeriesCollection pieSerieCollection;
 
         public string Year { get => _year; set => _year = value; }
         public string Month { get => _month; set => _month = value; }
+        public SeriesCollection PieSerieCollection { get => pieSerieCollection; set { pieSerieCollection = value; RaisePropertiesChanged(); } }
 
         [Command]
         public void report(Grid grid)
@@ -40,6 +44,7 @@ namespace Hotel_JustFriend.ViewModels
             if (Month != "") m = int.Parse(Month);
             if (Month == "") _ListBill = new ObservableCollection<Bill>(DataProvider.Instance.DB.Bills.Where(p => p.date.Value.Year == y));
             else _ListBill = new ObservableCollection<Bill>(DataProvider.Instance.DB.Bills.Where(p => p.date.Value.Year == y && p.date.Value.Month == m));
+            PieSerieCollection = new SeriesCollection();
             for (int i = 0; i < _ListRoomType.Count; i++)
             {
                 double phantram = 0;
@@ -61,6 +66,14 @@ namespace Hotel_JustFriend.ViewModels
                 }
                 if (_ListBill != null) phantram = phantram / (_ListBill.Count);
                 tt = tt + doanhthu;
+                ChartValues<decimal> chartValue = new ChartValues<decimal>();
+                chartValue.Add(doanhthu);
+                PieSeries newPie = new PieSeries
+                {
+                    Title = _ListRoomType[i].fullname,
+                    Values = chartValue,
+                };
+                PieSerieCollection.Add(newPie);
                 ReportUC c = new ReportUC();
                 c.STT.Text = (i + 1).ToString();
                 c.displayname.Text = _ListRoomType[i].fullname;
