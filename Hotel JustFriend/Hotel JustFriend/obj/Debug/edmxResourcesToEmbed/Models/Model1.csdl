@@ -76,7 +76,9 @@
       <PropertyRef Name="idRevenue" />
     </Key>
     <Property Name="idRevenue" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="totalMoney" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="idType" Type="Int32" />
+    <Property Name="RevenueType" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="TypeRoom" Relationship="Self.FK__Revenue__idType__4222D4EF" FromRole="Revenue" ToRole="TypeRoom" />
   </EntityType>
   <EntityType Name="RevenuePercentage">
     <Key>
@@ -121,6 +123,7 @@
     <Property Name="fullname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="price" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="isDelete" Type="Boolean" />
+    <NavigationProperty Name="Revenues" Relationship="Self.FK__Revenue__idType__4222D4EF" FromRole="TypeRoom" ToRole="Revenue" />
     <NavigationProperty Name="Rooms" Relationship="Self.FK__Room__idType__4316F928" FromRole="TypeRoom" ToRole="Room" />
   </EntityType>
   <Association Name="FK__BillInfo__idBill__48CFD27E">
@@ -195,6 +198,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Revenue__idType__4222D4EF">
+    <End Role="TypeRoom" Type="Self.TypeRoom" Multiplicity="0..1" />
+    <End Role="Revenue" Type="Self.Revenue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeRoom">
+        <PropertyRef Name="idType" />
+      </Principal>
+      <Dependent Role="Revenue">
+        <PropertyRef Name="idType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Room__idType__4316F928">
     <End Role="TypeRoom" Type="Self.TypeRoom" Multiplicity="1" />
     <End Role="Room" Type="Self.Room" Multiplicity="*" />
@@ -243,6 +258,10 @@
     <AssociationSet Name="FK__RentInvoi__idRoo__440B1D61" Association="Self.FK__RentInvoi__idRoo__440B1D61">
       <End Role="Room" EntitySet="Rooms" />
       <End Role="RentInvoice" EntitySet="RentInvoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Revenue__idType__4222D4EF" Association="Self.FK__Revenue__idType__4222D4EF">
+      <End Role="TypeRoom" EntitySet="TypeRooms" />
+      <End Role="Revenue" EntitySet="Revenues" />
     </AssociationSet>
     <AssociationSet Name="FK__Room__idType__4316F928" Association="Self.FK__Room__idType__4316F928">
       <End Role="TypeRoom" EntitySet="TypeRooms" />

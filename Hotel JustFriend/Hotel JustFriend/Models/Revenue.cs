@@ -7,15 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Hotel_JustFriend
+namespace Hotel_JustFriend.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Account
+    public partial class Revenue
     {
-        public int idAccount { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
+        public int idRevenue { get; set; }
+        public Nullable<int> idType { get; set; }
+        public Nullable<decimal> RevenueType { get; set; }
+    
+        public virtual TypeRoom TypeRoom { get; set; }
     }
 }
