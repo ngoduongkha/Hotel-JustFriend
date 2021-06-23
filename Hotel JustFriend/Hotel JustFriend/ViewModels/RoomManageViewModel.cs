@@ -70,7 +70,7 @@ namespace Hotel_JustFriend.ViewModels
                     .Where(x => x.isDelete == false)
                     .OrderBy(x => x.floor)
                     );
-                ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms);
+                ListRoomType = (ObservableCollection<TypeRoom>)new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where(c=>c.isDelete==false));
                 for (int i=0;i<ListRoom.Count;i++)
                 {
                     RoomUC a = new RoomUC();

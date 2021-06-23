@@ -74,7 +74,6 @@
                     <ComboBox
                         DockPanel.Dock="Left"
                         x:Name="txtFilterStatus"
-                        ItemsSource="{Binding ListRoomStatus}"
                         materialDesign:HintAssist.Hint="Trạng thái"
                         Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                         HorizontalContentAlignment="Left"

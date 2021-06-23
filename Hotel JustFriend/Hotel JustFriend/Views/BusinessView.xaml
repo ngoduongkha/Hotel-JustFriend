@@ -33,12 +33,16 @@
                                                      VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
                         <TextBox materialDesign:HintAssist.Hint="Tìm phòng" Width="150"
                                       FontSize="15" Background="Transparent"
+                                                         x:Name="txtSearch"
+
                                       Style="{StaticResource MaterialDesignFloatingHintTextBox}">
                         </TextBox>
                         <Button Content="Tìm" VerticalAlignment="Bottom"
                                         Margin="10,0" Height="25" FontSize="15" Width="60"
                                         Padding="15,0" Background="#fa91d7" BorderBrush="#fa91d7"
-                                        materialDesign:ButtonAssist.CornerRadius="10"/>
+                                        materialDesign:ButtonAssist.CornerRadius="10"
+                                Command="{Binding SearchRoomCommand}"
+                        CommandParameter="{Binding ElementName=business}"></Button>
                     </StackPanel>
                 </materialDesign:Card>
                 <materialDesign:Card Grid.Column="1" Margin="10">
@@ -48,17 +52,31 @@
                         <ComboBox materialDesign:HintAssist.Hint="Trạng thái"
                                       Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                       VerticalAlignment="Bottom"
+                                                          ItemsSource="{Binding ListRoomStatus}"
+
+                                                          x:Name="txtFilterStatus"
+
                                       Margin="10,0" FontSize="15">
+                            <ComboBoxItem Content="Sẵn sàng"/>
+                            <ComboBoxItem Content="Chưa Sẵn sàng"/>
                         </ComboBox>
-                        <ComboBox materialDesign:HintAssist.Hint="Loại phòng"
-                                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                                      VerticalAlignment="Bottom"
-                                      Margin="10,0" FontSize="15">
+                        <ComboBox 
+                        x:Name="txtFilterType"
+                        ItemsSource="{Binding ListRoomType}"
+                        DisplayMemberPath="fullname"
+                        SelectedValuePath="idType"
+                        SelectedValue="{Binding Path=idType}"
+                        materialDesign:HintAssist.Hint="Loại phòng"                     
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                        HorizontalContentAlignment="Left" 
+                        FontSize="15" Width="150" MaxWidth="250"
+                        Margin="10 0 10 0">
                         </ComboBox>
                         <Button Content="Lọc" VerticalAlignment="Bottom"
                                     Margin="10,0" Height="25" FontSize="15" Width="60"
                                     Padding="15,0" Background="#fa91d7" BorderBrush="#fa91d7"
-                                    materialDesign:ButtonAssist.CornerRadius="10"/>
+                                    materialDesign:ButtonAssist.CornerRadius="10"
+                                Command="{Binding RoomFilterCommand}" CommandParameter="{Binding ElementName=business}" />
                     </StackPanel>
                 </materialDesign:Card>
             </Grid>

@@ -23,6 +23,7 @@ namespace Hotel_JustFriend.ViewModels
         private ObservableCollection<Customer> _ListCustomer;
         private ObservableCollection<RentInvoice> _ListRentInvoice;
         private ObservableCollection<RentInvoiceInfo> _ListRentInvoiceInfo;
+        private ObservableCollection<TypeRoom> _ListRoomType;
         private string _fullname;
         private string _idCard;
         private string _address;
@@ -30,6 +31,7 @@ namespace Hotel_JustFriend.ViewModels
         public string Fullname { get => _fullname; set => _fullname = value; }
         public string IdCard { get => _idCard; set => _idCard = value; }
         public string Address { get => _address; set => _address = value; }
+
         public ObservableCollection<TypeCustomer> ListCustomerType { get => _ListCustomerType; set { _ListCustomerType = value; RaisePropertiesChanged(); } }
         public ObservableCollection<Customer> ListCustomer { get => _ListCustomer; set { _ListCustomer = value; RaisePropertiesChanged(); } }
         private ObservableCollection<Room> _ListRoom;
@@ -48,6 +50,8 @@ namespace Hotel_JustFriend.ViewModels
         public Customer TrickCustomer { get => _TrickCustomer; set { _TrickCustomer = value; RaisePropertiesChanged(); } }
 
         public RentInvoice SelectedRentInvoice { get => _SelectedRentInvoice; set { _SelectedRentInvoice = value; RaisePropertyChanged(); } }
+
+        public ObservableCollection<TypeRoom> ListRoomType { get => _ListRoomType; set { _ListRoomType = value; RaisePropertiesChanged(); } }
 
         public BusinessViewModel()
         {
@@ -83,6 +87,8 @@ namespace Hotel_JustFriend.ViewModels
             try
             {
                 ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms.Where(x => x.isDelete == false).OrderBy(x => x.floor).ThenBy(x => x.displayName));
+                ListRoomType = (ObservableCollection<TypeRoom>)new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where(c => c.isDelete == false));
+
             }
             catch { return; }
         }
@@ -336,6 +342,94 @@ namespace Hotel_JustFriend.ViewModels
             {
                 return;
             }
+        }
+        //---------------
+        [Command]
+        public void RoomFilter(BusinessView p)
+        {
+            // try
+            //{
+            ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms
+                .Where(x => x.isDelete == false)
+                .OrderBy(x => x.floor)
+                .ThenBy(x => x.displayName));
+            if (string.IsNullOrEmpty(p.txtFilterStatus.Text) && !string.IsNullOrEmpty(p.txtFilterType.Text))
+            {
+                int k = int.Parse(p.txtFilterType.SelectedValue.ToString());
+                ListRoom = new ObservableCollection<Room>(ListRoom
+                    .Where(x => x.idType == k)
+                    .OrderBy(x => x.floor)
+                    .ThenBy(x => x.displayName));
+            }
+            else if (!string.IsNullOrEmpty(p.txtFilterStatus.Text) && string.IsNullOrEmpty(p.txtFilterType.Text))
+            {
+                int id = 0;
+                if (p.txtFilterStatus.Text == "Sẵn sàng") id = 0;
+                else id = 1;
+                if (id == 0)
+                {
+                    ListRoom = new ObservableCollection<Room>(ListRoom
+                        .Where(x => x.status == false)
+                        .OrderBy(x => x.floor)
+                        .ThenBy(x => x.displayName));
+                }
+                else
+                {
+                    ListRoom = new ObservableCollection<Room>(ListRoom
+                      .Where(x => x.status == true)
+                      .OrderBy(x => x.floor)
+                      .ThenBy(x => x.displayName));
+                }
+            }
+            else if (!string.IsNullOrEmpty(p.txtFilterStatus.Text) && !string.IsNullOrEmpty(p.txtFilterType.Text))
+            {
+                int id = 0;
+                if (p.txtFilterStatus.Text == "Sẵn sàng") id = 0;
+                else id = 1;
+                int k = int.Parse(p.txtFilterType.SelectedValue.ToString());
+                if (id == 0)
+                {
+                    ListRoom = new ObservableCollection<Room>(ListRoom
+                    .Where(x => x.idType == k && x.status == false)
+                    .OrderBy(x => x.floor)
+                    .ThenBy(x => x.displayName));
+                }
+                else
+                {
+                    ListRoom = new ObservableCollection<Room>(ListRoom
+                    .Where(x => x.idType == k && x.status == true)
+                    .OrderBy(x => x.floor)
+                    .ThenBy(x => x.displayName));
+                }
+
+            }
+            p.txtFilterStatus.Text = string.Empty;
+            p.txtFilterType.Text = string.Empty;
+            //    }
+            //   catch { return; }
+        }
+
+        [Command]
+        public void SearchRoom(BusinessView p)
+        {
+            try
+            {
+                ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms
+                    .Where(x => x.isDelete == false)
+                    .OrderBy(x => x.floor)
+                    .ThenBy(x => x.displayName));
+
+                if (string.IsNullOrEmpty(p.txtSearch.Text))
+                    return;
+
+                ListRoom = new ObservableCollection<Room>(ListRoom
+                    .Where(x => x.displayName.Contains(p.txtSearch.Text))
+                    .OrderBy(x => x.floor)
+                    .ThenBy(x => x.displayName)
+                    .ToList());
+                p.txtSearch.Text = string.Empty;
+            }
+            catch { return; }
         }
     }
 }

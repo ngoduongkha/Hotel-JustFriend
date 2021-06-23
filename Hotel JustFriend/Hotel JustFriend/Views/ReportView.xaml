@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Hotel_JustFriend.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:uc="clr-namespace:Hotel_JustFriend.UserControls"
-             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" xmlns:validation="clr-namespace:Hotel_JustFriend.Validations"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid
@@ -41,13 +41,16 @@
                                 Content="Tháng:"
                                 FontSize="20"
                                 VerticalAlignment="Center"/>
-                            <TextBox 
-                                Text="{Binding Month,Mode=OneWayToSource}"
+                            <TextBox
                                 Width="50"
                                 Margin="20 0"
                                 FontSize="20"
                                 Padding="0"
-                                VerticalAlignment="Center"/>
+                                MaxLength="2"
+                                Text="{Binding Month,Mode=OneWayToSource}"
+                                VerticalAlignment="Center" PreviewTextInput="TextBox_PreviewTextInput">
+                              
+                            </TextBox>
                         </StackPanel>
                         <StackPanel
                             Grid.Column="1"
@@ -57,12 +60,16 @@
                                 FontSize="20"
                                 VerticalAlignment="Center"/>
                             <TextBox 
-                                Text="{Binding Year,Mode=OneWayToSource}"
                                 Width="50"
                                 Margin="20 0"
                                 FontSize="20"
                                 Padding="0"
-                                VerticalAlignment="Center"/>
+                                Text="{Binding Year,Mode=OneWayToSource}"
+                                VerticalAlignment="Center"
+                                MaxLength="4"
+                                >
+                               
+                            </TextBox>
                         </StackPanel>
                     </Grid>
                     <Grid
