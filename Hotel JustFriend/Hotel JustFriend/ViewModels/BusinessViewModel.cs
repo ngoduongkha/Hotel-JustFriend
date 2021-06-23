@@ -138,7 +138,7 @@ namespace Hotel_JustFriend.ViewModels
             int maxcustomer = (int)DataProvider.Instance.DB.Constants.Where(c => c.idConstant == 0).FirstOrDefault().maxCustomer;
             double percent = (double)DataProvider.Instance.DB.Constants.Where(c => c.idConstant == 0).FirstOrDefault().percent;
             int sokhach = 0;
-            if (ListRentInvoiceInfo.Count > maxcustomer) sokhach = ListRentInvoice.Count - maxcustomer;
+            if (ListRentInvoiceInfo.Count > maxcustomer) sokhach = ListRentInvoiceInfo.Count - maxcustomer;
             bill.totalMoney = d * (Price + ((decimal)(sokhach * percent) * Price) + (Price * (decimal)(heso - 1)));
             billtemp.totalmoney.Text = string.Format("{0:C}", bill.totalMoney);
             billtemp.money.Text = string.Format("{0:C}", d * Price);
@@ -150,8 +150,10 @@ namespace Hotel_JustFriend.ViewModels
             Room p = ListRoom.Where(c => c.idRoom == SelectedRoom.idRoom).FirstOrDefault();
             p.status = false;
             RentInvoice k = DataProvider.Instance.DB.RentInvoices.Where((c) => c.idRoom == p.idRoom).FirstOrDefault();
+           
             if (k != null) DataProvider.Instance.DB.RentInvoices.Remove(k);
             DataProvider.Instance.DB.SaveChanges();
+          
             SelectedRentInvoice = null;
             SelectRoom(p);
             billtemp.ShowDialog();

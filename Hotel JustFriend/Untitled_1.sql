@@ -63,6 +63,7 @@ GO
 
 CREATE TABLE [Bill] (
   [idBill] int PRIMARY KEY IDENTITY(1, 1),
+  [date] date,
   [totalMoney] money
 )
 GO
@@ -72,27 +73,12 @@ CREATE TABLE [BillInfo] (
   [price] money,
   [idBill] int,
   [idRoom] int,
-  [idCustomer] int,
-  PRIMARY KEY ([idBill], [idRoom], [idCustomer])
+  PRIMARY KEY ([idBill], [idRoom])
 )
 GO
 
 CREATE TABLE [RevenuePercentage] (
   [idrevenuePrecentage] int PRIMARY KEY IDENTITY(1, 1),
-  [percent] float,
-  [month] int,
-  [year] int,
-  [idRoom] int
-)
-GO
-
-CREATE TABLE [Revenue] (
-  [idRevenue] int PRIMARY KEY IDENTITY(1, 1),
-  [totalMoney] money
-)
-GO
-
-CREATE TABLE [RevenueInfo] (
   [percent] float,
   [month] int,
   [year] int,
@@ -106,6 +92,13 @@ CREATE TABLE [Constant] (
   [percent] float,
 )
 GO
+CREATE TABLE [Revenue](
+	[idRevenue] int PRIMARY KEY IDENTITY(1,1),
+	[idType] int,
+	[RevenueType] money,
+	)
+	GO
+ALTER TABLE [Revenue] ADD FOREIGN KEY ([idType]) REFERENCES [TypeRoom] ([idType])
 
 ALTER TABLE [Room] ADD FOREIGN KEY ([idType]) REFERENCES [TypeRoom] ([idType])
 GO
@@ -122,13 +115,11 @@ GO
 ALTER TABLE [RentInvoiceInfo] ADD FOREIGN KEY ([idCustomer]) REFERENCES [Customer] ([idCustomer])
 GO
 
-ALTER TABLE [BillInfo] ADD FOREIGN KEY ([idCustomer]) REFERENCES [Customer] ([idCustomer])
-GO
-
 ALTER TABLE [RentInvoiceInfo] ADD FOREIGN KEY ([idRentInvoice]) REFERENCES [RentInvoice] ([idRentInvoice])
 GO
 
 ALTER TABLE [BillInfo] ADD FOREIGN KEY ([idBill]) REFERENCES [Bill] ([idBill])
+
 GO
 
 INSERT INTO dbo.Account (username, password) VALUES ( 'admin', '38D180985D1B2E7A6014190E2CBD3C967408837188354EC93D27BFD86D09A017')

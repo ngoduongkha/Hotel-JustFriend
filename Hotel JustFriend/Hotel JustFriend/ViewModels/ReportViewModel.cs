@@ -21,9 +21,11 @@ namespace Hotel_JustFriend.ViewModels
         private ObservableCollection<BillInfo> _ListBillInfo;
         private string _month;
         private string _year;
+        private ObservableCollection<Revenue> listRevenues;
 
         public string Year { get => _year; set => _year = value; }
         public string Month { get => _month; set => _month = value; }
+        public ObservableCollection<Revenue> ListRevenues { get => listRevenues; set => listRevenues = value; }
 
         [Command]
         public void report(Grid grid)
@@ -61,6 +63,12 @@ namespace Hotel_JustFriend.ViewModels
                 }
                 if (_ListBill != null) phantram = phantram / (_ListBill.Count);
                 tt = tt + doanhthu;
+                Revenue revenue = new Revenue()
+                {
+                    idType = _ListRoomType[i].idType,
+                    RevenueType = tt,
+                };
+                DataProvider.Instance.DB.Revenues.Add(revenue);
                 ReportUC c = new ReportUC();
                 c.STT.Text = (i + 1).ToString();
                 c.displayname.Text = _ListRoomType[i].fullname;
@@ -72,6 +80,7 @@ namespace Hotel_JustFriend.ViewModels
             aa.totalmoney.Text = string.Format("{0:C}", tt);
             grid.Children.Clear();
             grid.Children.Add(aa);
+            DataProvider.Instance.DB.SaveChanges();
         }
 
     }
