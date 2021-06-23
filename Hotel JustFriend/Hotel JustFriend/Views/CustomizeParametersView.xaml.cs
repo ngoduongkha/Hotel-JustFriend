@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 namespace Hotel_JustFriend.Views
 {
     /// <summary>
-    /// Interaction logic for CustomizeParametersView.xaml
+    /// Interaction logic for SettingView.xaml
     /// </summary>
     public partial class CustomizeParametersView : UserControl
     {

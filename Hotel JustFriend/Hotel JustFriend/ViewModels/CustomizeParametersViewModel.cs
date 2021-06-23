@@ -5,7 +5,6 @@ using Hotel_JustFriend.Views;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Linq;
 
 namespace Hotel_JustFriend.ViewModels
 {
@@ -15,37 +14,31 @@ namespace Hotel_JustFriend.ViewModels
         private ObservableCollection<TypeRoom> _listRoomType;
         private ObservableCollection<TypeCustomer> _listCustomerType;
         private string _typeName;
-        private string _maxCustomer;
-        private string _percent;
 
         public string TypeName { get => _typeName; set { _typeName = value; RaisePropertiesChanged(); } }
         public ObservableCollection<TypeRoom> ListRoomType { get => _listRoomType; set { _listRoomType = value; RaisePropertiesChanged(); } }
         public ObservableCollection<TypeCustomer> ListCustomerType { get => _listCustomerType; set { _listCustomerType = value; RaisePropertiesChanged(); } }
-        public string MaxCustomer { get => _maxCustomer; set { _maxCustomer = value; RaisePropertiesChanged(); } }
-        public string Percent { get => _percent;  set { _percent = value; RaisePropertiesChanged(); } }
 
         public CustomizeParametersViewModel()
         {
-            ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where((p) => p.isDelete == false));
-            ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers.Where((p) => p.isDelete == false));
-            MaxCustomer = (DataProvider.Instance.DB.Constants.Find(0) as Constant).maxCustomer.ToString();
-            Percent = (DataProvider.Instance.DB.Constants.Find(0) as Constant).percent.ToString();
+            ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms);
+            ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers);
         }
 
         [Command]
         public void CallAddCustomerType()
         {
-            AddTypeWindow window = new AddTypeWindow(true);
+            AddCustomerTypeWindow window = new AddCustomerTypeWindow(true);
             window.ShowDialog();
-            ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers.Where((p) => p.isDelete == false));
+            ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers);
         }
 
         [Command]
         public void CallAddRoomType()
         {
-            AddTypeWindow window = new AddTypeWindow(false);
+            AddCustomerTypeWindow window = new AddCustomerTypeWindow(false);
             window.ShowDialog();
-            ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where((p) => p.isDelete == false));
+            ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms);
         }
 
         [Command]
@@ -69,7 +62,7 @@ namespace Hotel_JustFriend.ViewModels
         }
 
         [Command]
-        public void AddType(AddTypeWindow p)
+        public void Add(AddCustomerTypeWindow p)
         {
             try
             {
@@ -78,7 +71,6 @@ namespace Hotel_JustFriend.ViewModels
                     TypeCustomer newType = new TypeCustomer()
                     {
                         displayname = TypeName,
-                        isDelete = false,
                     };
                     DataProvider.Instance.DB.TypeCustomers.Add(newType);
                     DataProvider.Instance.DB.SaveChanges();
@@ -90,46 +82,44 @@ namespace Hotel_JustFriend.ViewModels
                     {
                         fullname = TypeName,
                         price = 0,
-                        isDelete = false,
                     };
                     DataProvider.Instance.DB.TypeRooms.Add(newType);
                     DataProvider.Instance.DB.SaveChanges();
                     p.Close();
                 }
             }
-            catch {
-                MyMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButton.OK);
-                return;
-            }
+            catch { return; }
         }
 
         [Command]
-        public void DeleteType(ComboBox cbbox)
+        public void DeleteRoomType(ComboBox cbbox)
         {
             try
             {
                 if (cbbox.SelectedItem != null)
                 {
-                    if (cbbox.Name == "cbboxRoomType")
-                    {
-                        TypeRoom deleteRoomType = cbbox.SelectedItem as TypeRoom;
-                        deleteRoomType.isDelete = true;
-                        DataProvider.Instance.DB.SaveChanges();
-                        ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where((p) => p.isDelete == false));
-                    }
-                    else
-                    {
-                        TypeCustomer deleteCustomerType = cbbox.SelectedItem as TypeCustomer;
-                        deleteCustomerType.isDelete = true;
-                        DataProvider.Instance.DB.SaveChanges();
-                        ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers.Where((p) => p.isDelete == false));
-                    }
+                    TypeRoom deleteRoom = cbbox.SelectedItem as TypeRoom;
+                    DataProvider.Instance.DB.TypeRooms.Remove(deleteRoom);
+                    DataProvider.Instance.DB.SaveChanges();
+                    ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms);
                 }
             }
-            catch {
-                MyMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButton.OK);
-                return;
+            catch { return; }
+        }
+        [Command]
+        public void DeleteCustmerType(ComboBox cbbox)
+        {
+            try
+            {
+                if (cbbox.SelectedItem != null)
+                {
+                    TypeCustomer deleteCustomer = cbbox.SelectedItem as TypeCustomer;
+                    DataProvider.Instance.DB.TypeCustomers.Remove(deleteCustomer);
+                    DataProvider.Instance.DB.SaveChanges();
+                    ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers);
+                }
             }
+            catch { return; }
         }
         [Command]
         public void SaveEdited(object p)
@@ -147,45 +137,9 @@ namespace Hotel_JustFriend.ViewModels
                         typeRoom.price = int.Parse(tbox.Text);
                         DataProvider.Instance.DB.SaveChanges();
                     }
-                    return;
-                }
-                if (tbox.Name == "tboxNumber")
-                {
-                    ComboBox cbbox = parameters[1] as ComboBox;
-                    if (cbbox.SelectedItem != null && tbox.Text != null)
-                    {
-                        TypeCustomer typeCustomer = DataProvider.Instance.DB.TypeCustomers.Find((cbbox.SelectedItem as TypeCustomer).idType);
-                        typeCustomer.number = double.Parse(tbox.Text);
-                        DataProvider.Instance.DB.SaveChanges();
-                    }
-                    return;
-                }
-                if (tbox.Name == "tboxMaxCustomer")
-                {
-                    if (tbox.Text != null)
-                    {
-                        (DataProvider.Instance.DB.Constants.Find(0) as Constant).maxCustomer = int.Parse(MaxCustomer);
-                        MaxCustomer = (DataProvider.Instance.DB.Constants.Find(0) as Constant).maxCustomer.ToString();
-                        DataProvider.Instance.DB.SaveChanges();
-                    }
-                    return;
-                }
-                if (tbox.Name == "tboxPercent")
-                {
-                    if (tbox.Text != null)
-                    {
-                        (DataProvider.Instance.DB.Constants.Find(0) as Constant).percent = double.Parse(Percent);
-                        Percent = (DataProvider.Instance.DB.Constants.Find(0) as Constant).percent.ToString();
-                        DataProvider.Instance.DB.SaveChanges();
-                    }
-                    return;
                 }
             }
-            catch 
-            {
-                MyMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButton.OK);
-                return;
-            }
+            catch { return; }
         }
     }
 }

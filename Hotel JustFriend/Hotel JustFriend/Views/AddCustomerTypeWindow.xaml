@@ -7,7 +7,7 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
     xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts"
-    x:Class="Hotel_JustFriend.Views.AddTypeWindow"
+    x:Class="Hotel_JustFriend.Views.AddCustomerTypeWindow"
     mc:Ignorable="d" WindowStyle="None" WindowStartupLocation="CenterScreen"
     x:Name="window" Title="Hotel Just Friend" Height="200" Width="300" 
     ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True"
@@ -79,7 +79,7 @@
                                             Content="Thêm"
                                             HorizontalAlignment="Center"
                                             Width="80"
-                                            Command="{Binding AddTypeCommand}"
+                                            Command="{Binding AddCommand}"
                                             CommandParameter="{Binding ElementName=window}"/>
                                 </Grid>
                                 <Grid Grid.Column="1">
