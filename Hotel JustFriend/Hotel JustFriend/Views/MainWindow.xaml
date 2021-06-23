@@ -56,10 +56,12 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="1">
-                                <Label Content="{Binding Title, ElementName=window}"
-                        VerticalAlignment="Center" HorizontalAlignment="Center"
-                        Foreground="WhiteSmoke"
-                        FontSize="25" FontWeight="Bold"/>
+                                <Label 
+                                    Content="{Binding Title, ElementName=window}"
+                                    VerticalAlignment="Center" 
+                                    HorizontalAlignment="Center"
+                                    Foreground="WhiteSmoke"
+                                    FontSize="25" FontWeight="Bold"/>
                             </Grid>
                             <Grid Grid.Column="2">
                                 <Grid.Resources>
@@ -93,8 +95,9 @@
                                 <Button Grid.Column="0" ToolTip="Thu gọn"
                                     Command="{Binding MinimizeWindowCommand}"
                                     CommandParameter="{Binding ElementName=window}">
-                                    <materialDesign:PackIcon Kind="WindowMinimize" Width="25" Height="25"
-                                                         HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <materialDesign:PackIcon 
+                                        Kind="WindowMinimize" Width="25" Height="25"
+                                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Button>
                             </Grid>
                             <Grid Grid.Column="0">

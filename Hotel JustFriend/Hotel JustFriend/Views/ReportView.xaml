@@ -89,10 +89,14 @@
                 Grid.Row="1"
                 Margin="0 15 0 0 ">
                 <lvc:PieChart 
+                    Margin="20"
                     LegendLocation="Bottom"
                     Hoverable="False" 
                     DataTooltip="{x:Null}"
-                    Series="{Binding PieSerieCollection}">
+                    Series="{Binding PieSerieCollection}"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    FontSize="18">
                 </lvc:PieChart>
             </materialDesign:Card>
         </Grid>
