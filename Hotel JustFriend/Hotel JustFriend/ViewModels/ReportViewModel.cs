@@ -72,6 +72,8 @@ namespace Hotel_JustFriend.ViewModels
                 {
                     Title = _ListRoomType[i].fullname,
                     Values = chartValue,
+                    DataLabels = true,
+                    FontSize = 15,
                 };
                 PieSerieCollection.Add(newPie);
                 ReportUC c = new ReportUC();
