@@ -96,39 +96,37 @@
                         <ColumnDefinition Width="116"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock 
-                    Grid.Column="0"
-                    Text="STT"
-                    HorizontalAlignment="Center" 
-                    Margin="0" 
-                    TextWrapping="Wrap" 
-                    VerticalAlignment="Center" 
-                    FontWeight="SemiBold" />
+                        Grid.Column="0"
+                        Text="STT"
+                        HorizontalAlignment="Center" 
+                        Margin="0" 
+                        TextWrapping="Wrap" 
+                        VerticalAlignment="Center" 
+                        FontWeight="SemiBold" />
                     <TextBlock 
-                    Grid.Column="1"
-                    Text="Loại phòng"
-                    HorizontalAlignment="Center" 
-                    Margin="10,0,0,0" 
-                    TextWrapping="Wrap" 
-                    VerticalAlignment="Center" 
-                    FontWeight="SemiBold" />
+                        Grid.Column="1"
+                        Text="Loại phòng"
+                        HorizontalAlignment="Center" 
+                        Margin="10,0,0,0" 
+                        TextWrapping="Wrap" 
+                        VerticalAlignment="Center" 
+                        FontWeight="SemiBold" />
                     <TextBlock 
-                    Grid.Column="2"
-                    Text="Doanh thu"
-                    HorizontalAlignment="Center" 
-                    Margin="0" 
-                    TextWrapping="Wrap" 
-                    VerticalAlignment="Center" 
-                    FontWeight="SemiBold" />
+                        Grid.Column="2"
+                        Text="Doanh thu"
+                        HorizontalAlignment="Center" 
+                        Margin="0" 
+                        TextWrapping="Wrap" 
+                        VerticalAlignment="Center" 
+                        FontWeight="SemiBold" />
                     <TextBlock 
-                    Grid.Column="3"
-                    Text="Tỷ lệ"
-                    HorizontalAlignment="Center" 
-                    Margin="0" 
-                    TextWrapping="Wrap" 
-                    VerticalAlignment="Center" 
-                    FontWeight="SemiBold" />
-
-
+                        Grid.Column="3"
+                        Text="Tỷ lệ"
+                        HorizontalAlignment="Center" 
+                        Margin="0" 
+                        TextWrapping="Wrap" 
+                        VerticalAlignment="Center" 
+                        FontWeight="SemiBold" />
                 </Grid>
                 <Grid Margin="0,25,0,0" Background="#FFFAFA">
                     <StackPanel x:Name="stp">
