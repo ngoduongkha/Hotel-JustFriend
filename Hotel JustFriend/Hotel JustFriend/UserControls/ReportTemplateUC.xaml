@@ -59,8 +59,6 @@
                         FontWeight="SemiBold" Width="169"/>
                     </Grid>
                 </StackPanel>
-
-
                 <Grid Grid.Column="1">
                     <Image 
                     Source="/Hotel JustFriend;component/Resources/Images/banner.png"
@@ -81,34 +79,6 @@
                     HorizontalAlignment="Center"/>
                 </Grid>
             </Grid>
-            <!--<Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid >
-                <Rectangle Fill="Black"/>
-                <Rectangle Fill="Black" Margin="218,-34,-59.333,32" RenderTransformOrigin="0.107,-0.755">
-                    <Rectangle.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform Angle="45"/>
-                            <TranslateTransform X="12.098" Y="16.09"/>
-                        </TransformGroup>
-                    </Rectangle.RenderTransform>
-                </Rectangle>
-            </Grid>
-            <Grid Grid.Column="1">
-                <Rectangle Fill="#FEECED"></Rectangle>
-                <Rectangle Fill="Pink" Margin="-41,-72,178.667,59">
-                    <Rectangle.RenderTransform>
-                        <RotateTransform Angle="60"></RotateTransform>
-                    </Rectangle.RenderTransform>
-                </Rectangle>
-
-            </Grid>
-        </Grid>-->
             <Grid Grid.Row="1" Background="White">
 
             </Grid>
@@ -126,39 +96,37 @@
                         <ColumnDefinition Width="116"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock 
-                    Grid.Column="0"
-                    Text="STT"
-                    HorizontalAlignment="Center" 
-                    Margin="0" 
-                    TextWrapping="Wrap" 
-                    VerticalAlignment="Center" 
-                    FontWeight="SemiBold" />
+                        Grid.Column="0"
+                        Text="STT"
+                        HorizontalAlignment="Center" 
+                        Margin="0" 
+                        TextWrapping="Wrap" 
+                        VerticalAlignment="Center" 
+                        FontWeight="SemiBold" />
                     <TextBlock 
-                    Grid.Column="1"
-                    Text="Loại phòng"
-                    HorizontalAlignment="Center" 
-                    Margin="10,0,0,0" 
-                    TextWrapping="Wrap" 
-                    VerticalAlignment="Center" 
-                    FontWeight="SemiBold" />
+                        Grid.Column="1"
+                        Text="Loại phòng"
+                        HorizontalAlignment="Center" 
+                        Margin="10,0,0,0" 
+                        TextWrapping="Wrap" 
+                        VerticalAlignment="Center" 
+                        FontWeight="SemiBold" />
                     <TextBlock 
-                    Grid.Column="2"
-                    Text="Doanh thu"
-                    HorizontalAlignment="Center" 
-                    Margin="0" 
-                    TextWrapping="Wrap" 
-                    VerticalAlignment="Center" 
-                    FontWeight="SemiBold" />
+                        Grid.Column="2"
+                        Text="Doanh thu"
+                        HorizontalAlignment="Center" 
+                        Margin="0" 
+                        TextWrapping="Wrap" 
+                        VerticalAlignment="Center" 
+                        FontWeight="SemiBold" />
                     <TextBlock 
-                    Grid.Column="3"
-                    Text="Tỷ lệ"
-                    HorizontalAlignment="Center" 
-                    Margin="0" 
-                    TextWrapping="Wrap" 
-                    VerticalAlignment="Center" 
-                    FontWeight="SemiBold" />
-
-
+                        Grid.Column="3"
+                        Text="Tỷ lệ"
+                        HorizontalAlignment="Center" 
+                        Margin="0" 
+                        TextWrapping="Wrap" 
+                        VerticalAlignment="Center" 
+                        FontWeight="SemiBold" />
                 </Grid>
                 <Grid Margin="0,25,0,0" Background="#FFFAFA">
                     <StackPanel x:Name="stp">
