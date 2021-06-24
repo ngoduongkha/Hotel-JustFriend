@@ -208,9 +208,6 @@
     <Compile Include="UserControls\BillDetailUC.xaml.cs">
       <DependentUpon>BillDetailUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ButtonRoomUC.xaml.cs">
-      <DependentUpon>ButtonRoomUC.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\CustomerUC.xaml.cs">
       <DependentUpon>CustomerUC.xaml</DependentUpon>
     </Compile>
@@ -328,10 +325,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\BillDetailUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\ButtonRoomUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -121,7 +121,8 @@
                 </Border>
             </Grid>
         </Border>
-        <Grid HorizontalAlignment="Left" Width="1200">
+        <Grid HorizontalAlignment="Left" 
+              Width="{Binding ElementName=window, Path=Width}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>

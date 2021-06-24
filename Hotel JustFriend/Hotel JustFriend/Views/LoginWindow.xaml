@@ -101,15 +101,6 @@
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
-                            <Button
-                                Content="Quên mật khẩu?"
-                                Background="{x:Null}"
-                                Foreground="Black"
-                                BorderBrush="{x:Null}"
-                                FontSize="15">  
-                            </Button>
-                        </Grid>
                         <Grid Grid.Row="1">
                             <Button
                                 Width="150" Content="_Đăng nhập"
@@ -122,15 +113,6 @@
                                 CommandParameter="{Binding ElementName=window}"
                                 FontSize="18"
                                 IsDefault="True">
-                            </Button>
-                        </Grid>
-                        <Grid Grid.Row="2">
-                            <Button
-                                Content="Đăng ký"
-                                Background="{x:Null}"
-                                Foreground="Black"
-                                BorderBrush="{x:Null}"
-                                FontSize="15">
                             </Button>
                         </Grid>
                     </Grid>

@@ -5,7 +5,6 @@ FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Resources\Resource
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Template\BillTemplate.xaml;;
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Template\ImportBill.xaml;;
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\UserControls\BillDetailUC.xaml;;
-FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\UserControls\ButtonRoomUC.xaml;;
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\UserControls\CustomerUC.xaml;;
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\UserControls\ImportProductDetailUC.xaml;;
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\UserControls\ImportProductUC.xaml;;
@@ -20,22 +19,14 @@ FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\AddTypeWindo
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\CustomizeParametersView.xaml;;
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\AccountManageView.xaml;;
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\AddCustomerWindow.xaml;;
-FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\BookingWindow.xaml;;
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\DetailCustomer.xaml;;
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\EditCustomerView.xaml;;
-FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\EmployeeDetailView.xaml;;
-FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\EmployeeManageView.xaml;;
-FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\EmployeeUpdateView.xaml;;
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\LoginWindow.xaml;;
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\MainWindow.xaml;;
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\MyMessageBoxes\MyMessageBoxWindow.xaml;;
-FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\ProductDetailView.xaml;;
-FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\ProductManageView.xaml;;
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\ReportView.xaml;;
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\RoomDetailView.xaml;;
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\BusinessView.xaml;;
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\RoomManageView.xaml;;
 FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\RoomRentalView.xaml;;
-FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\SellProductView.xaml;;
-FD:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\Views\WarehouseView.xaml;;
 
