@@ -56,11 +56,12 @@
                         </Grid.RowDefinitions>
                         <StackPanel Grid.Row="0">
                             <Label Content="Loại phòng:"/>
-                            <ComboBox materialDesign:HintAssist.Hint="Chọn loại phòng"
-                                          ItemsSource="{Binding Path=ListRoomType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                          DisplayMemberPath="fullname"
-                                          SelectedValuePath="idType"
-                                          x:Name="cbboxRoomType"/>
+                            <ComboBox 
+                                materialDesign:HintAssist.Hint="Chọn loại phòng"
+                                ItemsSource="{Binding Path=ListRoomType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                DisplayMemberPath="fullname"
+                                SelectedValuePath="idType"
+                                x:Name="cbboxRoomType"/>
                         </StackPanel>
                         <StackPanel 
                                 HorizontalAlignment="Center"
