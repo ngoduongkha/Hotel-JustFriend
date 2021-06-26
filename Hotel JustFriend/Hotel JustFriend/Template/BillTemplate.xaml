@@ -280,7 +280,7 @@
                             HorizontalAlignment="Right"
                             VerticalAlignment="Bottom"
                             Margin="0,0,30,20"
-                        Command="{Binding LoadBillCommand}"/>
+                        Command="{Binding PrintBillCommand}"/>
             </Grid>
         </Grid>
         <Grid Grid.Row="5" Background="#201C1C">
