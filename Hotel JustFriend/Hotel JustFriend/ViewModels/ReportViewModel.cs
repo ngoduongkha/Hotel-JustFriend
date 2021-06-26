@@ -44,49 +44,56 @@ namespace Hotel_JustFriend.ViewModels
             if (Month != "") m = int.Parse(Month);
             if (Month == "") _ListBill = new ObservableCollection<Bill>(DataProvider.Instance.DB.Bills.Where(p => p.date.Value.Year == y));
             else _ListBill = new ObservableCollection<Bill>(DataProvider.Instance.DB.Bills.Where(p => p.date.Value.Year == y && p.date.Value.Month == m));
-            PieSerieCollection = new SeriesCollection();
-            for (int i = 0; i < _ListRoomType.Count; i++)
+            if (_ListBill.Count != 0)
             {
-                double phantram = 0;
-                decimal doanhthu = 0;
-                int idtype = _ListRoomType[i].idType;
-                for (int j = 0; j < _ListBillInfo.Count; j++)
+                PieSerieCollection = new SeriesCollection();
+                for (int i = 0; i < _ListRoomType.Count; i++)
                 {
-                    int idd = _ListBillInfo[j].idBill;
-                    Bill k = _ListBill.Where(p => p.idBill == idd).FirstOrDefault();
-                    if (k != null)
+                    double phantram = 0;
+                    decimal doanhthu = 0;
+                    int idtype = _ListRoomType[i].idType;
+                    for (int j = 0; j < _ListBillInfo.Count; j++)
                     {
-                        Room a = _ListRoom.Where(p => p.idRoom == _ListBillInfo[j].idRoom).FirstOrDefault();
-                        if (a.idType == idtype)
+                        int idd = _ListBillInfo[j].idBill;
+                        Bill k = _ListBill.Where(p => p.idBill == idd).FirstOrDefault();
+                        if (k != null)
                         {
-                            phantram = phantram + 1;
-                            doanhthu = doanhthu + (decimal)k.totalMoney;
+                            Room a = _ListRoom.Where(p => p.idRoom == _ListBillInfo[j].idRoom).FirstOrDefault();
+                            if (a.idType == idtype)
+                            {
+                                phantram = phantram + 1;
+                                doanhthu = doanhthu + (decimal)k.totalMoney;
+                            }
                         }
                     }
-                }
-                if (_ListBill != null) phantram = phantram / (_ListBill.Count);
-                tt = tt + doanhthu;
-                ChartValues<decimal> chartValue = new ChartValues<decimal>();
-                chartValue.Add(doanhthu);
-                PieSeries newPie = new PieSeries
-                {
-                    Title = _ListRoomType[i].fullname,
-                    Values = chartValue,
-                    DataLabels = true,
-                    FontSize = 15,
-                };
-                PieSerieCollection.Add(newPie);
-                ReportUC c = new ReportUC();
-                c.STT.Text = (i + 1).ToString();
-                c.displayname.Text = _ListRoomType[i].fullname;
-                c.revenue.Text = string.Format("{0:C}", doanhthu);
-                c.percent.Text = phantram.ToString("#0.##%");
+                    if (_ListBill != null) phantram = phantram / (_ListBill.Count);
+                    tt = tt + doanhthu;
 
-                aa.stp.Children.Add(c);
+                    ChartValues<decimal> chartValue = new ChartValues<decimal>();
+                    chartValue.Add(doanhthu);
+                    PieSeries newPie = new PieSeries
+                    {
+                        Title = _ListRoomType[i].fullname,
+                        Values = chartValue,
+                        DataLabels = true,
+                        FontSize = 15,
+                    };
+                    PieSerieCollection.Add(newPie);
+
+                    ReportUC c = new ReportUC();
+                    c.STT.Text = (i + 1).ToString();
+                    c.displayname.Text = _ListRoomType[i].fullname;
+                    c.revenue.Text = string.Format("{0:C}", doanhthu);
+                    c.percent.Text = phantram.ToString("#0.##%");
+                    aa.stp.Children.Add(c);
+                }
+                aa.totalmoney.Text = string.Format("{0:C}", tt);
+                grid.Children.Clear();
+                grid.Children.Add(aa);
+            } else
+            {
+                MyMessageBox.Show("Không tìm được doanh thu theo thời gian đã nhập", "Thông báo", MessageBoxButton.OK);
             }
-            aa.totalmoney.Text = string.Format("{0:C}", tt);
-            grid.Children.Clear();
-            grid.Children.Add(aa);
         }
 
     }
