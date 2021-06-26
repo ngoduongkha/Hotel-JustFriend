@@ -108,12 +108,14 @@ namespace Hotel_JustFriend.ViewModels
             };
             BillTemplate billtemp = new BillTemplate();
             billtemp.date.Text = d.ToString();
+
             billtemp.Roomname.Text = DataProvider.Instance.DB.Rooms.Where(c => c.idRoom == SelectedRoom.idRoom).FirstOrDefault().displayName;
             DataProvider.Instance.DB.Bills.Add(bill);
             decimal Price = (decimal)DataProvider.Instance.DB.TypeRooms.Where(c => c.idType == SelectedRoom.idType).FirstOrDefault().price;
             int idrent = DataProvider.Instance.DB.RentInvoices.Where((c) => c.idRoom == SelectedRoom.idRoom).FirstOrDefault().idRentInvoice;
             ListRentInvoiceInfo = new ObservableCollection<RentInvoiceInfo>(DataProvider.Instance.DB.RentInvoiceInfoes
                                                                                     .Where((c) => c.idRentInvoice == idrent));
+            int lp = ListRentInvoiceInfo.Count;
             double heso = 0;
             BillInfo billinfo = new BillInfo
             {
@@ -156,13 +158,17 @@ namespace Hotel_JustFriend.ViewModels
             Room p = ListRoom.Where(c => c.idRoom == SelectedRoom.idRoom).FirstOrDefault();
             p.status = false;
             RentInvoice k = DataProvider.Instance.DB.RentInvoices.Where((c) => c.idRoom == p.idRoom).FirstOrDefault();
-           
+
             if (k != null) DataProvider.Instance.DB.RentInvoices.Remove(k);
             DataProvider.Instance.DB.SaveChanges();
-          
+
             SelectedRentInvoice = null;
-            SelectRoom(p);
-            billtemp.ShowDialog();
+            SelectRoom(p); 
+            if (lp == 0)
+            {
+                MyMessageBox.Show("Phòng trống không thể thanh toán", "Nhắc nhở", MessageBoxButton.OK);
+            }
+            else billtemp.ShowDialog();
         }
         [Command]
         public void SelectRoom(Room selectedRoom)
