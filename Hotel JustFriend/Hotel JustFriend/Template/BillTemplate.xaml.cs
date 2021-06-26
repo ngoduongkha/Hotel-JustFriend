@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Hotel_JustFriend.ViewModels;
 
 namespace Hotel_JustFriend.Template
 {
@@ -10,6 +11,7 @@ namespace Hotel_JustFriend.Template
         public BillTemplate()
         {
             InitializeComponent();
+            this.DataContext = new BilltemplateViewModel();
         }
     }
 }
