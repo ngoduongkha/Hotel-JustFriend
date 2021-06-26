@@ -132,7 +132,7 @@
                             Width="200" Margin="30 25 15 0"
                             SelectedIndex="0" Text="{Binding RoomStatus, Mode=OneWayToSource}">
                             <ComboBoxItem Content="Sẵn sàng"/>
-                            />
+                            <ComboBoxItem Content="Chưa sẵn sàng"/>
                         </ComboBox>
                         <ComboBox
                             DockPanel.Dock="Left"
