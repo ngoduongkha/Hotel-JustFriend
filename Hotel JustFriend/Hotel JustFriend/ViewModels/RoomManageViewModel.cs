@@ -3,7 +3,6 @@ using DevExpress.Mvvm.DataAnnotations;
 using Hotel_JustFriend.Models;
 using Hotel_JustFriend.Views;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Windows.Data;
 using Hotel_JustFriend.UserControls;
@@ -35,8 +34,9 @@ namespace Hotel_JustFriend.ViewModels
 
         public RoomManageViewModel()
         {
-
+ 
         }
+
         public void ham_da_nang(RoomManageView p)
         {
             p.stp_ListRoom.Children.Clear();
@@ -70,7 +70,7 @@ namespace Hotel_JustFriend.ViewModels
                     .Where(x => x.isDelete == false)
                     .OrderBy(x => x.floor)
                     );
-                ListRoomType = (ObservableCollection<TypeRoom>)new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where(c=>c.isDelete==false));
+                ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where(c=>c.isDelete==false));
                 for (int i=0;i<ListRoom.Count;i++)
                 {
                     RoomUC a = new RoomUC();
@@ -117,12 +117,16 @@ namespace Hotel_JustFriend.ViewModels
             try
             {
                 ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms
-                    .Where(x => x.isDelete == false)
-                    );
+                    .Where(x => x.isDelete == false));
                 int k = int.Parse(p.id.Text);
                 Room result = (from u in ListRoom
                                where u.idRoom == k
                                select u).Single();
+                if (result.status == true)
+                {
+                    MyMessageBox.Show("Phòng đang được sử dụng!", "Thông báo", System.Windows.MessageBoxButton.OK);
+                    return;
+                }
                 result.isDelete = true;
                 DataProvider.Instance.DB.SaveChanges();
                 MyMessageBox.Show("Xóa thành công!", "Thông báo", System.Windows.MessageBoxButton.OK);
