@@ -12,71 +12,95 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="1.2*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <TextBlock x:Name="idRentInvoice"
                    Visibility="Hidden"></TextBlock>
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="6*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
+                <Grid.Resources>
+                    <Style 
+                        TargetType="TextBox" 
+                        BasedOn="{StaticResource MaterialDesignTextBox}">
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="FontSize" Value="17"/>
+                        <Setter Property="Padding" Value="0"/>
+                    </Style>
+                    <Style TargetType="Label">
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="FontSize" Value="17"/>
+                        <Setter Property="Padding" Value="0"/>
+                    </Style>
+                    <Style 
+                        TargetType="ComboBox" 
+                        BasedOn="{StaticResource MaterialDesignComboBox}">
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="Padding" Value="0"/>
+                        <Setter Property="Margin" Value="10 0"/>
+                        <Setter Property="FontSize" Value="17"/>
+                    </Style>
+                    <Style
+                        TargetType="Button"
+                        BasedOn="{StaticResource MyPrimaryButtonStyle}">
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="Margin" Value="10 0"/>
+                        <Setter Property="FontSize" Value="17"/>
+                    </Style>
+                </Grid.Resources>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="1.2*"/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <materialDesign:Card Grid.Column="0" Margin="10">
                     <StackPanel Margin="10" Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Search" Margin="5,2"
-                                                     Height="23" Width="20"
-                                                     VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                        <TextBox materialDesign:HintAssist.Hint="Tìm phòng" Width="150"
-                                      FontSize="15" Background="Transparent"
-                                                         x:Name="txtSearch"
-
-                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                        <materialDesign:PackIcon 
+                            Kind="Search" Margin="5,2"
+                            Height="23" Width="20"
+                            VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBox 
+                            materialDesign:HintAssist.Hint="Tìm phòng"
+                            Width="150"
+                            Background="Transparent"
+                            x:Name="txtSearch">
                         </TextBox>
-                        <Button Content="Tìm" VerticalAlignment="Bottom"
-                                        Margin="10,0" Height="25" FontSize="15" Width="60"
-                                        Padding="15,0" Background="#fa91d7" BorderBrush="#fa91d7"
-                                        materialDesign:ButtonAssist.CornerRadius="10"
-                                Command="{Binding SearchRoomCommand}"
-                        CommandParameter="{Binding ElementName=business}"></Button>
+                        <Button 
+                            Content="Tìm"
+                            Padding="15,0" Background="#fa91d7" BorderBrush="#fa91d7"
+                            materialDesign:ButtonAssist.CornerRadius="10"
+                            Command="{Binding SearchRoomCommand}"
+                            CommandParameter="{Binding ElementName=business}"></Button>
                     </StackPanel>
                 </materialDesign:Card>
                 <materialDesign:Card Grid.Column="1" Margin="10">
                     <StackPanel Grid.Column="1" Margin="10" Orientation="Horizontal">
-                        <Label Content="Bộ lọc: " FontSize="17"
-                                   VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                        <ComboBox materialDesign:HintAssist.Hint="Trạng thái"
-                                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                                      VerticalAlignment="Bottom"
-                                                          ItemsSource="{Binding ListRoomStatus}"
-
-                                                          x:Name="txtFilterStatus"
-
-                                      Margin="10,0" FontSize="15">
+                        <Label Content="Bộ lọc: "/>
+                        <ComboBox 
+                            materialDesign:HintAssist.Hint="Trạng thái"
+                            ItemsSource="{Binding ListRoomStatus}"
+                            x:Name="txtFilterStatus"
+                            Width="150">
                             <ComboBoxItem Content="Sẵn sàng"/>
                             <ComboBoxItem Content="Chưa Sẵn sàng"/>
                         </ComboBox>
                         <ComboBox 
-                        x:Name="txtFilterType"
-                        ItemsSource="{Binding ListRoomType}"
-                        DisplayMemberPath="fullname"
-                        SelectedValuePath="idType"
-                        SelectedValue="{Binding Path=idType}"
-                        materialDesign:HintAssist.Hint="Loại phòng"                     
-                        Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                        HorizontalContentAlignment="Left" 
-                        FontSize="15" Width="150" MaxWidth="250"
-                        Margin="10 0 10 0">
+                            x:Name="txtFilterType"
+                            ItemsSource="{Binding ListRoomType}"
+                            DisplayMemberPath="fullname"
+                            SelectedValuePath="idType"
+                            SelectedValue="{Binding Path=idType}"
+                            materialDesign:HintAssist.Hint="Loại phòng" 
+                            Width="150">
                         </ComboBox>
-                        <Button Content="Lọc" VerticalAlignment="Bottom"
-                                    Margin="10,0" Height="25" FontSize="15" Width="60"
-                                    Padding="15,0" Background="#fa91d7" BorderBrush="#fa91d7"
-                                    materialDesign:ButtonAssist.CornerRadius="10"
-                                Command="{Binding RoomFilterCommand}" CommandParameter="{Binding ElementName=business}" />
+                        <Button 
+                            Content="Lọc"
+                            Padding="15,0" Background="#fa91d7"
+                            BorderBrush="#fa91d7"
+                            materialDesign:ButtonAssist.CornerRadius="10"
+                            Command="{Binding RoomFilterCommand}" CommandParameter="{Binding ElementName=business}" />
                     </StackPanel>
                 </materialDesign:Card>
             </Grid>
@@ -179,8 +203,7 @@
             </Grid.RowDefinitions>
             <TextBlock x:Name="idRoom"
                    Visibility="Hidden"
-                  Text="{Binding Path=SelectedRoom.idRoom}"
-></TextBlock>
+                  Text="{Binding Path=SelectedRoom.idRoom}"></TextBlock>
            
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
@@ -191,30 +214,30 @@
                         Orientation="Horizontal"
                         Margin="10">
                     <Label Content="Phòng:"
-                       FontSize="20"
+                       FontSize="17"
                        VerticalAlignment="Center">
                     </Label>
                     <TextBox materialDesign:HintAssist.Hint="Tên phòng"
-                         FontSize="20" VerticalAlignment="Center"
+                         FontSize="17" VerticalAlignment="Center"
                          Text="{Binding Path=SelectedRoom.displayName}"
-                         Margin="10,0" Width="150" IsReadOnly="True"/>
+                         Margin="5,0" Width="150" IsReadOnly="True"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1"
                         Orientation="Horizontal">
                     <Label Content="Ngày thuê:"
-                       FontSize="20"
+                       FontSize="17"
                        VerticalAlignment="Center">
                     </Label>
                     <TextBox materialDesign:HintAssist.Hint="dd/mm/yyyy"
-                         FontSize="20" VerticalAlignment="Center"
+                         FontSize="17" VerticalAlignment="Center"
                          x:Name="date"
                          Text="{Binding Path=SelectedRentInvoice.date}"                             
-                         Margin="10,0" Width="120" IsReadOnly="True"/>
+                         Margin="5,0" Width="120" IsReadOnly="True"/>
                 </StackPanel>
             </Grid>
-            <Grid Grid.Row="1" >
-                <materialDesign:Card></materialDesign:Card>
-                <GroupBox Header="Thông tin chung"
+            <Grid Grid.Row="1" Margin="0 5">
+                <materialDesign:Card>
+                    <GroupBox Header="Thông tin chung"
                       FontSize="25"
                       Margin="0"
                           >
@@ -253,25 +276,37 @@
                             </DataGrid.Columns>
                     </DataGrid>
                 </GroupBox>
+                </materialDesign:Card>
             </Grid>
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2.2*"/>
+                    <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
-                    <WrapPanel>
-                        <WrapPanel.Resources>
-                            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatAccentBgButton}">
-                                <Setter Property="IsEnabled" Value="{Binding Path=SelectedRoom.status, Mode=OneWay}"/>
-                            </Style>
-                        </WrapPanel.Resources>
-                        <Button materialDesign:ButtonAssist.CornerRadius="10"
-                                Width="120" Height="70" BorderBrush="#fa91d7"
-                                Background="#fa91d7" Margin="5" Padding="0"
-                                Command="{Binding AddCustomerCommand}"
-                                CommandParameter="{Binding ElementName=business}">
-                            
+                    <Grid.Resources>
+                        <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatAccentBgButton}">
+                            <Setter Property="IsEnabled" Value="{Binding Path=SelectedRoom.status, Mode=OneWay}"/>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Button
+                            Grid.Row="0"
+                            materialDesign:ButtonAssist.CornerRadius="10"
+                            HorizontalAlignment="Stretch"
+                            Height="80"
+                            BorderBrush="#fa91d7"
+                            Background="#fa91d7" Margin="5" Padding="0"
+                            Command="{Binding AddCustomerCommand}"
+                            CommandParameter="{Binding ElementName=business}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
@@ -281,44 +316,20 @@
                                     <Label Content="Thêm khách" FontSize="15"/>
                                 </Grid>
                                 <Grid Grid.Row="1">
-                                    <materialDesign:PackIcon Height="30" Width="30" Kind="AccountAdd"
-                                                             VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <materialDesign:PackIcon 
+                                        Height="30" Width="30" Kind="AccountAdd"
+                                        VerticalAlignment="Center" 
+                                        HorizontalAlignment="Center"/>
                                 </Grid>
                             </Grid>
                         </Button>
-                        <Button materialDesign:ButtonAssist.CornerRadius="10"
-                                Width="120" Height="70" BorderBrush="#ff7383"
-                                Background="#ff7383" Margin="5" Padding="0"
-                                Command="{Binding DeleteCustomerCommand}">
-                            <Button.Style>
-                                <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding SelectedItems.Count,ElementName=dGrid}"
-                                 Value="0">
-                                            <Setter Property="IsEnabled"
-                                Value="False" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <Grid Grid.Row="0">
-                                    <Label Content="Xóa khách" FontSize="15"/>
-                                </Grid>
-                                <Grid Grid.Row="1">
-                                    <materialDesign:PackIcon Height="30" Width="30" Kind="AccountRemove"
-                                                                     VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                </Grid>
-                            </Grid>
-                        </Button>
-                        <Button materialDesign:ButtonAssist.CornerRadius="10"
-                                Width="120" Height="70" BorderBrush="#ffe396"
-                                Background="#ffe396" Margin="5" Padding="0"
-                                Command="{Binding EditCustomerCommand}">
+                        <Button 
+                            Grid.Row="1"
+                            materialDesign:ButtonAssist.CornerRadius="10"
+                            HorizontalAlignment="Stretch"
+                            Height="80" BorderBrush="#ffe396"
+                            Background="#ffe396" Margin="5" Padding="0"
+                            Command="{Binding EditCustomerCommand}">
                             <Button.Style>
                                 <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                     <Style.Triggers>
@@ -344,10 +355,55 @@
                                 </Grid>
                             </Grid>
                         </Button>
-                        <Button materialDesign:ButtonAssist.CornerRadius="10"
-                                Width="120" Height="70" BorderBrush="#9ce8ff"
-                                Background="#9ce8ff" Margin="5" Padding="0"
-                                Command="{Binding DetailCustomerCommand}">
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Button 
+                            Grid.Row="0"
+                            materialDesign:ButtonAssist.CornerRadius="10"
+                            HorizontalAlignment="Stretch"
+                            Height="80" 
+                            BorderBrush="#ff7383"
+                            Background="#ff7383" 
+                            Margin="5"
+                            Padding="0"
+                            Command="{Binding DeleteCustomerCommand}">
+                            <Button.Style>
+                                <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedItems.Count,ElementName=dGrid}"
+                                 Value="0">
+                                            <Setter Property="IsEnabled"
+                                Value="False" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0">
+                                    <Label Content="Xóa khách" FontSize="15"/>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <materialDesign:PackIcon Height="30" Width="30" Kind="AccountRemove"
+                                                                     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Grid>
+                            </Grid>
+                        </Button>
+                        <Button 
+                            Grid.Row="1"
+                            materialDesign:ButtonAssist.CornerRadius="10"
+                            HorizontalAlignment="Stretch"
+                            Height="80" 
+                            BorderBrush="#9ce8ff"
+                            Background="#9ce8ff" Margin="5" Padding="0"
+                            Command="{Binding DetailCustomerCommand}">
                             <Button.Style>
                                 <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                     <Style.Triggers>
@@ -373,14 +429,16 @@
                                 </Grid>
                             </Grid>
                         </Button>
-                    </WrapPanel>
-                </Grid>
+                    </Grid>
+
+                    </Grid>
                 <Grid Grid.Column="1" Margin="5">
-                    <Button Height="80" Background="#8fffab" BorderBrush="#8fffab"
-                            VerticalAlignment="Top" HorizontalAlignment="Center"
-                            materialDesign:ButtonAssist.CornerRadius="10" Width="110"
-                            Padding="0" Margin="30,0"
-                            Command="{Binding PayCommand}">
+                    <Button 
+                        Height="170" Background="#8fffab" BorderBrush="#8fffab"
+                        VerticalAlignment="Top" HorizontalAlignment="Stretch"
+                        materialDesign:ButtonAssist.CornerRadius="10"
+                        Padding="0" Margin="10,0"
+                        Command="{Binding PayCommand}">
                         <Button.Style>
                             <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                 <Setter Property="IsDefault" Value="{Binding Path=SelectedRoom.status, Mode=OneWay}"/>
@@ -401,57 +459,65 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0">
-                                <Label Content="Thanh toán" FontSize="15"/>
+                                <Label Content="Thanh toán" FontSize="20"/>
                             </Grid>
                             <Grid Grid.Row="1">
-                                <materialDesign:PackIcon Kind="Money" Height="30" Width="30" Foreground="Black"
-                                                                 VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <materialDesign:PackIcon
+                                    Kind="Money" 
+                                    Height="50"
+                                    Width="50" 
+                                    Foreground="Black"
+                                    VerticalAlignment="Center" 
+                                    HorizontalAlignment="Center"/>
                             </Grid>
                             <Grid Grid.Row="2">
-                                <Label Content="$$$" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15"/>
+                                <Label Content="$$$" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"/>
                             </Grid>
                         </Grid>
                     </Button>
-                    <Button Height="80" Background="#f04d4d" BorderBrush="#f04d4d"
-                            VerticalAlignment="Top" HorizontalAlignment="Center"
-                            materialDesign:ButtonAssist.CornerRadius="10" Width="110"
-                            Padding="0" Margin="30,0"
-                            Command="{Binding RentCommand}"
-                            CommandParameter="{Binding ElementName=business}">
-                        <Button.Style>
-                            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
-                                <Setter Property="IsDefault" Value="{Binding Path=SelectedRoom.status, Mode=OneWay}"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsDefault" Value="False">
-                                        <Setter Property="Visibility" Value="Visible"/>
-                                    </Trigger>
-                                    <Trigger Property="IsDefault" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Grid Grid.Row="0">
-                                <Label Content="Cho thuê" FontSize="15"/>
-                            </Grid>
-                            <Grid Grid.Row="1">
-                                <materialDesign:PackIcon Kind="Money" Height="30" Width="30" Foreground="Black"
-                                                                 VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            </Grid>
-                            <Grid Grid.Row="2">
-                                <Label Content="$$$" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15"/>
-                            </Grid>
-                        </Grid>
-                    </Button>
-                    <!--<Button Content="Cho thue" Height="Auto" Margin="0,72,0,45"
+                    <Button 
+                        Height="170" 
+                        Background="#f04d4d"
+                        BorderBrush="#f04d4d"
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Stretch"
+                        materialDesign:ButtonAssist.CornerRadius="10"
+                        Padding="0"
                         Command="{Binding RentCommand}"
-                        CommandParameter="{Binding ElementName=business}"></Button>-->
+                        CommandParameter="{Binding ElementName=business}">
+                        <Button.Style>
+                            <Style 
+                                TargetType="Button" 
+                                BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                                <Setter Property="IsDefault" Value="{Binding Path=SelectedRoom.status, Mode=OneWay}"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsDefault" Value="False">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </Trigger>
+                                    <Trigger Property="IsDefault" Value="True">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Label Content="Cho thuê" FontSize="20"/>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <materialDesign:PackIcon Kind="Money" Height="50" Width="50" Foreground="Black"
+                                                                 VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Label Content="$$$" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"/>
+                            </Grid>
+                        </Grid>
+                    </Button>
                 </Grid>
             </Grid>
         </Grid>
