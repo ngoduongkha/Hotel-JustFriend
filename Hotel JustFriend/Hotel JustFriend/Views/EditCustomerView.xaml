@@ -6,8 +6,10 @@
         xmlns:local="clr-namespace:Hotel_JustFriend.Views" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:validation="clr-namespace:Hotel_JustFriend.Validations"
         mc:Ignorable="d"
         x:Name="window"
-        Title="EditCustomerView" Height="600" Width="550">
-    <Border BorderBrush="Black" BorderThickness="0.5" CornerRadius="10" Background="Pink">
+        ResizeMode="NoResize" WindowStyle="None"
+        Title="EditCustomerView" Height="600" Width="550"
+        Background="Transparent">
+    <Border BorderBrush="{x:Null}" BorderThickness="0.5" CornerRadius="10" Background="Pink">
         <i:Interaction.Triggers>
             <i:EventTrigger EventName="MouseLeftButtonDown">
                 <i:InvokeCommandAction Command="{Binding MouseMoveWindowCommand}" CommandParameter="{Binding ElementName=window}"/>
