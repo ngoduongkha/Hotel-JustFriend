@@ -211,17 +211,8 @@
     <Compile Include="UserControls\CustomerUC.xaml.cs">
       <DependentUpon>CustomerUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ImportProductDetailUC.xaml.cs">
-      <DependentUpon>ImportProductDetailUC.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\ImportProductUC.xaml.cs">
-      <DependentUpon>ImportProductUC.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\NumericSpinner.xaml.cs">
       <DependentUpon>NumericSpinner.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\ProductDetailUC.xaml.cs">
-      <DependentUpon>ProductDetailUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ReportTemplateUC.xaml.cs">
       <DependentUpon>ReportTemplateUC.xaml</DependentUpon>
@@ -245,14 +236,12 @@
     <Compile Include="ViewModels\EmployeeDetailViewModel.cs" />
     <Compile Include="ViewModels\ReportViewModel.cs" />
     <Compile Include="ViewModels\RoomRentalViewModel.cs" />
-    <Compile Include="ViewModels\SellProductViewModel.cs" />
     <Compile Include="Views\AddTypeWindow.xaml.cs">
       <DependentUpon>AddTypeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CustomizeParametersView.xaml.cs">
       <DependentUpon>CustomizeParametersView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\WarehouseViewModel.cs" />
     <Compile Include="Views\AccountManageView.xaml.cs">
       <DependentUpon>AccountManageView.xaml</DependentUpon>
     </Compile>
@@ -277,8 +266,6 @@
     <Compile Include="Validations\NotNullValidation.cs" />
     <Compile Include="Validations\NumberValidation.cs" />
     <Compile Include="ViewModels\BillViewModel.cs" />
-    <Compile Include="ViewModels\ProductDetailViewModel.cs" />
-    <Compile Include="ViewModels\ProductManageViewModel.cs" />
     <Compile Include="ViewModels\RoomDetailViewModel.cs" />
     <Compile Include="ViewModels\BusinessViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -332,19 +319,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\ImportProductDetailUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\ImportProductUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UserControls\NumericSpinner.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\ProductDetailUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
