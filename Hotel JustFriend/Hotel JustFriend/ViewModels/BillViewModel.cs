@@ -22,7 +22,7 @@ namespace Hotel_JustFriend.ViewModels
         }
 
         [Command]
-        public void LoadBill()
+        public void PrintBill()
         {
             //Bill = DataProvider.Instance.DB.Bills.Where(x => x.idBill == "1").SingleOrDefault();
             //ListBillInfo = new ObservableCollection<Billinfo>(DataProvider.Instance.DB.Billinfoes.Where(x => x.idBill == Bill.idBill));
