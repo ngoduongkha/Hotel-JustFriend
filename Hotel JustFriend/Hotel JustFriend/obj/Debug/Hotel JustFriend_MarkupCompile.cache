@@ -16,5 +16,5 @@ D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\App.xaml
 1502045106477
 Resources\ButtonResources.xaml;Resources\ColorResources.xaml;Resources\Resources.xaml;Template\BillTemplate.xaml;Template\ImportBill.xaml;UserControls\BillDetailUC.xaml;UserControls\CustomerUC.xaml;UserControls\NumericSpinner.xaml;UserControls\ReportTemplateUC.xaml;UserControls\ReportUC.xaml;UserControls\RoomUC.xaml;UserControls\SellProductDetailUC.xaml;UserControls\SellProductUC.xaml;Views\AddTypeWindow.xaml;Views\CustomizeParametersView.xaml;Views\AccountManageView.xaml;Views\AddCustomerWindow.xaml;Views\DetailCustomer.xaml;Views\EditCustomerView.xaml;Views\LoginWindow.xaml;Views\MainWindow.xaml;Views\MyMessageBoxes\MyMessageBoxWindow.xaml;Views\ReportView.xaml;Views\RoomDetailView.xaml;Views\BusinessView.xaml;Views\RoomManageView.xaml;Views\RoomRentalView.xaml;
 
-False
+True
 
