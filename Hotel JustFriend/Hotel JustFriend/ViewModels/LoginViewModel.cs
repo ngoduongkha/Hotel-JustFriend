@@ -56,7 +56,7 @@ namespace Hotel_JustFriend.ViewModels
 
                 if (count > 0)
                 {
-                    MainWindow main = new MainWindow();
+                    MainWindow main = new MainWindow(UserName);
                     p.Hide();
                     main.ShowDialog();
                     p.Show();

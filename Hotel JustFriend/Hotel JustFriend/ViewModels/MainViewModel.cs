@@ -11,6 +11,18 @@ namespace Hotel_JustFriend.ViewModels
     [POCOViewModel]
     public class MainViewModel : ViewModelBase
     {
+        private Visibility _isCollapsed = Visibility.Visible;
+
+        public Visibility IsCollapsed { get => _isCollapsed; set { _isCollapsed = value; RaisePropertyChanged(); } }
+
+        public MainViewModel(string userName)
+        {
+            if (userName != "admin")
+            {
+                _isCollapsed = Visibility.Collapsed;
+            }
+        }
+
         #region Command
         [Command]
         public void MouseMoveWindow(Window p)

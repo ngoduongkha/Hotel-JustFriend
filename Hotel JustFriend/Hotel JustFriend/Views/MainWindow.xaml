@@ -7,7 +7,7 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
     xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts"
-    x:Class="Hotel_JustFriend.Views.MainWindow" DataContext="{StaticResource MainVM}"
+    x:Class="Hotel_JustFriend.Views.MainWindow"
     mc:Ignorable="d" WindowStyle="None" WindowStartupLocation="CenterScreen"
     x:Name="window" Title="Hotel Just Friend" Height="700" Width="1200" 
     ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True"
@@ -179,7 +179,8 @@
                     </Button>
                     <Button
                         Command="{Binding OpenTabReportCommand}"
-                        CommandParameter="{Binding ElementName=window}">
+                        CommandParameter="{Binding ElementName=window}"
+                        Visibility="{Binding IsCollapsed}">
                         <StackPanel Orientation="Horizontal" Width="250">
                             <materialDesign:PackIcon Kind="ChartBar" Grid.Column="0"/>
                             <Label Content="Báo cáo doanh thu" Grid.Column="0"/>
@@ -187,7 +188,8 @@
                     </Button>
                     <Button
                         Command="{Binding OpenTabCustomizeParametersCommand}"
-                        CommandParameter="{Binding ElementName=window}">
+                        CommandParameter="{Binding ElementName=window}"
+                        Visibility="{Binding IsCollapsed}">
                         <StackPanel Orientation="Horizontal" Width="250">
                             <materialDesign:PackIcon Kind="SettingsApplications" Grid.Column="0"/>
                             <Label Content="Tùy chỉnh thông số" Grid.Column="0"/>
