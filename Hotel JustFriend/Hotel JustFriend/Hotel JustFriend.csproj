@@ -229,6 +229,7 @@
     <Compile Include="UserControls\SellProductUC.xaml.cs">
       <DependentUpon>SellProductUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AccountInfoViewModel.cs" />
     <Compile Include="ViewModels\AccountManageViewModel.cs" />
     <Compile Include="ViewModels\AddCustomerViewModel.cs" />
     <Compile Include="ViewModels\BilltemplateViewModel.cs" />
