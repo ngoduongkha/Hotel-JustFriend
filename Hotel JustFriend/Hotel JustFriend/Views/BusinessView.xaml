@@ -234,8 +234,8 @@
                     <TextBox materialDesign:HintAssist.Hint="dd/mm/yyyy"
                          FontSize="17" VerticalAlignment="Center"
                          x:Name="date"
-                         Text="{Binding Path=SelectedRentInvoice.date}"                             
-                         Margin="5,0" Width="100" IsReadOnly="True"/>
+                         Text="{Binding Path=SelectedRentInvoice.date, StringFormat=d, ConverterCulture=en-NZ}"                             
+                         Margin="5,0" Width="120" IsReadOnly="True"/>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1" Margin="0 5">
