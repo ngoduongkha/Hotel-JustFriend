@@ -44,7 +44,7 @@
             </Grid.Resources>
             <Grid Grid.Row="0">
                 <Label Content="Tên đăng nhập:"/>
-                <TextBox/>
+                <TextBox IsReadOnly="True"/>
             </Grid>
             <Grid Grid.Row="1">
                 <Label Content="Mật khẩu:"/>
