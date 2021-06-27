@@ -12,11 +12,14 @@ namespace Hotel_JustFriend.ViewModels
     public class MainViewModel : ViewModelBase
     {
         private Visibility _isCollapsed = Visibility.Visible;
+        private string _userName;
 
         public Visibility IsCollapsed { get => _isCollapsed; set { _isCollapsed = value; RaisePropertyChanged(); } }
 
         public MainViewModel(string userName)
         {
+            _userName = userName;
+
             if (userName != "admin")
             {
                 _isCollapsed = Visibility.Collapsed;
@@ -163,7 +166,7 @@ namespace Hotel_JustFriend.ViewModels
             try
             {
                 p.gridMain.Children.Clear();
-                AccountInfoView uc = new AccountInfoView();
+                AccountInfoView uc = new AccountInfoView(_userName);
                 CloseMenuByClick(p);
                 p.gridMain.Children.Add(uc);
             }

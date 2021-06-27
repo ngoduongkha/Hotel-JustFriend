@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DesignHeight="651.2" d:DesignWidth="1200"
-             x:Name="uc">
+             x:Name="ucAccountInfo">
     <materialDesign:Card
         HorizontalAlignment="Center"
         VerticalAlignment="Stretch"
@@ -44,19 +44,23 @@
             </Grid.Resources>
             <Grid Grid.Row="0">
                 <Label Content="Tên đăng nhập:"/>
-                <TextBox/>
+                <TextBox Text="{Binding UserName, Mode=OneWay}"
+                         IsEnabled="False"/>
             </Grid>
             <Grid Grid.Row="1">
                 <Label Content="Mật khẩu:"/>
-                <TextBox/>
+                <TextBox Text="{Binding Password, Mode=OneWayToSource}"
+                         x:Name="txtPassword"/>
             </Grid>
             <Grid Grid.Row="2">
                 <Label Content="Mật khẩu mới:"/>
-                <TextBox/>
+                <TextBox Text="{Binding NewPassword, Mode=OneWayToSource}"
+                         x:Name="txtNewPassword"/>
             </Grid>
             <Grid Grid.Row="3">
-                <Label Content="Nhập lại:"/>
-                <TextBox/>
+                <Label Content="Xác nhận mật khẩu:"/>
+                <TextBox Text="{Binding ConfirmPassword, Mode=OneWayToSource}"
+                         x:Name="txtConfirmPassword"/>
             </Grid>
             <Grid Grid.Row="4">
                 <Button 
@@ -65,7 +69,10 @@
                     HorizontalAlignment="Center"
                     FontSize="20"
                     Width="120"
-                    Height="40"/>
+                    Height="40"
+                    Command="{Binding ChangePasswordCommand}"
+                    CommandParameter="{Binding ElementName=ucAccountInfo}"
+                    />
             </Grid>
         </Grid>
     </materialDesign:Card>

@@ -33,7 +33,7 @@ namespace Hotel_JustFriend.ViewModels
         }
 
         [Command]
-        public void Login(LoginWindow p)
+        public void Login (LoginWindow p)
         {
             try
             {
@@ -57,9 +57,8 @@ namespace Hotel_JustFriend.ViewModels
                 if (count > 0)
                 {
                     MainWindow main = new MainWindow(UserName);
-                    p.Hide();
-                    main.ShowDialog();
-                    p.Show();
+                    main.Show();
+                    p.Close();
                 }
                 else
                 {

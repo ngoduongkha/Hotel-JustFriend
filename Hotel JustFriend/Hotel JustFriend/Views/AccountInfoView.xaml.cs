@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hotel_JustFriend.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,10 @@ namespace Hotel_JustFriend.Views
     /// </summary>
     public partial class AccountInfoView : UserControl
     {
-        public AccountInfoView()
+        public AccountInfoView(string userName)
         {
             InitializeComponent();
+            this.DataContext = new AccountInfoViewModel(userName);
         }
     }
 }

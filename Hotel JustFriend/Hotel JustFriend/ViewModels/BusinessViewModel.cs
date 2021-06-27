@@ -21,7 +21,6 @@ namespace Hotel_JustFriend.ViewModels
         private ObservableCollection<RentInvoice> ListRentInvoice;
         private ObservableCollection<TypeCustomer> _ListCustomerType;
         private ObservableCollection<Customer> _ListCustomer;
-        private ObservableCollection<RentInvoice> _ListRentInvoice;
         private ObservableCollection<RentInvoiceInfo> _ListRentInvoiceInfo;
         private ObservableCollection<TypeRoom> _ListRoomType;
         private string _fullname;
