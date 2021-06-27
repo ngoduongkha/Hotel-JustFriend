@@ -237,6 +237,9 @@
     <Compile Include="ViewModels\EmployeeDetailViewModel.cs" />
     <Compile Include="ViewModels\ReportViewModel.cs" />
     <Compile Include="ViewModels\RoomRentalViewModel.cs" />
+    <Compile Include="Views\AccountInfoView.xaml.cs">
+      <DependentUpon>AccountInfoView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddTypeWindow.xaml.cs">
       <DependentUpon>AddTypeWindow.xaml</DependentUpon>
     </Compile>
@@ -341,6 +344,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\SellProductUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AccountInfoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

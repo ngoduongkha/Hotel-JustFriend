@@ -210,9 +210,10 @@
                     <ColumnDefinition Width="2.5*"/>
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0"
-                        Orientation="Horizontal"
-                        Margin="10">
+                <StackPanel 
+                    Grid.Column="0"
+                    Orientation="Horizontal"
+                    Margin="10">
                     <Label Content="Phòng:"
                        FontSize="17"
                        VerticalAlignment="Center">
@@ -222,8 +223,10 @@
                          Text="{Binding Path=SelectedRoom.displayName}"
                          Margin="5,0" Width="150" IsReadOnly="True"/>
                 </StackPanel>
-                <StackPanel Grid.Column="1"
-                        Orientation="Horizontal">
+                <StackPanel 
+                    Grid.Column="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
                     <Label Content="Ngày thuê:"
                        FontSize="17"
                        VerticalAlignment="Center">
@@ -232,7 +235,7 @@
                          FontSize="17" VerticalAlignment="Center"
                          x:Name="date"
                          Text="{Binding Path=SelectedRentInvoice.date}"                             
-                         Margin="5,0" Width="120" IsReadOnly="True"/>
+                         Margin="5,0" Width="100" IsReadOnly="True"/>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1" Margin="0 5">
@@ -302,6 +305,7 @@
                             Grid.Row="0"
                             materialDesign:ButtonAssist.CornerRadius="10"
                             HorizontalAlignment="Stretch"
+                            VerticalAlignment="Top"
                             Height="80"
                             BorderBrush="#fa91d7"
                             Background="#fa91d7" Margin="5" Padding="0"
@@ -326,6 +330,7 @@
                         <Button 
                             Grid.Row="1"
                             materialDesign:ButtonAssist.CornerRadius="10"
+                            VerticalAlignment="Top"
                             HorizontalAlignment="Stretch"
                             Height="80" BorderBrush="#ffe396"
                             Background="#ffe396" Margin="5" Padding="0"
@@ -364,6 +369,7 @@
                         <Button 
                             Grid.Row="0"
                             materialDesign:ButtonAssist.CornerRadius="10"
+                            VerticalAlignment="Top"
                             HorizontalAlignment="Stretch"
                             Height="80" 
                             BorderBrush="#ff7383"
@@ -399,6 +405,7 @@
                         <Button 
                             Grid.Row="1"
                             materialDesign:ButtonAssist.CornerRadius="10"
+                            VerticalAlignment="Top"
                             HorizontalAlignment="Stretch"
                             Height="80" 
                             BorderBrush="#9ce8ff"
@@ -434,10 +441,14 @@
                     </Grid>
                 <Grid Grid.Column="1" Margin="5">
                     <Button 
-                        Height="170" Background="#8fffab" BorderBrush="#8fffab"
-                        VerticalAlignment="Top" HorizontalAlignment="Stretch"
+                        Height="170"
+                        Background="#8fffab" 
+                        BorderBrush="#8fffab"
+                        VerticalAlignment="Top" 
+                        HorizontalAlignment="Stretch"
                         materialDesign:ButtonAssist.CornerRadius="10"
-                        Padding="0" Margin="10,0"
+                        Padding="0" 
+                        Margin="0"
                         Command="{Binding PayCommand}">
                         <Button.Style>
                             <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
@@ -479,7 +490,7 @@
                         Height="170" 
                         Background="#f04d4d"
                         BorderBrush="#f04d4d"
-                        VerticalAlignment="Center" 
+                        VerticalAlignment="Top" 
                         HorizontalAlignment="Stretch"
                         materialDesign:ButtonAssist.CornerRadius="10"
                         Padding="0"
