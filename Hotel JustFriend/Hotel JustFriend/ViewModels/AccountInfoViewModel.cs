@@ -4,6 +4,7 @@ using Hotel_JustFriend.Models;
 using Hotel_JustFriend.Views;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Hotel_JustFriend.ViewModels
 {
@@ -60,6 +61,30 @@ namespace Hotel_JustFriend.ViewModels
             DataProvider.Instance.DB.SaveChanges();
 
             MyMessageBox.Show("Thay đổi mật khẩu thành công", "Thông báo", MessageBoxButton.OK);
+        }
+
+        [Command]
+        public void OnPasswordChanged(PasswordBox p)
+        {
+            try
+            {
+                if (p.Name == "txtPassword")
+                {
+                    Password = p.Password;
+                    return;
+                }
+                if (p.Name == "txtNewPassword")
+                {
+                    NewPassword = p.Password;
+                    return;
+                }
+                if (p.Name == "txtConfirmPassword")
+                {
+                    ConfirmPassword = p.Password;
+                    return;
+                }
+            }
+            catch { return; }
         }
     }
 }

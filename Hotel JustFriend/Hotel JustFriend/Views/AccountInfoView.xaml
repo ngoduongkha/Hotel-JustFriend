@@ -9,72 +9,106 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DesignHeight="651.2" d:DesignWidth="1200"
              x:Name="ucAccountInfo">
-    <materialDesign:Card
-        HorizontalAlignment="Center"
-        VerticalAlignment="Stretch"
-        Height="600"
-        Width="450">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.Resources>
-                <Style TargetType="Label">
-                    <Setter Property="FontSize" Value="20"/>
-                    <Setter Property="VerticalAlignment" Value="Center"/>
-                    <Setter Property="HorizontalAlignment" Value="Left"/>
-                    <Setter Property="Margin" Value="20 0"/>
-                </Style>
-                <Style TargetType="TextBox" 
+    <materialDesign:Card Margin="15"
+                         Background="WhiteSmoke">
+        <materialDesign:Card
+            HorizontalAlignment="Center"
+            VerticalAlignment="Stretch"
+            Height="550"
+            Width="600">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="FontSize" Value="25"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="HorizontalAlignment" Value="Left"/>
+                        <Setter Property="Margin" Value="20 0"/>
+                    </Style>
+                    <Style TargetType="TextBox" 
                        BasedOn="{StaticResource MaterialDesignTextBox}">
-                    <Setter Property="FontSize" Value="20"/>
-                    <Setter Property="VerticalAlignment" Value="Center"/>
-                    <Setter Property="HorizontalAlignment" Value="Right"/>
-                    <Setter Property="Margin" Value="20 0"/>
-                    <Setter Property="Padding" Value="0"/>
-                    <Setter Property="Width" Value="200"/>
-                </Style>
-                <Style TargetType="Grid">
-                    <Setter Property="Margin" Value="10 0"/>
-                </Style>
-            </Grid.Resources>
-            <Grid Grid.Row="0">
-                <Label Content="Tên đăng nhập:"/>
-                <TextBox Text="{Binding UserName, Mode=OneWay}"
-                         IsReadOnly="True"/>
-            </Grid>
-            <Grid Grid.Row="1">
-                <Label Content="Mật khẩu:"/>
-                <TextBox Text="{Binding Password, Mode=OneWayToSource}"
-                         x:Name="txtPassword"/>
-            </Grid>
-            <Grid Grid.Row="2">
-                <Label Content="Mật khẩu mới:"/>
-                <TextBox Text="{Binding NewPassword, Mode=OneWayToSource}"
-                         x:Name="txtNewPassword"/>
-            </Grid>
-            <Grid Grid.Row="3">
-                <Label Content="Xác nhận mật khẩu:"/>
-                <TextBox Text="{Binding ConfirmPassword, Mode=OneWayToSource}"
-                         x:Name="txtConfirmPassword"/>
-            </Grid>
-            <Grid Grid.Row="4">
-                <Button 
+                        <Setter Property="FontSize" Value="25"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="HorizontalAlignment" Value="Right"/>
+                        <Setter Property="Margin" Value="20 0"/>
+                        <Setter Property="Padding" Value="0"/>
+                        <Setter Property="Width" Value="200"/>
+                    </Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Margin" Value="20 0"/>
+                    </Style>
+                    <Style TargetType="PasswordBox" BasedOn="{StaticResource MaterialDesignPasswordBox}">
+                        <Setter Property="FontSize" Value="25"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="HorizontalAlignment" Value="Right"/>
+                        <Setter Property="Margin" Value="20 0"/>
+                        <Setter Property="Padding" Value="0"/>
+                        <Setter Property="Width" Value="200"/>
+                    </Style>
+                </Grid.Resources>
+                <Grid Grid.Row="0">
+                    <Label Content="Tên đăng nhập:"/>
+                    <TextBox 
+                        Text="{Binding UserName, Mode=OneWay}"
+                        IsReadOnly="True"/>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Label Content="Mật khẩu:"/>
+                    <PasswordBox x:Name="txtPassword">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="PasswordChanged">
+                                <i:InvokeCommandAction 
+                                Command="{Binding OnPasswordChangedCommand}"
+                                CommandParameter="{Binding ElementName=txtPassword}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </PasswordBox>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Label Content="Mật khẩu mới:"/>
+                    <PasswordBox x:Name="txtNewPassword">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="PasswordChanged">
+                                <i:InvokeCommandAction 
+                                Command="{Binding OnPasswordChangedCommand}"
+                                CommandParameter="{Binding ElementName=txtNewPassword}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </PasswordBox>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Label Content="Xác nhận mật khẩu:"/>
+                    <PasswordBox x:Name="txtConfirmPassword">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="PasswordChanged">
+                                <i:InvokeCommandAction 
+                                Command="{Binding OnPasswordChangedCommand}"
+                                CommandParameter="{Binding ElementName=txtConfirmPassword}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </PasswordBox>
+                </Grid>
+                <Grid Grid.Row="4">
+                    <Button 
                     Content="Xác nhận"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
-                    FontSize="20"
-                    Width="120"
-                    Height="40"
+                    FontSize="25"
+                    Width="150"
+                    Height="50"
                     Command="{Binding ChangePasswordCommand}"
+                    IsDefault="True"
                     CommandParameter="{Binding ElementName=ucAccountInfo}"
                     />
+                </Grid>
             </Grid>
-        </Grid>
+        </materialDesign:Card>
     </materialDesign:Card>
 </UserControl>
 
