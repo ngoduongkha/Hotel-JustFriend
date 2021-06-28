@@ -132,7 +132,8 @@
                             Width="200" Margin="30 25 15 0"
                             SelectedIndex="0" Text="{Binding RoomStatus, Mode=OneWayToSource}">
                             <ComboBoxItem Content="Sẵn sàng"/>
-                            <ComboBoxItem Content="Chưa sẵn sàng"/>
+                            <ComboBoxItem Content="Hư hỏng"/>
+                            <ComboBoxItem Content="Đang thuê"/>
                         </ComboBox>
                         <ComboBox
                             DockPanel.Dock="Left"
@@ -145,8 +146,7 @@
                             IsEditable="True"
                             ItemsSource="{Binding Path=ListRoomType}"
                             DisplayMemberPath="fullname"
-                            SelectedValuePath="idType"
-                            SelectedValue="{Binding Path=idType}">
+                            SelectedValue="{Binding Path=SelectedRoomType, Mode=OneWayToSource}">
                             <ComboBox.Text>
                                 <Binding
                                     Path="RoomType"
@@ -171,21 +171,22 @@
                     </DockPanel>
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="59*"/>
-                            <ColumnDefinition Width="18*"/>
+                            <ColumnDefinition Width="109*"/>
+                            <ColumnDefinition Width="303*"/>
+                            <ColumnDefinition Width="126*"/>
                         </Grid.ColumnDefinitions>
                         <TextBox
                             IsReadOnly="True"
                             x:Name="txtPrice"
                             FontSize="20"       
                             materialDesign:HintAssist.Hint="Giá"
-                            Margin="30,25,29.667,0"
+                            Margin="30,25,29.2,0"
                             materialDesign:TextFieldAssist.SuffixText="VNĐ/ngày"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                             materialDesign:ValidationAssist.HorizontalAlignment="Right"
                             materialDesign:ValidationAssist.Background="White"
-                            MaxLines="1" MaxLength="11" Grid.ColumnSpan="2"
-                           Text="{Binding RoomPrice, Mode=OneWay}">
+                            MaxLines="1" MaxLength="11" Grid.ColumnSpan="3"
+                            Text="{Binding Path=SelectedRoomType.price, Mode=OneWay, StringFormat=\{0:n0\}, ConverterCulture=vi-VN}">
                         </TextBox>
                     </Grid>
                     <TextBox 

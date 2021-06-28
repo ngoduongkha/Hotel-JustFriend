@@ -59,7 +59,7 @@ namespace Hotel_JustFriend.ViewModels
         }
         private void loadcs()
         {
-            if (SelectedRoom.status == true)
+            if (SelectedRoom.status == "Sẵn sàng")
             {
                 int idrent = -1;
                 Trick.Clear();
@@ -155,7 +155,7 @@ namespace Hotel_JustFriend.ViewModels
                    .Where(x => x.isDelete == false)
                    );
             Room p = ListRoom.Where(c => c.idRoom == SelectedRoom.idRoom).FirstOrDefault();
-            p.status = false;
+            p.status = "Sẵn sàng";
             RentInvoice k = DataProvider.Instance.DB.RentInvoices.Where((c) => c.idRoom == p.idRoom).FirstOrDefault();
 
             if (k != null) DataProvider.Instance.DB.RentInvoices.Remove(k);
@@ -178,7 +178,7 @@ namespace Hotel_JustFriend.ViewModels
                 SelectedRoom = selectedRoom;
                 SelectedRentInvoice = DataProvider.Instance.DB.RentInvoices.Where(p => p.idRoom == selectedRoom.idRoom).FirstOrDefault();
                 //--------------------------//
-                if (selectedRoom.status == true)
+                if (selectedRoom.status == "Sẵn sàng")
                 {
                     if (Trick != null) Trick.Clear();
                     int idrent = -1;
@@ -243,7 +243,7 @@ namespace Hotel_JustFriend.ViewModels
                        .Where(x => x.isDelete == false)
                        );
                 Room result = ListRoom.Where((p) => p.idRoom == SelectedRoom.idRoom).FirstOrDefault();
-                result.status = true;
+                result.status = "Sẵn sàng";
                 //---
                 ListRentInvoice = new ObservableCollection<RentInvoice>(DataProvider.Instance.DB.RentInvoices);
                 RentInvoice k = ListRentInvoice.Where((p) => p.idRoom == SelectedRoom.idRoom).FirstOrDefault();
@@ -374,14 +374,14 @@ namespace Hotel_JustFriend.ViewModels
                 if (id == 0)
                 {
                     ListRoom = new ObservableCollection<Room>(ListRoom
-                        .Where(x => x.status == false)
+                        .Where(x => x.status == "Sẵn sàng")
                         .OrderBy(x => x.floor)
                         .ThenBy(x => x.displayName));
                 }
                 else
                 {
                     ListRoom = new ObservableCollection<Room>(ListRoom
-                      .Where(x => x.status == true)
+                      .Where(x => x.status == "Sẵn sàng")
                       .OrderBy(x => x.floor)
                       .ThenBy(x => x.displayName));
                 }
@@ -395,14 +395,14 @@ namespace Hotel_JustFriend.ViewModels
                 if (id == 0)
                 {
                     ListRoom = new ObservableCollection<Room>(ListRoom
-                    .Where(x => x.idType == k && x.status == false)
+                    .Where(x => x.idType == k && x.status == "Sẵn sàng")
                     .OrderBy(x => x.floor)
                     .ThenBy(x => x.displayName));
                 }
                 else
                 {
                     ListRoom = new ObservableCollection<Room>(ListRoom
-                    .Where(x => x.idType == k && x.status == true)
+                    .Where(x => x.idType == k && x.status == "Sẵn sàng")
                     .OrderBy(x => x.floor)
                     .ThenBy(x => x.displayName));
                 }

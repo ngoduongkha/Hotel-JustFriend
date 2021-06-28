@@ -62,7 +62,7 @@ namespace Hotel_JustFriend.ViewModels
                 Room result = (from u in ListRoom1
                                where u.idRoom == k
                                select u).Single();
-                result.status = true;
+                result.status = "Sẵn sàng";
                 //---
                 d = 0;
                 ListRentInvoice = new ObservableCollection<RentInvoice>(DataProvider.Instance.DB.RentInvoices);

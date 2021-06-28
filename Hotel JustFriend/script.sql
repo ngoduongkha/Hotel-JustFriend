@@ -16,11 +16,12 @@ CREATE TABLE [TypeAccount] (
 )
 
 CREATE TABLE [Room] (
-  [idRoom] int PRIMARY KEY,
+  [idRoom] int PRIMARY KEY IDENTITY(1, 1),
   [floor] int NOT NULL,
+  [number] int NOT NULL,
   [displayName] nvarchar(max) NOT NULL,
   [idType] int NOT NULL,
-  [status] bit NOT NULL DEFAULT (1),
+  [status] nvarchar(100) NOT NULL,
   [note] nvarchar(max) DEFAULT '',
   [isDelete] bit DEFAULT (0)
 )

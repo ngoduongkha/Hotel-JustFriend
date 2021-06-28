@@ -94,25 +94,27 @@
                 </Grid>
                 <materialDesign:Card Grid.Row="1">
                     <DataGrid
-                        ItemsSource="{Binding ListAccountWithType, Mode=OneWay}"
+                        x:Name="dGrid"
+                        Background="White"
+                        ItemsSource="{Binding Path=ListAccountWithType, Mode=OneWay}"
                         AutoGenerateColumns="False"
-                        IsReadOnly="True"
-                        CanUserAddRows="False"
+                        AutomationProperties.IsColumnHeader="True"
                         CanUserDeleteRows="False"
-                        CanUserReorderColumns="True"
+                        CanUserAddRows="False"
+                        IsReadOnly="True"
                         SelectionMode="Single"
-                        SelectedItem="{Binding SelectedAccount, Mode=OneWayToSource}">
+                        SelectedItem="{Binding Path=SelectedAccount, Mode=OneWayToSource}">
                         <DataGrid.Resources>
                             <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
                                 <Setter Property="Background" Value="LightPink" />
                                 <Setter Property="FontWeight" Value="SemiBold"/>
                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                <Setter Property="FontSize" Value="25"/>
+                                <Setter Property="FontSize" Value="20"/>
                                 <Setter Property="BorderBrush" Value="White"/>
                                 <Setter Property="BorderThickness" Value="0 0 1 0"/>
                             </Style>
-                            <Style TargetType="DataGridCell">
-                                <Setter Property="FontSize" Value="25"/>
+                            <Style TargetType="DataGridCell" BasedOn="{StaticResource MaterialDesignDataGridCell}">
+                                <Setter Property="FontSize" Value="20"/>
                                 <Setter Property="Height" Value="35"/>
                                 <Setter Property="Template">
                                     <Setter.Value>

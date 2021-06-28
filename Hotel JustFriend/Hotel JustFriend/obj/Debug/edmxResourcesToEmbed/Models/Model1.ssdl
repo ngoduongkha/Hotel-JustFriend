@@ -85,11 +85,12 @@
     <Key>
       <PropertyRef Name="idRoom" />
     </Key>
-    <Property Name="idRoom" Type="int" Nullable="false" />
+    <Property Name="idRoom" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="floor" Type="int" Nullable="false" />
+    <Property Name="number" Type="int" Nullable="false" />
     <Property Name="displayName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="idType" Type="int" Nullable="false" />
-    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="status" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="note" Type="nvarchar(max)" />
     <Property Name="isDelete" Type="bit" />
   </EntityType>
@@ -118,7 +119,7 @@
     <Property Name="price" Type="money" />
     <Property Name="isDelete" Type="bit" />
   </EntityType>
-  <Association Name="FK__Account__idTypeA__49C3F6B7">
+  <Association Name="FK__Account__idTypeA__48CFD27E">
     <End Role="TypeAccount" Type="Self.TypeAccount" Multiplicity="0..1" />
     <End Role="Account" Type="Self.Account" Multiplicity="*" />
     <ReferentialConstraint>
@@ -130,7 +131,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__BillInfo__idBill__4CA06362">
+  <Association Name="FK__BillInfo__idBill__4BAC3F29">
     <End Role="Bill" Type="Self.Bill" Multiplicity="1" />
     <End Role="BillInfo" Type="Self.BillInfo" Multiplicity="*" />
     <ReferentialConstraint>
@@ -142,7 +143,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__BillInfo__idRoom__47DBAE45">
+  <Association Name="FK__BillInfo__idRoom__46E78A0C">
     <End Role="Room" Type="Self.Room" Multiplicity="1" />
     <End Role="BillInfo" Type="Self.BillInfo" Multiplicity="*" />
     <ReferentialConstraint>
@@ -154,7 +155,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Customer__idType__48CFD27E">
+  <Association Name="FK__Customer__idType__47DBAE45">
     <End Role="TypeCustomer" Type="Self.TypeCustomer" Multiplicity="1" />
     <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
     <ReferentialConstraint>
@@ -166,7 +167,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__RentInvoi__idCus__4AB81AF0">
+  <Association Name="FK__RentInvoi__idCus__49C3F6B7">
     <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
     <End Role="RentInvoiceInfo" Type="Self.RentInvoiceInfo" Multiplicity="*" />
     <ReferentialConstraint>
@@ -178,7 +179,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__RentInvoi__idRen__4BAC3F29">
+  <Association Name="FK__RentInvoi__idRen__4AB81AF0">
     <End Role="RentInvoice" Type="Self.RentInvoice" Multiplicity="1" />
     <End Role="RentInvoiceInfo" Type="Self.RentInvoiceInfo" Multiplicity="*" />
     <ReferentialConstraint>
@@ -190,7 +191,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__RentInvoi__idRoo__46E78A0C">
+  <Association Name="FK__RentInvoi__idRoo__45F365D3">
     <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
     <End Role="RentInvoice" Type="Self.RentInvoice" Multiplicity="*" />
     <ReferentialConstraint>
@@ -202,7 +203,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Revenue__idType__44FF419A">
+  <Association Name="FK__Revenue__idType__440B1D61">
     <End Role="TypeRoom" Type="Self.TypeRoom" Multiplicity="0..1" />
     <End Role="Revenue" Type="Self.Revenue" Multiplicity="*" />
     <ReferentialConstraint>
@@ -214,7 +215,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Room__idType__45F365D3">
+  <Association Name="FK__Room__idType__44FF419A">
     <End Role="TypeRoom" Type="Self.TypeRoom" Multiplicity="1" />
     <End Role="Room" Type="Self.Room" Multiplicity="*" />
     <ReferentialConstraint>
@@ -240,39 +241,39 @@
     <EntitySet Name="TypeAccount" EntityType="Self.TypeAccount" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TypeCustomer" EntityType="Self.TypeCustomer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TypeRoom" EntityType="Self.TypeRoom" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Account__idTypeA__49C3F6B7" Association="Self.FK__Account__idTypeA__49C3F6B7">
+    <AssociationSet Name="FK__Account__idTypeA__48CFD27E" Association="Self.FK__Account__idTypeA__48CFD27E">
       <End Role="TypeAccount" EntitySet="TypeAccount" />
       <End Role="Account" EntitySet="Account" />
     </AssociationSet>
-    <AssociationSet Name="FK__BillInfo__idBill__4CA06362" Association="Self.FK__BillInfo__idBill__4CA06362">
+    <AssociationSet Name="FK__BillInfo__idBill__4BAC3F29" Association="Self.FK__BillInfo__idBill__4BAC3F29">
       <End Role="Bill" EntitySet="Bill" />
       <End Role="BillInfo" EntitySet="BillInfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__BillInfo__idRoom__47DBAE45" Association="Self.FK__BillInfo__idRoom__47DBAE45">
+    <AssociationSet Name="FK__BillInfo__idRoom__46E78A0C" Association="Self.FK__BillInfo__idRoom__46E78A0C">
       <End Role="Room" EntitySet="Room" />
       <End Role="BillInfo" EntitySet="BillInfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__Customer__idType__48CFD27E" Association="Self.FK__Customer__idType__48CFD27E">
+    <AssociationSet Name="FK__Customer__idType__47DBAE45" Association="Self.FK__Customer__idType__47DBAE45">
       <End Role="TypeCustomer" EntitySet="TypeCustomer" />
       <End Role="Customer" EntitySet="Customer" />
     </AssociationSet>
-    <AssociationSet Name="FK__RentInvoi__idCus__4AB81AF0" Association="Self.FK__RentInvoi__idCus__4AB81AF0">
+    <AssociationSet Name="FK__RentInvoi__idCus__49C3F6B7" Association="Self.FK__RentInvoi__idCus__49C3F6B7">
       <End Role="Customer" EntitySet="Customer" />
       <End Role="RentInvoiceInfo" EntitySet="RentInvoiceInfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__RentInvoi__idRen__4BAC3F29" Association="Self.FK__RentInvoi__idRen__4BAC3F29">
+    <AssociationSet Name="FK__RentInvoi__idRen__4AB81AF0" Association="Self.FK__RentInvoi__idRen__4AB81AF0">
       <End Role="RentInvoice" EntitySet="RentInvoice" />
       <End Role="RentInvoiceInfo" EntitySet="RentInvoiceInfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__RentInvoi__idRoo__46E78A0C" Association="Self.FK__RentInvoi__idRoo__46E78A0C">
+    <AssociationSet Name="FK__RentInvoi__idRoo__45F365D3" Association="Self.FK__RentInvoi__idRoo__45F365D3">
       <End Role="Room" EntitySet="Room" />
       <End Role="RentInvoice" EntitySet="RentInvoice" />
     </AssociationSet>
-    <AssociationSet Name="FK__Revenue__idType__44FF419A" Association="Self.FK__Revenue__idType__44FF419A">
+    <AssociationSet Name="FK__Revenue__idType__440B1D61" Association="Self.FK__Revenue__idType__440B1D61">
       <End Role="TypeRoom" EntitySet="TypeRoom" />
       <End Role="Revenue" EntitySet="Revenue" />
     </AssociationSet>
-    <AssociationSet Name="FK__Room__idType__45F365D3" Association="Self.FK__Room__idType__45F365D3">
+    <AssociationSet Name="FK__Room__idType__44FF419A" Association="Self.FK__Room__idType__44FF419A">
       <End Role="TypeRoom" EntitySet="TypeRoom" />
       <End Role="Room" EntitySet="Room" />
     </AssociationSet>
