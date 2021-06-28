@@ -394,3 +394,4 @@ D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend.csproj.CopyComplete
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend.exe
 D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Hotel JustFriend.pdb
+D:\NMCNPM\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\Views\CustomerManageView.g.cs
