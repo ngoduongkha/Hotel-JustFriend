@@ -177,6 +177,13 @@
                             <Label Content="Quản lý phòng" Grid.Column="0"/>
                         </StackPanel>
                     </Button>
+                    <Button Command="{Binding OpenTabAccountManageCommand}"
+                            CommandParameter="{Binding ElementName=window}">
+                        <StackPanel Orientation="Horizontal" Width="250">
+                            <materialDesign:PackIcon Kind="Account" Grid.Column="0"/>
+                            <Label Content="Quản lý tài khoản" Grid.Column="0"/>
+                        </StackPanel>
+                    </Button>
                     <Button
                         Command="{Binding OpenTabReportCommand}"
                         CommandParameter="{Binding ElementName=window}"
@@ -199,7 +206,7 @@
                         Command="{Binding OpenTabAccountInfoCommand}"
                         CommandParameter="{Binding ElementName=window}">
                         <StackPanel Orientation="Horizontal" Width="250">
-                            <materialDesign:PackIcon Kind="AccountAlert" Grid.Column="0"/>
+                            <materialDesign:PackIcon Kind="InfoCircle" Grid.Column="0"/>
                             <Label Content="Thông tin tài khoản" Grid.Column="0"/>
                         </StackPanel>
                     </Button>

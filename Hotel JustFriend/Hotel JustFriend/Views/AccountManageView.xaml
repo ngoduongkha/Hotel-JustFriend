@@ -46,28 +46,20 @@
                             <Label Content="Bộ lọc: " FontSize="17"
                                    VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
                             <ComboBox
-                            x:Name="txtFilterStatus"
-                            ItemsSource="{Binding ListRoomStatus}"
-                            materialDesign:HintAssist.Hint="Trạng thái"
-                            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                            VerticalAlignment="Bottom"
-                            Margin="10,0" FontSize="15">
-                            </ComboBox>
-                            <ComboBox
-                            x:Name="txtFilterType"
-                            ItemsSource="{Binding ListRoomType}"
-                            materialDesign:HintAssist.Hint="Loại tài khoản"
-                            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                            VerticalAlignment="Bottom"
-                            Margin="10,0" FontSize="15">
+                                x:Name="txtFilterType"
+                                ItemsSource="{Binding ListRoomType}"
+                                materialDesign:HintAssist.Hint="Loại tài khoản"
+                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                VerticalAlignment="Bottom"
+                                Margin="10,0" FontSize="15">
                             </ComboBox>
                             <Button
-                            Content="Lọc" VerticalAlignment="Bottom"
-                            Margin="10,0" Height="25" FontSize="15" Width="60"
-                            Padding="15,0" Background="#fa91d7" BorderBrush="#fa91d7"
-                            materialDesign:ButtonAssist.CornerRadius="100"
-                            Command="{Binding RoomFilterCommand}"
-                            CommandParameter="{Binding ElementName=uc}"/>
+                                Content="Lọc" VerticalAlignment="Bottom"
+                                Margin="10,0" Height="25" FontSize="15" Width="60"
+                                Padding="15,0" Background="#fa91d7" BorderBrush="#fa91d7"
+                                materialDesign:ButtonAssist.CornerRadius="100"
+                                Command="{Binding RoomFilterCommand}"
+                                CommandParameter="{Binding ElementName=uc}"/>
                         </StackPanel>
                     </materialDesign:Card>
                 </Grid>
@@ -78,12 +70,12 @@
                                 <Setter Property="Background" Value="LightPink" />
                                 <Setter Property="FontWeight" Value="SemiBold"/>
                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                <Setter Property="FontSize" Value="20"/>
+                                <Setter Property="FontSize" Value="25"/>
                                 <Setter Property="BorderBrush" Value="White"/>
                                 <Setter Property="BorderThickness" Value="0 0 1 0"/>
                             </Style>
                             <Style TargetType="DataGridCell">
-                                <Setter Property="FontSize" Value="20"/>
+                                <Setter Property="FontSize" Value="25"/>
                                 <Setter Property="Height" Value="35"/>
                                 <Setter Property="Template">
                                     <Setter.Value>
@@ -99,10 +91,9 @@
                             </Style>
                         </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="STT" MinWidth="70"/>
-                            <DataGridTextColumn Header="Tên đăng nhập" MinWidth="200"/>
-                            <DataGridTextColumn Header="Tên người dùng" MinWidth="200"/>
-                            <DataGridTextColumn Header="Loại tài khoản" MinWidth="150"/>
+                            <DataGridTextColumn Header="STT" MinWidth="100"/>
+                            <DataGridTextColumn Header="Tên đăng nhập" MinWidth="300"/>
+                            <DataGridTextColumn Header="Loại tài khoản" MinWidth="250"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </materialDesign:Card>
@@ -119,7 +110,8 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Margin="10"
+                    <Button
+                        Grid.Column="0" Margin="10"
                         Content="Thêm" FontWeight="SemiBold" FontSize="15"
                         VerticalAlignment="Top" HorizontalAlignment="Center"
                         Foreground="Black"
@@ -129,7 +121,8 @@
                         CommandParameter="{Binding ElementName=uc}"
                         x:Name="btnAdd"
                         materialDesign:ButtonAssist.CornerRadius="10"/>
-                    <Button Grid.Column="1" Margin="10"
+                    <Button 
+                        Grid.Column="1" Margin="10"
                         Content="Xóa" FontWeight="SemiBold" FontSize="15"
                         VerticalAlignment="Top" HorizontalAlignment="Center"
                         Foreground="Black"
@@ -138,7 +131,8 @@
                         x:Name="btnDelete"
                         Command="{Binding DeleteAccountCommand}"
                         materialDesign:ButtonAssist.CornerRadius="10"/>
-                    <Button Grid.Column="2" Margin="10"
+                    <Button 
+                        Grid.Column="2" Margin="10"
                         Content="Sửa" FontWeight="SemiBold" FontSize="15"
                         VerticalAlignment="Top" HorizontalAlignment="Center"
                         Foreground="Black"
@@ -152,12 +146,12 @@
 
                 <Grid Grid.Row="2">
                     <Button
-                    x:Name="btnChangePassword"
-                    HorizontalAlignment="Center" VerticalAlignment="Top"
-                    Content="Đặt lại mật khẩu" FontSize="20"
-                    Height="50" Width="200" Margin="0,30"
-                    Background="LightBlue" Foreground="Black" BorderBrush="LightBlue"
-                    materialDesign:ButtonAssist.CornerRadius="10">
+                        x:Name="btnChangePassword"
+                        HorizontalAlignment="Center" VerticalAlignment="Top"
+                        Content="Đặt lại mật khẩu" FontSize="20"
+                        Height="50" Width="200" Margin="0,30"
+                        Background="LightBlue" Foreground="Black" BorderBrush="LightBlue"
+                        materialDesign:ButtonAssist.CornerRadius="10">
                     </Button>
                 </Grid>
             </Grid>
