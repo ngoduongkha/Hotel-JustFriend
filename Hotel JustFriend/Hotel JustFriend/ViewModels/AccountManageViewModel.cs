@@ -111,9 +111,13 @@ namespace Hotel_JustFriend.ViewModels
                 DataProvider.Instance.DB.Accounts.Add(newAccount);
                 DataProvider.Instance.DB.SaveChanges();
 
+                p.tbUsername.Text = "";
+                p.cbTypeAccount.Text = "";
+
                 MyMessageBox.Show("Thêm tài khoản thành công", "Thông báo", MessageBoxButton.OK);
 
-                LoadDB();
+                CancelAdjustment(p);
+                p.DataContext = new AccountManageViewModel();
             }
             else
             {
@@ -139,7 +143,7 @@ namespace Hotel_JustFriend.ViewModels
                     DataProvider.Instance.DB.Accounts.Remove(beenDeleted);
                     DataProvider.Instance.DB.SaveChanges();
                     MyMessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButton.OK);
-
+                    
                     LoadDB();
                 }
             }
@@ -153,6 +157,8 @@ namespace Hotel_JustFriend.ViewModels
             try
             {
                 p.gridMain.IsEnabled = false;
+                p.gridButtonAdjust.IsEnabled = false;
+                p.gridButtonResetPassword.IsEnabled = false;
                 p.gridDetail.IsEnabled = true;
             }
             catch { return; }
@@ -164,7 +170,24 @@ namespace Hotel_JustFriend.ViewModels
             try
             {
                 p.gridMain.IsEnabled = false;
+                p.gridButtonAdjust.IsEnabled = false;
+                p.gridButtonResetPassword.IsEnabled = false;
                 p.gridDetail.IsEnabled = true;
+            }
+            catch { return; }
+        }
+        
+        [Command]
+        public void CancelAdjustment(AccountManageView p)
+        {
+            try
+            {
+                p.tbUsername.Text = "";
+                p.cbTypeAccount.Text = "";
+                p.gridMain.IsEnabled = true;
+                p.gridButtonAdjust.IsEnabled = true;
+                p.gridButtonResetPassword.IsEnabled = true;
+                p.gridDetail.IsEnabled = false;
             }
             catch { return; }
         }
