@@ -10,17 +10,17 @@
              d:DesignHeight="651.2" d:DesignWidth="1200"
              x:Name="uc">
     <Grid>
-        <Grid Margin="20" x:Name="gridMain">
+        <Grid Margin="20">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="1.1*"/>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
+            <Grid Grid.Column="0" x:Name="gridMain">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="6*"/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="0" HorizontalAlignment="Right" Width="750">
+                <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
@@ -57,7 +57,7 @@
                         </Style>
                     </Grid.Resources>
                     <materialDesign:Card Grid.Column="0" Margin="10">
-                        <StackPanel Margin="10" Orientation="Horizontal">
+                        <StackPanel>
                             <materialDesign:PackIcon 
                                 Kind="Search"
                                 Height="30" Width="30"
@@ -76,7 +76,7 @@
                         </StackPanel>
                     </materialDesign:Card>
                     <materialDesign:Card Grid.Column="1" Margin="10">
-                        <StackPanel Grid.Column="1" Margin="10" Orientation="Horizontal">
+                        <StackPanel>
                             <Label Content="Bộ lọc: "/>
                             <ComboBox
                                 x:Name="cbFilterType"
@@ -135,12 +135,12 @@
                     </DataGrid>
                 </materialDesign:Card>
             </Grid>
-            <Grid Grid.Column="1">
+            <Grid Grid.Column="1" x:Name="gridDetail">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="6*"/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
+                <Grid Grid.Row="0" Margin="20 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
@@ -188,15 +188,15 @@
                 <Grid 
                     Grid.Row="1"
                     IsEnabled="False" 
-                    x:Name="gridDetail"
                     VerticalAlignment="Top" 
-                    HorizontalAlignment="Center"
+                    HorizontalAlignment="Stretch"
                     Margin="10 0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="350"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <materialDesign:Card Margin="10 0" Grid.Row="0">
+                    <materialDesign:Card Margin="10 0" Grid.Row="0"
+                                         HorizontalAlignment="Stretch">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="80"/>

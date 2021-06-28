@@ -4,8 +4,8 @@
     <EntitySetMapping Name="Accounts">
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.Account">
         <MappingFragment StoreEntitySet="Account">
-          <ScalarProperty Name="idTypeAccount" ColumnName="idTypeAccount" />
           <ScalarProperty Name="idAccount" ColumnName="idAccount" />
+          <ScalarProperty Name="idTypeAccount" ColumnName="idTypeAccount" />
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="password" ColumnName="password" />
         </MappingFragment>
@@ -102,6 +102,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TypeAccounts">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.TypeAccount">
+        <MappingFragment StoreEntitySet="TypeAccount">
+          <ScalarProperty Name="idTypeAccount" ColumnName="idTypeAccount" />
+          <ScalarProperty Name="displayname" ColumnName="displayname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="TypeCustomers">
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.TypeCustomer">
         <MappingFragment StoreEntitySet="TypeCustomer">
@@ -119,14 +127,6 @@
           <ScalarProperty Name="fullname" ColumnName="fullname" />
           <ScalarProperty Name="price" ColumnName="price" />
           <ScalarProperty Name="isDelete" ColumnName="isDelete" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TypeAccounts">
-      <EntityTypeMapping TypeName="Hotel_JustFriendModel.TypeAccount">
-        <MappingFragment StoreEntitySet="TypeAccount">
-          <ScalarProperty Name="displayname" ColumnName="displayname" />
-          <ScalarProperty Name="idTypeAccount" ColumnName="idTypeAccount" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

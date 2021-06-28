@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Hotel_JustFriendModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Hotel_JustFriendModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="idAccount" />
@@ -103,7 +103,7 @@
             <PropertyRef Name="idTypeAccount" />
           </Key>
           <Property Name="idTypeAccount" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="displayname" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="displayname" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="TypeCustomer">
           <Key>
@@ -282,7 +282,8 @@
             <End Role="Room" EntitySet="Room" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Hotel_JustFriendModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -291,10 +292,10 @@
             <PropertyRef Name="idAccount" />
           </Key>
           <Property Name="idAccount" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idTypeAccount" Type="Int32" />
           <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="64" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="idTypeAccount" Type="Int32" />
-          <NavigationProperty Name="TypeAccount" Relationship="Hotel_JustFriendModel.FK__Account__idTypeA__49C3F6B7" FromRole="Account" ToRole="TypeAccount" />
+          <NavigationProperty Name="TypeAccount" Relationship="Self.FK__Account__idTypeA__49C3F6B7" FromRole="Account" ToRole="TypeAccount" />
         </EntityType>
         <EntityType Name="Bill">
           <Key>
@@ -303,7 +304,7 @@
           <Property Name="idBill" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="date" Type="DateTime" Precision="0" />
           <Property Name="totalMoney" Type="Decimal" Precision="19" Scale="4" />
-          <NavigationProperty Name="BillInfoes" Relationship="Self.FK__BillInfo__idBill__48CFD27E" FromRole="Bill" ToRole="BillInfo" />
+          <NavigationProperty Name="BillInfoes" Relationship="Self.FK__BillInfo__idBill__4CA06362" FromRole="Bill" ToRole="BillInfo" />
         </EntityType>
         <EntityType Name="BillInfo">
           <Key>
@@ -314,8 +315,8 @@
           <Property Name="price" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="idBill" Type="Int32" Nullable="false" />
           <Property Name="idRoom" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Bill" Relationship="Self.FK__BillInfo__idBill__48CFD27E" FromRole="BillInfo" ToRole="Bill" />
-          <NavigationProperty Name="Room" Relationship="Self.FK__BillInfo__idRoom__44FF419A" FromRole="BillInfo" ToRole="Room" />
+          <NavigationProperty Name="Bill" Relationship="Self.FK__BillInfo__idBill__4CA06362" FromRole="BillInfo" ToRole="Bill" />
+          <NavigationProperty Name="Room" Relationship="Self.FK__BillInfo__idRoom__47DBAE45" FromRole="BillInfo" ToRole="Room" />
         </EntityType>
         <EntityType Name="Constant">
           <Key>
@@ -334,8 +335,8 @@
           <Property Name="idCard" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="idType" Type="Int32" Nullable="false" />
           <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TypeCustomer" Relationship="Self.FK__Customer__idType__45F365D3" FromRole="Customer" ToRole="TypeCustomer" />
-          <NavigationProperty Name="RentInvoiceInfoes" Relationship="Self.FK__RentInvoi__idCus__46E78A0C" FromRole="Customer" ToRole="RentInvoiceInfo" />
+          <NavigationProperty Name="TypeCustomer" Relationship="Self.FK__Customer__idType__48CFD27E" FromRole="Customer" ToRole="TypeCustomer" />
+          <NavigationProperty Name="RentInvoiceInfoes" Relationship="Self.FK__RentInvoi__idCus__4AB81AF0" FromRole="Customer" ToRole="RentInvoiceInfo" />
         </EntityType>
         <EntityType Name="RentInvoice">
           <Key>
@@ -345,8 +346,8 @@
           <Property Name="date" Type="DateTime" Precision="0" />
           <Property Name="idRoom" Type="Int32" />
           <Property Name="purchase" Type="Boolean" />
-          <NavigationProperty Name="RentInvoiceInfoes" Relationship="Self.FK__RentInvoi__idRen__47DBAE45" FromRole="RentInvoice" ToRole="RentInvoiceInfo" />
-          <NavigationProperty Name="Room" Relationship="Self.FK__RentInvoi__idRoo__440B1D61" FromRole="RentInvoice" ToRole="Room" />
+          <NavigationProperty Name="RentInvoiceInfoes" Relationship="Self.FK__RentInvoi__idRen__4BAC3F29" FromRole="RentInvoice" ToRole="RentInvoiceInfo" />
+          <NavigationProperty Name="Room" Relationship="Self.FK__RentInvoi__idRoo__46E78A0C" FromRole="RentInvoice" ToRole="Room" />
         </EntityType>
         <EntityType Name="RentInvoiceInfo">
           <Key>
@@ -356,8 +357,8 @@
           <Property Name="idRentInvoiceInfo" Type="Int32" />
           <Property Name="idRentInvoice" Type="Int32" Nullable="false" />
           <Property Name="idCustomer" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Customer" Relationship="Self.FK__RentInvoi__idCus__46E78A0C" FromRole="RentInvoiceInfo" ToRole="Customer" />
-          <NavigationProperty Name="RentInvoice" Relationship="Self.FK__RentInvoi__idRen__47DBAE45" FromRole="RentInvoiceInfo" ToRole="RentInvoice" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__RentInvoi__idCus__4AB81AF0" FromRole="RentInvoiceInfo" ToRole="Customer" />
+          <NavigationProperty Name="RentInvoice" Relationship="Self.FK__RentInvoi__idRen__4BAC3F29" FromRole="RentInvoiceInfo" ToRole="RentInvoice" />
         </EntityType>
         <EntityType Name="Revenue">
           <Key>
@@ -366,7 +367,7 @@
           <Property Name="idRevenue" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idType" Type="Int32" />
           <Property Name="RevenueType" Type="Decimal" Precision="19" Scale="4" />
-          <NavigationProperty Name="TypeRoom" Relationship="Self.FK__Revenue__idType__4222D4EF" FromRole="Revenue" ToRole="TypeRoom" />
+          <NavigationProperty Name="TypeRoom" Relationship="Self.FK__Revenue__idType__44FF419A" FromRole="Revenue" ToRole="TypeRoom" />
         </EntityType>
         <EntityType Name="RevenuePercentage">
           <Key>
@@ -389,9 +390,17 @@
           <Property Name="status" Type="Boolean" Nullable="false" />
           <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="isDelete" Type="Boolean" />
-          <NavigationProperty Name="BillInfoes" Relationship="Self.FK__BillInfo__idRoom__44FF419A" FromRole="Room" ToRole="BillInfo" />
-          <NavigationProperty Name="RentInvoices" Relationship="Self.FK__RentInvoi__idRoo__440B1D61" FromRole="Room" ToRole="RentInvoice" />
-          <NavigationProperty Name="TypeRoom" Relationship="Self.FK__Room__idType__4316F928" FromRole="Room" ToRole="TypeRoom" />
+          <NavigationProperty Name="BillInfoes" Relationship="Self.FK__BillInfo__idRoom__47DBAE45" FromRole="Room" ToRole="BillInfo" />
+          <NavigationProperty Name="RentInvoices" Relationship="Self.FK__RentInvoi__idRoo__46E78A0C" FromRole="Room" ToRole="RentInvoice" />
+          <NavigationProperty Name="TypeRoom" Relationship="Self.FK__Room__idType__45F365D3" FromRole="Room" ToRole="TypeRoom" />
+        </EntityType>
+        <EntityType Name="TypeAccount">
+          <Key>
+            <PropertyRef Name="idTypeAccount" />
+          </Key>
+          <Property Name="idTypeAccount" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="displayname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK__Account__idTypeA__49C3F6B7" FromRole="TypeAccount" ToRole="Account" />
         </EntityType>
         <EntityType Name="TypeCustomer">
           <Key>
@@ -401,7 +410,7 @@
           <Property Name="displayname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="number" Type="Double" />
           <Property Name="isDelete" Type="Boolean" />
-          <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__idType__45F365D3" FromRole="TypeCustomer" ToRole="Customer" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__idType__48CFD27E" FromRole="TypeCustomer" ToRole="Customer" />
         </EntityType>
         <EntityType Name="TypeRoom">
           <Key>
@@ -411,10 +420,22 @@
           <Property Name="fullname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="price" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="isDelete" Type="Boolean" />
-          <NavigationProperty Name="Revenues" Relationship="Self.FK__Revenue__idType__4222D4EF" FromRole="TypeRoom" ToRole="Revenue" />
-          <NavigationProperty Name="Rooms" Relationship="Self.FK__Room__idType__4316F928" FromRole="TypeRoom" ToRole="Room" />
+          <NavigationProperty Name="Revenues" Relationship="Self.FK__Revenue__idType__44FF419A" FromRole="TypeRoom" ToRole="Revenue" />
+          <NavigationProperty Name="Rooms" Relationship="Self.FK__Room__idType__45F365D3" FromRole="TypeRoom" ToRole="Room" />
         </EntityType>
-        <Association Name="FK__BillInfo__idBill__48CFD27E">
+        <Association Name="FK__Account__idTypeA__49C3F6B7">
+          <End Role="TypeAccount" Type="Self.TypeAccount" Multiplicity="0..1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeAccount">
+              <PropertyRef Name="idTypeAccount" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="idTypeAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BillInfo__idBill__4CA06362">
           <End Role="Bill" Type="Self.Bill" Multiplicity="1" />
           <End Role="BillInfo" Type="Self.BillInfo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -426,7 +447,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__BillInfo__idRoom__44FF419A">
+        <Association Name="FK__BillInfo__idRoom__47DBAE45">
           <End Role="Room" Type="Self.Room" Multiplicity="1" />
           <End Role="BillInfo" Type="Self.BillInfo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -438,7 +459,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Customer__idType__45F365D3">
+        <Association Name="FK__Customer__idType__48CFD27E">
           <End Role="TypeCustomer" Type="Self.TypeCustomer" Multiplicity="1" />
           <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
@@ -450,7 +471,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RentInvoi__idCus__46E78A0C">
+        <Association Name="FK__RentInvoi__idCus__4AB81AF0">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
           <End Role="RentInvoiceInfo" Type="Self.RentInvoiceInfo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -462,7 +483,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RentInvoi__idRen__47DBAE45">
+        <Association Name="FK__RentInvoi__idRen__4BAC3F29">
           <End Role="RentInvoice" Type="Self.RentInvoice" Multiplicity="1" />
           <End Role="RentInvoiceInfo" Type="Self.RentInvoiceInfo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -474,7 +495,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RentInvoi__idRoo__440B1D61">
+        <Association Name="FK__RentInvoi__idRoo__46E78A0C">
           <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
           <End Role="RentInvoice" Type="Self.RentInvoice" Multiplicity="*" />
           <ReferentialConstraint>
@@ -486,7 +507,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Revenue__idType__4222D4EF">
+        <Association Name="FK__Revenue__idType__44FF419A">
           <End Role="TypeRoom" Type="Self.TypeRoom" Multiplicity="0..1" />
           <End Role="Revenue" Type="Self.Revenue" Multiplicity="*" />
           <ReferentialConstraint>
@@ -498,7 +519,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Room__idType__4316F928">
+        <Association Name="FK__Room__idType__45F365D3">
           <End Role="TypeRoom" Type="Self.TypeRoom" Multiplicity="1" />
           <End Role="Room" Type="Self.Room" Multiplicity="*" />
           <ReferentialConstraint>
@@ -521,66 +542,46 @@
           <EntitySet Name="Revenues" EntityType="Self.Revenue" />
           <EntitySet Name="RevenuePercentages" EntityType="Self.RevenuePercentage" />
           <EntitySet Name="Rooms" EntityType="Self.Room" />
+          <EntitySet Name="TypeAccounts" EntityType="Self.TypeAccount" />
           <EntitySet Name="TypeCustomers" EntityType="Self.TypeCustomer" />
           <EntitySet Name="TypeRooms" EntityType="Self.TypeRoom" />
-          <AssociationSet Name="FK__BillInfo__idBill__48CFD27E" Association="Self.FK__BillInfo__idBill__48CFD27E">
-            <End Role="Bill" EntitySet="Bills" />
-            <End Role="BillInfo" EntitySet="BillInfoes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BillInfo__idRoom__44FF419A" Association="Self.FK__BillInfo__idRoom__44FF419A">
-            <End Role="Room" EntitySet="Rooms" />
-            <End Role="BillInfo" EntitySet="BillInfoes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Customer__idType__45F365D3" Association="Self.FK__Customer__idType__45F365D3">
-            <End Role="TypeCustomer" EntitySet="TypeCustomers" />
-            <End Role="Customer" EntitySet="Customers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__RentInvoi__idCus__46E78A0C" Association="Self.FK__RentInvoi__idCus__46E78A0C">
-            <End Role="Customer" EntitySet="Customers" />
-            <End Role="RentInvoiceInfo" EntitySet="RentInvoiceInfoes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__RentInvoi__idRen__47DBAE45" Association="Self.FK__RentInvoi__idRen__47DBAE45">
-            <End Role="RentInvoice" EntitySet="RentInvoices" />
-            <End Role="RentInvoiceInfo" EntitySet="RentInvoiceInfoes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__RentInvoi__idRoo__440B1D61" Association="Self.FK__RentInvoi__idRoo__440B1D61">
-            <End Role="Room" EntitySet="Rooms" />
-            <End Role="RentInvoice" EntitySet="RentInvoices" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Revenue__idType__4222D4EF" Association="Self.FK__Revenue__idType__4222D4EF">
-            <End Role="TypeRoom" EntitySet="TypeRooms" />
-            <End Role="Revenue" EntitySet="Revenues" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Room__idType__4316F928" Association="Self.FK__Room__idType__4316F928">
-            <End Role="TypeRoom" EntitySet="TypeRooms" />
-            <End Role="Room" EntitySet="Rooms" />
-          </AssociationSet>
-          <EntitySet Name="TypeAccounts" EntityType="Hotel_JustFriendModel.TypeAccount" />
-          <AssociationSet Name="FK__Account__idTypeA__49C3F6B7" Association="Hotel_JustFriendModel.FK__Account__idTypeA__49C3F6B7">
+          <AssociationSet Name="FK__Account__idTypeA__49C3F6B7" Association="Self.FK__Account__idTypeA__49C3F6B7">
             <End Role="TypeAccount" EntitySet="TypeAccounts" />
             <End Role="Account" EntitySet="Accounts" />
           </AssociationSet>
+          <AssociationSet Name="FK__BillInfo__idBill__4CA06362" Association="Self.FK__BillInfo__idBill__4CA06362">
+            <End Role="Bill" EntitySet="Bills" />
+            <End Role="BillInfo" EntitySet="BillInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BillInfo__idRoom__47DBAE45" Association="Self.FK__BillInfo__idRoom__47DBAE45">
+            <End Role="Room" EntitySet="Rooms" />
+            <End Role="BillInfo" EntitySet="BillInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer__idType__48CFD27E" Association="Self.FK__Customer__idType__48CFD27E">
+            <End Role="TypeCustomer" EntitySet="TypeCustomers" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RentInvoi__idCus__4AB81AF0" Association="Self.FK__RentInvoi__idCus__4AB81AF0">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="RentInvoiceInfo" EntitySet="RentInvoiceInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RentInvoi__idRen__4BAC3F29" Association="Self.FK__RentInvoi__idRen__4BAC3F29">
+            <End Role="RentInvoice" EntitySet="RentInvoices" />
+            <End Role="RentInvoiceInfo" EntitySet="RentInvoiceInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RentInvoi__idRoo__46E78A0C" Association="Self.FK__RentInvoi__idRoo__46E78A0C">
+            <End Role="Room" EntitySet="Rooms" />
+            <End Role="RentInvoice" EntitySet="RentInvoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Revenue__idType__44FF419A" Association="Self.FK__Revenue__idType__44FF419A">
+            <End Role="TypeRoom" EntitySet="TypeRooms" />
+            <End Role="Revenue" EntitySet="Revenues" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Room__idType__45F365D3" Association="Self.FK__Room__idType__45F365D3">
+            <End Role="TypeRoom" EntitySet="TypeRooms" />
+            <End Role="Room" EntitySet="Rooms" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="TypeAccount">
-          <Key>
-            <PropertyRef Name="idTypeAccount" />
-          </Key>
-          <Property Name="idTypeAccount" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="displayname" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Accounts" Relationship="Hotel_JustFriendModel.FK__Account__idTypeA__49C3F6B7" FromRole="TypeAccount" ToRole="Account" />
-        </EntityType>
-        <Association Name="FK__Account__idTypeA__49C3F6B7">
-          <End Type="Hotel_JustFriendModel.TypeAccount" Role="TypeAccount" Multiplicity="0..1" />
-          <End Type="Hotel_JustFriendModel.Account" Role="Account" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TypeAccount">
-              <PropertyRef Name="idTypeAccount" />
-            </Principal>
-            <Dependent Role="Account">
-              <PropertyRef Name="idTypeAccount" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -590,8 +591,8 @@
           <EntitySetMapping Name="Accounts">
             <EntityTypeMapping TypeName="Hotel_JustFriendModel.Account">
               <MappingFragment StoreEntitySet="Account">
-                <ScalarProperty Name="idTypeAccount" ColumnName="idTypeAccount" />
                 <ScalarProperty Name="idAccount" ColumnName="idAccount" />
+                <ScalarProperty Name="idTypeAccount" ColumnName="idTypeAccount" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="password" ColumnName="password" />
               </MappingFragment>
@@ -688,6 +689,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TypeAccounts">
+            <EntityTypeMapping TypeName="Hotel_JustFriendModel.TypeAccount">
+              <MappingFragment StoreEntitySet="TypeAccount">
+                <ScalarProperty Name="idTypeAccount" ColumnName="idTypeAccount" />
+                <ScalarProperty Name="displayname" ColumnName="displayname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TypeCustomers">
             <EntityTypeMapping TypeName="Hotel_JustFriendModel.TypeCustomer">
               <MappingFragment StoreEntitySet="TypeCustomer">
@@ -705,14 +714,6 @@
                 <ScalarProperty Name="fullname" ColumnName="fullname" />
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="isDelete" ColumnName="isDelete" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TypeAccounts">
-            <EntityTypeMapping TypeName="Hotel_JustFriendModel.TypeAccount">
-              <MappingFragment StoreEntitySet="TypeAccount">
-                <ScalarProperty Name="displayname" ColumnName="displayname" />
-                <ScalarProperty Name="idTypeAccount" ColumnName="idTypeAccount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

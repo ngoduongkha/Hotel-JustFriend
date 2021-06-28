@@ -199,6 +199,9 @@
     <Compile Include="Template\ImportBill.xaml.cs">
       <DependentUpon>ImportBill.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\TypeAccount.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TypeCustomer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
