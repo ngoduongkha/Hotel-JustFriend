@@ -222,7 +222,7 @@
                         materialDesign:HintAssist.Hint="Tên phòng"
                         FontSize="17" VerticalAlignment="Center"
                         Text="{Binding Path=SelectedRoom.displayName}"
-                        Margin="5,0" Width="150" IsReadOnly="True"
+                        Margin="5,0" Width="100" IsReadOnly="True"
                         TextAlignment="Center"/>
                 </StackPanel>
                 <StackPanel 
