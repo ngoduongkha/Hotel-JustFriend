@@ -238,7 +238,7 @@
                         FontSize="17" VerticalAlignment="Center"
                         x:Name="date"
                         TextAlignment="Center"
-                        Text="{Binding Path=SelectedRentInvoice.date}"    
+                        Text="{Binding Path=SelectedRentInvoice.date, StringFormat=d, ConverterCulture=en-NZ}"    
                         Margin="5,0" Width="100" IsReadOnly="True"/>
                 </StackPanel>
             </Grid>
