@@ -4,10 +4,16 @@ USE Hotel_JustFriend
 GO
 CREATE TABLE [Account] (
   [idAccount] int PRIMARY KEY IDENTITY(1, 1),
+  [idTypeAccount] int,
   [username] varchar(100) UNIQUE NOT NULL,
-  [password] char(64) NOT NULL
+  [password] char(64) NOT NULL,
 )
 GO
+
+CREATE TABLE [TypeAccount] (
+  [idTypeAccount] int PRIMARY KEY IDENTITY(1, 1),
+  [displayname] nvarchar(100) UNIQUE NOT NULL,
+)
 
 CREATE TABLE [Room] (
   [idRoom] int PRIMARY KEY,
@@ -96,8 +102,9 @@ CREATE TABLE [Revenue](
 	[idRevenue] int PRIMARY KEY IDENTITY(1,1),
 	[idType] int,
 	[RevenueType] money,
-	)
-	GO
+)
+GO
+
 ALTER TABLE [Revenue] ADD FOREIGN KEY ([idType]) REFERENCES [TypeRoom] ([idType])
 
 ALTER TABLE [Room] ADD FOREIGN KEY ([idType]) REFERENCES [TypeRoom] ([idType])
@@ -112,6 +119,9 @@ GO
 ALTER TABLE [Customer] ADD FOREIGN KEY ([idType]) REFERENCES [TypeCustomer] ([idType])
 GO
 
+ALTER TABLE [Account] ADD FOREIGN KEY ([idTypeAccount]) REFERENCES [TypeAccount] ([idTypeAccount])
+GO
+
 ALTER TABLE [RentInvoiceInfo] ADD FOREIGN KEY ([idCustomer]) REFERENCES [Customer] ([idCustomer])
 GO
 
@@ -119,10 +129,13 @@ ALTER TABLE [RentInvoiceInfo] ADD FOREIGN KEY ([idRentInvoice]) REFERENCES [Rent
 GO
 
 ALTER TABLE [BillInfo] ADD FOREIGN KEY ([idBill]) REFERENCES [Bill] ([idBill])
-
 GO
 
-INSERT INTO dbo.Account (username, password) VALUES ( 'admin', '38D180985D1B2E7A6014190E2CBD3C967408837188354EC93D27BFD86D09A017')
+INSERT INTO dbo.TypeAccount(displayname) VALUES (N'Admin')
+INSERT INTO dbo.TypeAccount(displayname) VALUES (N'Nhân viên')
+INSERT INTO dbo.TypeAccount(displayname) VALUES (N'Kế toán')
+INSERT INTO dbo.Account (username, password, idTypeAccount) VALUES ('admin', '38D180985D1B2E7A6014190E2CBD3C967408837188354EC93D27BFD86D09A017', 1)
+INSERT INTO dbo.Account (username, password, idTypeAccount) VALUES ('kha', '38D180985D1B2E7A6014190E2CBD3C967408837188354EC93D27BFD86D09A017', 2)
 INSERT INTO dbo.TypeRoom (fullname, price) VALUES ('VIP',20000)
 INSERT INTO dbo.TypeRoom (fullname, price) VALUES (N'Thường',10000)
 INSERT INTO dbo.TypeCustomer(displayname, number) VALUES (N'Nội địa',1)

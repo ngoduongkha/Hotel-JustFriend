@@ -7,6 +7,8 @@
     <Property Name="idAccount" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="password" Type="String" MaxLength="64" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="idTypeAccount" Type="Int32" />
+    <NavigationProperty Name="TypeAccount" Relationship="Hotel_JustFriendModel.FK__Account__idTypeA__49C3F6B7" FromRole="Account" ToRole="TypeAccount" />
   </EntityType>
   <EntityType Name="Bill">
     <Key>
@@ -267,5 +269,30 @@
       <End Role="TypeRoom" EntitySet="TypeRooms" />
       <End Role="Room" EntitySet="Rooms" />
     </AssociationSet>
+    <EntitySet Name="TypeAccounts" EntityType="Hotel_JustFriendModel.TypeAccount" />
+    <AssociationSet Name="FK__Account__idTypeA__49C3F6B7" Association="Hotel_JustFriendModel.FK__Account__idTypeA__49C3F6B7">
+      <End Role="TypeAccount" EntitySet="TypeAccounts" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="TypeAccount">
+    <Key>
+      <PropertyRef Name="idTypeAccount" />
+    </Key>
+    <Property Name="idTypeAccount" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="displayname" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Accounts" Relationship="Hotel_JustFriendModel.FK__Account__idTypeA__49C3F6B7" FromRole="TypeAccount" ToRole="Account" />
+  </EntityType>
+  <Association Name="FK__Account__idTypeA__49C3F6B7">
+    <End Type="Hotel_JustFriendModel.TypeAccount" Role="TypeAccount" Multiplicity="0..1" />
+    <End Type="Hotel_JustFriendModel.Account" Role="Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeAccount">
+        <PropertyRef Name="idTypeAccount" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="idTypeAccount" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

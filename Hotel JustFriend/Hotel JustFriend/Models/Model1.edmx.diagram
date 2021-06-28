@@ -25,6 +25,8 @@
         <AssociationConnector Association="Hotel_JustFriendModel.FK__RentInvoi__idRoo__440B1D61" ManuallyRouted="false" />
         <AssociationConnector Association="Hotel_JustFriendModel.FK__Revenue__idType__4222D4EF" ManuallyRouted="false" />
         <AssociationConnector Association="Hotel_JustFriendModel.FK__Room__idType__4316F928" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.TypeAccount" Width="1.5" PointX="3.5" PointY="16" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__Account__idTypeA__49C3F6B7" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

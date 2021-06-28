@@ -17,5 +17,8 @@ namespace Hotel_JustFriend.Models
         public int idAccount { get; set; }
         public string username { get; set; }
         public string password { get; set; }
+        public Nullable<int> idTypeAccount { get; set; }
+    
+        public virtual TypeAccount TypeAccount { get; set; }
     }
 }

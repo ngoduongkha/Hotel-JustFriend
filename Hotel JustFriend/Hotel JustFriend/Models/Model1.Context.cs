@@ -37,5 +37,6 @@ namespace Hotel_JustFriend.Models
         public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<TypeCustomer> TypeCustomers { get; set; }
         public virtual DbSet<TypeRoom> TypeRooms { get; set; }
+        public virtual DbSet<TypeAccount> TypeAccounts { get; set; }
     }
 }
