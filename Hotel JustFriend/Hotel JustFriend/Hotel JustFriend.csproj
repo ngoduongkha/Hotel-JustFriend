@@ -236,6 +236,7 @@
     <Compile Include="ViewModels\AccountManageViewModel.cs" />
     <Compile Include="ViewModels\AddCustomerViewModel.cs" />
     <Compile Include="ViewModels\BilltemplateViewModel.cs" />
+    <Compile Include="ViewModels\CustomerManageViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\CustomizeParametersViewModel.cs" />
     <Compile Include="ViewModels\EmployeeDetailViewModel.cs" />
