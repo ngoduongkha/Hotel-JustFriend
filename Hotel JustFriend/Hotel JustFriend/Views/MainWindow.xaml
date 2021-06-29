@@ -177,6 +177,14 @@
                             <Label Content="Quản lý phòng" Grid.Column="0"/>
                         </StackPanel>
                     </Button>
+                    <Button
+                        Command="{Binding OpenTabCustomerManageCommand}"
+                        CommandParameter="{Binding ElementName=window}">
+                        <StackPanel Orientation="Horizontal" Width="250">
+                            <materialDesign:PackIcon Kind="HumanMaleFemale" Grid.Column="0"/>
+                            <Label Content="Quản lý khách hàng" Grid.Column="0"/>
+                        </StackPanel>
+                    </Button>
                     <Button Command="{Binding OpenTabAccountManageCommand}"
                             CommandParameter="{Binding ElementName=window}">
                         <StackPanel Orientation="Horizontal" Width="250">
