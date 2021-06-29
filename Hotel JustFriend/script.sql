@@ -43,6 +43,7 @@ CREATE TABLE [Customer] (
   [FullName] nvarchar(max) NOT NULL,
   [IdCard] varchar(20) UNIQUE NOT NULL,
   [IdTypeCustomer] int NOT NULL,
+  [Address] nvarchar(max) NOT NULL
 )
 GO
 
