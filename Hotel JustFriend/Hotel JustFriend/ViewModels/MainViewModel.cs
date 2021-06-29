@@ -2,6 +2,7 @@
 using DevExpress.Mvvm.DataAnnotations;
 using Hotel_JustFriend.Models;
 using Hotel_JustFriend.Views;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
@@ -24,8 +25,25 @@ namespace Hotel_JustFriend.ViewModels
         public MainViewModel(string userName)
         {
             _userName = userName;
+            var account = DataProvider.Instance.DB.Accounts.Where(x => x.Username == userName).SingleOrDefault();
 
-            
+            switch (account.IdTypeAccount)
+            {
+                case 2:
+                    IsCollapsedTabCustomerManage = Visibility.Collapsed;
+                    IsCollapsedTabAccountManage = Visibility.Collapsed;
+                    IsCollapsedTabReport = Visibility.Collapsed;
+                    IsCollapsedTabCustomizeParameters = Visibility.Collapsed;
+                    break;
+                case 3:
+                    IsCollapsedTabRoomManage = Visibility.Collapsed;
+                    IsCollapsedTabCustomerManage = Visibility.Collapsed;
+                    IsCollapsedTabAccountManage = Visibility.Collapsed;
+                    IsCollapsedTabCustomizeParameters = Visibility.Collapsed;
+                    break;
+                default:
+                    break;
+            }
         }
 
         #region Command
