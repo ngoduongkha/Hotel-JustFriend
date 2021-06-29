@@ -20,11 +20,10 @@ namespace Hotel_JustFriend.Models
             this.RentInvoiceInfoes = new HashSet<RentInvoiceInfo>();
         }
     
-        public int idCustomer { get; set; }
-        public string fullname { get; set; }
-        public string idCard { get; set; }
-        public int idType { get; set; }
-        public string address { get; set; }
+        public int IdCustomer { get; set; }
+        public string FullName { get; set; }
+        public string IdCard { get; set; }
+        public int IdTypeCustomer { get; set; }
     
         public virtual TypeCustomer TypeCustomer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

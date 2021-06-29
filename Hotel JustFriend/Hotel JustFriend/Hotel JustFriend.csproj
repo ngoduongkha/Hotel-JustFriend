@@ -180,6 +180,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\PropertyConverter.cs" />
     <Compile Include="Models\RentInvoice.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -195,6 +196,9 @@
     <Compile Include="Models\Room.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TypeAccount.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TypeCustomer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -204,29 +208,17 @@
     <Compile Include="Template\ImportBill.xaml.cs">
       <DependentUpon>ImportBill.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Template\ReportTemplate.xaml.cs">
-      <DependentUpon>ReportTemplate.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\BillDetailUC.xaml.cs">
       <DependentUpon>BillDetailUC.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\ButtonRoomUC.xaml.cs">
-      <DependentUpon>ButtonRoomUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\CustomerUC.xaml.cs">
       <DependentUpon>CustomerUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ImportProductDetailUC.xaml.cs">
-      <DependentUpon>ImportProductDetailUC.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\ImportProductUC.xaml.cs">
-      <DependentUpon>ImportProductUC.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\NumericSpinner.xaml.cs">
       <DependentUpon>NumericSpinner.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ProductDetailUC.xaml.cs">
-      <DependentUpon>ProductDetailUC.xaml</DependentUpon>
+    <Compile Include="UserControls\ReportTemplateUC.xaml.cs">
+      <DependentUpon>ReportTemplateUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ReportUC.xaml.cs">
       <DependentUpon>ReportUC.xaml</DependentUpon>
@@ -240,29 +232,32 @@
     <Compile Include="UserControls\SellProductUC.xaml.cs">
       <DependentUpon>SellProductUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AccountInfoViewModel.cs" />
     <Compile Include="ViewModels\AccountManageViewModel.cs" />
     <Compile Include="ViewModels\AddCustomerViewModel.cs" />
+    <Compile Include="ViewModels\BilltemplateViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\CustomizeParametersViewModel.cs" />
     <Compile Include="ViewModels\EmployeeDetailViewModel.cs" />
     <Compile Include="ViewModels\ReportViewModel.cs" />
     <Compile Include="ViewModels\RoomRentalViewModel.cs" />
-    <Compile Include="ViewModels\SellProductViewModel.cs" />
-    <Compile Include="Views\AddCustomerTypeWindow.xaml.cs">
-      <DependentUpon>AddCustomerTypeWindow.xaml</DependentUpon>
+    <Compile Include="Views\AccountInfoView.xaml.cs">
+      <DependentUpon>AccountInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddTypeWindow.xaml.cs">
+      <DependentUpon>AddTypeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CustomerManageView.xaml.cs">
+      <DependentUpon>CustomerManageView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CustomizeParametersView.xaml.cs">
       <DependentUpon>CustomizeParametersView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\WarehouseViewModel.cs" />
     <Compile Include="Views\AccountManageView.xaml.cs">
       <DependentUpon>AccountManageView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AddCustomerWindow.xaml.cs">
       <DependentUpon>AddCustomerWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\BookingWindow.xaml.cs">
-      <DependentUpon>BookingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DetailCustomer.xaml.cs">
       <DependentUpon>DetailCustomer.xaml</DependentUpon>
@@ -270,16 +265,7 @@
     <Compile Include="Views\EditCustomerView.xaml.cs">
       <DependentUpon>EditCustomerView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EmployeeDetailView.xaml.cs">
-      <DependentUpon>EmployeeDetailView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\EmployeeManageView.xaml.cs">
-      <DependentUpon>EmployeeManageView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\EmployeeManageViewModel.cs" />
-    <Compile Include="Views\EmployeeUpdateView.xaml.cs">
-      <DependentUpon>EmployeeUpdateView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\MyMessageBoxes\MyMessageBox.cs" />
     <Compile Include="Template\BillTemplate.xaml.cs">
       <DependentUpon>BillTemplate.xaml</DependentUpon>
@@ -291,8 +277,6 @@
     <Compile Include="Validations\NotNullValidation.cs" />
     <Compile Include="Validations\NumberValidation.cs" />
     <Compile Include="ViewModels\BillViewModel.cs" />
-    <Compile Include="ViewModels\ProductDetailViewModel.cs" />
-    <Compile Include="ViewModels\ProductManageViewModel.cs" />
     <Compile Include="ViewModels\RoomDetailViewModel.cs" />
     <Compile Include="ViewModels\BusinessViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -302,12 +286,6 @@
     </Compile>
     <Compile Include="Views\MyMessageBoxes\MyMessageBoxWindow.xaml.cs">
       <DependentUpon>MyMessageBoxWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ProductDetailView.xaml.cs">
-      <DependentUpon>ProductDetailView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ProductManageView.xaml.cs">
-      <DependentUpon>ProductManageView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ReportView.xaml.cs">
       <DependentUpon>ReportView.xaml</DependentUpon>
@@ -323,12 +301,6 @@
     </Compile>
     <Compile Include="Views\RoomRentalView.xaml.cs">
       <DependentUpon>RoomRentalView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\SellProductView.xaml.cs">
-      <DependentUpon>SellProductView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\WarehouseView.xaml.cs">
-      <DependentUpon>WarehouseView.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\ButtonResources.xaml">
       <SubType>Designer</SubType>
@@ -350,15 +322,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Template\ReportTemplate.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UserControls\BillDetailUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\ButtonRoomUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -366,19 +330,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\ImportProductDetailUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\ImportProductUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UserControls\NumericSpinner.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\ProductDetailUC.xaml">
+    <Page Include="UserControls\ReportTemplateUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -398,7 +354,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddCustomerTypeWindow.xaml">
+    <Page Include="Views\AccountInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddTypeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CustomerManageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -414,27 +378,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\BookingWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\DetailCustomer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EditCustomerView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\EmployeeDetailView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\EmployeeManageView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\EmployeeUpdateView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -458,14 +406,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ProductDetailView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\ProductManageView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\ReportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -483,14 +423,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\RoomRentalView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\SellProductView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\WarehouseView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

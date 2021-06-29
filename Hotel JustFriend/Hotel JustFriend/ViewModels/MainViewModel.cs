@@ -11,6 +11,21 @@ namespace Hotel_JustFriend.ViewModels
     [POCOViewModel]
     public class MainViewModel : ViewModelBase
     {
+        private Visibility _isCollapsed = Visibility.Visible;
+        private string _userName;
+
+        public Visibility IsCollapsed { get => _isCollapsed; set { _isCollapsed = value; RaisePropertyChanged(); } }
+
+        public MainViewModel(string userName)
+        {
+            _userName = userName;
+
+            if (userName != "admin")
+            {
+                _isCollapsed = Visibility.Collapsed;
+            }
+        }
+
         #region Command
         [Command]
         public void MouseMoveWindow(Window p)
@@ -121,39 +136,13 @@ namespace Hotel_JustFriend.ViewModels
             }
             catch { return; }
         }
-
         [Command]
-        public void OpenTabFoodManage(MainWindow p)
+        public void OpenTabReport(MainWindow p)
         {
             try
             {
                 p.gridMain.Children.Clear();
-                ProductManageView uc = new ProductManageView();
-                CloseMenuByClick(p);
-                p.gridMain.Children.Add(uc);
-            }
-            catch { return; }
-        }
-
-        [Command]
-        public void OpenTabAccountManage(MainWindow p)
-        {
-            try
-            {
-                p.gridMain.Children.Clear();
-                AccountManageView uc = new AccountManageView();
-                CloseMenuByClick(p);
-                p.gridMain.Children.Add(uc);
-            }
-            catch { return; }
-        }
-        [Command]
-        public void OpenTabEmployeeManage(MainWindow p)
-        {
-            try
-            {
-                p.gridMain.Children.Clear();
-                EmployeeManageView uc = new EmployeeManageView();
+                ReportView uc = new ReportView();
                 CloseMenuByClick(p);
                 p.gridMain.Children.Add(uc);
             }
@@ -166,6 +155,30 @@ namespace Hotel_JustFriend.ViewModels
             {
                 p.gridMain.Children.Clear();
                 CustomizeParametersView uc = new CustomizeParametersView();
+                CloseMenuByClick(p);
+                p.gridMain.Children.Add(uc);
+            }
+            catch { return; }
+        }
+        [Command]
+        public void OpenTabAccountInfo(MainWindow p)
+        {
+            try
+            {
+                p.gridMain.Children.Clear();
+                AccountInfoView uc = new AccountInfoView(_userName);
+                CloseMenuByClick(p);
+                p.gridMain.Children.Add(uc);
+            }
+            catch { return; }
+        }
+        [Command]
+        public void OpenTabAccountManage(MainWindow p)
+        {
+            try
+            {
+                p.gridMain.Children.Clear();
+                AccountManageView uc = new AccountManageView();
                 CloseMenuByClick(p);
                 p.gridMain.Children.Add(uc);
             }

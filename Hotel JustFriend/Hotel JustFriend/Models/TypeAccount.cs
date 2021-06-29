@@ -12,21 +12,18 @@ namespace Hotel_JustFriend.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class RentInvoice
+    public partial class TypeAccount
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public RentInvoice()
+        public TypeAccount()
         {
-            this.RentInvoiceInfoes = new HashSet<RentInvoiceInfo>();
+            this.Accounts = new HashSet<Account>();
         }
     
-        public int IdRentInvoice { get; set; }
-        public System.DateTime Date { get; set; }
-        public int IdRoom { get; set; }
-        public bool Purchase { get; set; }
+        public int IdTypeAccount { get; set; }
+        public string DisplayName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RentInvoiceInfo> RentInvoiceInfoes { get; set; }
-        public virtual Room Room { get; set; }
+        public virtual ICollection<Account> Accounts { get; set; }
     }
 }

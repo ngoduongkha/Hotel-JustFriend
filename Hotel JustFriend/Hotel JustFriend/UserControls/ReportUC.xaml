@@ -41,6 +41,5 @@
                    x:Name="percent"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"></TextBlock>
-
     </Grid>
 </UserControl>

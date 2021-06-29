@@ -14,8 +14,11 @@ namespace Hotel_JustFriend.Models
     
     public partial class Account
     {
-        public int idAccount { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
+        public int IdAccount { get; set; }
+        public int IdTypeAccount { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+    
+        public virtual TypeAccount TypeAccount { get; set; }
     }
 }

@@ -10,69 +10,89 @@ using System.Diagnostics;
 using System;
 using Hotel_JustFriend.UserControls;
 using Hotel_JustFriend.Template;
+using LiveCharts;
+using LiveCharts.Wpf;
 
 namespace Hotel_JustFriend.ViewModels
 {
-    class ReportViewModel:ViewModelBase
+    class ReportViewModel : ViewModelBase
     {
-        private ObservableCollection<TypeRoom> _ListRoomType ;
+        private ObservableCollection<TypeRoom> _ListRoomType;
         private ObservableCollection<Room> _ListRoom;
         private ObservableCollection<Bill> _ListBill;
         private ObservableCollection<BillInfo> _ListBillInfo;
         private string _month;
         private string _year;
+        private SeriesCollection pieSerieCollection;
 
         public string Year { get => _year; set => _year = value; }
         public string Month { get => _month; set => _month = value; }
+        public SeriesCollection PieSerieCollection { get => pieSerieCollection; set { pieSerieCollection = value; RaisePropertiesChanged(); } }
 
         [Command]
-        public void report()
+        public void report(Grid grid)
         {
-            ReportTemplate aa = new ReportTemplate();
+            ReportTemplateUC aa = new ReportTemplateUC();
             aa.month.Text = Month.ToString();
             aa.year.Text = Year.ToString();
             decimal tt = 0;
-            _ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where(p => p.isDelete == false));
+            _ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where(p => p.IsDelete == false));
             _ListBillInfo = new ObservableCollection<BillInfo>(DataProvider.Instance.DB.BillInfoes);
             _ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms);
             int y = int.Parse(Year);
-            int m =0;
-            if (Month!="")  m = int.Parse(Month);
-            if (Month=="") _ListBill = new ObservableCollection<Bill>(DataProvider.Instance.DB.Bills.Where(p => p.date.Value.Year == y));
-            else _ListBill = new ObservableCollection<Bill>(DataProvider.Instance.DB.Bills.Where(p => p.date.Value.Year == y && p.date.Value.Month== m));
-            for (int i=0;i<_ListRoomType.Count;i++)
+            int m = 0;
+            if (Month != "") m = int.Parse(Month);
+            if (Month == "") _ListBill = new ObservableCollection<Bill>(DataProvider.Instance.DB.Bills.Where(p => p.Date.Year == y));
+            else _ListBill = new ObservableCollection<Bill>(DataProvider.Instance.DB.Bills.Where(p => p.Date.Year == y && p.Date.Month == m));
+            if (_ListBill.Count > 0)
+            {
+                PieSerieCollection = new SeriesCollection();
+                for (int i = 0; i < _ListRoomType.Count; i++)
                 {
                     double phantram = 0;
                     decimal doanhthu = 0;
-                    int idtype = _ListRoomType[i].idType;
-                    for (int j=0;j<_ListBillInfo.Count;j++)
+                    int idtype = _ListRoomType[i].IdTypeRoom;
+                    for (int j = 0; j < _ListBillInfo.Count; j++)
                     {
-                    int idd = _ListBillInfo[j].idBill;
-                        Bill k = _ListBill.Where(p => p.idBill == idd).FirstOrDefault();
+                        int idd = _ListBillInfo[j].IdBill;
+                        Bill k = _ListBill.Where(p => p.IdBill == idd).FirstOrDefault();
                         if (k != null)
                         {
-                            Room a = _ListRoom.Where(p => p.idRoom == _ListBillInfo[j].idRoom).FirstOrDefault();
-                            if (a.idType == idtype)
+                            Room a = _ListRoom.Where(p => p.IdRoom == _ListBillInfo[j].IdRoom).FirstOrDefault();
+                            if (a.IdTypeRoom == idtype)
                             {
                                 phantram = phantram + 1;
-                                doanhthu = doanhthu + (decimal)k.totalMoney;
+                                doanhthu = doanhthu + (decimal)k.TotalMoney;
                             }
                         }
                     }
-                    if (_ListBill!=null) phantram = phantram / (_ListBill.Count);
+                    if (_ListBill != null) phantram = phantram / (_ListBill.Count);
                     tt = tt + doanhthu;
+                    ChartValues<decimal> chartValue = new ChartValues<decimal>();
+                    chartValue.Add(doanhthu);
+                    PieSeries newPie = new PieSeries
+                    {
+                        Title = _ListRoomType[i].DisplayName,
+                        Values = chartValue,
+                        DataLabels = true,
+                        FontSize = 15,
+                    };
+                    PieSerieCollection.Add(newPie);
                     ReportUC c = new ReportUC();
                     c.STT.Text = (i + 1).ToString();
-                    c.displayname.Text = _ListRoomType[i].fullname;
-                    c.revenue.Text = string.Format("{0:C}",doanhthu);
+                    c.displayname.Text = _ListRoomType[i].DisplayName;
+                    c.revenue.Text = string.Format("{0:C}", doanhthu);
                     c.percent.Text = phantram.ToString("#0.##%");
-                    
+
                     aa.stp.Children.Add(c);
                 }
-            aa.totalmoney.Text= string.Format("{0:C}", tt);
-            aa.ShowDialog();
+                aa.totalmoney.Text = string.Format("{0:C}", tt);
+                grid.Children.Clear();
+                grid.Children.Add(aa);
             }
-            
+            else { MyMessageBox.Show("Dữ liệu không tồn tại, mời nhập lại thời gian", "Nhắc nhở", MessageBoxButton.OK); }
         }
-    
+
+    }
+
 }

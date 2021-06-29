@@ -1,26 +1,109 @@
-﻿<Window x:Class="Hotel_JustFriend.Views.ReportView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Hotel_JustFriend.Views"
-        mc:Ignorable="d"
-                     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="ReportView" Height="450" Width="800">
-    <Grid>
+﻿<UserControl x:Class="Hotel_JustFriend.Views.ReportView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Hotel_JustFriend.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:uc="clr-namespace:Hotel_JustFriend.UserControls"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" xmlns:validation="clr-namespace:Hotel_JustFriend.Validations"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid
+        Margin="15 5 15 15">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
-            <StackPanel>
-            <TextBox 
-                     Text="{Binding Month,Mode=OneWayToSource}"></TextBox>
-                <TextBox Text="{Binding Year,Mode=OneWayToSource}"
-                     ></TextBox>
-                <Button Content="báo cáo"
-                        Command="{Binding reportCommand}"></Button>
-            </StackPanel>
+        <Grid Grid.Column="0"
+              Margin="0 0 7 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <materialDesign:Card 
+                Grid.Row="0">
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid
+                        Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel
+                            Grid.Column="0"
+                            Orientation="Horizontal">
+                            <Label
+                                Content="Tháng:"
+                                FontSize="20"
+                                VerticalAlignment="Center"/>
+                            <TextBox
+                                Width="50"
+                                Margin="20 0"
+                                FontSize="20"
+                                Padding="0"
+                                MaxLength="2"
+                                Text="{Binding Month,Mode=OneWayToSource}"
+                                VerticalAlignment="Center" PreviewTextInput="TextBox_PreviewTextInput">
+                              
+                            </TextBox>
+                        </StackPanel>
+                        <StackPanel
+                            Grid.Column="1"
+                            Orientation="Horizontal">
+                            <Label
+                                Content="Năm:"
+                                FontSize="20"
+                                VerticalAlignment="Center"/>
+                            <TextBox 
+                                Width="50"
+                                Margin="20 0"
+                                FontSize="20"
+                                Padding="0"
+                                Text="{Binding Year,Mode=OneWayToSource}"
+                                VerticalAlignment="Center"
+                                MaxLength="4"
+                                >
+                               
+                            </TextBox>
+                        </StackPanel>
+                    </Grid>
+                    <Grid
+                        Grid.Row="1">
+                        <Button 
+                            Margin="0 20 0 0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Content="Hiển thị"
+                            FontSize="20"
+                            Command="{Binding reportCommand}"
+                            CommandParameter="{Binding ElementName=gridReportTemplate}"/>
+                    </Grid>
+                </Grid>
+            </materialDesign:Card>
+            <materialDesign:Card
+                Grid.Row="1"
+                Margin="0 15 0 0 ">
+                <lvc:PieChart 
+                    Margin="20"
+                    LegendLocation="Bottom"
+                    Hoverable="False" 
+                    DataTooltip="{x:Null}"
+                    Series="{Binding PieSerieCollection}"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    FontSize="18">
+                </lvc:PieChart>
+            </materialDesign:Card>
+        </Grid>
+        <Grid Grid.Column="1"
+              Margin="7 0 0 0"
+              x:Name="gridReportTemplate">
+            <uc:ReportTemplateUC/>
         </Grid>
     </Grid>
-</Window>
+</UserControl>

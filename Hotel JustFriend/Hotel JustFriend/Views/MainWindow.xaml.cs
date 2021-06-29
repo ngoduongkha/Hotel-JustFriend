@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Hotel_JustFriend.ViewModels;
+using System.Windows;
 
 namespace Hotel_JustFriend.Views
 {
@@ -7,9 +8,10 @@ namespace Hotel_JustFriend.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(string userName)
         {
             InitializeComponent();
+            this.DataContext = new MainViewModel(userName);
         }
     }
 }

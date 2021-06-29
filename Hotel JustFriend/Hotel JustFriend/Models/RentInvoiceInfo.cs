@@ -14,9 +14,9 @@ namespace Hotel_JustFriend.Models
     
     public partial class RentInvoiceInfo
     {
-        public Nullable<int> idRentInvoiceInfo { get; set; }
-        public int idRentInvoice { get; set; }
-        public int idCustomer { get; set; }
+        public int IdRentInvoiceInfo { get; set; }
+        public int IdRentInvoice { get; set; }
+        public int IdCustomer { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual RentInvoice RentInvoice { get; set; }

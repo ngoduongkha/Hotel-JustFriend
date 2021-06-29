@@ -20,10 +20,10 @@ namespace Hotel_JustFriend.Models
             this.Customers = new HashSet<Customer>();
         }
     
-        public int idType { get; set; }
-        public string displayname { get; set; }
-        public Nullable<double> number { get; set; }
-        public Nullable<bool> isDelete { get; set; }
+        public int IdTypeCustomer { get; set; }
+        public string Displayname { get; set; }
+        public double CoefficientsObtained { get; set; }
+        public bool IsDelete { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }

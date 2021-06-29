@@ -1,132 +1,105 @@
 ﻿using DevExpress.Mvvm;
 using DevExpress.Mvvm.DataAnnotations;
 using Hotel_JustFriend.Models;
+using Hotel_JustFriend.Utility;
 using Hotel_JustFriend.Views;
+using System;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Windows.Data;
-using Hotel_JustFriend.UserControls;
 using System.Windows.Controls;
 
 namespace Hotel_JustFriend.ViewModels
 {
+    public class RoomWithType
+    {
+        public int IdRoom { get; set; }
+        public int Floor { get; set; }
+        public int Number { get; set; }
+        public string DisplayName { get; set; }
+        public string TypeRoomName { get; set; }
+        public string Status { get; set; }
+        public string Note { get; set; }
+        public decimal Price { get; set; }
+    }
+
+
     [POCOViewModel]
     public class RoomManageViewModel : ViewModelBase
     {
         private ObservableCollection<Room> _ListRoom;
-        private CollectionView _View;
+        private ObservableCollection<RoomWithType> _ListRoomWithType;
         private ObservableCollection<TypeRoom> _ListRoomType;
-        private ObservableCollection<string> _ListNameRoomType;
-        private ObservableCollection<int> _ListRoomStatus;
-        private CollectionView _Selected;
-        private Room _SelectedRoom;
+        private RoomWithType _SelectedRoom;
 
-        public ObservableCollection<Room> ListRoom { get => _ListRoom; set { _ListRoom = value; RaisePropertyChanged(); } }
-        public ObservableCollection<int> ListRoomStatus { get => _ListRoomStatus; set { _ListRoomStatus = value; RaisePropertyChanged(); } }
-        public Room SelectedRoom { get => _SelectedRoom; set { _SelectedRoom = value; RaisePropertyChanged(); } }
-
-        public ObservableCollection<TypeRoom> ListRoomType { get => _ListRoomType; set { _ListRoomType = value; RaisePropertyChanged(); } }
-        public ObservableCollection<string> ListNameRoomType { get => _ListNameRoomType; set { _ListNameRoomType = value; RaisePropertyChanged(); } }
-
-        public CollectionView View { get => _View; set { _View = value; RaisePropertyChanged(); } }
-
-        public CollectionView Selected { get => _Selected; set { _Selected = value; RaisePropertiesChanged(); } }
+        public ObservableCollection<RoomWithType> ListRoomWithType { get => _ListRoomWithType; set { _ListRoomWithType = value; RaisePropertyChanged(); } }
+        public ObservableCollection<TypeRoom> ListRoomType { get => _ListRoomType; set => _ListRoomType = value; }
+        public RoomWithType SelectedRoom { get => _SelectedRoom; set { _SelectedRoom = value; RaisePropertyChanged(); } }
+        public ObservableCollection<Room> ListRoom { get => _ListRoom; set => _ListRoom = value; }
 
         public RoomManageViewModel()
         {
+            ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms);
 
+            LoadDB();
         }
-        public void ham_da_nang(RoomManageView p)
-        {
-            p.stp_ListRoom.Children.Clear();
-            for (int i = 0; i < ListRoom.Count; i++)
-            {
-                RoomUC a = new RoomUC();
-                a.floor.Text = ListRoom[i].floor.ToString();
-                a.id.Text = ListRoom[i].idRoom.ToString();
-                a.displayname.Text = ListRoom[i].displayName.ToString();
-                for (int j = 0; j < ListRoomType.Count; j++)
-                {
-                    if (ListRoomType[j].idType == ListRoom[i].idType)
-                    {
-                        a.Type.Text = ListRoomType[j].fullname;
-                        a.price.Text = ListRoomType[j].price.ToString();
-                        break;
-                    }
-                }
-                if (ListRoom[i].status == true) a.status.Text = "Chưa sẵn sàng";
-                else a.status.Text = "Sẵn sàng";
-                a.note.Text = ListRoom[i].note.ToString();
-                p.stp_ListRoom.Children.Add(a);
-            }
-        }
-        [Command]
-        public void LoadDB(RoomManageView p)
+
+        private void LoadDB()
         {
             try
             {
-                ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms
-                    .Where(x => x.isDelete == false)
-                    .OrderBy(x => x.floor)
-                    );
-                ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms);
-                for (int i=0;i<ListRoom.Count;i++)
-                {
-                    RoomUC a = new RoomUC();
-                    a.floor.Text = ListRoom[i].floor.ToString();
-                    a.id.Text = ListRoom[i].idRoom.ToString();
-                    a.displayname.Text = ListRoom[i].displayName.ToString();
-                    for (int j=0;j<ListRoomType.Count;j++)
+                ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms.Where(x => x.IsDelete == false).OrderBy(x => x.Floor).ThenBy(x => x.Number));
+                ListRoomWithType = new ObservableCollection<RoomWithType>(
+                    ListRoom.Join(ListRoomType, (Room) => Room.IdTypeRoom, (TypeRoom) => TypeRoom.IdTypeRoom,
+                    (Room, TypeRoom) =>
+                    new RoomWithType
                     {
-                        if (ListRoomType[j].idType==ListRoom[i].idType)
-                        {
-                            a.Type.Text = ListRoomType[j].fullname;
-                            a.price.Text = ListRoomType[j].price.ToString();
-                            break;
-                        }
-                    }
-                    if (ListRoom[i].status == true) a.status.Text = "Chưa sẵn sàng";
-                    else a.status.Text = "Sẵn sàng";
-                    a.note.Text = ListRoom[i].note.ToString();
-                    p.stp_ListRoom.Children.Add(a);
-                }
+                        IdRoom = Room.IdRoom,
+                        Floor = Room.Floor,
+                        Number = Room.Number,
+                        DisplayName = Room.DisplayName,
+                        TypeRoomName = TypeRoom.DisplayName,
+                        Status = Room.Status,
+                        Note = Room.Note,
+                        Price = TypeRoom.Price
+                    }));
             }
-            catch 
-            { 
-                return; 
-            }
+            catch { return; }
         }
 
         [Command]
-        public void AddRoom(RoomManageView p)
+        public void AddRoom()
         {
             try
             {
                 RoomDetailView addRoom = new RoomDetailView();
                 addRoom.ShowDialog();
-                p.stp_ListRoom.Children.Clear();
-                LoadDB(p);
-           }
+
+                LoadDB();
+            }
             catch { return; }
         }
 
         [Command]
-        public void DeleteRoom(RoomUC p)
+        public void DeleteRoom()
         {
             try
             {
-                ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms
-                    .Where(x => x.isDelete == false)
-                    );
-                int k = int.Parse(p.id.Text);
-                Room result = (from u in ListRoom
-                               where u.idRoom == k
-                               select u).Single();
-                result.isDelete = true;
+                if (SelectedRoom == null)
+                {
+                    MyMessageBox.Show("Không có gì để xóa!", "Thông báo", System.Windows.MessageBoxButton.OK);
+                    return;
+                }
+                if (SelectedRoom.Status == "Đang thuê")
+                {
+                    MyMessageBox.Show("Phòng đang được thuê!", "Thông báo", System.Windows.MessageBoxButton.OK);
+                    return;
+                }
+
+                DataProvider.Instance.DB.Rooms.Where(x => x.IdRoom == SelectedRoom.IdRoom).SingleOrDefault().IsDelete = true;
                 DataProvider.Instance.DB.SaveChanges();
                 MyMessageBox.Show("Xóa thành công!", "Thông báo", System.Windows.MessageBoxButton.OK);
-                ((StackPanel)p.Parent).Children.Remove(p);
+
+                LoadDB();
             }
             catch { return; }
         }
@@ -141,17 +114,17 @@ namespace Hotel_JustFriend.ViewModels
                     MyMessageBox.Show("Không có gì để sửa chữa!", "Thông báo", System.Windows.MessageBoxButton.OK);
                     return;
                 }
-                if (SelectedRoom.status == true)
+                if (SelectedRoom.Status != "Hư hỏng")
                 {
                     MyMessageBox.Show("Phòng không hỏng!", "Thông báo", System.Windows.MessageBoxButton.OK);
                     return;
                 }
 
-                //DataProvider.Instance.DB.Rooms.Where(x => x.idRoom == SelectedRoom.idRoom).SingleOrDefault().status = "Sẵn sàng";
+                DataProvider.Instance.DB.Rooms.Where(x => x.IdRoom == SelectedRoom.IdRoom).SingleOrDefault().Status = "Sẵn sàng";
                 DataProvider.Instance.DB.SaveChanges();
                 MyMessageBox.Show("Sửa chữa thành công!", "Thông báo", System.Windows.MessageBoxButton.OK);
 
-                //LoadDB();
+                LoadDB();
             }
             catch { return; }
         }
@@ -159,72 +132,27 @@ namespace Hotel_JustFriend.ViewModels
         [Command]
         public void RoomFilter(RoomManageView p)
         {
-           // try
-            //{
-                ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms
-                    .Where(x => x.isDelete == false)
-                    .OrderBy(x => x.floor)
-                    .ThenBy(x => x.displayName));
-            ham_da_nang(p);
-                if (string.IsNullOrEmpty(p.txtFilterStatus.Text) && !string.IsNullOrEmpty(p.txtFilterType.Text))
+            try
+            {
+                LoadDB();
+
+                if (string.IsNullOrEmpty(p.cbFilterStatus.Text) && !string.IsNullOrEmpty(p.cbFilterType.Text))
                 {
-                    int k = int.Parse(p.txtFilterType.SelectedValue.ToString());
-                    ListRoom = new ObservableCollection<Room>(ListRoom
-                        .Where(x => x.idType == k)
-                        .OrderBy(x => x.floor)
-                        .ThenBy(x => x.displayName)) ;
-                    ham_da_nang(p);
+                    ListRoomWithType = new ObservableCollection<RoomWithType>(ListRoomWithType.Where(x => x.TypeRoomName == p.cbFilterType.Text));
                 }
-                else if (!string.IsNullOrEmpty(p.txtFilterStatus.Text) && string.IsNullOrEmpty(p.txtFilterType.Text))
+                else if (!string.IsNullOrEmpty(p.cbFilterStatus.Text) && string.IsNullOrEmpty(p.cbFilterType.Text))
                 {
-                    int id = 0;
-                    if (p.txtFilterStatus.Text == "Sẵn sàng") id = 0;
-                    else id = 1;
-                    if (id == 0)
-                    {
-                        ListRoom = new ObservableCollection<Room>(ListRoom
-                            .Where(x => x.status == false)
-                            .OrderBy(x => x.floor)
-                            .ThenBy(x => x.displayName));
-                        ham_da_nang(p);
-                    }
-                    else
-                    {
-                        ListRoom = new ObservableCollection<Room>(ListRoom
-                          .Where(x => x.status == true)
-                          .OrderBy(x => x.floor)
-                          .ThenBy(x => x.displayName));
-                        ham_da_nang(p);
-                    }
+                    ListRoomWithType = new ObservableCollection<RoomWithType>(ListRoomWithType.Where(x => x.Status == p.cbFilterStatus.Text));
                 }
-                else if (!string.IsNullOrEmpty(p.txtFilterStatus.Text) && !string.IsNullOrEmpty(p.txtFilterType.Text))
+                else if (!string.IsNullOrEmpty(p.cbFilterStatus.Text) && !string.IsNullOrEmpty(p.cbFilterType.Text))
                 {
-                    int id = 0;
-                    if (p.txtFilterStatus.Text == "Sẵn sàng") id = 0;
-                    else id = 1;
-                    int k = int.Parse(p.txtFilterType.SelectedValue.ToString());
-                    if (id == 0)
-                    {
-                        ListRoom = new ObservableCollection<Room>(ListRoom
-                        .Where(x => x.idType == k && x.status == false)
-                        .OrderBy(x => x.floor)
-                        .ThenBy(x => x.displayName));
-                        ham_da_nang(p);
-                    }
-                    else
-                    {
-                        ListRoom = new ObservableCollection<Room>(ListRoom
-                        .Where(x => x.idType == k && x.status == true)
-                        .OrderBy(x => x.floor)
-                        .ThenBy(x => x.displayName));
-                        ham_da_nang(p);
-                    }
-                
+                    ListRoomWithType = new ObservableCollection<RoomWithType>(ListRoomWithType.Where(x => x.TypeRoomName == p.cbFilterType.Text && x.Status == p.cbFilterStatus.Text));
                 }
-                p.txtFilterStatus.Text = string.Empty;
-                p.txtFilterType.Text = string.Empty;
-        //    }
-         //   catch { return; }
+
+                p.cbFilterStatus.Text = string.Empty;
+                p.cbFilterType.Text = string.Empty;
+            }
+            catch { return; }
         }
 
         [Command]
@@ -232,21 +160,17 @@ namespace Hotel_JustFriend.ViewModels
         {
             try
             {
-                ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms
-                    .Where(x => x.isDelete == false)
-                    .OrderBy(x => x.floor)
-                    .ThenBy(x => x.displayName));
+                LoadDB();
 
-                if (string.IsNullOrEmpty(p.txtSearch.Text))
+                if (string.IsNullOrEmpty(p.tbSearch.Text) || string.IsNullOrWhiteSpace(p.tbSearch.Text))
+                {
+                    p.tbSearch.Text = string.Empty;
                     return;
+                }
 
-                ListRoom = new ObservableCollection<Room>(ListRoom
-                    .Where(x => x.displayName.Contains(p.txtSearch.Text))
-                    .OrderBy(x => x.floor)
-                    .ThenBy(x => x.displayName)
-                    .ToList());
-                ham_da_nang(p);
-                p.txtSearch.Text = string.Empty;
+                ListRoomWithType = new ObservableCollection<RoomWithType>(ListRoomWithType.Where(x => x.DisplayName.Contains(p.tbSearch.Text)));
+
+                p.tbSearch.Text = string.Empty;
             }
             catch { return; }
         }

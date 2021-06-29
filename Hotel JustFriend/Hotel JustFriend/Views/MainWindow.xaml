@@ -7,7 +7,7 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
     xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts"
-    x:Class="Hotel_JustFriend.Views.MainWindow" DataContext="{StaticResource MainVM}"
+    x:Class="Hotel_JustFriend.Views.MainWindow"
     mc:Ignorable="d" WindowStyle="None" WindowStartupLocation="CenterScreen"
     x:Name="window" Title="Hotel Just Friend" Height="700" Width="1200" 
     ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True"
@@ -56,10 +56,12 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="1">
-                                <Label Content="{Binding Title, ElementName=window}"
-                        VerticalAlignment="Center" HorizontalAlignment="Center"
-                        Foreground="WhiteSmoke"
-                        FontSize="25" FontWeight="Bold"/>
+                                <Label 
+                                    Content="{Binding Title, ElementName=window}"
+                                    VerticalAlignment="Center" 
+                                    HorizontalAlignment="Center"
+                                    Foreground="WhiteSmoke"
+                                    FontSize="25" FontWeight="Bold"/>
                             </Grid>
                             <Grid Grid.Column="2">
                                 <Grid.Resources>
@@ -91,8 +93,9 @@
                                 <Button Grid.Column="0" ToolTip="Thu gọn"
                                     Command="{Binding MinimizeWindowCommand}"
                                     CommandParameter="{Binding ElementName=window}">
-                                    <materialDesign:PackIcon Kind="WindowMinimize" Width="25" Height="25"
-                                                         HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <materialDesign:PackIcon 
+                                        Kind="WindowMinimize" Width="25" Height="25"
+                                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Button>
                             </Grid>
                             <Grid Grid.Column="0">
@@ -116,7 +119,8 @@
                 </Border>
             </Grid>
         </Border>
-        <Grid HorizontalAlignment="Left" Width="1200">
+        <Grid HorizontalAlignment="Left" 
+              Width="{Binding ElementName=window, Path=Width}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
@@ -171,36 +175,37 @@
                             <Label Content="Quản lý phòng" Grid.Column="0"/>
                         </StackPanel>
                     </Button>
-                    <Button
-                        Command="{Binding OpenTabFoodManageCommand}"
-                        CommandParameter="{Binding ElementName=window}">
-                        <StackPanel Orientation="Horizontal" Width="250">
-                            <materialDesign:PackIcon Kind="Food" Grid.Column="0"/>
-                            <Label Content="Quản lý ăn uống" Grid.Column="0"/>
-                        </StackPanel>
-                    </Button>
-                    <Button
-                        Command="{Binding OpenTabAccountManageCommand}"
-                        CommandParameter="{Binding ElementName=window}">
+                    <Button Command="{Binding OpenTabAccountManageCommand}"
+                            CommandParameter="{Binding ElementName=window}">
                         <StackPanel Orientation="Horizontal" Width="250">
                             <materialDesign:PackIcon Kind="Account" Grid.Column="0"/>
                             <Label Content="Quản lý tài khoản" Grid.Column="0"/>
                         </StackPanel>
                     </Button>
                     <Button
-                        Command="{Binding OpenTabEmployeeManageCommand}"
-                        CommandParameter="{Binding ElementName=window}">
+                        Command="{Binding OpenTabReportCommand}"
+                        CommandParameter="{Binding ElementName=window}"
+                        Visibility="{Binding IsCollapsed}">
                         <StackPanel Orientation="Horizontal" Width="250">
-                            <materialDesign:PackIcon Kind="People" Grid.Column="0"/>
-                            <Label Content="Quản lý nhân viên" Grid.Column="0"/>
+                            <materialDesign:PackIcon Kind="ChartBar" Grid.Column="0"/>
+                            <Label Content="Báo cáo doanh thu" Grid.Column="0"/>
                         </StackPanel>
                     </Button>
                     <Button
                         Command="{Binding OpenTabCustomizeParametersCommand}"
-                        CommandParameter="{Binding ElementName=window}">
+                        CommandParameter="{Binding ElementName=window}"
+                        Visibility="{Binding IsCollapsed}">
                         <StackPanel Orientation="Horizontal" Width="250">
                             <materialDesign:PackIcon Kind="SettingsApplications" Grid.Column="0"/>
                             <Label Content="Tùy chỉnh thông số" Grid.Column="0"/>
+                        </StackPanel>
+                    </Button>
+                    <Button
+                        Command="{Binding OpenTabAccountInfoCommand}"
+                        CommandParameter="{Binding ElementName=window}">
+                        <StackPanel Orientation="Horizontal" Width="250">
+                            <materialDesign:PackIcon Kind="InfoCircle" Grid.Column="0"/>
+                            <Label Content="Thông tin tài khoản" Grid.Column="0"/>
                         </StackPanel>
                     </Button>
                 </StackPanel>

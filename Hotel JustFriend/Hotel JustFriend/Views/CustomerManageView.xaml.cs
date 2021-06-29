@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Hotel_JustFriend.UserControls
+namespace Hotel_JustFriend.Views
 {
     /// <summary>
-    /// Interaction logic for ImportProductDetailUC.xaml
+    /// Interaction logic for CustomerManageView.xaml
     /// </summary>
-    public partial class ImportProductDetailUC : UserControl
+    public partial class CustomerManageView : UserControl
     {
-        public ImportProductDetailUC()
+        public CustomerManageView()
         {
             InitializeComponent();
         }

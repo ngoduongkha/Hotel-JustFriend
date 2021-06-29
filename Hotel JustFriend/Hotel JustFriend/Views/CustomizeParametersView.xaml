@@ -57,11 +57,12 @@
                         </Grid.RowDefinitions>
                         <StackPanel Grid.Row="0">
                             <Label Content="Loại phòng:"/>
-                            <ComboBox materialDesign:HintAssist.Hint="Chọn loại phòng"
-                                          ItemsSource="{Binding Path=ListRoomType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                          DisplayMemberPath="fullname"
-                                          SelectedValuePath="idType"
-                                          x:Name="cbboxRoomType"/>
+                            <ComboBox 
+                                materialDesign:HintAssist.Hint="Chọn loại phòng"
+                                ItemsSource="{Binding Path=ListRoomType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                DisplayMemberPath="fullname"
+                                SelectedValuePath="idType"
+                                x:Name="cbboxRoomType"/>
                         </StackPanel>
                         <StackPanel 
                                 HorizontalAlignment="Center"
@@ -117,7 +118,7 @@
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="1.5*"/>
                 </Grid.RowDefinitions>
-                <materialDesign:Card Grid.Row="0" Margin="7 15 7 7">
+                <materialDesign:Card Grid.Row="0" Margin="7 15 15 7">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -166,7 +167,7 @@
                         </StackPanel>
                     </Grid>
                 </materialDesign:Card>
-                <materialDesign:Card Grid.Row="1" Margin="7 7 7 15">
+                <materialDesign:Card Grid.Row="1" Margin="7 7 15 15">
                     <StackPanel>
                         <Label Content="Phụ thu:"/>
                         <TextBox Width="50"/>

@@ -1,0 +1,220 @@
+﻿<UserControl x:Class="Hotel_JustFriend.UserControls.ReportTemplateUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Hotel_JustFriend.UserControls"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="840" d:DesignWidth="592">
+    <materialDesign:Card>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="6*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Margin="30,20,30,0">
+                    <TextBlock 
+                    Text="Báo cáo doanh thu:" 
+                    HorizontalAlignment="Left"
+                    FontSize="20"
+                    Foreground="Pink"
+                    TextDecorations="underline"
+                    FontWeight="Bold"/>
+                    <Grid Margin="0,0,58,0">
+                        <TextBlock 
+                        Text="Tháng: " 
+                        FontSize="15"
+                        TextWrapping="Wrap"
+                        FontWeight="SemiBold"/>
+                        <TextBlock 
+                        Text="3" 
+                        FontSize="15"
+                        x:Name="month"
+                        TextWrapping="Wrap"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        FontWeight="SemiBold" Width="97"/>
+                    </Grid>
+                    <Grid>
+                        <TextBlock 
+                        Text="Năm: " 
+                        FontSize="15"
+                        TextWrapping="Wrap"
+                        FontWeight="SemiBold"/>
+                        <TextBlock 
+                        Text="2001" 
+                        FontSize="15"
+                        x:Name="year"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        TextWrapping="Wrap"
+                        FontWeight="SemiBold" Width="169"/>
+                    </Grid>
+                </StackPanel>
+                <Grid Grid.Column="1">
+                    <Image 
+                    Source="/Hotel JustFriend;component/Resources/Images/banner.png"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Height="80"
+                    Stretch="Uniform" 
+                    Margin="0,0,0,0"
+                    Width="250"
+                   />
+                    <StackPanel 
+                    Grid.Row="0" VerticalAlignment="Bottom" 
+                    HorizontalAlignment="Right"/>
+                    <StackPanel 
+                    Grid.Row="0" 
+                    Grid.Column="1" 
+                    VerticalAlignment="Bottom" 
+                    HorizontalAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1" Background="White">
+
+            </Grid>
+            <Grid
+            Grid.Row="1" Margin="30,20,30,0">
+
+                <Grid 
+                Background="Pink"
+                VerticalAlignment="Top" 
+                Height="25">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="55"/>
+                        <ColumnDefinition Width="140"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="116"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock 
+                        Grid.Column="0"
+                        Text="STT"
+                        HorizontalAlignment="Center" 
+                        Margin="0" 
+                        TextWrapping="Wrap" 
+                        VerticalAlignment="Center" 
+                        FontWeight="SemiBold" />
+                    <TextBlock 
+                        Grid.Column="1"
+                        Text="Loại phòng"
+                        HorizontalAlignment="Center" 
+                        Margin="10,0,0,0" 
+                        TextWrapping="Wrap" 
+                        VerticalAlignment="Center" 
+                        FontWeight="SemiBold" />
+                    <TextBlock 
+                        Grid.Column="2"
+                        Text="Doanh thu"
+                        HorizontalAlignment="Center" 
+                        Margin="0" 
+                        TextWrapping="Wrap" 
+                        VerticalAlignment="Center" 
+                        FontWeight="SemiBold" />
+                    <TextBlock 
+                        Grid.Column="3"
+                        Text="Tỷ lệ"
+                        HorizontalAlignment="Center" 
+                        Margin="0" 
+                        TextWrapping="Wrap" 
+                        VerticalAlignment="Center" 
+                        FontWeight="SemiBold" />
+                </Grid>
+                <Grid Margin="0,25,0,0" Background="#FFFAFA">
+                    <StackPanel x:Name="stp">
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="0">
+                    <StackPanel>
+
+                        <TextBlock FontSize="18" Margin="30,0,0,0" Background="Pink"></TextBlock>
+                    </StackPanel>
+
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <StackPanel >
+
+                            <TextBlock 
+                            Text="Tổng thu nhập: "
+                            FontSize="18"
+                            FontWeight="Medium"
+                            Background="Pink"
+                            TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Column="1" Margin="0,0,30,0">
+                        <StackPanel>
+
+                            <TextBlock 
+                            Text="1.000.000 "
+                            FontSize="18"
+                            x:Name="totalmoney"
+                            TextWrapping="Wrap"
+                            Background="Pink"
+                            FontWeight="Medium"/>
+                        </StackPanel>
+
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="0" Margin="30,0,0,0">
+                    <StackPanel>
+                        <TextBlock Text="Liên hệ: "
+                           FontWeight="Bold"
+                           FontSize="20"
+                           HorizontalAlignment="Left"/>
+                        <TextBlock/>
+
+                        <TextBlock  Text="ĐỊA CHỈ: Khu phố 6, P.Linh Trung, Q.Thủ Đức, Tp.Hồ Chí Minh."
+                                TextWrapping="Wrap" 
+                                FontSize="15"
+                                FontWeight="Medium"/>
+                        <TextBlock/>
+
+                        <TextBlock Text="ĐIỆN THOẠI: (028) 372 52002"
+                               FontSize="15"
+                               FontWeight="Medium"/>
+                        <TextBlock/>
+
+                        <TextBox Text="Email: HotelJustFriend@gmail.com"
+                             FontSize="15"
+                             FontWeight="Medium"/>
+                        <TextBlock/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button Content="In báo cáo" 
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Margin="0,0,30,20"
+                        FontSize="20"
+                        Command="{Binding LoadBillCommand}"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </materialDesign:Card>
+</UserControl>

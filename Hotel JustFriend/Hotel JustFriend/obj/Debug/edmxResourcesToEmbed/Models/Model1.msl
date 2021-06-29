@@ -4,119 +4,129 @@
     <EntitySetMapping Name="Accounts">
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.Account">
         <MappingFragment StoreEntitySet="Account">
-          <ScalarProperty Name="idAccount" ColumnName="idAccount" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="IdAccount" ColumnName="IdAccount" />
+          <ScalarProperty Name="IdTypeAccount" ColumnName="IdTypeAccount" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Bills">
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.Bill">
         <MappingFragment StoreEntitySet="Bill">
-          <ScalarProperty Name="idBill" ColumnName="idBill" />
-          <ScalarProperty Name="date" ColumnName="date" />
-          <ScalarProperty Name="totalMoney" ColumnName="totalMoney" />
+          <ScalarProperty Name="IdBill" ColumnName="IdBill" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="TotalMoney" ColumnName="TotalMoney" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="BillInfoes">
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.BillInfo">
         <MappingFragment StoreEntitySet="BillInfo">
-          <ScalarProperty Name="numberDay" ColumnName="numberDay" />
-          <ScalarProperty Name="price" ColumnName="price" />
-          <ScalarProperty Name="idBill" ColumnName="idBill" />
-          <ScalarProperty Name="idRoom" ColumnName="idRoom" />
+          <ScalarProperty Name="NumberDay" ColumnName="NumberDay" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="IdBill" ColumnName="IdBill" />
+          <ScalarProperty Name="IdRoom" ColumnName="IdRoom" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Constants">
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.Constant">
         <MappingFragment StoreEntitySet="Constant">
-          <ScalarProperty Name="idConstant" ColumnName="idConstant" />
-          <ScalarProperty Name="maxCustomer" ColumnName="maxCustomer" />
-          <ScalarProperty Name="percent" ColumnName="percent" />
+          <ScalarProperty Name="IdConstant" ColumnName="IdConstant" />
+          <ScalarProperty Name="MaxCustomer" ColumnName="MaxCustomer" />
+          <ScalarProperty Name="Percent" ColumnName="Percent" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Customers">
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.Customer">
         <MappingFragment StoreEntitySet="Customer">
-          <ScalarProperty Name="idCustomer" ColumnName="idCustomer" />
-          <ScalarProperty Name="fullname" ColumnName="fullname" />
-          <ScalarProperty Name="idCard" ColumnName="idCard" />
-          <ScalarProperty Name="idType" ColumnName="idType" />
-          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="IdCustomer" ColumnName="IdCustomer" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="IdCard" ColumnName="IdCard" />
+          <ScalarProperty Name="IdTypeCustomer" ColumnName="IdTypeCustomer" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="RentInvoices">
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.RentInvoice">
         <MappingFragment StoreEntitySet="RentInvoice">
-          <ScalarProperty Name="idRentInvoice" ColumnName="idRentInvoice" />
-          <ScalarProperty Name="date" ColumnName="date" />
-          <ScalarProperty Name="idRoom" ColumnName="idRoom" />
-          <ScalarProperty Name="purchase" ColumnName="purchase" />
+          <ScalarProperty Name="IdRentInvoice" ColumnName="IdRentInvoice" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="IdRoom" ColumnName="IdRoom" />
+          <ScalarProperty Name="Purchase" ColumnName="Purchase" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="RentInvoiceInfoes">
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.RentInvoiceInfo">
         <MappingFragment StoreEntitySet="RentInvoiceInfo">
-          <ScalarProperty Name="idRentInvoiceInfo" ColumnName="idRentInvoiceInfo" />
-          <ScalarProperty Name="idRentInvoice" ColumnName="idRentInvoice" />
-          <ScalarProperty Name="idCustomer" ColumnName="idCustomer" />
+          <ScalarProperty Name="IdRentInvoiceInfo" ColumnName="IdRentInvoiceInfo" />
+          <ScalarProperty Name="IdRentInvoice" ColumnName="IdRentInvoice" />
+          <ScalarProperty Name="IdCustomer" ColumnName="IdCustomer" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Revenues">
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.Revenue">
         <MappingFragment StoreEntitySet="Revenue">
-          <ScalarProperty Name="idRevenue" ColumnName="idRevenue" />
-          <ScalarProperty Name="totalMoney" ColumnName="totalMoney" />
+          <ScalarProperty Name="IdRevenue" ColumnName="IdRevenue" />
+          <ScalarProperty Name="IdTypeRoom" ColumnName="IdTypeRoom" />
+          <ScalarProperty Name="RevenueType" ColumnName="RevenueType" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="RevenuePercentages">
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.RevenuePercentage">
         <MappingFragment StoreEntitySet="RevenuePercentage">
-          <ScalarProperty Name="idrevenuePrecentage" ColumnName="idrevenuePrecentage" />
-          <ScalarProperty Name="percent" ColumnName="percent" />
-          <ScalarProperty Name="month" ColumnName="month" />
-          <ScalarProperty Name="year" ColumnName="year" />
-          <ScalarProperty Name="idRoom" ColumnName="idRoom" />
+          <ScalarProperty Name="IdrevenuePrecentage" ColumnName="IdrevenuePrecentage" />
+          <ScalarProperty Name="Percent" ColumnName="Percent" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="IdRoom" ColumnName="IdRoom" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Rooms">
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.Room">
         <MappingFragment StoreEntitySet="Room">
-          <ScalarProperty Name="idRoom" ColumnName="idRoom" />
-          <ScalarProperty Name="floor" ColumnName="floor" />
-          <ScalarProperty Name="displayName" ColumnName="displayName" />
-          <ScalarProperty Name="idType" ColumnName="idType" />
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="note" ColumnName="note" />
-          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+          <ScalarProperty Name="IdRoom" ColumnName="IdRoom" />
+          <ScalarProperty Name="Floor" ColumnName="Floor" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="IdTypeRoom" ColumnName="IdTypeRoom" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeAccounts">
+      <EntityTypeMapping TypeName="Hotel_JustFriendModel.TypeAccount">
+        <MappingFragment StoreEntitySet="TypeAccount">
+          <ScalarProperty Name="IdTypeAccount" ColumnName="IdTypeAccount" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TypeCustomers">
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.TypeCustomer">
         <MappingFragment StoreEntitySet="TypeCustomer">
-          <ScalarProperty Name="idType" ColumnName="idType" />
-          <ScalarProperty Name="displayname" ColumnName="displayname" />
-          <ScalarProperty Name="number" ColumnName="number" />
-          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+          <ScalarProperty Name="IdTypeCustomer" ColumnName="IdTypeCustomer" />
+          <ScalarProperty Name="Displayname" ColumnName="Displayname" />
+          <ScalarProperty Name="CoefficientsObtained" ColumnName="CoefficientsObtained" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TypeRooms">
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.TypeRoom">
         <MappingFragment StoreEntitySet="TypeRoom">
-          <ScalarProperty Name="idType" ColumnName="idType" />
-          <ScalarProperty Name="fullname" ColumnName="fullname" />
-          <ScalarProperty Name="price" ColumnName="price" />
-          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+          <ScalarProperty Name="IdTypeRoom" ColumnName="IdTypeRoom" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

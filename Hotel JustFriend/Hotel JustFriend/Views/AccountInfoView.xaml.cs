@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hotel_JustFriend.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,22 +11,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Hotel_JustFriend.Models;
-using Hotel_JustFriend.ViewModels;
 
 namespace Hotel_JustFriend.Views
 {
     /// <summary>
-    /// Interaction logic for EmployeeUpdateView.xaml
+    /// Interaction logic for AccountInfoView.xaml
     /// </summary>
-    public partial class EmployeeUpdateView : Window
+    public partial class AccountInfoView : UserControl
     {
-        public EmployeeUpdateView()
+        public AccountInfoView(string userName)
         {
-         
             InitializeComponent();
-            //this.DataContext = new EmployeeDetailViewModel();
+            this.DataContext = new AccountInfoViewModel(userName);
         }
     }
 }

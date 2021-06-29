@@ -56,25 +56,25 @@ namespace Hotel_JustFriend.ViewModels
                 int k = int.Parse(p.idRoom.Text);
                 int d = 0;
                 ListRoom1 = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms
-                       .Where(x => x.isDelete == false)
+                       .Where(x => x.IsDelete == false)
                        );
     
                 Room result = (from u in ListRoom1
-                               where u.idRoom == k
+                               where u.IdRoom == k
                                select u).Single();
-                result.status = true;
+                result.Status = "Sẵn sàng";
                 //---
                 d = 0;
                 ListRentInvoice = new ObservableCollection<RentInvoice>(DataProvider.Instance.DB.RentInvoices);
                 for (int i=0;i<ListRentInvoice.Count;i++)
                 {
-                    if (d < ListRentInvoice[i].idRentInvoice) d = ListRentInvoice[i].idRentInvoice;
+                    if (d < ListRentInvoice[i].IdRentInvoice) d = ListRentInvoice[i].IdRentInvoice;
                 }
                 d++;
                 RentInvoice rentiv = new RentInvoice()
                 {
-                    idRentInvoice = d,
-                    idRoom = int.Parse(p.idRoom.Text),
+                    IdRentInvoice = d,
+                    IdRoom = int.Parse(p.idRoom.Text),
                     //DateStart = DateTime.Now,
                 };
                 p.idRentInvoice.Text = d.ToString();
@@ -82,14 +82,14 @@ namespace Hotel_JustFriend.ViewModels
             }
             catch { return; }
         }
-        [Command]
-        public void AddCustomer(RoomRentalView p)
-        {
-            AddCustomerWindow window = new AddCustomerWindow();
-            window.idroom = p.idRoom;
-            window.idrentiv = p.idRentInvoice;
-            window.ShowDialog();
-        }
+        //[Command]
+        //public void AddCustomer(RoomRentalView p)
+        //{
+        //    AddCustomerWindow window = new AddCustomerWindow(SelectedRoom);
+        //    window.idroom = p.idRoom;
+        //    window.idrentiv = p.idRentInvoice;
+        //    window.ShowDialog();
+        //}
         [Command]
         public void Save(AddCustomerWindow p)
         {
@@ -99,22 +99,21 @@ namespace Hotel_JustFriend.ViewModels
                 ListCustomer = new ObservableCollection<Customer>(DataProvider.Instance.DB.Customers);
                 for (int i = 0; i < ListRoom1.Count; i++)
                 {
-                    if (d < ListRoom1[i].idRoom) d = ListRoom1[i].idRoom;
+                    if (d < ListRoom1[i].IdRoom) d = ListRoom1[i].IdRoom;
                 }
                 d++;
                 Customer newCustomer = new Customer()
                 {
-                    idCustomer = d,
-                    fullname = Fullname,
-                    idCard = IdCard,
-                    idType = int.Parse(p.txtType.SelectedValue.ToString()),
-                    address = p.txtNote.Text,
+                    IdCustomer = d,
+                    FullName = Fullname,
+                    IdCard = IdCard,
+                    IdTypeCustomer = int.Parse(p.txtType.SelectedValue.ToString()),
                 };
                 DataProvider.Instance.DB.Customers.Add(newCustomer);
                 RentInvoiceInfo info = new RentInvoiceInfo()
                 {
-                    idCustomer = d,
-                    idRentInvoice = int.Parse(p.idrentiv.Text),
+                    IdCustomer = d,
+                    IdRentInvoice = int.Parse(p.idrentiv.Text),
                 };
                 DataProvider.Instance.DB.SaveChanges();
                 MyMessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButton.OK);

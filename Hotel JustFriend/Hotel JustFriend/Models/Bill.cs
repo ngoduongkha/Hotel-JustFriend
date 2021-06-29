@@ -20,9 +20,9 @@ namespace Hotel_JustFriend.Models
             this.BillInfoes = new HashSet<BillInfo>();
         }
     
-        public int idBill { get; set; }
-        public Nullable<System.DateTime> date { get; set; }
-        public Nullable<decimal> totalMoney { get; set; }
+        public int IdBill { get; set; }
+        public System.DateTime Date { get; set; }
+        public decimal TotalMoney { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BillInfo> BillInfoes { get; set; }

@@ -14,11 +14,92 @@
             <RowDefinition Height="60" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <DockPanel Grid.Row="0" LastChildFill="True">
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <materialDesign:Card Margin="10 0 0 0">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Margin="20 0 5 0" Kind="Search" Height="24" Width="24" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                    <TextBox
+                        x:Name="tbSearch"
+                        Margin="5 0 10 0"
+                        materialDesign:HintAssist.Hint="Tìm phòng" 
+                        FontSize="15" Background="Transparent"
+                        MaxLength="50" MaxWidth="250" Width="250" 
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center" 
+                        HorizontalContentAlignment="Left" 
+                        VerticalContentAlignment="Center" />
+                    <Button
+                        Content="Tìm"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center" 
+                        Margin="10 0 20 0" 
+                        Width="70" Height="35" 
+                        FontSize="15" 
+                        Background="{DynamicResource PrimaryHueMidBrush}" 
+                        BorderBrush="{DynamicResource PrimaryHueMidBrush}" 
+                        materialDesign:ButtonAssist.CornerRadius="5"
+                        Command="{Binding Path=SearchRoomCommand}"
+                        CommandParameter="{Binding ElementName=RoomManageUC}"/>
+                </StackPanel>
+            </materialDesign:Card>
+            <materialDesign:Card Margin="10 0 0 0">
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox 
+                        x:Name="cbFilterStatus"
+                        materialDesign:HintAssist.Hint="Trạng thái"
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                        HorizontalContentAlignment="Left"
+                        FontSize="15" Width="150" 
+                        Margin="20 0 10 0" >
+                        <ComboBoxItem Content="Sẵn sàng"/>
+                        <ComboBoxItem Content="Hư hỏng"/>
+                        <ComboBoxItem Content="Đang thuê"/>
+                    </ComboBox>
+                    <ComboBox 
+                        x:Name="cbFilterType"
+                        ItemsSource="{Binding Path=ListRoomType}"
+                        DisplayMemberPath="DisplayName"
+                        materialDesign:HintAssist.Hint="Loại phòng"                     
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                        HorizontalContentAlignment="Left" 
+                        FontSize="15" Width="150" 
+                        Margin="10 0 10 0">
+                    </ComboBox>
+                    <Button Content="Lọc" Margin="10 0 20 0" FontSize="15" Width="70" Height="35" Background="{DynamicResource PrimaryHueMidBrush}" BorderBrush="{DynamicResource PrimaryHueMidBrush}" materialDesign:ButtonAssist.CornerRadius="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding RoomFilterCommand}" CommandParameter="{Binding ElementName=RoomManageUC}" />
+                </StackPanel>
+            </materialDesign:Card>
             <Button
-                DockPanel.Dock="Right"
-                Margin="10 0 10 0"
-                HorizontalAlignment="Left"
+                Margin="10 0 0 0"
+                Content="Thêm" FontWeight="SemiBold" FontSize="15"
+                Foreground="Black"                
+                Background="#9df587" BorderBrush="#9df587"
+                Width="85" Height="50"
+                Command="{Binding AddRoomCommand}"
+                materialDesign:ButtonAssist.CornerRadius="10"/>
+            <Button
+                Margin="10 0 0 0"
+                Content="Xóa" FontWeight="SemiBold" FontSize="15"
+                Foreground="Black"
+                Background="#ff9494" BorderBrush="#ff9494"
+                Width="85" Height="50"
+                Command="{Binding DeleteRoomCommand}"
+                materialDesign:ButtonAssist.CornerRadius="10">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding SelectedItems.Count,ElementName=dGrid}"
+                                 Value="0">
+                                <Setter Property="IsEnabled"
+                                Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button
+                Margin="10 0 0 0"
                 Content="Sửa chữa" FontWeight="SemiBold" FontSize="15"
                 Foreground="Black"
                 Background="#faf896" BorderBrush="#faf896"
@@ -39,171 +120,62 @@
                     </Style>
                 </Button.Style>
             </Button>
-            <Button
-                DockPanel.Dock="Right"
-                Margin="10 0 0 0"
-                Content="Xóa" FontWeight="SemiBold" FontSize="15"
-                HorizontalAlignment="Left"
-                Width="85" Height="50"
-                Command="{Binding DeleteRoomCommand}"
-                materialDesign:ButtonAssist.CornerRadius="10">
-                <Button.Style>
-                    <Style TargetType="Button" BasedOn="{StaticResource MyDeclineButtonStyle}">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding SelectedItems.Count,ElementName=dGrid}"
-                                 Value="0">
-                                <Setter Property="IsEnabled"
-                                Value="False" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
-            <Button
-                Style="{StaticResource MyAcceptButtonStyle}"
-                DockPanel.Dock="Right"
-                Margin="10 0 0 0"
-                Content="Thêm" FontWeight="SemiBold" FontSize="15"
-                HorizontalAlignment="Left"
-                Width="85" Height="50"
-                Command="{Binding AddRoomCommand}"
-                CommandParameter="{Binding ElementName=RoomManageUC}"
-                materialDesign:ButtonAssist.CornerRadius="10"/>
-            <materialDesign:Card Margin="10 0 0 0" DockPanel.Dock="Right">
-                <DockPanel>
-                    <ComboBox
-                        DockPanel.Dock="Left"
-                        x:Name="txtFilterStatus"
-                        ItemsSource="{Binding ListRoomStatus}"
-                        materialDesign:HintAssist.Hint="Trạng thái"
-                        Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                        HorizontalContentAlignment="Left"
-                        FontSize="15" Width="150" MaxWidth="250"
-                        Margin="20 0 10 0">
-                        <ComboBoxItem Content="Sẵn sàng"/>
-                        <ComboBoxItem Content="Chưa Sẵn sàng"/>
-
-                    </ComboBox>
-
-                    <ComboBox 
-                        x:Name="txtFilterType"
-                        ItemsSource="{Binding ListRoomType}"
-                        DisplayMemberPath="fullname"
-                        SelectedValuePath="idType"
-                        SelectedValue="{Binding Path=idType}"
-                        materialDesign:HintAssist.Hint="Loại phòng"                     
-                        Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                        HorizontalContentAlignment="Left" 
-                        FontSize="15" Width="150" MaxWidth="250"
-                        Margin="10 0 10 0">
-                    </ComboBox>
-                    <Button DockPanel.Dock="Right" Content="Lọc" Margin="10 0 20 0" FontSize="15" Width="70" Height="35" Background="{DynamicResource PrimaryHueMidBrush}" BorderBrush="{DynamicResource PrimaryHueMidBrush}" materialDesign:ButtonAssist.CornerRadius="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding RoomFilterCommand}" CommandParameter="{Binding ElementName=RoomManageUC}" />
-                </DockPanel>
-            </materialDesign:Card>
-            <materialDesign:Card Margin="10 0 0 0">
-                <DockPanel LastChildFill="True">
-                    <materialDesign:PackIcon 
-                        DockPanel.Dock="Left" 
-                        Margin="20 0 5 0"
-                        Kind="Search" Height="24"
-                        Width="24" VerticalAlignment="Center" 
-                        HorizontalAlignment="Center" 
-                        HorizontalContentAlignment="Center" 
-                        VerticalContentAlignment="Center" />
-                    <Button 
-                        DockPanel.Dock="Right" 
-                        Content="Tìm" VerticalAlignment="Center" 
-                        HorizontalAlignment="Center" 
-                        HorizontalContentAlignment="Center" 
-                        VerticalContentAlignment="Center" 
-                        Margin="10 0 20 0" Width="70" Height="35" 
-                        FontSize="15"
-                        Background="{DynamicResource PrimaryHueMidBrush}" 
-                        BorderBrush="{DynamicResource PrimaryHueMidBrush}"
-                        materialDesign:ButtonAssist.CornerRadius="5" 
-                        Command="{Binding SearchRoomCommand}"
-                        CommandParameter="{Binding ElementName=RoomManageUC}"/>
-                    <TextBox 
-                        x:Name="txtSearch"
-                        DockPanel.Dock="Left" Margin="5 0 10 0" 
-                        materialDesign:HintAssist.Hint="Tìm phòng"
-                        FontSize="15" Background="Transparent" 
-                        MaxLength="50" VerticalAlignment="Center" 
-                        HorizontalAlignment="Stretch" 
-                        HorizontalContentAlignment="Left" 
-                        VerticalContentAlignment="Center" />
-                </DockPanel>
-            </materialDesign:Card>
-        </DockPanel>
+        </StackPanel>
         <Grid Grid.Row="1">
             <materialDesign:Card Margin="10">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="30"></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Row="0">
-                        <DataGrid x:Name="dGrid"
-                                  Background="White"
-                                  AutoGenerateColumns="False"
-                                  AutomationProperties.IsColumnHeader="True"
-                                  CanUserDeleteRows="False"
-                                  CanUserResizeColumns="False"
-                                  CanUserAddRows="False"
-                                  IsReadOnly="True"
-                                  SelectionMode="Single">
-                            <DataGrid.Resources>
-                                <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
-                                    <Setter Property="Background" Value="LightPink" />
-                                    <Setter Property="FontWeight" Value="SemiBold"/>
-                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                    <Setter Property="FontSize" Value="20"/>
-                                    <Setter Property="BorderBrush" Value="White"/>
-                                    <Setter Property="BorderThickness" Value="0 0 1 0"/>
-                                    <Setter Property="Padding" Value="3"/>
-                                </Style>
-                                <Style TargetType="DataGridCell" BasedOn="{StaticResource MaterialDesignDataGridCell}">
-                                    <Setter Property="FontSize" Value="20"/>
-                                    <Setter Property="Height" Value="35"/>
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type DataGridCell}">
-                                                <Grid Background="{TemplateBinding Background}">
-                                                    <ContentPresenter HorizontalAlignment="Center"
-                                                                      VerticalAlignment="Center"/>
-                                                </Grid>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                            </DataGrid.Resources>
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Tầng" Width="1*" Binding="{Binding floor}"/>
-                                <DataGridTextColumn Header="Tên phòng" Width="2*" Binding="{Binding displayName}" />
-                                <DataGridTextColumn Header="Loại phòng" Width="2*" Binding="{Binding type}" />
-                                <DataGridTextColumn Header="Trạng thái" Width="2*" Binding="{Binding status}" />
-                                <DataGridTextColumn Header="Đơn giá" Width="2*" Binding="{Binding price, StringFormat=\{0:n0\}}" />
-                                <DataGridTextColumn Header="Ghi chú" Width="2*" Binding="{Binding note}"/>
-                                <DataGridTextColumn Width=".5*"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </Grid>
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="81*"/>
-                            <ColumnDefinition Width="1099*"/>
-                        </Grid.ColumnDefinitions>
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="Loaded">
-                                <i:InvokeCommandAction 
-                                    Command="{Binding LoadDBCommand}" 
-                                    CommandParameter="{Binding ElementName=RoomManageUC}"/>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                        <StackPanel x:Name="stp_ListRoom" Grid.ColumnSpan="2" Margin="0,0,0,-0.2">
-                        </StackPanel>
-                    </Grid>
-                </Grid>
+                <DataGrid
+                    x:Name="dGrid"
+                    Background="White"
+                    ItemsSource="{Binding Path=ListRoomWithType, Mode=OneWay}"
+                    AutoGenerateColumns="False"
+                    AutomationProperties.IsColumnHeader="True"
+                    CanUserDeleteRows="False"
+                    CanUserAddRows="False"
+                    IsReadOnly="True"
+                    SelectionMode="Single"
+                    SelectedItem="{Binding SelectedRoom}">
+                    <DataGrid.Resources>
+                        <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+                            <Setter Property="Background" Value="LightPink" />
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="FontSize" Value="20"/>
+                            <Setter Property="BorderBrush" Value="White"/>
+                            <Setter Property="BorderThickness" Value="0 0 1 0"/>
+                        </Style>
+                        <Style TargetType="DataGridCell" BasedOn="{StaticResource MaterialDesignDataGridCell}">
+                            <Setter Property="FontSize" Value="20"/>
+                            <Setter Property="Height" Value="35"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                        <Grid Background="{TemplateBinding Background}">
+                                            <ContentPresenter
+                                                HorizontalAlignment="Center" 
+                                                VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Tầng" MinWidth="80" Binding="{Binding Floor}"/>
+                        <DataGridTextColumn Header="Phòng" MinWidth="80" Binding="{Binding Number}" />
+                        <DataGridTextColumn Header="Tên phòng" MinWidth="180" Binding="{Binding DisplayName}" />
+                        <DataGridTextColumn Header="Loại phòng" MinWidth="180" Binding="{Binding TypeRoomName}" />
+                        <DataGridTextColumn Header="Trạng thái" MinWidth="180" Binding="{Binding Status}" />
+                        <DataGridTextColumn Header="Đơn giá" MinWidth="120" Binding="{Binding Price, StringFormat=\{0:n0\}, ConverterCulture=vi-VN}" />
+                        <DataGridTextColumn Header="Ghi chú" Width="*" MinWidth="180" Binding="{Binding Note}"/>
+                    </DataGrid.Columns>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger>
+                            <i:InvokeCommandAction>
+
+                            </i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </DataGrid>
             </materialDesign:Card>
         </Grid>
     </Grid>

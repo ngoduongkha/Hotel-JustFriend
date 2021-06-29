@@ -33,7 +33,7 @@ namespace Hotel_JustFriend.ViewModels
         }
 
         [Command]
-        public void Login(LoginWindow p)
+        public void Login (LoginWindow p)
         {
             try
             {
@@ -52,14 +52,13 @@ namespace Hotel_JustFriend.ViewModels
                 }
 
                 string passEncode = Utility.Encryption.EncryptPassword(Password);
-                var count = DataProvider.Instance.DB.Accounts.Where(x => x.username == UserName && x.password == passEncode).Count();
+                var count = DataProvider.Instance.DB.Accounts.Where(x => x.Username == UserName && x.Password == passEncode).Count();
 
                 if (count > 0)
                 {
-                    MainWindow main = new MainWindow();
-                    p.Hide();
-                    main.ShowDialog();
-                    p.Show();
+                    MainWindow main = new MainWindow(UserName);
+                    main.Show();
+                    p.Close();
                 }
                 else
                 {
