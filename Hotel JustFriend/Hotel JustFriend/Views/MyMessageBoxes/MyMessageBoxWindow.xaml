@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Hotel_JustFriend.Views.MyMessageBoxes"
         mc:Ignorable="d" ResizeMode="NoResize" WindowStyle="None"
         AllowsTransparency="True" Background="{x:Null}" Name="window"
-        Title="MessageBox" Height="200" Width="300" WindowStartupLocation="CenterScreen"
+        Title="MessageBox" Height="250" Width="400" WindowStartupLocation="CenterScreen"
         MouseLeftButtonDown="Grid_MouseLeftButtonDown">
     <Border CornerRadius="10" Background="LightPink" BorderBrush="Black" BorderThickness="1">
         <Grid>
@@ -42,7 +42,7 @@
             <Grid Grid.Row="1" Background="WhiteSmoke">
                 <TextBlock FontSize="20" TextWrapping="Wrap" 
                            HorizontalAlignment="Center" VerticalAlignment="Top"
-                           Margin="20" Width="250" Name="message">
+                           Margin="20" Width="300" Name="message">
                 </TextBlock>
             </Grid>
             <Grid Grid.Row="2">

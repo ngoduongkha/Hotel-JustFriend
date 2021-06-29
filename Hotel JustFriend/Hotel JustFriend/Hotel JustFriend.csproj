@@ -239,7 +239,6 @@
     <Compile Include="ViewModels\CustomerManageViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\CustomizeParametersViewModel.cs" />
-    <Compile Include="ViewModels\EmployeeDetailViewModel.cs" />
     <Compile Include="ViewModels\ReportViewModel.cs" />
     <Compile Include="ViewModels\RoomRentalViewModel.cs" />
     <Compile Include="Views\AccountInfoView.xaml.cs">
@@ -266,7 +265,6 @@
     <Compile Include="Views\EditCustomerView.xaml.cs">
       <DependentUpon>EditCustomerView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\EmployeeManageViewModel.cs" />
     <Compile Include="Views\MyMessageBoxes\MyMessageBox.cs" />
     <Compile Include="Template\BillTemplate.xaml.cs">
       <DependentUpon>BillTemplate.xaml</DependentUpon>

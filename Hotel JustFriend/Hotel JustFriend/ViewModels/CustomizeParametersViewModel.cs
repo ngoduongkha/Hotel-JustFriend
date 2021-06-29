@@ -33,19 +33,21 @@ namespace Hotel_JustFriend.ViewModels
         }
 
         [Command]
-        public void CallAddCustomerType()
+        public void CallAddCustomerType(ComboBox cbbox)
         {
             AddTypeWindow window = new AddTypeWindow(true);
             window.ShowDialog();
             ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers.Where((p) => p.IsDelete == false));
+            cbbox.SelectedIndex = cbbox.Items.Count - 1;
         }
 
         [Command]
-        public void CallAddRoomType()
+        public void CallAddRoomType(ComboBox cbbox)
         {
             AddTypeWindow window = new AddTypeWindow(false);
             window.ShowDialog();
             ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where((p) => p.IsDelete == false));
+            cbbox.SelectedIndex = cbbox.Items.Count - 1;
         }
 
         [Command]
@@ -114,16 +116,55 @@ namespace Hotel_JustFriend.ViewModels
                     if (cbbox.Name == "cbboxRoomType")
                     {
                         TypeRoom deleteRoomType = cbbox.SelectedItem as TypeRoom;
-                        deleteRoomType.IsDelete = true;
-                        DataProvider.Instance.DB.SaveChanges();
-                        ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where((p) => p.IsDelete == false));
+                        ObservableCollection<Room> listRoomsOfType = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms.Where(p => p.IdTypeRoom == deleteRoomType.IdTypeRoom));
+                        if (listRoomsOfType.Count > 0)
+                        {
+                            MyMessageBox.Show("Tồn tại phòng thuộc loại phòng này, không thể xóa loại phòng", "Nhắc nhở", MessageBoxButton.OK);
+                        }
+                        else
+                        {
+                            deleteRoomType.IsDelete = true;
+                            DataProvider.Instance.DB.SaveChanges();
+                            ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where((p) => p.IsDelete == false));
+                            MyMessageBox.Show("Xóa loại phòng thành công", "Thông báo", MessageBoxButton.OK);
+                        }
                     }
                     else
                     {
                         TypeCustomer deleteCustomerType = cbbox.SelectedItem as TypeCustomer;
-                        deleteCustomerType.IsDelete = true;
-                        DataProvider.Instance.DB.SaveChanges();
-                        ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers.Where((p) => p.IsDelete == false));
+                        if (deleteCustomerType.DisplayName == "Nội địa")
+                        {
+                            MyMessageBox.Show("Không thể xóa loại khách nội địa vì đây là loại khách mặc định", "Thông báo", MessageBoxButton.OK);
+                            return;
+                        }
+                        ObservableCollection<Customer> listCustomerOfType = new ObservableCollection<Customer>(DataProvider.Instance.DB.Customers.Where(p => p.IdTypeCustomer == deleteCustomerType.IdTypeCustomer));
+                        if (listCustomerOfType.Count > 0)
+                        {
+                            if (MyMessageBox.Show("Tồn tại khách thuộc loại này" +
+                                ", xóa loại khách thì khách thuộc loại này chuyển thành khách nội địa?", 
+                                "Xác nhận", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                            {
+                                deleteCustomerType.IsDelete = true;
+                                foreach(Customer customer in listCustomerOfType)
+                                {
+                                    customer.IdTypeCustomer = 1;
+                                }
+                                DataProvider.Instance.DB.SaveChanges();
+                                ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers.Where((p) => p.IsDelete == false));
+                                MyMessageBox.Show("Xóa loại khách thành công, khách loại này chuyển thành khách nội địa", "Thông báo", MessageBoxButton.OK);
+                            }
+                            else
+                            {
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            deleteCustomerType.IsDelete = true;
+                            DataProvider.Instance.DB.SaveChanges();
+                            ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers.Where((p) => p.IsDelete == false));
+                            MyMessageBox.Show("Xóa loại khách thành công", "Thông báo", MessageBoxButton.OK);
+                        }
                     }
                 }
             }
