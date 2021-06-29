@@ -43,7 +43,7 @@
     <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="IdCard" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="IdTypeCustomer" Type="int" Nullable="false" />
-    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="RentInvoice">
     <Key>
@@ -106,7 +106,7 @@
       <PropertyRef Name="IdTypeCustomer" />
     </Key>
     <Property Name="IdTypeCustomer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Displayname" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="CoefficientsObtained" Type="float" Nullable="false" />
     <Property Name="IsDelete" Type="bit" Nullable="false" />
   </EntityType>

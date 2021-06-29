@@ -77,7 +77,7 @@ namespace Hotel_JustFriend.ViewModels
                 {
                     TypeCustomer newType = new TypeCustomer()
                     {
-                        Displayname = TypeName,
+                        DisplayName = TypeName,
                         IsDelete = false,
                     };
                     DataProvider.Instance.DB.TypeCustomers.Add(newType);

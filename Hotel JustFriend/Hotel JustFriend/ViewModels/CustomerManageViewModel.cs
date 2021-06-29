@@ -37,7 +37,7 @@ namespace Hotel_JustFriend.ViewModels
                                                                                                    Name = customer.FullName,
                                                                                                    IdCard = customer.IdCard,
                                                                                                    Id = customer.IdCustomer,
-                                                                                                   Type = type.Displayname,
+                                                                                                   Type = type.DisplayName,
                                                                                                    Address = customer.Address,
                                                                                                }));
         }

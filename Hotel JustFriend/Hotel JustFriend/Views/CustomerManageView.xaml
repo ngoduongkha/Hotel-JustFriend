@@ -74,7 +74,7 @@
                                 x:Name="txtFilterType"
                                 materialDesign:HintAssist.Hint="Loại khách hàng"
                                 ItemsSource="{Binding ListCustomerTypes}"
-                                DisplayMemberPath="Displayname">
+                                DisplayMemberPath="DisplayName">
                             </ComboBox>
                             <Button
                                 Content="Lọc"
