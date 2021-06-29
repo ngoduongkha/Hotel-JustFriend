@@ -18,7 +18,7 @@ namespace Hotel_JustFriend.ViewModels
         public AddCustomerViewModel(Room selectedRoom)
         {
             SelectedRoom = selectedRoom;
-            ListTypeCustomer = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers);
+            ListTypeCustomer = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers.Where(p => p.IsDelete == false));
             CustomerRenting = new Customer();
         }
 
