@@ -171,7 +171,7 @@ namespace Hotel_JustFriend.ViewModels
         {
             try
             {
-                if (SelectedRoom == null) return;
+                if (SelectedRoom == null) { MyMessageBox.Show("Chọn phòng trước khi thao tác", "Nhắc nhở", MessageBoxButton.OK); return; }
 
                 if (ListRentInvoiceInfo != null)
                 {
@@ -232,20 +232,28 @@ namespace Hotel_JustFriend.ViewModels
             {
                 if (SelectedRoom != null)
                 {
-                    if (SelectedRoom.Status == "Hư hỏng")
+                    if (MyMessageBox.Show("Báo hỏng " + SelectedRoom.DisplayName + " ?", "Xác nhận", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     {
-                        MyMessageBox.Show("Phòng đã báo hỏng rồi", "Nhắc nhở", MessageBoxButton.OK);
+                        if (SelectedRoom.Status == "Hư hỏng")
+                        {
+                            MyMessageBox.Show("Phòng đã báo hỏng rồi", "Nhắc nhở", MessageBoxButton.OK);
+                        }
+                        else if (SelectedRoom.Status == "Đang thuê")
+                        {
+                            MyMessageBox.Show("Phòng đang cho thuê, không thể báo hỏng", "Nhắc nhở", MessageBoxButton.OK);
+                        }
+                        else
+                        {
+                            SelectedRoom.Status = "Hư hỏng";
+                            DataProvider.Instance.DB.SaveChanges();
+                            MyMessageBox.Show("Báo hỏng thành công, phòng sẽ được sửa chữa", "Thông báo", MessageBoxButton.OK);
+                        }
+                        LoadDB();
                     }
-                    else if (SelectedRoom.Status == "Đang thuê")
-                    {
-                        MyMessageBox.Show("Phòng đang cho thuê, không thể báo hỏng", "Nhắc nhở", MessageBoxButton.OK);
-                    }
-                    else
-                    {
-                        SelectedRoom.Status = "Hư hỏng";
-                        DataProvider.Instance.DB.SaveChanges();
-                        MyMessageBox.Show("Báo hỏng thành công, phòng sẽ được sửa chữa", "Thông báo", MessageBoxButton.OK);
-                    }
+                }
+                else
+                {
+                    MyMessageBox.Show("Chọn phòng trước khi thao tác", "Nhắc nhở", MessageBoxButton.OK);
                 }
             }
             catch { return; }
