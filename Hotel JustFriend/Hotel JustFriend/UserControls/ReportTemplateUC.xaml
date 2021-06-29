@@ -6,8 +6,9 @@
              xmlns:local="clr-namespace:Hotel_JustFriend.UserControls"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="840" d:DesignWidth="592">
-    <materialDesign:Card>
+             d:DesignHeight="840" d:DesignWidth="592"
+             x:Name="uc">
+    <materialDesign:Card x:Name="gridExport">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="5*"/>
@@ -207,12 +208,15 @@
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Column="1">
-                    <Button Content="Xuất báo cáo" 
+                    <Button 
+                        x:Name="btnExport"
+                        Content="Xuất báo cáo" 
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
                         Margin="0,0,30,20"
                         FontSize="20"
-                        Command="{Binding ExportCommand}"/>
+                        Command="{Binding ExportCommand}"
+                        CommandParameter=""/>
                 </Grid>
             </Grid>
         </Grid>
