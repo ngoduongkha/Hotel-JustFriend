@@ -18,7 +18,7 @@ namespace Hotel_JustFriend.ViewModels
         public AddCustomerViewModel(Room selectedRoom)
         {
             SelectedRoom = selectedRoom;
-            ListTypeCustomer = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers);
+            ListTypeCustomer = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers.Where(p => p.IsDelete == false));
             CustomerRenting = new Customer();
         }
 
@@ -66,7 +66,7 @@ namespace Hotel_JustFriend.ViewModels
                     DataProvider.Instance.DB.SaveChanges();
                 }
 
-                int idRentInvoice = DataProvider.Instance.DB.RentInvoices.Where(x => x.Purchase == false).Where(x => x.IdRoom == SelectedRoom.IdRoom).SingleOrDefault().IdRentInvoice;
+                int idRentInvoice = DataProvider.Instance.DB.RentInvoices.Where(x => x.Purchase == false).Where(x => x.IdRoom == SelectedRoom.IdRoom).First().IdRentInvoice;
 
                 if (DataProvider.Instance.DB.RentInvoiceInfoes.Where(x => x.IdRentInvoice == idRentInvoice).Where(x => x.IdCustomer == CustomerRenting.IdCustomer).Count() != 0)
                 {
@@ -77,7 +77,7 @@ namespace Hotel_JustFriend.ViewModels
                 RentInvoiceInfo rentInvoiceInfo = new RentInvoiceInfo()
                 {
                     IdCustomer = CustomerRenting.IdCustomer,
-                    IdRentInvoice = DataProvider.Instance.DB.RentInvoices.Where(x => x.Purchase == false).Where(x => x.IdRoom == SelectedRoom.IdRoom).SingleOrDefault().IdRentInvoice
+                    IdRentInvoice = DataProvider.Instance.DB.RentInvoices.Where(x => x.Purchase == false).Where(x => x.IdRoom == SelectedRoom.IdRoom).First().IdRentInvoice
                 };
 
                 DataProvider.Instance.DB.RentInvoiceInfoes.Add(rentInvoiceInfo);
