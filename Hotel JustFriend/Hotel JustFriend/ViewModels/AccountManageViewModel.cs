@@ -10,16 +10,9 @@ namespace Hotel_JustFriend.ViewModels
 {
     public class AccountAndType
     {
-        public int id { get; set; }
-        public string username { get; set; }
-        public string typeAccount { get; set; }
-
-        public AccountAndType(int id, string username, string typeAccount)
-        {
-            this.id = id;
-            this.username = username;
-            this.typeAccount = typeAccount;
-        }
+        public int Id { get; set; }
+        public string Username { get; set; }
+        public string TypeAccount { get; set; }
     }
 
     [POCOViewModel]
@@ -40,15 +33,19 @@ namespace Hotel_JustFriend.ViewModels
         public void LoadDB()
         {
             ListAccountWithType = new ObservableCollection<AccountAndType>(
-                _ListAccount.Join(_ListTypeAccount, (Account) => Account.idTypeAccount, (TypeAccount) => TypeAccount.idTypeAccount,
-                (Account, TypeAccount) => new AccountAndType(Account.idAccount, Account.username, TypeAccount.displayname)));
+                _ListAccount.Join(_ListTypeAccount, (Account) => Account.IdTypeAccount, (TypeAccount) => TypeAccount.IdTypeAccount,
+                (Account, TypeAccount) => new AccountAndType { 
+                    Id = Account.IdAccount, 
+                    Username = Account.Username, 
+                    TypeAccount = TypeAccount.DisplayName 
+                }));
         }
 
         public AccountManageViewModel()
         {
             ListAccount = new ObservableCollection<Account>(DataProvider.Instance.DB.Accounts);
             ListTypeAccount = new ObservableCollection<TypeAccount>(DataProvider.Instance.DB.TypeAccounts);
-            ListTypeAccountCanAdd = new ObservableCollection<TypeAccount>(DataProvider.Instance.DB.TypeAccounts.Where((x) => x.displayname != "Admin"));
+            ListTypeAccountCanAdd = new ObservableCollection<TypeAccount>(DataProvider.Instance.DB.TypeAccounts.Where((x) => x.DisplayName != "Admin"));
 
             LoadDB();
         }
@@ -60,7 +57,7 @@ namespace Hotel_JustFriend.ViewModels
 
             if (!string.IsNullOrEmpty(p.cbFilterType.Text))
             {
-                ListAccountWithType = new ObservableCollection<AccountAndType>(ListAccountWithType.Where((x) => x.typeAccount == p.cbFilterType.Text));
+                ListAccountWithType = new ObservableCollection<AccountAndType>(ListAccountWithType.Where((x) => x.TypeAccount == p.cbFilterType.Text));
             }
 
             p.cbFilterType.Text = string.Empty;
@@ -73,7 +70,7 @@ namespace Hotel_JustFriend.ViewModels
 
             if (!string.IsNullOrEmpty(p.tbSearch.Text) && !string.IsNullOrWhiteSpace(p.tbSearch.Text))
             {
-                ListAccountWithType = new ObservableCollection<AccountAndType>(ListAccountWithType.Where((x) => x.username.Contains(p.tbSearch.Text)));
+                ListAccountWithType = new ObservableCollection<AccountAndType>(ListAccountWithType.Where((x) => x.Username.Contains(p.tbSearch.Text)));
             }
 
             p.tbSearch.Text = string.Empty;
@@ -96,18 +93,20 @@ namespace Hotel_JustFriend.ViewModels
                     return;
                 }
 
-                if (DataProvider.Instance.DB.Accounts.Where((x) => x.username == p.tbUsername.Text).Count() > 0)
+                if (DataProvider.Instance.DB.Accounts.Where((x) => x.Username == p.tbUsername.Text).Count() > 0)
                 {
                     MyMessageBox.Show("Tài khoản đã tồn tại", "Thông báo", MessageBoxButton.OK);
                     return;
                 }
 
-                int idTypeAccount = ListTypeAccount.Where(x => x.displayname == p.cbTypeAccount.Text).SingleOrDefault().idTypeAccount;
+                int idTypeAccount = ListTypeAccount.Where(x => x.DisplayName == p.cbTypeAccount.Text).SingleOrDefault().IdTypeAccount;
 
-                Account newAccount = new Account();
-                newAccount.username = p.tbUsername.Text;
-                newAccount.password = Utility.Encryption.EncryptPassword("1");
-                newAccount.idTypeAccount = idTypeAccount;
+                Account newAccount = new Account() {
+                    Username = p.tbUsername.Text,
+                    Password = Utility.Encryption.EncryptPassword("1"),
+                    IdTypeAccount = idTypeAccount,
+                };
+
                 DataProvider.Instance.DB.Accounts.Add(newAccount);
                 DataProvider.Instance.DB.SaveChanges();
 
@@ -131,7 +130,7 @@ namespace Hotel_JustFriend.ViewModels
         {
             if (SelectedAccount != null)
             {
-                if (SelectedAccount.typeAccount == "Admin")
+                if (SelectedAccount.TypeAccount == "Admin")
                 {
                     MyMessageBox.Show("Không thể xóa tài khoản Admin", "Thông báo", MessageBoxButton.OK);
                     return;
@@ -139,7 +138,7 @@ namespace Hotel_JustFriend.ViewModels
 
                 if (MyMessageBox.Show("Bạn có chắc chắn xóa tài khoản này?", "Thông báo", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    var beenDeleted = DataProvider.Instance.DB.Accounts.Where((x) => x.idAccount == SelectedAccount.id).FirstOrDefault();
+                    var beenDeleted = DataProvider.Instance.DB.Accounts.Where((x) => x.IdAccount == SelectedAccount.Id).FirstOrDefault();
                     DataProvider.Instance.DB.Accounts.Remove(beenDeleted);
                     DataProvider.Instance.DB.SaveChanges();
                     MyMessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButton.OK);

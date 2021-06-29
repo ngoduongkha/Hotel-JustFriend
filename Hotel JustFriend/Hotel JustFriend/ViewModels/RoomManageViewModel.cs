@@ -12,14 +12,14 @@ namespace Hotel_JustFriend.ViewModels
 {
     public class RoomWithType
     {
-        public int idRoom { get; set; }
-        public int floor { get; set; }
-        public int number { get; set; }
-        public string displayName { get; set; }
-        public string typeRoomName { get; set; }
-        public string status { get; set; }
-        public string note { get; set; }
-        public Nullable<decimal> price { get; set; }
+        public int IdRoom { get; set; }
+        public int Floor { get; set; }
+        public int Number { get; set; }
+        public string DisplayName { get; set; }
+        public string TypeRoomName { get; set; }
+        public string Status { get; set; }
+        public string Note { get; set; }
+        public decimal Price { get; set; }
     }
 
 
@@ -47,20 +47,20 @@ namespace Hotel_JustFriend.ViewModels
         {
             try
             {
-                ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms.Where(x => x.isDelete == false).OrderBy(x => x.floor).ThenBy(x => x.number));
+                ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms.Where(x => x.IsDelete == false).OrderBy(x => x.Floor).ThenBy(x => x.Number));
                 ListRoomWithType = new ObservableCollection<RoomWithType>(
-                    ListRoom.Join(ListRoomType, (Room) => Room.idType, (TypeRoom) => TypeRoom.idType,
+                    ListRoom.Join(ListRoomType, (Room) => Room.IdTypeRoom, (TypeRoom) => TypeRoom.IdTypeRoom,
                     (Room, TypeRoom) =>
                     new RoomWithType
                     {
-                        idRoom = Room.idRoom,
-                        floor = Room.floor,
-                        number = Room.number,
-                        displayName = Room.displayName,
-                        typeRoomName = TypeRoom.fullname,
-                        status = Room.status,
-                        note = Room.note,
-                        price = TypeRoom.price
+                        IdRoom = Room.IdRoom,
+                        Floor = Room.Floor,
+                        Number = Room.Number,
+                        DisplayName = Room.DisplayName,
+                        TypeRoomName = TypeRoom.DisplayName,
+                        Status = Room.Status,
+                        Note = Room.Note,
+                        Price = TypeRoom.Price
                     }));
             }
             catch { return; }
@@ -89,13 +89,13 @@ namespace Hotel_JustFriend.ViewModels
                     MyMessageBox.Show("Không có gì để xóa!", "Thông báo", System.Windows.MessageBoxButton.OK);
                     return;
                 }
-                if (SelectedRoom.status == "Đang thuê")
+                if (SelectedRoom.Status == "Đang thuê")
                 {
                     MyMessageBox.Show("Phòng đang được thuê!", "Thông báo", System.Windows.MessageBoxButton.OK);
                     return;
                 }
 
-                DataProvider.Instance.DB.Rooms.Where(x => x.idRoom == SelectedRoom.idRoom).SingleOrDefault().isDelete = true;
+                DataProvider.Instance.DB.Rooms.Where(x => x.IdRoom == SelectedRoom.IdRoom).SingleOrDefault().IsDelete = true;
                 DataProvider.Instance.DB.SaveChanges();
                 MyMessageBox.Show("Xóa thành công!", "Thông báo", System.Windows.MessageBoxButton.OK);
 
@@ -114,13 +114,13 @@ namespace Hotel_JustFriend.ViewModels
                     MyMessageBox.Show("Không có gì để sửa chữa!", "Thông báo", System.Windows.MessageBoxButton.OK);
                     return;
                 }
-                if (SelectedRoom.status != "Hư hỏng")
+                if (SelectedRoom.Status != "Hư hỏng")
                 {
                     MyMessageBox.Show("Phòng không hỏng!", "Thông báo", System.Windows.MessageBoxButton.OK);
                     return;
                 }
 
-                DataProvider.Instance.DB.Rooms.Where(x => x.idRoom == SelectedRoom.idRoom).SingleOrDefault().status = "Sẵn sàng";
+                DataProvider.Instance.DB.Rooms.Where(x => x.IdRoom == SelectedRoom.IdRoom).SingleOrDefault().Status = "Sẵn sàng";
                 DataProvider.Instance.DB.SaveChanges();
                 MyMessageBox.Show("Sửa chữa thành công!", "Thông báo", System.Windows.MessageBoxButton.OK);
 
@@ -136,21 +136,41 @@ namespace Hotel_JustFriend.ViewModels
             {
                 LoadDB();
 
-                if (string.IsNullOrEmpty(p.txtFilterStatus.Text) && !string.IsNullOrEmpty(p.txtFilterType.Text))
+                if (string.IsNullOrEmpty(p.cbFilterStatus.Text) && !string.IsNullOrEmpty(p.cbFilterType.Text))
                 {
-                    ListRoomWithType = new ObservableCollection<RoomWithType>(ListRoomWithType.Where(x => x.typeRoomName == p.txtFilterType.Text));
+                    ListRoomWithType = new ObservableCollection<RoomWithType>(ListRoomWithType.Where(x => x.TypeRoomName == p.cbFilterType.Text));
                 }
-                else if (!string.IsNullOrEmpty(p.txtFilterStatus.Text) && string.IsNullOrEmpty(p.txtFilterType.Text))
+                else if (!string.IsNullOrEmpty(p.cbFilterStatus.Text) && string.IsNullOrEmpty(p.cbFilterType.Text))
                 {
-                    ListRoomWithType = new ObservableCollection<RoomWithType>(ListRoomWithType.Where(x => x.status == p.txtFilterStatus.Text));
+                    ListRoomWithType = new ObservableCollection<RoomWithType>(ListRoomWithType.Where(x => x.Status == p.cbFilterStatus.Text));
                 }
-                else if (!string.IsNullOrEmpty(p.txtFilterStatus.Text) && !string.IsNullOrEmpty(p.txtFilterType.Text))
+                else if (!string.IsNullOrEmpty(p.cbFilterStatus.Text) && !string.IsNullOrEmpty(p.cbFilterType.Text))
                 {
-                    ListRoomWithType = new ObservableCollection<RoomWithType>(ListRoomWithType.Where(x => x.typeRoomName == p.txtFilterType.Text && x.status == p.txtFilterStatus.Text));
+                    ListRoomWithType = new ObservableCollection<RoomWithType>(ListRoomWithType.Where(x => x.TypeRoomName == p.cbFilterType.Text && x.Status == p.cbFilterStatus.Text));
                 }
 
-                p.txtFilterStatus.Text = string.Empty;
-                p.txtFilterType.Text = string.Empty;
+                p.cbFilterStatus.Text = string.Empty;
+                p.cbFilterType.Text = string.Empty;
+            }
+            catch { return; }
+        }
+
+        [Command]
+        public void SearchRoom(RoomManageView p)
+        {
+            try
+            {
+                LoadDB();
+
+                if (string.IsNullOrEmpty(p.tbSearch.Text) || string.IsNullOrWhiteSpace(p.tbSearch.Text))
+                {
+                    p.tbSearch.Text = string.Empty;
+                    return;
+                }
+
+                ListRoomWithType = new ObservableCollection<RoomWithType>(ListRoomWithType.Where(x => x.DisplayName.Contains(p.tbSearch.Text)));
+
+                p.tbSearch.Text = string.Empty;
             }
             catch { return; }
         }

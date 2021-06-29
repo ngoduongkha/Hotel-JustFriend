@@ -26,10 +26,10 @@ namespace Hotel_JustFriend.ViewModels
 
         public CustomizeParametersViewModel()
         {
-            ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where((p) => p.isDelete == false));
-            ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers.Where((p) => p.isDelete == false));
-            MaxCustomer = (DataProvider.Instance.DB.Constants.Find(0) as Constant).maxCustomer.ToString();
-            Percent = (DataProvider.Instance.DB.Constants.Find(0) as Constant).percent.ToString();
+            ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where((p) => p.IsDelete == false));
+            ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers.Where((p) => p.IsDelete == false));
+            MaxCustomer = (DataProvider.Instance.DB.Constants.Find(0) as Constant).MaxCustomer.ToString();
+            Percent = (DataProvider.Instance.DB.Constants.Find(0) as Constant).Percent.ToString();
         }
 
         [Command]
@@ -37,7 +37,7 @@ namespace Hotel_JustFriend.ViewModels
         {
             AddTypeWindow window = new AddTypeWindow(true);
             window.ShowDialog();
-            ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers.Where((p) => p.isDelete == false));
+            ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers.Where((p) => p.IsDelete == false));
         }
 
         [Command]
@@ -45,7 +45,7 @@ namespace Hotel_JustFriend.ViewModels
         {
             AddTypeWindow window = new AddTypeWindow(false);
             window.ShowDialog();
-            ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where((p) => p.isDelete == false));
+            ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where((p) => p.IsDelete == false));
         }
 
         [Command]
@@ -77,8 +77,8 @@ namespace Hotel_JustFriend.ViewModels
                 {
                     TypeCustomer newType = new TypeCustomer()
                     {
-                        displayname = TypeName,
-                        isDelete = false,
+                        Displayname = TypeName,
+                        IsDelete = false,
                     };
                     DataProvider.Instance.DB.TypeCustomers.Add(newType);
                     DataProvider.Instance.DB.SaveChanges();
@@ -88,9 +88,9 @@ namespace Hotel_JustFriend.ViewModels
                 {
                     TypeRoom newType = new TypeRoom()
                     {
-                        fullname = TypeName,
-                        price = 0,
-                        isDelete = false,
+                        DisplayName = TypeName,
+                        Price = 0,
+                        IsDelete = false,
                     };
                     DataProvider.Instance.DB.TypeRooms.Add(newType);
                     DataProvider.Instance.DB.SaveChanges();
@@ -113,16 +113,16 @@ namespace Hotel_JustFriend.ViewModels
                     if (cbbox.Name == "cbboxRoomType")
                     {
                         TypeRoom deleteRoomType = cbbox.SelectedItem as TypeRoom;
-                        deleteRoomType.isDelete = true;
+                        deleteRoomType.IsDelete = true;
                         DataProvider.Instance.DB.SaveChanges();
-                        ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where((p) => p.isDelete == false));
+                        ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where((p) => p.IsDelete == false));
                     }
                     else
                     {
                         TypeCustomer deleteCustomerType = cbbox.SelectedItem as TypeCustomer;
-                        deleteCustomerType.isDelete = true;
+                        deleteCustomerType.IsDelete = true;
                         DataProvider.Instance.DB.SaveChanges();
-                        ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers.Where((p) => p.isDelete == false));
+                        ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers.Where((p) => p.IsDelete == false));
                     }
                 }
             }
@@ -143,8 +143,8 @@ namespace Hotel_JustFriend.ViewModels
                     ComboBox cbbox = parameters[1] as ComboBox;
                     if (cbbox.SelectedItem != null && tbox.Text != null)
                     {
-                        TypeRoom typeRoom = DataProvider.Instance.DB.TypeRooms.Find((cbbox.SelectedItem as TypeRoom).idType);
-                        typeRoom.price = int.Parse(tbox.Text);
+                        TypeRoom typeRoom = DataProvider.Instance.DB.TypeRooms.Find((cbbox.SelectedItem as TypeRoom).IdTypeRoom);
+                        typeRoom.Price = int.Parse(tbox.Text);
                         DataProvider.Instance.DB.SaveChanges();
                     }
                     return;
@@ -154,8 +154,8 @@ namespace Hotel_JustFriend.ViewModels
                     ComboBox cbbox = parameters[1] as ComboBox;
                     if (cbbox.SelectedItem != null && tbox.Text != null)
                     {
-                        TypeCustomer typeCustomer = DataProvider.Instance.DB.TypeCustomers.Find((cbbox.SelectedItem as TypeCustomer).idType);
-                        typeCustomer.number = double.Parse(tbox.Text);
+                        TypeCustomer typeCustomer = DataProvider.Instance.DB.TypeCustomers.Find((cbbox.SelectedItem as TypeCustomer).IdTypeCustomer);
+                        typeCustomer.CoefficientsObtained = double.Parse(tbox.Text);
                         DataProvider.Instance.DB.SaveChanges();
                     }
                     return;
@@ -164,8 +164,8 @@ namespace Hotel_JustFriend.ViewModels
                 {
                     if (tbox.Text != null)
                     {
-                        (DataProvider.Instance.DB.Constants.Find(0) as Constant).maxCustomer = int.Parse(MaxCustomer);
-                        MaxCustomer = (DataProvider.Instance.DB.Constants.Find(0) as Constant).maxCustomer.ToString();
+                        (DataProvider.Instance.DB.Constants.Find(0) as Constant).MaxCustomer = int.Parse(MaxCustomer);
+                        MaxCustomer = (DataProvider.Instance.DB.Constants.Find(0) as Constant).MaxCustomer.ToString();
                         DataProvider.Instance.DB.SaveChanges();
                     }
                     return;
@@ -174,8 +174,8 @@ namespace Hotel_JustFriend.ViewModels
                 {
                     if (tbox.Text != null)
                     {
-                        (DataProvider.Instance.DB.Constants.Find(0) as Constant).percent = double.Parse(Percent);
-                        Percent = (DataProvider.Instance.DB.Constants.Find(0) as Constant).percent.ToString();
+                        (DataProvider.Instance.DB.Constants.Find(0) as Constant).Percent = double.Parse(Percent);
+                        Percent = (DataProvider.Instance.DB.Constants.Find(0) as Constant).Percent.ToString();
                         DataProvider.Instance.DB.SaveChanges();
                     }
                     return;

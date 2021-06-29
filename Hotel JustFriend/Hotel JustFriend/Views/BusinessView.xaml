@@ -14,8 +14,6 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="idRentInvoice"
-                   Visibility="Hidden"></TextBlock>
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
@@ -65,7 +63,7 @@
                             materialDesign:HintAssist.Hint="Tìm phòng"
                             Width="150"
                             Background="Transparent"
-                            x:Name="txtSearch">
+                            x:Name="tbSearch">
                         </TextBox>
                         <Button 
                             Content="Tìm"
@@ -80,18 +78,16 @@
                         <Label Content="Bộ lọc: "/>
                         <ComboBox 
                             materialDesign:HintAssist.Hint="Trạng thái"
-                            ItemsSource="{Binding ListRoomStatus}"
-                            x:Name="txtFilterStatus"
+                            x:Name="cbFilterStatus"
                             Width="150">
                             <ComboBoxItem Content="Sẵn sàng"/>
-                            <ComboBoxItem Content="Chưa Sẵn sàng"/>
+                            <ComboBoxItem Content="Đang thuê"/>
+                            <ComboBoxItem Content="Hư hỏng"/>
                         </ComboBox>
                         <ComboBox 
-                            x:Name="txtFilterType"
+                            x:Name="cbFilterType"
                             ItemsSource="{Binding ListRoomType}"
-                            DisplayMemberPath="fullname"
-                            SelectedValuePath="idType"
-                            SelectedValue="{Binding Path=idType}"
+                            DisplayMemberPath="DisplayName"
                             materialDesign:HintAssist.Hint="Loại phòng" 
                             Width="150">
                         </ComboBox>
@@ -140,7 +136,7 @@
                     MaxWidth="1050"
                     Padding="5">
                     <ItemsControl
-                        ItemsSource="{Binding ListRoom}"
+                        ItemsSource="{Binding Path=ListRoom}"
                         x:Name="MyItems">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -158,25 +154,23 @@
                                     Command="{Binding ElementName=MyItems, Path=DataContext.SelectRoomCommand}"
                                     CommandParameter="{Binding}"
                                     materialDesign:ButtonAssist.CornerRadius="10">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="MouseDown">
-                                            <i:InvokeCommandAction Command="{Binding testCommand}">
-                                            </i:InvokeCommandAction>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
                                     <Button.Style>
                                         <Style 
                                             TargetType="Button"
                                             BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                             <Style.Triggers>
-                                                <DataTrigger Binding="{Binding status}" Value="false">
+                                                <DataTrigger Binding="{Binding Status}" Value="Sẵn sàng">
                                                     <Setter Property="Background" Value="{DynamicResource AcceptBrush}"/>
                                                     <Setter Property="BorderBrush" Value="{DynamicResource AcceptBrush}"/>
                                                 </DataTrigger>
-                                           
-                                                <DataTrigger Binding="{Binding status}" >
+                                                <DataTrigger Binding="{Binding Status}" Value="Đang thuê">
                                                     <Setter Property="Background" Value="{DynamicResource DeclineBrush}"/>
                                                     <Setter Property="BorderBrush" Value="{DynamicResource DeclineBrush}"/>
+                                                    <Setter Property="IsEnabled" Value="True"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Status}" Value="Hư hỏng">
+                                                    <Setter Property="Background" Value="{DynamicResource UpdateBrush}"/>
+                                                    <Setter Property="BorderBrush" Value="{DynamicResource UpdateBrush}"/>
                                                     <Setter Property="IsEnabled" Value="True"/>
                                                 </DataTrigger>
                                             </Style.Triggers>
@@ -184,7 +178,7 @@
                                     </Button.Style>
                                     <Grid>
                                         <Image Source="/Hotel JustFriend;component/Resources/Images/room.png"/>
-                                        <Label Content="{Binding displayName}" FontSize="18" Foreground="Black"
+                                        <Label Content="{Binding DisplayName}" FontSize="18" Foreground="Black"
                                                HorizontalAlignment="Center" Margin="0, 20"/>
                                     </Grid>
                                 </Button>
@@ -221,7 +215,7 @@
                     <TextBox
                         materialDesign:HintAssist.Hint="Tên phòng"
                         FontSize="17" VerticalAlignment="Center"
-                        Text="{Binding Path=SelectedRoom.displayName}"
+                        Text="{Binding Path=SelectedRoom.DisplayName}"
                         Margin="5,0" Width="100" IsReadOnly="True"
                         TextAlignment="Center"/>
                 </StackPanel>
@@ -279,7 +273,7 @@
                             </Style>
                         </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Tên khách hàng" Width="2*" Binding="{Binding fullname}"/>
+                            <DataGridTextColumn Header="Tên khách hàng" Width="2*" Binding="{Binding DisplayName}"/>
                             </DataGrid.Columns>
                     </DataGrid>
                 </GroupBox>
@@ -293,7 +287,7 @@
                 <Grid Grid.Column="0">
                     <Grid.Resources>
                         <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatAccentBgButton}">
-                            <Setter Property="IsEnabled" Value="{Binding Path=SelectedRoom.status, Mode=OneWay}"/>
+                            <Setter Property="IsEnabled" Value="{Binding Path=SelectedRoom.Status, Mode=OneWay}"/>
                         </Style>
                     </Grid.Resources>
                     <Grid.ColumnDefinitions>
@@ -453,20 +447,8 @@
                         materialDesign:ButtonAssist.CornerRadius="10"
                         Padding="0" 
                         Margin="0"
-                        Command="{Binding PayCommand}">
-                        <Button.Style>
-                            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
-                                <Setter Property="IsDefault" Value="{Binding Path=SelectedRoom.status, Mode=OneWay}"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsDefault" Value="False">
-                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                    </Trigger>
-                                    <Trigger Property="IsDefault" Value="True">
-                                        <Setter Property="Visibility" Value="Visible"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
+                        Command="{Binding PayCommand}"
+                        Style="{StaticResource MaterialDesignRaisedButton}">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
@@ -504,15 +486,7 @@
                             <Style 
                                 TargetType="Button" 
                                 BasedOn="{StaticResource MaterialDesignRaisedButton}">
-                                <Setter Property="IsDefault" Value="{Binding Path=SelectedRoom.status, Mode=OneWay}"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsDefault" Value="False">
-                                        <Setter Property="Visibility" Value="Visible"/>
-                                    </Trigger>
-                                    <Trigger Property="IsDefault" Value="True">
-                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                    </Trigger>
-                                </Style.Triggers>
+                                <Setter Property="Visibility" Value="{Binding Path=SwitchButton, Mode=OneWay}"/>
                             </Style>
                         </Button.Style>
                         <Grid>

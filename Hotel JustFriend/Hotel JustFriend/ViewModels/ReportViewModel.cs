@@ -36,14 +36,14 @@ namespace Hotel_JustFriend.ViewModels
             aa.month.Text = Month.ToString();
             aa.year.Text = Year.ToString();
             decimal tt = 0;
-            _ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where(p => p.isDelete == false));
+            _ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where(p => p.IsDelete == false));
             _ListBillInfo = new ObservableCollection<BillInfo>(DataProvider.Instance.DB.BillInfoes);
             _ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms);
             int y = int.Parse(Year);
             int m = 0;
             if (Month != "") m = int.Parse(Month);
-            if (Month == "") _ListBill = new ObservableCollection<Bill>(DataProvider.Instance.DB.Bills.Where(p => p.date.Value.Year == y));
-            else _ListBill = new ObservableCollection<Bill>(DataProvider.Instance.DB.Bills.Where(p => p.date.Value.Year == y && p.date.Value.Month == m));
+            if (Month == "") _ListBill = new ObservableCollection<Bill>(DataProvider.Instance.DB.Bills.Where(p => p.Date.Year == y));
+            else _ListBill = new ObservableCollection<Bill>(DataProvider.Instance.DB.Bills.Where(p => p.Date.Year == y && p.Date.Month == m));
             if (_ListBill.Count > 0)
             {
                 PieSerieCollection = new SeriesCollection();
@@ -51,18 +51,18 @@ namespace Hotel_JustFriend.ViewModels
                 {
                     double phantram = 0;
                     decimal doanhthu = 0;
-                    int idtype = _ListRoomType[i].idType;
+                    int idtype = _ListRoomType[i].IdTypeRoom;
                     for (int j = 0; j < _ListBillInfo.Count; j++)
                     {
-                        int idd = _ListBillInfo[j].idBill;
-                        Bill k = _ListBill.Where(p => p.idBill == idd).FirstOrDefault();
+                        int idd = _ListBillInfo[j].IdBill;
+                        Bill k = _ListBill.Where(p => p.IdBill == idd).FirstOrDefault();
                         if (k != null)
                         {
-                            Room a = _ListRoom.Where(p => p.idRoom == _ListBillInfo[j].idRoom).FirstOrDefault();
-                            if (a.idType == idtype)
+                            Room a = _ListRoom.Where(p => p.IdRoom == _ListBillInfo[j].IdRoom).FirstOrDefault();
+                            if (a.IdTypeRoom == idtype)
                             {
                                 phantram = phantram + 1;
-                                doanhthu = doanhthu + (decimal)k.totalMoney;
+                                doanhthu = doanhthu + (decimal)k.TotalMoney;
                             }
                         }
                     }
@@ -72,7 +72,7 @@ namespace Hotel_JustFriend.ViewModels
                     chartValue.Add(doanhthu);
                     PieSeries newPie = new PieSeries
                     {
-                        Title = _ListRoomType[i].fullname,
+                        Title = _ListRoomType[i].DisplayName,
                         Values = chartValue,
                         DataLabels = true,
                         FontSize = 15,
@@ -80,7 +80,7 @@ namespace Hotel_JustFriend.ViewModels
                     PieSerieCollection.Add(newPie);
                     ReportUC c = new ReportUC();
                     c.STT.Text = (i + 1).ToString();
-                    c.displayname.Text = _ListRoomType[i].fullname;
+                    c.displayname.Text = _ListRoomType[i].DisplayName;
                     c.revenue.Text = string.Format("{0:C}", doanhthu);
                     c.percent.Text = phantram.ToString("#0.##%");
 

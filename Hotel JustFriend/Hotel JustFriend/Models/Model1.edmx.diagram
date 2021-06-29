@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0466221814484039b5da3fe5b64247c2" Name="Diagram1">
+      <Diagram DiagramId="ec98d123f178443aab69fc094d15d975" Name="Diagram1">
         <EntityTypeShape EntityType="Hotel_JustFriendModel.Account" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.Bill" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.BillInfo" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.Constant" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hotel_JustFriendModel.Customer" Width="1.5" PointX="5.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hotel_JustFriendModel.Customer" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.RentInvoice" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.RentInvoiceInfo" Width="1.5" PointX="7.5" PointY="8.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.Revenue" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
@@ -18,15 +18,15 @@
         <EntityTypeShape EntityType="Hotel_JustFriendModel.TypeAccount" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.TypeCustomer" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Hotel_JustFriendModel.TypeRoom" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
-        <AssociationConnector Association="Hotel_JustFriendModel.FK__Account__idTypeA__48CFD27E" ManuallyRouted="false" />
-        <AssociationConnector Association="Hotel_JustFriendModel.FK__BillInfo__idBill__4BAC3F29" ManuallyRouted="false" />
-        <AssociationConnector Association="Hotel_JustFriendModel.FK__BillInfo__idRoom__46E78A0C" ManuallyRouted="false" />
-        <AssociationConnector Association="Hotel_JustFriendModel.FK__Customer__idType__47DBAE45" ManuallyRouted="false" />
-        <AssociationConnector Association="Hotel_JustFriendModel.FK__RentInvoi__idCus__49C3F6B7" ManuallyRouted="false" />
-        <AssociationConnector Association="Hotel_JustFriendModel.FK__RentInvoi__idRen__4AB81AF0" ManuallyRouted="false" />
-        <AssociationConnector Association="Hotel_JustFriendModel.FK__RentInvoi__idRoo__45F365D3" ManuallyRouted="false" />
-        <AssociationConnector Association="Hotel_JustFriendModel.FK__Revenue__idType__440B1D61" ManuallyRouted="false" />
-        <AssociationConnector Association="Hotel_JustFriendModel.FK__Room__idType__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__Account__IdTypeA__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__BillInfo__IdBill__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__BillInfo__IdRoom__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__Customer__IdType__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__RentInvoi__IdCus__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__RentInvoi__IdRen__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__RentInvoi__IdRoo__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__Revenue__IdTypeR__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="Hotel_JustFriendModel.FK__Room__IdTypeRoom__440B1D61" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

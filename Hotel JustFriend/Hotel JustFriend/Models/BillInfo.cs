@@ -14,10 +14,10 @@ namespace Hotel_JustFriend.Models
     
     public partial class BillInfo
     {
-        public Nullable<int> numberDay { get; set; }
-        public Nullable<decimal> price { get; set; }
-        public int idBill { get; set; }
-        public int idRoom { get; set; }
+        public int NumberDay { get; set; }
+        public decimal Price { get; set; }
+        public int IdBill { get; set; }
+        public int IdRoom { get; set; }
     
         public virtual Bill Bill { get; set; }
         public virtual Room Room { get; set; }
