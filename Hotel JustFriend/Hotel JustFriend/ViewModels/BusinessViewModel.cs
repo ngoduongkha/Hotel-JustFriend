@@ -21,35 +21,27 @@ namespace Hotel_JustFriend.ViewModels
     [POCOViewModel]
     public class BusinessViewModel : ViewModelBase
     {
-        private ObservableCollection<TypeCustomer> _ListCustomerType;
-        private ObservableCollection<Customer> _ListCustomer;
-        private ObservableCollection<TypeRoom> _ListRoomType;
+        private ObservableCollection<Room> _ListRoom;
+        private Room _SelectedRoom;
+        public ObservableCollection<TypeRoom> ListRoomType { get; } = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where(x => x.IsDelete == false));
         private ObservableCollection<CustomerWithRentInvoice> _ListRentInvoiceInfo;
         private CustomerWithRentInvoice _SelectedCustomerRenting;
 
-        public Visibility SwitchButton { get; set; }
-        public bool CanAddUser { get; set; }
-
-        public ObservableCollection<TypeCustomer> ListCustomerType { get => _ListCustomerType; set { _ListCustomerType = value; RaisePropertiesChanged(); } }
-        public ObservableCollection<Customer> ListCustomer { get => _ListCustomer; set { _ListCustomer = value; RaisePropertiesChanged(); } }
-        private ObservableCollection<Room> _ListRoom;
-        static private Room _SelectedRoom;
-        static private RentInvoice _SelectedRentInvoice;
-        static private RentInvoiceInfo _SelectedCustomer;
-        public ObservableCollection<Room> ListRoom { get => _ListRoom; set { _ListRoom = value; RaisePropertyChanged(); } }
+        public Visibility SwitchButton { get; set; } = Visibility.Visible;
+        public bool CanAddUser { get; set; } = false;
         public Room SelectedRoom { get => _SelectedRoom; set { _SelectedRoom = value; RaisePropertyChanged(); } }
-        public RentInvoiceInfo SelectedCustomer { get => _SelectedCustomer; set { _SelectedCustomer = value; RaisePropertyChanged(); } }
+
+
+
+        private RentInvoice _SelectedRentInvoice;
+        public ObservableCollection<Room> ListRoom { get => _ListRoom; set { _ListRoom = value; RaisePropertyChanged(); } }
+       
         public RentInvoice SelectedRentInvoice { get => _SelectedRentInvoice; set { _SelectedRentInvoice = value; RaisePropertyChanged(); } }
-        public ObservableCollection<TypeRoom> ListRoomType { get => _ListRoomType; set { _ListRoomType = value; RaisePropertiesChanged(); } }
         public ObservableCollection<CustomerWithRentInvoice> ListRentInvoiceInfo { get => _ListRentInvoiceInfo; set { _ListRentInvoiceInfo = value; RaisePropertyChanged(); } }
         public CustomerWithRentInvoice SelectedCustomerRenting { get => _SelectedCustomerRenting; set => _SelectedCustomerRenting = value; }
 
         public BusinessViewModel()
         {
-            ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers.Where(p => p.IsDelete == false));
-            ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where(c => c.IsDelete == false));
-            CanAddUser = false;
-
             LoadDB();
         }
 
@@ -78,6 +70,16 @@ namespace Hotel_JustFriend.ViewModels
                     MyMessageBox.Show("Phòng không có khách hàng", "Thông báo", MessageBoxButton.OK);
                     SelectedRoom.Status = "Sẵn sàng";
                     DataProvider.Instance.DB.SaveChanges();
+
+                    SelectedRentInvoice.Purchase = true;
+                    SelectedRoom.Status = "Sẵn sàng";
+                    ListRentInvoiceInfo = null;
+                    SelectedRentInvoice = null;
+
+                    CanAddUser = false;
+                    SwitchButton = Visibility.Visible;
+
+                    LoadDB();
                     return;
                 }
                 BilltemplateViewModel billtemplateViewModel = new BilltemplateViewModel(SelectedRentInvoice);
@@ -98,7 +100,7 @@ namespace Hotel_JustFriend.ViewModels
                 LoadDB();
                 SelectedRoom = DataProvider.Instance.DB.Rooms.Where(x => x.IsDelete == false).Where(x => x.IdRoom == SelectedRoom.IdRoom).SingleOrDefault();
             }
-            catch (Exception e) { Debug.WriteLine(e.InnerException); return; }
+            catch { return; }
         }
 
         [Command]
@@ -112,7 +114,9 @@ namespace Hotel_JustFriend.ViewModels
                 {
                     SwitchButton = Visibility.Collapsed;
                     CanAddUser = true;
-                    SelectedRentInvoice = DataProvider.Instance.DB.RentInvoices.Where(p => p.IdRoom == selectedRoom.IdRoom).SingleOrDefault();
+
+                    SelectedRentInvoice = DataProvider.Instance.DB.RentInvoices.Where(x => x.Purchase == false).Where(p => p.IdRoom == selectedRoom.IdRoom).SingleOrDefault();
+
                     ListRentInvoiceInfo = new ObservableCollection<CustomerWithRentInvoice>(DataProvider.Instance.DB.RentInvoiceInfoes
                         .Where(x => x.IdRentInvoice == SelectedRentInvoice.IdRentInvoice)
                         .Join(DataProvider.Instance.DB.Customers, (InvoiceInfo) => InvoiceInfo.IdCustomer, (Customer) => Customer.IdCustomer,
@@ -159,6 +163,7 @@ namespace Hotel_JustFriend.ViewModels
                     Purchase = false
                 };
 
+                ListRentInvoiceInfo = new ObservableCollection<CustomerWithRentInvoice>();
                 DataProvider.Instance.DB.RentInvoices.Add(rentInvoice);
                 DataProvider.Instance.DB.SaveChanges();
                 SwitchButton = Visibility.Collapsed;
