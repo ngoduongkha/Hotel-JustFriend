@@ -207,12 +207,12 @@
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Column="1">
-                    <Button Content="In báo cáo" 
+                    <Button Content="Xuất báo cáo" 
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
                         Margin="0,0,30,20"
                         FontSize="20"
-                        Command="{Binding LoadBillCommand}"/>
+                        Command="{Binding ExportCommand}"/>
                 </Grid>
             </Grid>
         </Grid>

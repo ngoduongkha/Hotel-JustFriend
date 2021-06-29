@@ -277,11 +277,11 @@
                 </StackPanel>
             </Grid>
             <Grid Grid.Column="1">
-                <Button Content="In hóa đơn" 
+                <Button Content="Xuất hóa đơn" 
                         x:Name="btnPrint"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Bottom"
-                            Margin="0,0,30,20"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Margin="0,0,30,20"
                         Command="{Binding PrintBillCommand}"
                         CommandParameter="{Binding ElementName=aaa}"/>
             </Grid>

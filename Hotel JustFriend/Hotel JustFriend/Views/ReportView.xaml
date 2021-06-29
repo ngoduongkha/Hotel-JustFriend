@@ -8,7 +8,8 @@
              xmlns:uc="clr-namespace:Hotel_JustFriend.UserControls"
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" xmlns:validation="clr-namespace:Hotel_JustFriend.Validations"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             x:Name="uc">
     <Grid
         Margin="15 5 15 15">
         <Grid.ColumnDefinitions>
@@ -41,16 +42,35 @@
                                 Content="Tháng:"
                                 FontSize="20"
                                 VerticalAlignment="Center"/>
-                            <TextBox
+                            <!--<TextBox
                                 Width="50"
                                 Margin="20 0"
                                 FontSize="20"
                                 Padding="0"
                                 MaxLength="2"
                                 Text="{Binding Month,Mode=OneWayToSource}"
-                                VerticalAlignment="Center" PreviewTextInput="TextBox_PreviewTextInput">
-                              
-                            </TextBox>
+                                VerticalAlignment="Center" PreviewTextInput="TextBox_PreviewTextInput">-->
+                            <ComboBox
+                                Style="{StaticResource MaterialDesignComboBox}"
+                                Width="100"
+                                Margin="10 0"
+                                FontSize="20"
+                                Padding="0"
+                                VerticalAlignment="Center"
+                                x:Name="cbboxMonths">
+                                <ComboBoxItem Content="Một"/>
+                                <ComboBoxItem Content="Hai"/>
+                                <ComboBoxItem Content="Ba"/>
+                                <ComboBoxItem Content="Tư"/>
+                                <ComboBoxItem Content="Năm"/>
+                                <ComboBoxItem Content="Sáu"/>
+                                <ComboBoxItem Content="Bảy"/>
+                                <ComboBoxItem Content="Tám"/>
+                                <ComboBoxItem Content="Chín"/>
+                                <ComboBoxItem Content="Mười"/>
+                                <ComboBoxItem Content="Mười một"/>
+                                <ComboBoxItem Content="Mười Hai"/>
+                            </ComboBox>
                         </StackPanel>
                         <StackPanel
                             Grid.Column="1"
@@ -59,17 +79,20 @@
                                 Content="Năm:"
                                 FontSize="20"
                                 VerticalAlignment="Center"/>
-                            <TextBox 
+                            <ComboBox
+                                Width="80"
+                                FontSize="20"
+                                Padding="0"
+                                VerticalAlignment="Center"
+                                x:Name="cbboxYears"/>
+                            <!--<TextBox 
                                 Width="50"
                                 Margin="20 0"
                                 FontSize="20"
                                 Padding="0"
                                 Text="{Binding Year,Mode=OneWayToSource}"
                                 VerticalAlignment="Center"
-                                MaxLength="4"
-                                >
-                               
-                            </TextBox>
+                                MaxLength="4"/>-->
                         </StackPanel>
                     </Grid>
                     <Grid
@@ -80,8 +103,8 @@
                             HorizontalAlignment="Center"
                             Content="Hiển thị"
                             FontSize="20"
-                            Command="{Binding reportCommand}"
-                            CommandParameter="{Binding ElementName=gridReportTemplate}"/>
+                            Command="{Binding ShowReportCommand}"
+                            CommandParameter="{Binding ElementName=uc}"/>
                     </Grid>
                 </Grid>
             </materialDesign:Card>
