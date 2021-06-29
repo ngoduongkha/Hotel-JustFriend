@@ -49,7 +49,7 @@ GO
 
 CREATE TABLE [TypeCustomer] (
   [IdTypeCustomer] int PRIMARY KEY IDENTITY(1, 1),
-  [Displayname] nvarchar(20) NOT NULL,
+  [DisplayName] nvarchar(20) NOT NULL,
   [CoefficientsObtained] float NOT NULL,
   [IsDelete] bit DEFAULT (0) NOT NULL
 )

@@ -91,7 +91,7 @@
                                       Margin="65 0"
                                       x:Name="cbType"
                                       ItemsSource="{Binding Path=ListTypeCustomer}"
-                                      DisplayMemberPath="Displayname"
+                                      DisplayMemberPath="DisplayName"
                                       SelectedValuePath="IdTypeCustomer"
                                       SelectedValue="{Binding Path=Customer.IdTypeCustomer}">
                             </ComboBox>

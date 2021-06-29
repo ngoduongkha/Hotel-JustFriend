@@ -131,7 +131,7 @@
                             <ComboBox 
                                 materialDesign:HintAssist.Hint="Chọn loại khách"
                                 ItemsSource="{Binding Path=ListCustomerType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                DisplayMemberPath="Displayname"
+                                DisplayMemberPath="DisplayName"
                                 SelectedValuePath="idType"
                                 x:Name="cbboxCustomerType"/>
                         </StackPanel>

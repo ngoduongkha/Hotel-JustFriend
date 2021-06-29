@@ -115,7 +115,7 @@
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.TypeCustomer">
         <MappingFragment StoreEntitySet="TypeCustomer">
           <ScalarProperty Name="IdTypeCustomer" ColumnName="IdTypeCustomer" />
-          <ScalarProperty Name="Displayname" ColumnName="Displayname" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
           <ScalarProperty Name="CoefficientsObtained" ColumnName="CoefficientsObtained" />
           <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
         </MappingFragment>

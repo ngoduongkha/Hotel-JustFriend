@@ -89,7 +89,7 @@
                                       FontSize="20"
                                       Margin="65 0"
                                       ItemsSource="{Binding Path=ListTypeCustomer}"
-                                      DisplayMemberPath="Displayname"
+                                      DisplayMemberPath="DisplayName"
                                       SelectedValuePath="IdTypeCustomer"
                                       SelectedValue="{Binding Path=Customer.IdTypeCustomer}">                                
                             </ComboBox>
