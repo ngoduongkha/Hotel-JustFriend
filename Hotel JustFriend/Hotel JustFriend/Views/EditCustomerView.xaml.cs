@@ -20,10 +20,10 @@ namespace Hotel_JustFriend.Views
     /// </summary>
     public partial class EditCustomerView : Window
     {
-        public EditCustomerView(Customer a)
+        public EditCustomerView(Customer customer)
         {
             InitializeComponent();
-            this.DataContext = new CustomerViewModel(a);
+            DataContext = new CustomerViewModel(customer);
         }
     }
 }

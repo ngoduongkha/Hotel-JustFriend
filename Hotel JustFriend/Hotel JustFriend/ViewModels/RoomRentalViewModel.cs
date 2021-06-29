@@ -107,7 +107,7 @@ namespace Hotel_JustFriend.ViewModels
                     IdCustomer = d,
                     FullName = Fullname,
                     IdCard = IdCard,
-                    IdTypeCustomer = int.Parse(p.txtType.SelectedValue.ToString()),
+                    IdTypeCustomer = int.Parse(p.cbType.SelectedValue.ToString()),
                 };
                 DataProvider.Instance.DB.Customers.Add(newCustomer);
                 RentInvoiceInfo info = new RentInvoiceInfo()

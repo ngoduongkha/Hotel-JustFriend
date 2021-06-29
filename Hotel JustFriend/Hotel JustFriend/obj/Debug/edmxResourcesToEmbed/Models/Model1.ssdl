@@ -38,11 +38,11 @@
     <Key>
       <PropertyRef Name="idCustomer" />
     </Key>
-    <Property Name="idCustomer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="fullname" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="idCard" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="idType" Type="int" Nullable="false" />
-    <Property Name="address" Type="nvarchar(max)" />
+    <Property Name="IdCustomer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdCard" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="IdTypeCustomer" Type="int" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="RentInvoice">
     <Key>
