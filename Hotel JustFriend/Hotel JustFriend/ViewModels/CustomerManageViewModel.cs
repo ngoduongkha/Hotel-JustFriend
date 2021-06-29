@@ -45,8 +45,20 @@ namespace Hotel_JustFriend.ViewModels
         [Command]
         public void Filter(CustomerManageView p)
         {
+            try
+            {
+                LoadListCustomerInfoes();
 
+                if (!string.IsNullOrEmpty(p.cbboxFilterType.Text))
+                {
+                    ListCustomerInfoes = new ObservableCollection<CustomerInfo>(ListCustomerInfoes.Where(x => x.Type == p.cbboxFilterType.Text));
+                }
+
+                p.cbboxFilterType.Text = string.Empty;
+            }
+            catch { return; }
         }
+
         [Command]
         public void Search(CustomerManageView p)
         {

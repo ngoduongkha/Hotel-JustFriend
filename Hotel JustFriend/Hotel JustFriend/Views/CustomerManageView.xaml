@@ -71,7 +71,7 @@
                         <StackPanel Grid.Column="1" Margin="10" Orientation="Horizontal">
                             <Label Content="Bộ lọc: "/>
                             <ComboBox
-                                x:Name="txtFilterType"
+                                x:Name="cbboxFilterType"
                                 materialDesign:HintAssist.Hint="Loại khách hàng"
                                 ItemsSource="{Binding ListCustomerTypes}"
                                 DisplayMemberPath="DisplayName">

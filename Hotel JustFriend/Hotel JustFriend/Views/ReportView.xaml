@@ -88,16 +88,32 @@
             <materialDesign:Card
                 Grid.Row="1"
                 Margin="0 15 0 0 ">
-                <lvc:PieChart 
-                    Margin="20"
-                    LegendLocation="Bottom"
-                    Hoverable="False" 
-                    DataTooltip="{x:Null}"
-                    Series="{Binding PieSerieCollection}"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    FontSize="18">
-                </lvc:PieChart>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <TextBlock
+                            Text="Biểu đồ biểu diễn doanh thu theo loại phòng"
+                            FontSize="25"
+                            TextWrapping="Wrap"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            TextAlignment="Center"/>
+                    </Grid>
+                    <lvc:PieChart 
+                        Grid.Row="1"
+                        Margin="20"
+                        LegendLocation="Bottom"
+                        Hoverable="False" 
+                        DataTooltip="{x:Null}"
+                        Series="{Binding PieSerieCollection}"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        FontSize="18">
+                    </lvc:PieChart>
+                </Grid>
             </materialDesign:Card>
         </Grid>
         <Grid Grid.Column="1"
