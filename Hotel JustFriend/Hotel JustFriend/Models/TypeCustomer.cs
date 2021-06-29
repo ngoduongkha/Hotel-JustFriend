@@ -21,7 +21,7 @@ namespace Hotel_JustFriend.Models
         }
     
         public int IdTypeCustomer { get; set; }
-        public string Displayname { get; set; }
+        public string DisplayName { get; set; }
         public double CoefficientsObtained { get; set; }
         public bool IsDelete { get; set; }
     
