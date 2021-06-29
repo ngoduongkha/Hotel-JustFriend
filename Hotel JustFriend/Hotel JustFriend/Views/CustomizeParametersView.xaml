@@ -79,14 +79,14 @@
                                 FontSize="20"
                                 Height="40" Margin="10 0"
                                 Style="{StaticResource MyDeclineButtonStyle}"
-                                Command="{Binding DeleteRoomTypeCommand}"
+                                Command="{Binding DeleteTypeCommand}"
                                 CommandParameter="{Binding ElementName=cbboxRoomType}"/>
                         </StackPanel>
                         <StackPanel Grid.Row="2">
                             <Label Content="Đơn giá:"/>
                             <TextBox 
                                 Margin="70 0 30 0"
-                                Text="{Binding Path=SelectedItem.price, ElementName=cbboxRoomType}"
+                                Text="{Binding Path=SelectedItem.Price, ElementName=cbboxRoomType}"
                                 x:Name="tboxPrice"/>
                             <Button 
                                 Content="Lưu" Width="100"
@@ -107,10 +107,24 @@
                 <materialDesign:Card Grid.Row="1" Margin="15 7 7 15">
                     <StackPanel>
                         <Label Content="Lượng khách tối đa:"/>
-                        <TextBox Width="50"/>
+                        <TextBox Width="50"
+                                 x:Name="tboxMaxCustomer"
+                                 Text="{Binding Path=MaxCustomer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         <Label 
                             Content="người"
-                            Margin="30 0 0 0"/>
+                            Margin="20 0 10 0"/>
+                        <Button 
+                            Content="Lưu" Width="100"
+                            FontSize="20"
+                            Height="40" Margin="10 0"
+                            Style="{StaticResource MyUpdateButtonStyle}"
+                            Command="{Binding SaveEditedCommand}">
+                            <Button.CommandParameter>
+                                <MultiBinding Converter="{StaticResource PropertyConverter}">
+                                    <Binding ElementName="tboxMaxCustomer"/>
+                                </MultiBinding>
+                            </Button.CommandParameter>
+                        </Button>
                     </StackPanel>
                 </materialDesign:Card>
             </Grid>
@@ -146,13 +160,14 @@
                                         FontSize="20"
                                         Height="40" Margin="10 0"
                                         Style="{StaticResource MyDeclineButtonStyle}"
-                                        Command="{Binding DeleteCustomerTypeCommand}"
+                                        Command="{Binding DeleteTypeCommand}"
                                         CommandParameter="{Binding ElementName=cbboxCustomerType}"/>
                         </StackPanel>
                         <StackPanel Grid.Row="2">
                             <Label Content="Hệ số:"/>
                             <TextBox Margin="85 0 30 0"
-                                     x:Name="tboxNumber"/>
+                                     x:Name="tboxNumber"
+                                     Text="{Binding Path=SelectedItem.CoefficientsObtained, ElementName=cbboxCustomerType}"/>
                             <Button 
                                 Content="Lưu" Width="100"
                                 FontSize="20"
@@ -174,7 +189,19 @@
                         <Label Content="Phụ thu:"/>
                         <TextBox Width="50"/>
                         <Label Content="%"
-                                       Margin="30 0 0 0"/>
+                               Margin="30 0 0 0"/>
+                        <Button 
+                            Content="Lưu" Width="100"
+                            FontSize="20"
+                            Height="40" Margin="40 0"
+                            Style="{StaticResource MyUpdateButtonStyle}"
+                            Command="{Binding SaveEditedCommand}">
+                            <Button.CommandParameter>
+                                <MultiBinding Converter="{StaticResource PropertyConverter}">
+                                    <Binding ElementName="tboxPercent"/>
+                                </MultiBinding>
+                            </Button.CommandParameter>
+                        </Button>
                     </StackPanel>
                 </materialDesign:Card>
             </Grid>
