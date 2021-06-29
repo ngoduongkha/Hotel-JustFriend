@@ -107,12 +107,12 @@ namespace Hotel_JustFriend.ViewModels
                     ReportUC c = new ReportUC();
                     c.STT.Text = (i + 1).ToString();
                     c.displayname.Text = listRoomType[i].DisplayName;
-                    c.revenue.Text = string.Format("{0:C}", revenue);
-                    c.percent.Text = percent.ToString("#0.##%");
+                    c.revenue.Text = revenue.ToString("C0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"));
+                    c.percent.Text = percent.ToString("P", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"));
 
                     reportTemplate.stp.Children.Add(c);
                 }
-                reportTemplate.totalmoney.Text = string.Format("{0:C}", total);
+                reportTemplate.totalmoney.Text = total.ToString("C0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"));
                 uc.gridReportTemplate.Children.Clear();
                 uc.gridReportTemplate.Children.Add(reportTemplate);
             }

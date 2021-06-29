@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\obj\Debug\
 Hotel_JustFriend
 none
 false
 DEBUG;TRACE
-E:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\App.xaml
+D:\Hotel-JustFriend\Hotel JustFriend\Hotel JustFriend\App.xaml
 28-114090397
 21628168987
 68223649930
-15050177395
+150-135504255
 Resources\ButtonResources.xaml;Resources\ColorResources.xaml;Resources\Resources.xaml;Template\BillTemplate.xaml;Template\ImportBill.xaml;UserControls\BillDetailUC.xaml;UserControls\CustomerUC.xaml;UserControls\NumericSpinner.xaml;UserControls\ReportTemplateUC.xaml;UserControls\ReportUC.xaml;UserControls\RoomUC.xaml;UserControls\SellProductDetailUC.xaml;UserControls\SellProductUC.xaml;Views\AccountInfoView.xaml;Views\AddTypeWindow.xaml;Views\CustomerManageView.xaml;Views\CustomizeParametersView.xaml;Views\AccountManageView.xaml;Views\AddCustomerWindow.xaml;Views\EditCustomerView.xaml;Views\LoginWindow.xaml;Views\MainWindow.xaml;Views\MyMessageBoxes\MyMessageBoxWindow.xaml;Views\ReportView.xaml;Views\RoomDetailView.xaml;Views\BusinessView.xaml;Views\RoomManageView.xaml;Views\RoomRentalView.xaml;
 
 False
