@@ -197,7 +197,7 @@
                                 </Grid.ColumnDefinitions>
                                 <TextBlock 
                                     Grid.Column="0"
-                                    Text="{Binding Path=(ItemsControl.AlternationIndex), RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                    Text="{Binding Path=Id}"
                                     HorizontalAlignment="Center" 
                                     Margin="0" 
                                     TextWrapping="Wrap" 

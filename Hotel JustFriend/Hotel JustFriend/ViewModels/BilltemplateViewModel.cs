@@ -15,6 +15,7 @@ namespace Hotel_JustFriend.ViewModels
 {
     public class CustomerInBill
     {
+        public int Id { get; set; }
         public string FullName { get; set; }
         public string Address { get; set; }
         public int IdTypeCustomer { get; set; }
@@ -67,7 +68,12 @@ namespace Hotel_JustFriend.ViewModels
                             IdTypeCustomer = CustomerInBill.IdTypeCustomer,
                             TypeCustomer = TypeCustomer.DisplayName,
                             CoefficientsObtained = TypeCustomer.CoefficientsObtained,
-                        })); ;
+                        }));
+
+                for (int i = 0; i < ListCustomer.Count(); i++)
+                {
+                    ListCustomer[i].Id = i + 1;
+                }
 
                 var maxCustomer = DataProvider.Instance.DB.Constants.SingleOrDefault().MaxCustomer;
                 var maxCoefficientsObtained = DataProvider.Instance.DB.TypeCustomers.OrderByDescending(x => x.CoefficientsObtained).FirstOrDefault().CoefficientsObtained;
