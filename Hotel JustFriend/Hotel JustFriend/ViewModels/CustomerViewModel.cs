@@ -23,7 +23,7 @@ namespace Hotel_JustFriend.ViewModels
 
         public CustomerViewModel(Customer customer)
         {
-            ListTypeCustomer = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers);
+            ListTypeCustomer = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers.Where(p=>p.IsDelete==false));
             Customer = customer;
         }
 

@@ -79,6 +79,7 @@ namespace Hotel_JustFriend.ViewModels
                 {
                     TypeCustomer newType = new TypeCustomer()
                     {
+                        CoefficientsObtained = 1,
                         DisplayName = TypeName,
                         IsDelete = false,
                     };
