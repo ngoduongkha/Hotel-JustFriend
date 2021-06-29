@@ -287,11 +287,6 @@
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
-                    <Grid.Resources>
-                        <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatAccentBgButton}">
-                            <Setter Property="IsEnabled" Value="{Binding Path=SelectedRoom.Status, Mode=OneWay}"/>
-                        </Style>
-                    </Grid.Resources>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>

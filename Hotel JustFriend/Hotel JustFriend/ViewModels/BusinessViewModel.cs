@@ -27,15 +27,8 @@ namespace Hotel_JustFriend.ViewModels
         private ObservableCollection<CustomerWithRentInvoice> _ListRentInvoiceInfo;
         private CustomerWithRentInvoice _SelectedCustomerRenting;
 
-        private string _fullname;
-        private string _idCard;
-        private string _address;
-        private string _CustomerType;
         public Visibility SwitchButton { get; set; }
         public bool CanAddUser { get; set; }
-        public string Fullname { get => _fullname; set => _fullname = value; }
-        public string IdCard { get => _idCard; set => _idCard = value; }
-        public string Address { get => _address; set => _address = value; }
 
         public ObservableCollection<TypeCustomer> ListCustomerType { get => _ListCustomerType; set { _ListCustomerType = value; RaisePropertiesChanged(); } }
         public ObservableCollection<Customer> ListCustomer { get => _ListCustomer; set { _ListCustomer = value; RaisePropertiesChanged(); } }
@@ -45,16 +38,10 @@ namespace Hotel_JustFriend.ViewModels
         static private RentInvoiceInfo _SelectedCustomer;
         public ObservableCollection<Room> ListRoom { get => _ListRoom; set { _ListRoom = value; RaisePropertyChanged(); } }
         public Room SelectedRoom { get => _SelectedRoom; set { _SelectedRoom = value; RaisePropertyChanged(); } }
-
-        public string CustomerType { get => _CustomerType; set => _CustomerType = value; }
         public RentInvoiceInfo SelectedCustomer { get => _SelectedCustomer; set { _SelectedCustomer = value; RaisePropertyChanged(); } }
-
         public RentInvoice SelectedRentInvoice { get => _SelectedRentInvoice; set { _SelectedRentInvoice = value; RaisePropertyChanged(); } }
-
         public ObservableCollection<TypeRoom> ListRoomType { get => _ListRoomType; set { _ListRoomType = value; RaisePropertiesChanged(); } }
-
         public ObservableCollection<CustomerWithRentInvoice> ListRentInvoiceInfo { get => _ListRentInvoiceInfo; set { _ListRentInvoiceInfo = value; RaisePropertyChanged(); } }
-
         public CustomerWithRentInvoice SelectedCustomerRenting { get => _SelectedCustomerRenting; set => _SelectedCustomerRenting = value; }
 
         public BusinessViewModel()
@@ -86,13 +73,32 @@ namespace Hotel_JustFriend.ViewModels
             {
                 if (SelectedRoom == null)
                     return;
-
+                if (ListRentInvoiceInfo.Count == 0)
+                {
+                    MyMessageBox.Show("Phòng không có khách hàng", "Thông báo", MessageBoxButton.OK);
+                    SelectedRoom.Status = "Sẵn sàng";
+                    DataProvider.Instance.DB.SaveChanges();
+                    return;
+                }
                 BilltemplateViewModel billtemplateViewModel = new BilltemplateViewModel(SelectedRentInvoice);
                 BillTemplate billTemplate = new BillTemplate();
                 billTemplate.DataContext = billtemplateViewModel;
                 billTemplate.ShowDialog();
+
+                SelectedRentInvoice.Purchase = true;
+                SelectedRoom.Status = "Sẵn sàng";
+                ListRentInvoiceInfo = null;
+                SelectedRentInvoice = null;
+
+                CanAddUser = false;
+                SwitchButton = Visibility.Visible;
+                
+                DataProvider.Instance.DB.SaveChanges();
+
+                LoadDB();
+                SelectedRoom = DataProvider.Instance.DB.Rooms.Where(x => x.IsDelete == false).Where(x => x.IdRoom == SelectedRoom.IdRoom).SingleOrDefault();
             }
-            catch { return; }
+            catch (Exception e) { Debug.WriteLine(e.InnerException); return; }
         }
 
         [Command]
