@@ -42,14 +42,6 @@
                                 Content="Tháng:"
                                 FontSize="20"
                                 VerticalAlignment="Center"/>
-                            <!--<TextBox
-                                Width="50"
-                                Margin="20 0"
-                                FontSize="20"
-                                Padding="0"
-                                MaxLength="2"
-                                Text="{Binding Month,Mode=OneWayToSource}"
-                                VerticalAlignment="Center" PreviewTextInput="TextBox_PreviewTextInput">-->
                             <ComboBox
                                 Style="{StaticResource MaterialDesignComboBox}"
                                 Width="100"
@@ -84,15 +76,9 @@
                                 FontSize="20"
                                 Padding="0"
                                 VerticalAlignment="Center"
-                                x:Name="cbboxYears"/>
-                            <!--<TextBox 
-                                Width="50"
-                                Margin="20 0"
-                                FontSize="20"
-                                Padding="0"
-                                Text="{Binding Year,Mode=OneWayToSource}"
-                                VerticalAlignment="Center"
-                                MaxLength="4"/>-->
+                                x:Name="cbboxYears"
+                                ItemsSource="{Binding ListYears}"
+                                SelectedIndex="0"/>
                         </StackPanel>
                     </Grid>
                     <Grid

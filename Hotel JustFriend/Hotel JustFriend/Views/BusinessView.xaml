@@ -333,8 +333,8 @@
                             materialDesign:ButtonAssist.CornerRadius="10"
                             VerticalAlignment="Top"
                             HorizontalAlignment="Stretch"
-                            Height="80" BorderBrush="#ffe396"
-                            Background="#ffe396" Margin="5" Padding="0"
+                            Height="80" BorderBrush="#9ce8ff"
+                            Background="#9ce8ff" Margin="5" Padding="0"
                             Command="{Binding EditCustomerCommand}">
                             <Button.Style>
                                 <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
@@ -407,29 +407,21 @@
                             VerticalAlignment="Top"
                             HorizontalAlignment="Stretch"
                             Height="80" 
-                            BorderBrush="#9ce8ff"
-                            Background="#9ce8ff" Margin="5" Padding="0"
-                            Command="{Binding DetailCustomerCommand}">
-                            <Button.Style>
-                                <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding SelectedItems.Count,ElementName=dGrid}" Value="0">
-                                            <Setter Property="IsEnabled" Value="False" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
+                            BorderBrush="#ffe396"
+                            Background="#ffe396" Margin="5" Padding="0"
+                            Command="{Binding RoomProblemsReportCommand}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <Grid Grid.Row="0">
-                                    <Label Content="Chi tiết" FontSize="15"/>
+                                    <Label Content="Phòng hỏng" FontSize="15"/>
                                 </Grid>
                                 <Grid Grid.Row="1">
-                                    <materialDesign:PackIcon Height="30" Width="30" Kind="AccountDetails"
-                                                                     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <materialDesign:PackIcon 
+                                        Height="30" Width="30" Kind="Error"
+                                        VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 </Grid>
                             </Grid>
                         </Button>

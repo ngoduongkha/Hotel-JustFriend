@@ -101,7 +101,7 @@ namespace Hotel_JustFriend.ViewModels
         }
 
         [Command]
-        public void Export(ReportTemplateUC uc)
+        public void ExportReport(ReportTemplateUC uc)
         {
             try
             {

@@ -21,7 +21,6 @@ namespace Hotel_JustFriend.ViewModels
     [POCOViewModel]
     public class BusinessViewModel : ViewModelBase
     {
-        static private Customer _TrickCustomer;
         private ObservableCollection<TypeCustomer> _ListCustomerType;
         private ObservableCollection<Customer> _ListCustomer;
         private ObservableCollection<TypeRoom> _ListRoomType;
@@ -49,8 +48,6 @@ namespace Hotel_JustFriend.ViewModels
 
         public string CustomerType { get => _CustomerType; set => _CustomerType = value; }
         public RentInvoiceInfo SelectedCustomer { get => _SelectedCustomer; set { _SelectedCustomer = value; RaisePropertyChanged(); } }
-
-        public Customer TrickCustomer { get => _TrickCustomer; set { _TrickCustomer = value; RaisePropertiesChanged(); } }
 
         public RentInvoice SelectedRentInvoice { get => _SelectedRentInvoice; set { _SelectedRentInvoice = value; RaisePropertyChanged(); } }
 
@@ -174,7 +171,7 @@ namespace Hotel_JustFriend.ViewModels
         {
             try
             {
-                if (SelectedRoom == null) return;
+                if (SelectedRoom == null) { MyMessageBox.Show("Chọn phòng trước khi thao tác", "Nhắc nhở", MessageBoxButton.OK); return; }
 
                 if (ListRentInvoiceInfo != null)
                 {
@@ -229,15 +226,34 @@ namespace Hotel_JustFriend.ViewModels
         }
 
         [Command]
-        public void DetailCustomer()
+        public void RoomProblemsReport()
         {
             try
             {
-                if (SelectedCustomerRenting != null)
+                if (SelectedRoom != null)
                 {
-                    Customer customer = DataProvider.Instance.DB.Customers.Where(x => x.IdCustomer == SelectedCustomerRenting.IdCustomer).FirstOrDefault();
-                    DetailCustomer detail = new DetailCustomer(customer);
-                    detail.ShowDialog();
+                    if (MyMessageBox.Show("Báo hỏng " + SelectedRoom.DisplayName + " ?", "Xác nhận", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    {
+                        if (SelectedRoom.Status == "Hư hỏng")
+                        {
+                            MyMessageBox.Show("Phòng đã báo hỏng rồi", "Nhắc nhở", MessageBoxButton.OK);
+                        }
+                        else if (SelectedRoom.Status == "Đang thuê")
+                        {
+                            MyMessageBox.Show("Phòng đang cho thuê, không thể báo hỏng", "Nhắc nhở", MessageBoxButton.OK);
+                        }
+                        else
+                        {
+                            SelectedRoom.Status = "Hư hỏng";
+                            DataProvider.Instance.DB.SaveChanges();
+                            MyMessageBox.Show("Báo hỏng thành công, phòng sẽ được sửa chữa", "Thông báo", MessageBoxButton.OK);
+                        }
+                        LoadDB();
+                    }
+                }
+                else
+                {
+                    MyMessageBox.Show("Chọn phòng trước khi thao tác", "Nhắc nhở", MessageBoxButton.OK);
                 }
             }
             catch { return; }
@@ -253,8 +269,6 @@ namespace Hotel_JustFriend.ViewModels
                     Customer customer = DataProvider.Instance.DB.Customers.Where(x => x.IdCustomer == SelectedCustomerRenting.IdCustomer).FirstOrDefault();
                     EditCustomerView edit = new EditCustomerView(customer);
                     edit.ShowDialog();
-
-                   
                 }
             }
             catch { return; }
