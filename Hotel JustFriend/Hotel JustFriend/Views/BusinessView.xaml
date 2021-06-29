@@ -189,16 +189,11 @@
             </Grid>
         </Grid>
         <Grid Grid.Column="1" Margin="5">
-
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="4*"/>
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
-            <TextBlock x:Name="idRoom"
-                   Visibility="Hidden"
-                  Text="{Binding Path=SelectedRoom.idRoom}"></TextBlock>
-           
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2.5*"/>
@@ -232,7 +227,7 @@
                         FontSize="17" VerticalAlignment="Center"
                         x:Name="date"
                         TextAlignment="Center"
-                        Text="{Binding Path=SelectedRentInvoice.date, StringFormat=d, ConverterCulture=en-NZ}"    
+                        Text="{Binding Path=SelectedRentInvoice.Date, StringFormat=d, ConverterCulture=en-NZ}"    
                         Margin="5,0" Width="100" IsReadOnly="True"/>
                 </StackPanel>
             </Grid>
@@ -240,43 +235,50 @@
                 <materialDesign:Card>
                     <GroupBox Header="Thông tin chung"
                       FontSize="25"
-                      Margin="0"
-                          >
-                    <DataGrid ItemsSource="{Binding Trick}"
-                              AutoGenerateColumns="False"
-                              SelectedItem="{Binding TrickCustomer}"
-                              IsReadOnly="True"
-                              x:Name="dGrid">
-                        <DataGrid.Resources>
-                            <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
-                                <Setter Property="Background" Value="LightPink" />
-                                <Setter Property="FontWeight" Value="SemiBold"/>
-                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                <Setter Property="FontSize" Value="20"/>
-                                <Setter Property="BorderBrush" Value="White"/>
-                                <Setter Property="BorderThickness" Value="0 0 1 0"/>
-                                <Setter Property="Padding" Value="3"/>
-                            </Style>
-                            <Style TargetType="DataGridCell" BasedOn="{StaticResource MaterialDesignDataGridCell}">
-                                <Setter Property="FontSize" Value="20"/>
-                                <Setter Property="Height" Value="35"/>
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="{x:Type DataGridCell}">
-                                            <Grid Background="{TemplateBinding Background}">
-                                                <ContentPresenter HorizontalAlignment="Center"
-                                                                      VerticalAlignment="Center"/>
-                                            </Grid>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                        </DataGrid.Resources>
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Tên khách hàng" Width="2*" Binding="{Binding DisplayName}"/>
+                      Margin="0">
+                        <DataGrid
+                            x:Name="dGrid"
+                            Background="White"
+                            ItemsSource="{Binding Path=ListRentInvoiceInfo, Mode=OneWay}"
+                            AutoGenerateColumns="False"
+                            AutomationProperties.IsColumnHeader="True"
+                            CanUserDeleteRows="False"
+                            CanUserAddRows="False"
+                            IsReadOnly="True"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding Path=SelectedCustomerRenting, Mode=OneWayToSource}">
+                            <DataGrid.Resources>
+                                <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+                                    <Setter Property="Background" Value="LightPink" />
+                                    <Setter Property="FontWeight" Value="SemiBold"/>
+                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                    <Setter Property="FontSize" Value="20"/>
+                                    <Setter Property="BorderBrush" Value="White"/>
+                                    <Setter Property="BorderThickness" Value="0 0 1 0"/>
+                                    <Setter Property="Padding" Value="3"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                </Style>
+                                <Style TargetType="DataGridCell" BasedOn="{StaticResource MaterialDesignDataGridCell}">
+                                    <Setter Property="FontSize" Value="20"/>
+                                    <Setter Property="Height" Value="35"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                                <Grid Background="{TemplateBinding Background}">
+                                                    <ContentPresenter
+                                                        HorizontalAlignment="Center" 
+                                                        VerticalAlignment="Center"/>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Tên khách hàng" Width="2*" Binding="{Binding FullName}"/>
                             </DataGrid.Columns>
-                    </DataGrid>
-                </GroupBox>
+                        </DataGrid>
+                    </GroupBox>
                 </materialDesign:Card>
             </Grid>
             <Grid Grid.Row="2">
@@ -308,7 +310,8 @@
                             BorderBrush="#fa91d7"
                             Background="#fa91d7" Margin="5" Padding="0"
                             Command="{Binding AddCustomerCommand}"
-                            CommandParameter="{Binding ElementName=business}">
+                            CommandParameter="{Binding ElementName=business}"
+                            IsEnabled="{Binding Path=CanAddUser}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
@@ -378,10 +381,8 @@
                             <Button.Style>
                                 <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding SelectedItems.Count,ElementName=dGrid}"
-                                 Value="0">
-                                            <Setter Property="IsEnabled"
-                                Value="False" />
+                                        <DataTrigger Binding="{Binding SelectedItems.Count,ElementName=dGrid}" Value="0">
+                                            <Setter Property="IsEnabled" Value="False" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
@@ -412,10 +413,8 @@
                             <Button.Style>
                                 <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding SelectedItems.Count,ElementName=dGrid}"
-                                 Value="0">
-                                            <Setter Property="IsEnabled"
-                                Value="False" />
+                                        <DataTrigger Binding="{Binding SelectedItems.Count,ElementName=dGrid}" Value="0">
+                                            <Setter Property="IsEnabled" Value="False" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>

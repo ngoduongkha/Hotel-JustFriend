@@ -13,45 +13,45 @@ using Hotel_JustFriend.UserControls;
 
 namespace Hotel_JustFriend.ViewModels
 {
-    class CustomerViewModel :ViewModelBase
+    class CustomerViewModel : ViewModelBase
     {
-        private string _FullName;
-        private ObservableCollection<Customer> _ListCustomer;
-        private string _IdCard;
-        private string _address;
-        private int _idType;
-        private int idcustomer;
-        private ObservableCollection<TypeCustomer> _ListCustomerType;
-        public string Fullname { get => _FullName; set => _FullName = value; }
-        public string IdCard { get => _IdCard; set => _IdCard = value; }
-        public string Address { get => _address; set => _address = value; }
-        public int idType { get => _idType; set => _idType = value; }
-        public ObservableCollection<TypeCustomer> ListCustomerType { get => _ListCustomerType; set { _ListCustomerType = value; RaisePropertyChanged(); } }
+        private Customer _Customer;
+        private ObservableCollection<TypeCustomer> _ListTypeCustomer;
+        public ObservableCollection<TypeCustomer> ListTypeCustomer { get => _ListTypeCustomer; set { _ListTypeCustomer = value; RaisePropertyChanged(); } }
 
-        public ObservableCollection<Customer> ListCustomer { get => _ListCustomer; set => _ListCustomer = value; }
+        public Customer Customer { get => _Customer; set => _Customer = value; }
 
-        public CustomerViewModel(Customer a)
+        public CustomerViewModel(Customer customer)
         {
-            ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers);
-            Fullname = a.FullName;
-            IdCard = a.IdCard;
-            idType = a.IdTypeCustomer;
-            idcustomer = a.IdCustomer;
+            ListTypeCustomer = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers);
+            Customer = customer;
         }
+
         [Command]
-        public void Save(EditCustomerView p)
+        public void Save(EditCustomerView window)
         {
-            ListCustomer = new ObservableCollection<Customer>(DataProvider.Instance.DB.Customers);
-            Customer a = ListCustomer.Where((c)=>c.IdCustomer==idcustomer).FirstOrDefault();
-            a.FullName = Fullname;
-            a.IdCard = IdCard;
-            a.IdTypeCustomer = int.Parse(p.txtType.SelectedValue.ToString());
-            DataProvider.Instance.DB.SaveChanges();
-            MyMessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButton.OK);
-            p.Close();
+            try
+            {
+                if (string.IsNullOrEmpty(window.tbName.Text))
+                {
+                    MyMessageBox.Show("Nhập họ tên khách hàng", "Thông báo", MessageBoxButton.OK);
+                    return;
+                }
+                if (string.IsNullOrEmpty(window.cbType.Text))
+                {
+                    MyMessageBox.Show("Nhập loại khách hàng", "Thông báo", MessageBoxButton.OK);
+                    return;
+                }
+
+                DataProvider.Instance.DB.SaveChanges();
+                MyMessageBox.Show("Sửa thông tin khách hàng thành công", "Thông báo", MessageBoxButton.OK);
+                window.Close();
+            }
+            catch { return; }
         }
+
         [Command]
-        public void Close2(DetailCustomer p)
+        public void Close(Window p)
         {
             try
             {
@@ -59,15 +59,5 @@ namespace Hotel_JustFriend.ViewModels
             }
             catch { return; }
         }
-        [Command]
-        public void Close1(EditCustomerView p)
-        {
-            try
-            {
-                p.Close();
-            }
-            catch { return; }
-        }
-
     }
 }

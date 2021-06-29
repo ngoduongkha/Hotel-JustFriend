@@ -11,7 +11,7 @@
         ResizeMode="NoResize" WindowStyle="None"
         AllowsTransparency="True" Background="Transparent"
         Title="Thêm phòng" Height="500" Width="550"
-        x:Name="window" ShowInTaskbar="False">
+        x:Name="window">
     <Border BorderBrush="Black" BorderThickness="0.5" CornerRadius="10" Background="Pink">
         <i:Interaction.Triggers>
             <i:EventTrigger EventName="MouseLeftButtonDown">
