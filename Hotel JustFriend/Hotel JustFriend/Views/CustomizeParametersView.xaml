@@ -11,6 +11,7 @@
     d:DesignHeight="651.2" d:DesignWidth="1200">
     <UserControl.Resources>
         <ResourceDictionary>
+            <converter:PropertyConverter x:Key="PropertyConverter"/>
         </ResourceDictionary>
     </UserControl.Resources>
     <materialDesign:Card Margin="15">
@@ -60,7 +61,7 @@
                             <ComboBox 
                                 materialDesign:HintAssist.Hint="Chọn loại phòng"
                                 ItemsSource="{Binding Path=ListRoomType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                DisplayMemberPath="fullname"
+                                DisplayMemberPath="DisplayName"
                                 SelectedValuePath="idType"
                                 x:Name="cbboxRoomType"/>
                         </StackPanel>
@@ -94,7 +95,7 @@
                                 Style="{StaticResource MyUpdateButtonStyle}"
                                 Command="{Binding SaveEditedCommand}">
                                 <Button.CommandParameter>
-                                    <MultiBinding Converter="{StaticResource MyPropertyConverter}">
+                                    <MultiBinding Converter="{StaticResource PropertyConverter}">
                                         <Binding ElementName="tboxPrice"/>
                                         <Binding ElementName="cbboxRoomType"/>
                                     </MultiBinding>
@@ -127,11 +128,12 @@
                         </Grid.RowDefinitions>
                         <StackPanel Grid.Row="0">
                             <Label Content="Loại khách:"/>
-                            <ComboBox materialDesign:HintAssist.Hint="Chọn loại khách"
-                                          ItemsSource="{Binding Path=ListCustomerType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                          DisplayMemberPath="displayname"
-                                          SelectedValuePath="idType"
-                                          x:Name="cbboxCustomerType"/>
+                            <ComboBox 
+                                materialDesign:HintAssist.Hint="Chọn loại khách"
+                                ItemsSource="{Binding Path=ListCustomerType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                DisplayMemberPath="Displayname"
+                                SelectedValuePath="idType"
+                                x:Name="cbboxCustomerType"/>
                         </StackPanel>
                         <StackPanel HorizontalAlignment="Center"
                                             Grid.Row="1">
@@ -158,7 +160,7 @@
                                 Style="{StaticResource MyUpdateButtonStyle}"
                                 Command="{Binding SaveEditedCommand}">
                                 <Button.CommandParameter>
-                                    <MultiBinding Converter="{StaticResource MyPropertyConverter}">
+                                    <MultiBinding Converter="{StaticResource PropertyConverter}">
                                         <Binding ElementName="tboxNumber"/>
                                         <Binding ElementName="cbboxCustomerType"/>
                                     </MultiBinding>

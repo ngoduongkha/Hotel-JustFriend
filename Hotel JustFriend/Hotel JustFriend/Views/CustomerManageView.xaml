@@ -57,10 +57,14 @@
                                 Width="30"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center"/>
-                            <TextBox materialDesign:HintAssist.Hint="Nhập họ tên hoặc CMND/CCCD"/>
+                            <TextBox 
+                                materialDesign:HintAssist.Hint="Nhập họ tên hoặc CMND/CCCD"
+                                x:Name="tboxSearch"/>
                             <Button 
                                 Content="Tìm"
-                                materialDesign:ButtonAssist.CornerRadius="10"/>
+                                materialDesign:ButtonAssist.CornerRadius="10"
+                                Command="{Binding SearchCommand}"
+                                CommandParameter="{Binding ElementName=uc}"/>
                         </StackPanel>
                     </materialDesign:Card>
                     <materialDesign:Card Grid.Column="1" Margin="10">
@@ -68,18 +72,27 @@
                             <Label Content="Bộ lọc: "/>
                             <ComboBox
                                 x:Name="txtFilterType"
-                                materialDesign:HintAssist.Hint="Loại khách hàng">
+                                materialDesign:HintAssist.Hint="Loại khách hàng"
+                                ItemsSource="{Binding ListCustomerTypes}"
+                                DisplayMemberPath="Displayname">
                             </ComboBox>
                             <Button
                                 Content="Lọc"
                                 materialDesign:ButtonAssist.CornerRadius="10"
-                                Command="{Binding RoomFilterCommand}"
+                                Command="{Binding FilterCommand}"
                                 CommandParameter="{Binding ElementName=uc}"/>
                         </StackPanel>
                     </materialDesign:Card>
                 </Grid>
                 <materialDesign:Card Grid.Row="1">
-                    <DataGrid>
+                    <DataGrid 
+                        AutoGenerateColumns="False" 
+                        ItemsSource="{Binding Path=ListCustomerInfoes, Mode=OneWay}"
+                        AutomationProperties.IsColumnHeader="True"
+                        CanUserDeleteRows="False"
+                        CanUserAddRows="False"
+                        IsReadOnly="True"
+                        SelectionMode="Extended">
                         <DataGrid.Resources>
                             <Style TargetType="DataGridColumnHeader">
                                 <Setter Property="Background" Value="LightPink" />
@@ -89,7 +102,7 @@
                                 <Setter Property="BorderBrush" Value="White"/>
                                 <Setter Property="BorderThickness" Value="0 0 1 0"/>
                             </Style>
-                            <Style TargetType="DataGridCell">
+                            <Style TargetType="DataGridCell" BasedOn="{StaticResource MaterialDesignDataGridCell}">
                                 <Setter Property="FontSize" Value="25"/>
                                 <Setter Property="Height" Value="35"/>
                                 <Setter Property="Template">
@@ -106,11 +119,10 @@
                             </Style>
                         </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="STT" MinWidth="50"/>
-                            <DataGridTextColumn Header="Số CMND/CCCD" MinWidth="300"/>
-                            <DataGridTextColumn Header="Tên khách hàng" MinWidth="300"/>
-                            <DataGridTextColumn Header="Loại khách hàng" MinWidth="200"/>
-                            <DataGridTextColumn Header="Địa chỉ" MinWidth="300"/>
+                            <DataGridTextColumn Header="Số CMND/CCCD" MinWidth="300" Binding="{Binding IdCard}"/>
+                            <DataGridTextColumn Header="Tên khách hàng" MinWidth="300" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Loại khách hàng" MinWidth="300" Binding="{Binding Type}"/>
+                            <DataGridTextColumn Header="Địa chỉ" MinWidth="300" Binding="{Binding Address}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </materialDesign:Card>
