@@ -11,19 +11,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Hotel_JustFriend.Views
 {
     /// <summary>
-    /// Interaction logic for SettingView.xaml
+    /// Interaction logic for AddCustomerTypeWindow.xaml
     /// </summary>
-    public partial class CustomizeParametersView : UserControl
+    public partial class AddCustomerTypeWindow : Window
     {
-        public CustomizeParametersView()
+        public bool IsAddCustomerType { get; set; }
+        public AddCustomerTypeWindow(bool isAddCustomerType)
         {
             InitializeComponent();
+            IsAddCustomerType = isAddCustomerType;
             this.DataContext = new CustomizeParametersViewModel();
         }
     }

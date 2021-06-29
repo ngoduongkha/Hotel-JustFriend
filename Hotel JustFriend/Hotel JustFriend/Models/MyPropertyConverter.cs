@@ -8,7 +8,7 @@ using System.Windows.Data;
 
 namespace Hotel_JustFriend.Models
 {
-    public class PropertyConverter : IMultiValueConverter
+    class MyPropertyConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
