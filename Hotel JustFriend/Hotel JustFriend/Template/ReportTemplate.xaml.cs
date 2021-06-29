@@ -1,5 +1,4 @@
-﻿using Hotel_JustFriend.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,19 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Hotel_JustFriend.Views
+namespace Hotel_JustFriend.Template
 {
     /// <summary>
-    /// Interaction logic for AddCustomerTypeWindow.xaml
+    /// Interaction logic for ReportTemplate.xaml
     /// </summary>
-    public partial class AddTypeWindow : Window
+    public partial class ReportTemplate : Window
     {
-        public bool IsAddCustomerType { get; set; }
-        public AddTypeWindow(bool isAddCustomerType)
+        public ReportTemplate()
         {
             InitializeComponent();
-            IsAddCustomerType = isAddCustomerType;
-            this.DataContext = new CustomizeParametersViewModel();
         }
     }
 }
