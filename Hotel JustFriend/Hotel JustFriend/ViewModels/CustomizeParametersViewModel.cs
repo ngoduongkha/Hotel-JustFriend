@@ -32,21 +32,21 @@ namespace Hotel_JustFriend.ViewModels
             Percent = (DataProvider.Instance.DB.Constants.Find(0) as Constant).Percent.ToString();
         }
 
-        //[Command]
-        //public void CallAddCustomerType()
-        //{
-        //    AddTypeWindow window = new AddTypeWindow(true);
-        //    window.ShowDialog();
-        //    ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers.Where((p) => p.IsDelete == false));
-        //}
+        [Command]
+        public void CallAddCustomerType()
+        {
+            AddTypeWindow window = new AddTypeWindow(true);
+            window.ShowDialog();
+            ListCustomerType = new ObservableCollection<TypeCustomer>(DataProvider.Instance.DB.TypeCustomers.Where((p) => p.IsDelete == false));
+        }
 
-        //[Command]
-        //public void CallAddRoomType()
-        //{
-        //    AddTypeWindow window = new AddTypeWindow(false);
-        //    window.ShowDialog();
-        //    ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where((p) => p.IsDelete == false));
-        //}
+        [Command]
+        public void CallAddRoomType()
+        {
+            AddTypeWindow window = new AddTypeWindow(false);
+            window.ShowDialog();
+            ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms.Where((p) => p.IsDelete == false));
+        }
 
         [Command]
         public void MouseMoveWindow(Window p)
@@ -68,40 +68,41 @@ namespace Hotel_JustFriend.ViewModels
             catch { return; }
         }
 
-        //[Command]
-        //public void AddType(AddTypeWindow p)
-        //{
-        //    try
-        //    {
-        //        if (p.IsAddCustomerType)
-        //        {
-        //            TypeCustomer newType = new TypeCustomer()
-        //            {
-        //                Displayname = TypeName,
-        //                IsDelete = false,
-        //            };
-        //            DataProvider.Instance.DB.TypeCustomers.Add(newType);
-        //            DataProvider.Instance.DB.SaveChanges();
-        //            p.Close();
-        //        }
-        //        else
-        //        {
-        //            TypeRoom newType = new TypeRoom()
-        //            {
-        //                DisplayName = TypeName,
-        //                Price = 0,
-        //                IsDelete = false,
-        //            };
-        //            DataProvider.Instance.DB.TypeRooms.Add(newType);
-        //            DataProvider.Instance.DB.SaveChanges();
-        //            p.Close();
-        //        }
-        //    }
-        //    catch {
-        //        MyMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButton.OK);
-        //        return;
-        //    }
-        //}
+        [Command]
+        public void AddType(AddTypeWindow p)
+        {
+            try
+            {
+                if (p.IsAddCustomerType)
+                {
+                    TypeCustomer newType = new TypeCustomer()
+                    {
+                        Displayname = TypeName,
+                        IsDelete = false,
+                    };
+                    DataProvider.Instance.DB.TypeCustomers.Add(newType);
+                    DataProvider.Instance.DB.SaveChanges();
+                    p.Close();
+                }
+                else
+                {
+                    TypeRoom newType = new TypeRoom()
+                    {
+                        DisplayName = TypeName,
+                        Price = 0,
+                        IsDelete = false,
+                    };
+                    DataProvider.Instance.DB.TypeRooms.Add(newType);
+                    DataProvider.Instance.DB.SaveChanges();
+                    p.Close();
+                }
+            }
+            catch
+            {
+                MyMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButton.OK);
+                return;
+            }
+        }
 
         [Command]
         public void DeleteType(ComboBox cbbox)

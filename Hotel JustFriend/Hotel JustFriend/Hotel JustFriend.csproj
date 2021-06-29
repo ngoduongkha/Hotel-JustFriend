@@ -180,6 +180,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\PropertyConverter.cs" />
     <Compile Include="Models\RentInvoice.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -243,6 +244,9 @@
     <Compile Include="ViewModels\RoomRentalViewModel.cs" />
     <Compile Include="Views\AccountInfoView.xaml.cs">
       <DependentUpon>AccountInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddTypeWindow.xaml.cs">
+      <DependentUpon>AddTypeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CustomerManageView.xaml.cs">
       <DependentUpon>CustomerManageView.xaml</DependentUpon>
@@ -354,6 +358,10 @@
     <Page Include="Views\AccountInfoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddTypeWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\CustomerManageView.xaml">
       <SubType>Designer</SubType>
