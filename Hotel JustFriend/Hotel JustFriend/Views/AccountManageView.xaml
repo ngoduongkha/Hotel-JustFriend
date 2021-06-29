@@ -130,9 +130,9 @@
                             </Style>
                         </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" MinWidth="100" Binding="{Binding Path=id}"/>
-                            <DataGridTextColumn Header="Tên đăng nhập" MinWidth="300" Binding="{Binding Path=username}"/>
-                            <DataGridTextColumn Header="Loại tài khoản" MinWidth="250" Binding="{Binding Path=typeAccount}"/>
+                            <DataGridTextColumn Header="ID" MinWidth="100" Binding="{Binding Path=Id}"/>
+                            <DataGridTextColumn Header="Tên đăng nhập" MinWidth="300" Binding="{Binding Path=Username}"/>
+                            <DataGridTextColumn Header="Loại tài khoản" MinWidth="250" Binding="{Binding Path=TypeAccount}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </materialDesign:Card>
