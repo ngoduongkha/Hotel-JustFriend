@@ -11,19 +11,21 @@ namespace Hotel_JustFriend.ViewModels
     [POCOViewModel]
     public class MainViewModel : ViewModelBase
     {
-        private Visibility _isCollapsed = Visibility.Visible;
         private string _userName;
 
-        public Visibility IsCollapsed { get => _isCollapsed; set { _isCollapsed = value; RaisePropertyChanged(); } }
+        public Visibility IsCollapsedTabHome { get; set; } = Visibility.Visible;
+        public Visibility IsCollapsedTabRoomManage { get; set; } = Visibility.Visible;
+        public Visibility IsCollapsedTabCustomerManage { get; set; } = Visibility.Visible;
+        public Visibility IsCollapsedTabAccountManage { get; set; } = Visibility.Visible;
+        public Visibility IsCollapsedTabReport { get; set; } = Visibility.Visible;
+        public Visibility IsCollapsedTabCustomizeParameters { get; set; } = Visibility.Visible;
+        public Visibility IsCollapsedTabAccountInfo { get; set; } = Visibility.Visible;
 
         public MainViewModel(string userName)
         {
             _userName = userName;
 
-            if (userName != "admin")
-            {
-                _isCollapsed = Visibility.Collapsed;
-            }
+            
         }
 
         #region Command

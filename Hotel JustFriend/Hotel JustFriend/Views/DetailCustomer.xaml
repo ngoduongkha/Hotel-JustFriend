@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Hotel_JustFriend.Views" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:validation="clr-namespace:Hotel_JustFriend.Validations"
-        mc:Ignorable="d" ResizeMode="NoResize" AllowsTransparency="True"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:validation="clr-namespace:Hotel_JustFriend.Validations"
+        mc:Ignorable="d" ResizeMode="NoResize" AllowsTransparency="True" Background="Transparent"
         x:Name="window" WindowStyle="None" WindowStartupLocation="CenterScreen"
         Title="DetailCustomer" Height="600" Width="550"
         Background="Transparent">

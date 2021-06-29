@@ -82,82 +82,21 @@ namespace Hotel_JustFriend.ViewModels
             catch { return; }
         }
 
-        //[Command]
-        //public void Pay()
-        //{
-        //    if (SelectedRoom == null) return;
-        //    DateTime da = new DateTime();
-        //    da = DateTime.Now;
-        //    DateTime a = (DateTime)SelectedRentInvoice.Date;
-        //    int d = da.Subtract(a).Days;
-        //    d = d + 1;
-        //    Bill bill = new Bill
-        //    {
-        //        Date = SelectedRentInvoice.Date,
-        //        TotalMoney = 0,
-        //    };
-        //    BillTemplate billtemp = new BillTemplate();
-        //    billtemp.date.Text = d.ToString();
+        [Command]
+        public void Pay()
+        {
+            try
+            {
+                if (SelectedRoom == null)
+                    return;
 
-        //    billtemp.Roomname.Text = DataProvider.Instance.DB.Rooms.Where(c => c.IdRoom == SelectedRoom.IdRoom).FirstOrDefault().DisplayName;
-        //    DataProvider.Instance.DB.Bills.Add(bill);
-        //    decimal Price = (decimal)DataProvider.Instance.DB.TypeRooms.Where(c => c.IdTypeRoom == SelectedRoom.IdTypeRoom).FirstOrDefault().Price;
-        //    int idrent = DataProvider.Instance.DB.RentInvoices.Where((c) => c.IdRoom == SelectedRoom.IdRoom).FirstOrDefault().IdRentInvoice;
-        //    ListRentInvoiceInfo = new ObservableCollection<RentInvoiceInfo>(DataProvider.Instance.DB.RentInvoiceInfoes
-        //                                                                            .Where((c) => c.IdRentInvoice == idrent));
-        //    int lp = ListRentInvoiceInfo.Count;
-        //    double heso = 0;
-        //    BillInfo billinfo = new BillInfo
-        //    {
-        //        NumberDay = d,
-        //        Price = Price,
-        //        IdBill = bill.IdBill,
-        //        IdRoom = SelectedRoom.IdRoom,
-        //    };
-        //    DataProvider.Instance.DB.BillInfoes.Add(billinfo);
-        //    for (int i = 0; i < ListRentInvoiceInfo.Count; i++)
-        //    {
-
-        //        int idd = ListRentInvoiceInfo[i].IdCustomer;
-        //        Customer cus = DataProvider.Instance.DB.Customers.Where(c => c.IdCustomer == idd).FirstOrDefault();
-        //        double tg = (double)DataProvider.Instance.DB.TypeCustomers.Where(c => c.IdTypeCustomer == cus.IdTypeCustomer).FirstOrDefault().CoefficientsObtained;
-        //        if (tg > heso) heso = tg;
-        //        DataProvider.Instance.DB.BillInfoes.Add(billinfo);
-        //        DataProvider.Instance.DB.RentInvoiceInfoes.Remove(ListRentInvoiceInfo[i]);
-        //        BillDetailUC aa = new BillDetailUC();
-        //        aa.STT.Text = (i + 1).ToString();
-        //        aa.CustomerName.Text = cus.FullName.ToString();
-        //        aa.Type.Text = DataProvider.Instance.DB.TypeCustomers.Where(c => c.IdTypeCustomer == cus.IdTypeCustomer).FirstOrDefault().Displayname;
-        //        aa.number.Text = tg.ToString();
-        //        billtemp.stp.Children.Add(aa);
-        //    }
-        //    int maxcustomer = (int)DataProvider.Instance.DB.Constants.Where(c => c.IdConstant == 0).FirstOrDefault().MaxCustomer;
-        //    double percent = (double)DataProvider.Instance.DB.Constants.Where(c => c.IdConstant == 0).FirstOrDefault().Percent;
-        //    int sokhach = 0;
-        //    if (ListRentInvoiceInfo.Count > maxcustomer) sokhach = ListRentInvoiceInfo.Count - maxcustomer;
-        //    bill.TotalMoney = d * (Price + ((decimal)(sokhach * percent) * Price) + (Price * (decimal)(heso - 1)));
-        //    billtemp.totalmoney.Text = string.Format("{0:C}", bill.TotalMoney);
-        //    billtemp.money.Text = string.Format("{0:C}", d * Price);
-        //    billtemp.price.Text = string.Format("{0:C}", Price);
-        //    billtemp.surcharge.Text = string.Format("{0:C}", ((decimal)(sokhach * percent) * Price) + (Price * (decimal)(heso - 1)) * d);
-        //    ListRoom = new ObservableCollection<Room>(DataProvider.Instance.DB.Rooms
-        //           .Where(x => x.IsDelete == false)
-        //           );
-        //    Room p = ListRoom.Where(c => c.IdRoom == SelectedRoom.IdRoom).FirstOrDefault();
-        //    p.Status = "Sẵn sàng";
-        //    RentInvoice k = DataProvider.Instance.DB.RentInvoices.Where((c) => c.IdRoom == p.IdRoom).FirstOrDefault();
-
-        //    if (k != null) DataProvider.Instance.DB.RentInvoices.Remove(k);
-        //    DataProvider.Instance.DB.SaveChanges();
-
-        //    SelectedRentInvoice = null;
-        //    SelectRoom(p); 
-        //    if (lp == 0)
-        //    {
-        //        MyMessageBox.Show("Phòng trống không thể thanh toán", "Nhắc nhở", MessageBoxButton.OK);
-        //    }
-        //    else billtemp.ShowDialog();
-        //}
+                BilltemplateViewModel billtemplateViewModel = new BilltemplateViewModel(SelectedRentInvoice);
+                BillTemplate billTemplate = new BillTemplate();
+                billTemplate.DataContext = billtemplateViewModel;
+                billTemplate.ShowDialog();
+            }
+            catch { return; }
+        }
 
         [Command]
         public void SelectRoom(Room selectedRoom)
@@ -202,6 +141,12 @@ namespace Hotel_JustFriend.ViewModels
                     return;
                 }
 
+                if (SelectedRoom.Status == "Hư hỏng")
+                {
+                    MyMessageBox.Show("Phòng đang hư", "Thông báo", MessageBoxButton.OK);
+                    return;
+                }
+
                 SelectedRoom.Status = "Đang thuê";
 
                 RentInvoice rentInvoice = new RentInvoice()
@@ -216,6 +161,9 @@ namespace Hotel_JustFriend.ViewModels
                 SwitchButton = Visibility.Collapsed;
                 CanAddUser = true;
 
+                SelectedRentInvoice = rentInvoice;
+                SelectedRoom = DataProvider.Instance.DB.Rooms.Where(x => x.IsDelete == false).Where(x => x.IdRoom == SelectedRentInvoice.IdRoom).SingleOrDefault();
+
                 LoadDB();
             }
             catch { return; }
@@ -227,10 +175,14 @@ namespace Hotel_JustFriend.ViewModels
             try
             {
                 if (SelectedRoom == null) return;
-                if (ListRentInvoiceInfo.Count() == DataProvider.Instance.DB.Constants.FirstOrDefault().MaxCustomer)
+
+                if (ListRentInvoiceInfo != null)
                 {
-                    MyMessageBox.Show("Đã đủ số lượng khách", "Thông báo", MessageBoxButton.OK);
-                    return;
+                    if (ListRentInvoiceInfo.Count() == DataProvider.Instance.DB.Constants.FirstOrDefault().MaxCustomer)
+                    {
+                        MyMessageBox.Show("Đã đủ số lượng khách", "Thông báo", MessageBoxButton.OK);
+                        return;
+                    }
                 }
 
                 AddCustomerWindow window = new AddCustomerWindow(SelectedRoom);

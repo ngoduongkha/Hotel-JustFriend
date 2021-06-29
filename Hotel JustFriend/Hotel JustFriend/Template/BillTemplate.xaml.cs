@@ -11,7 +11,6 @@ namespace Hotel_JustFriend.Template
         public BillTemplate()
         {
             InitializeComponent();
-            this.DataContext = new BilltemplateViewModel();
         }
     }
 }

@@ -10,7 +10,8 @@ namespace Hotel_JustFriend.ViewModels
 {
     public class AccountAndType
     {
-        public int Id { get; set; }
+        public int IdAccount { get; set; }
+        public int IdTypeAccount { get; set; }
         public string Username { get; set; }
         public string TypeAccount { get; set; }
     }
@@ -35,7 +36,8 @@ namespace Hotel_JustFriend.ViewModels
             ListAccountWithType = new ObservableCollection<AccountAndType>(
                 _ListAccount.Join(_ListTypeAccount, (Account) => Account.IdTypeAccount, (TypeAccount) => TypeAccount.IdTypeAccount,
                 (Account, TypeAccount) => new AccountAndType { 
-                    Id = Account.IdAccount, 
+                    IdAccount = Account.IdAccount, 
+                    IdTypeAccount = TypeAccount.IdTypeAccount,
                     Username = Account.Username, 
                     TypeAccount = TypeAccount.DisplayName 
                 }));
@@ -95,8 +97,24 @@ namespace Hotel_JustFriend.ViewModels
 
                 if (DataProvider.Instance.DB.Accounts.Where((x) => x.Username == p.tbUsername.Text).Count() > 0)
                 {
-                    MyMessageBox.Show("Tài khoản đã tồn tại", "Thông báo", MessageBoxButton.OK);
-                    return;
+                    if (p.tbUsername.IsEnabled == false)
+                    {
+                        var account = DataProvider.Instance.DB.Accounts.Where(x => x.Username == p.tbUsername.Text).SingleOrDefault();
+                        account.IdTypeAccount = DataProvider.Instance.DB.TypeAccounts.Where(x => x.DisplayName == p.cbTypeAccount.Text).SingleOrDefault().IdTypeAccount;
+                        DataProvider.Instance.DB.SaveChanges();
+
+                        CancelAdjustment(p);
+                        p.DataContext = new AccountManageViewModel();
+
+                        MyMessageBox.Show("Sửa tài khoản thành công", "Thông báo", MessageBoxButton.OK);
+
+                        return;
+                    }
+                    else
+                    {
+                        MyMessageBox.Show("Tài khoản đã tồn tại", "Thông báo", MessageBoxButton.OK);
+                        return;
+                    }
                 }
 
                 int idTypeAccount = ListTypeAccount.Where(x => x.DisplayName == p.cbTypeAccount.Text).SingleOrDefault().IdTypeAccount;
@@ -125,46 +143,80 @@ namespace Hotel_JustFriend.ViewModels
             }
         }
 
-        [Command]
-        public void DeleteAccount()
-        {
-            if (SelectedAccount != null)
-            {
-                if (SelectedAccount.TypeAccount == "Admin")
-                {
-                    MyMessageBox.Show("Không thể xóa tài khoản Admin", "Thông báo", MessageBoxButton.OK);
-                    return;
-                }
-
-                if (MyMessageBox.Show("Bạn có chắc chắn xóa tài khoản này?", "Thông báo", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                {
-                    var beenDeleted = DataProvider.Instance.DB.Accounts.Where((x) => x.IdAccount == SelectedAccount.Id).FirstOrDefault();
-                    DataProvider.Instance.DB.Accounts.Remove(beenDeleted);
-                    DataProvider.Instance.DB.SaveChanges();
-                    MyMessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButton.OK);
-                    
-                    LoadDB();
-                }
-            }
-
-            SelectedAccount = null;
-        }
-
-        [Command]
-        public void AddAccount(AccountManageView p)
+        [Command] 
+        public void ResetPassword()
         {
             try
             {
-                p.gridMain.IsEnabled = false;
-                p.gridButtonAdjust.IsEnabled = false;
-                p.gridButtonResetPassword.IsEnabled = false;
-                p.gridDetail.IsEnabled = true;
+                if (SelectedAccount != null)
+                {
+                    Account account = DataProvider.Instance.DB.Accounts.Where(x => x.IdAccount == SelectedAccount.IdAccount).SingleOrDefault();
+                    account.Password = Utility.Encryption.EncryptPassword("1");
+                    DataProvider.Instance.DB.SaveChanges();
+
+                    MyMessageBox.Show("Đặt lại mật khẩu là 1", "Thông báo", MessageBoxButton.OK);
+                }
             }
             catch { return; }
         }
 
         [Command]
-        public void EditAccount(AccountManageView p)
+        public void EditAccount(AccountManageView uc)
+        {
+            try
+            {
+                if (SelectedAccount != null)
+                {
+                    if (SelectedAccount.TypeAccount == "Admin")
+                    {
+                        MyMessageBox.Show("Không thể sửa khoản Admin", "Thông báo", MessageBoxButton.OK);
+                        return;
+                    }
+
+                    uc.gridMain.IsEnabled = false;
+                    uc.gridButtonAdjust.IsEnabled = false;
+                    uc.gridButtonResetPassword.IsEnabled = false;
+                    uc.gridDetail.IsEnabled = true;
+                    uc.tbUsername.IsEnabled = false;
+
+                    uc.tbUsername.Text = SelectedAccount.Username;
+                    uc.cbTypeAccount.SelectedValue = DataProvider.Instance.DB.TypeAccounts.Where(x => x.IdTypeAccount == SelectedAccount.IdTypeAccount).SingleOrDefault().IdTypeAccount;
+                }
+            }
+            catch { return; }
+        }
+
+        [Command]
+        public void DeleteAccount()
+        {
+            try
+            {
+                if (SelectedAccount != null)
+                {
+                    if (SelectedAccount.TypeAccount == "Admin")
+                    {
+                        MyMessageBox.Show("Không thể xóa tài khoản Admin", "Thông báo", MessageBoxButton.OK);
+                        return;
+                    }
+
+                    if (MyMessageBox.Show("Bạn có chắc chắn xóa tài khoản này?", "Thông báo", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    {
+                        var beenDeleted = DataProvider.Instance.DB.Accounts.Where((x) => x.IdAccount == SelectedAccount.IdAccount).SingleOrDefault();
+                        DataProvider.Instance.DB.Accounts.Remove(beenDeleted);
+                        DataProvider.Instance.DB.SaveChanges();
+                        MyMessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButton.OK);
+
+                        LoadDB();
+                    }
+                }
+
+                SelectedAccount = null;
+            }
+            catch { return; }
+        }
+
+        [Command]
+        public void AddAccount(AccountManageView p)
         {
             try
             {

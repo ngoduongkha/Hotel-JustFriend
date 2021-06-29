@@ -162,14 +162,16 @@
                     </Grid>
                     <Grid Height="50"/>
                     <Button Command="{Binding OpenTabHomeCommand}"
-                            CommandParameter="{Binding ElementName=window}">
+                            CommandParameter="{Binding ElementName=window}"
+                            Visibility="{Binding IsCollapsedTabHome}">
                         <StackPanel Orientation="Horizontal" Width="250">
                             <materialDesign:PackIcon Kind="Home" Grid.Column="0"/>
                             <Label Content="Giao diện chính" Grid.Column="0"/>
                         </StackPanel>
                     </Button>
                     <Button Command="{Binding OpenTabRoomManageCommand}"
-                            CommandParameter="{Binding ElementName=window}">
+                            CommandParameter="{Binding ElementName=window}"
+                            Visibility="{Binding IsCollapsedTabRoomManage}">
                         <StackPanel Orientation="Horizontal" Width="250">
                             <materialDesign:PackIcon Kind="Hotel" Grid.Column="0"/>
                             <Label Content="Quản lý phòng" Grid.Column="0"/>
@@ -177,14 +179,16 @@
                     </Button>
                     <Button
                         Command="{Binding OpenTabCustomerManageCommand}"
-                        CommandParameter="{Binding ElementName=window}">
+                        CommandParameter="{Binding ElementName=window}"
+                        Visibility="{Binding IsCollapsedTabCustomerManage}">
                         <StackPanel Orientation="Horizontal" Width="250">
                             <materialDesign:PackIcon Kind="HumanMaleFemale" Grid.Column="0"/>
                             <Label Content="Quản lý khách hàng" Grid.Column="0"/>
                         </StackPanel>
                     </Button>
                     <Button Command="{Binding OpenTabAccountManageCommand}"
-                            CommandParameter="{Binding ElementName=window}">
+                            CommandParameter="{Binding ElementName=window}"
+                            Visibility="{Binding IsCollapsedTabAccountManage}">
                         <StackPanel Orientation="Horizontal" Width="250">
                             <materialDesign:PackIcon Kind="Account" Grid.Column="0"/>
                             <Label Content="Quản lý tài khoản" Grid.Column="0"/>
@@ -193,7 +197,7 @@
                     <Button
                         Command="{Binding OpenTabReportCommand}"
                         CommandParameter="{Binding ElementName=window}"
-                        Visibility="{Binding IsCollapsed}">
+                        Visibility="{Binding IsCollapsedTabReport}">
                         <StackPanel Orientation="Horizontal" Width="250">
                             <materialDesign:PackIcon Kind="ChartBar" Grid.Column="0"/>
                             <Label Content="Báo cáo doanh thu" Grid.Column="0"/>
@@ -202,7 +206,7 @@
                     <Button
                         Command="{Binding OpenTabCustomizeParametersCommand}"
                         CommandParameter="{Binding ElementName=window}"
-                        Visibility="{Binding IsCollapsed}">
+                        Visibility="{Binding IsCollapsedTabCustomizeParameters}">
                         <StackPanel Orientation="Horizontal" Width="250">
                             <materialDesign:PackIcon Kind="SettingsApplications" Grid.Column="0"/>
                             <Label Content="Tùy chỉnh thông số" Grid.Column="0"/>
@@ -210,7 +214,8 @@
                     </Button>
                     <Button
                         Command="{Binding OpenTabAccountInfoCommand}"
-                        CommandParameter="{Binding ElementName=window}">
+                        CommandParameter="{Binding ElementName=window}"
+                        Visibility="{Binding IsCollapsedTabAccountInfo}">
                         <StackPanel Orientation="Horizontal" Width="250">
                             <materialDesign:PackIcon Kind="InfoCircle" Grid.Column="0"/>
                             <Label Content="Thông tin tài khoản" Grid.Column="0"/>

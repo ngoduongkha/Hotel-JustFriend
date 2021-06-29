@@ -36,7 +36,7 @@
                            TextWrapping="Wrap"
                            FontWeight="SemiBold"
                            />
-                    <TextBlock Text="Phòng 101" 
+                    <TextBlock Text="{Binding RoomName}" 
                            FontSize="15"
                                x:Name="Roomname"
                            TextWrapping="Wrap"
@@ -50,7 +50,7 @@
                            FontSize="15"
                            TextWrapping="Wrap"
                            FontWeight="SemiBold"/>
-                    <TextBlock Text="10000" 
+                    <TextBlock Text="{Binding RoomPrice, StringFormat=\{0:n0\}, ConverterCulture=vi-VN}" 
                            FontSize="15"
                                x:Name="price"
                                HorizontalAlignment="Right"
@@ -64,13 +64,12 @@
                            FontSize="15"
                            TextWrapping="Wrap"
                            FontWeight="SemiBold"/>
-                    <TextBlock Text="3" 
-                           FontSize="15"
-                               x:Name="date"
+                    <TextBlock Text="{Binding Path=TotalDay}" 
+                               FontSize="15"
                                HorizontalAlignment="Right"
                                VerticalAlignment="Center"
-                           TextWrapping="Wrap"
-                           FontWeight="SemiBold" Width="19" Margin="0,0,119,0"/>
+                               TextWrapping="Wrap"
+                               FontWeight="SemiBold" Width="19" Margin="0,0,119,0"/>
                 </Grid>
             </StackPanel>
 
@@ -120,12 +119,8 @@
 
             </Grid>
         </Grid>
-        <Grid Grid.Row="2" Background="White">
-
-        </Grid>
         <Grid
             Grid.Row="2" Margin="30,20,30,0">
-
             <Grid 
                 Background="Pink"
                 VerticalAlignment="Top" 
@@ -177,11 +172,73 @@
                     TextWrapping="Wrap" 
                     VerticalAlignment="Center" 
                     FontWeight="SemiBold" />
-
             </Grid>
             <Grid Margin="0,25,0,0" Background="#FFFAFA">
-                <StackPanel x:Name="stp">
-                </StackPanel>
+                <ItemsControl
+                    ItemsSource="{Binding Path=ListCustomer}"
+                    AlternationCount="100">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid 
+                                Background="White"
+                                VerticalAlignment="Top" 
+                                Height="25">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="35"/>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="106"/>
+                                    <ColumnDefinition Width="85"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock 
+                                    Grid.Column="0"
+                                    Text="{Binding Path=(ItemsControl.AlternationIndex), RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                    HorizontalAlignment="Center" 
+                                    Margin="0" 
+                                    TextWrapping="Wrap" 
+                                    VerticalAlignment="Center" 
+                                    FontWeight="SemiBold" />
+                                <TextBlock 
+                                    Grid.Column="1"
+                                    Text="{Binding Path=FullName}"
+                                    HorizontalAlignment="Left" 
+                                    Margin="10,0,0,0" 
+                                    TextWrapping="Wrap" 
+                                    VerticalAlignment="Center" 
+                                    FontWeight="SemiBold" />
+                                <TextBlock 
+                                    Grid.Column="2"
+                                    Text="{Binding Path=Address}"
+                                    HorizontalAlignment="Center" 
+                                    Margin="0" 
+                                    TextWrapping="Wrap" 
+                                    VerticalAlignment="Center" 
+                                    FontWeight="SemiBold" />
+                                <TextBlock 
+                                    Grid.Column="3"
+                                    Text="{Binding Path=TypeCustomer}"
+                                    HorizontalAlignment="Center" 
+                                    Margin="0" 
+                                    TextWrapping="Wrap" 
+                                    VerticalAlignment="Center" 
+                                    FontWeight="SemiBold" />
+                                <TextBlock 
+                                    Grid.Column="5"
+                                    Text="{Binding Path=CoefficientsObtained}"
+                                    HorizontalAlignment="Center" 
+                                    Margin="0" 
+                                    TextWrapping="Wrap" 
+                                    VerticalAlignment="Center" 
+                                    FontWeight="SemiBold" />
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </Grid>
         </Grid>
         <Grid Grid.Row="3">
@@ -223,21 +280,18 @@
                 </Grid>
                 <Grid Grid.Column="1" Margin="0,0,30,0">
                     <StackPanel>
-                        <TextBlock Text="1.200.000 "
+                        <TextBlock Text="{Binding Path=TotalMoney, StringFormat=\{0:n0\}, ConverterCulture=vi-VN}"
                                    FontSize="18"
-                                   x:Name="money"
                                    FontWeight="Medium"
                                    Background="#FEECED"
                                    TextWrapping="Wrap"/>
-                        <TextBlock Text="200.000 "
+                        <TextBlock Text="{Binding Path=Surcharge, StringFormat=\{0:n0\}, ConverterCulture=vi-VN}"
                                    FontSize="18"
-                                   x:Name="surcharge"
                                    Background="#FEECED"
                                    TextWrapping="Wrap"
                                    FontWeight="Medium"/>
-                        <TextBlock Text="1.000.000 "
+                        <TextBlock Text="{Binding Path=RealRevenue, StringFormat=\{0:n0\}, ConverterCulture=vi-VN}"
                                    FontSize="18"
-                                   x:Name="totalmoney"
                                    TextWrapping="Wrap"
                                    Background="Pink"
                                    FontWeight="Medium"/>

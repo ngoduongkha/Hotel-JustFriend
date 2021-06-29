@@ -81,7 +81,7 @@
                             <ComboBox
                                 x:Name="cbFilterType"
                                 ItemsSource="{Binding ListTypeAccount}"
-                                DisplayMemberPath="displayname"
+                                DisplayMemberPath="DisplayName"
                                 materialDesign:HintAssist.Hint="Loại tài khoản">
                             </ComboBox>
                             <Button
@@ -130,7 +130,7 @@
                             </Style>
                         </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" MinWidth="100" Binding="{Binding Path=Id}"/>
+                            <DataGridTextColumn Header="ID" MinWidth="100" Binding="{Binding Path=IdAccount}"/>
                             <DataGridTextColumn Header="Tên đăng nhập" MinWidth="300" Binding="{Binding Path=Username}"/>
                             <DataGridTextColumn Header="Loại tài khoản" MinWidth="250" Binding="{Binding Path=TypeAccount}"/>
                         </DataGrid.Columns>
@@ -250,7 +250,8 @@
                                     Grid.Column="1"
                                     x:Name="cbTypeAccount"
                                     ItemsSource="{Binding Path=ListTypeAccountCanAdd}"
-                                    DisplayMemberPath="displayname"/>
+                                    DisplayMemberPath="DisplayName"
+                                    SelectedValuePath="IdTypeAccount"/>
                             </Grid>
                             <Grid Grid.Row="2">
                                 <Grid.ColumnDefinitions>
@@ -285,7 +286,6 @@
                     </materialDesign:Card>
                     <Grid Grid.Row="1" x:Name="gridButtonResetPassword">
                         <Button
-                            x:Name="btnChangePassword"
                             HorizontalAlignment="Center" 
                             VerticalAlignment="Top"
                             Content="Đặt lại mật khẩu" 
@@ -296,7 +296,8 @@
                             Background="LightBlue"
                             Foreground="Black" 
                             BorderBrush="LightBlue"
-                            materialDesign:ButtonAssist.CornerRadius="10">
+                            materialDesign:ButtonAssist.CornerRadius="10"
+                            Command="{Binding Path=ResetPasswordCommand}">
                         </Button>
                     </Grid>
                 </Grid>
