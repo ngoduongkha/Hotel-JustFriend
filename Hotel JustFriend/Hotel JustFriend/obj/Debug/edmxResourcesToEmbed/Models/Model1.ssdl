@@ -2,202 +2,228 @@
 <Schema Namespace="Hotel_JustFriendModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Account">
     <Key>
-      <PropertyRef Name="idAccount" />
+      <PropertyRef Name="IdAccount" />
     </Key>
-    <Property Name="idAccount" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="username" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="password" Type="char" MaxLength="64" Nullable="false" />
+    <Property Name="IdAccount" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdTypeAccount" Type="int" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Password" Type="char" MaxLength="64" Nullable="false" />
   </EntityType>
   <EntityType Name="Bill">
     <Key>
-      <PropertyRef Name="idBill" />
+      <PropertyRef Name="IdBill" />
     </Key>
-    <Property Name="idBill" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="date" Type="date" />
-    <Property Name="totalMoney" Type="money" />
+    <Property Name="IdBill" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="TotalMoney" Type="money" Nullable="false" />
   </EntityType>
   <EntityType Name="BillInfo">
     <Key>
-      <PropertyRef Name="idBill" />
-      <PropertyRef Name="idRoom" />
+      <PropertyRef Name="IdBill" />
+      <PropertyRef Name="IdRoom" />
     </Key>
-    <Property Name="numberDay" Type="int" />
-    <Property Name="price" Type="money" />
-    <Property Name="idBill" Type="int" Nullable="false" />
-    <Property Name="idRoom" Type="int" Nullable="false" />
+    <Property Name="NumberDay" Type="int" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="IdBill" Type="int" Nullable="false" />
+    <Property Name="IdRoom" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Constant">
     <Key>
-      <PropertyRef Name="idConstant" />
+      <PropertyRef Name="IdConstant" />
     </Key>
-    <Property Name="idConstant" Type="int" Nullable="false" />
-    <Property Name="maxCustomer" Type="int" />
-    <Property Name="percent" Type="float" />
+    <Property Name="IdConstant" Type="int" Nullable="false" />
+    <Property Name="MaxCustomer" Type="int" Nullable="false" />
+    <Property Name="Percent" Type="float" Nullable="false" />
   </EntityType>
   <EntityType Name="Customer">
     <Key>
-      <PropertyRef Name="idCustomer" />
+      <PropertyRef Name="IdCustomer" />
     </Key>
-    <Property Name="idCustomer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="fullname" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="idCard" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="idType" Type="int" Nullable="false" />
-    <Property Name="address" Type="nvarchar(max)" />
+    <Property Name="IdCustomer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdCard" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="IdTypeCustomer" Type="int" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="RentInvoice">
     <Key>
-      <PropertyRef Name="idRentInvoice" />
+      <PropertyRef Name="IdRentInvoice" />
     </Key>
-    <Property Name="idRentInvoice" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="date" Type="date" />
-    <Property Name="idRoom" Type="int" />
-    <Property Name="purchase" Type="bit" />
+    <Property Name="IdRentInvoice" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="IdRoom" Type="int" Nullable="false" />
+    <Property Name="Purchase" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="RentInvoiceInfo">
     <Key>
-      <PropertyRef Name="idRentInvoice" />
-      <PropertyRef Name="idCustomer" />
+      <PropertyRef Name="IdRentInvoice" />
+      <PropertyRef Name="IdCustomer" />
     </Key>
-    <Property Name="idRentInvoiceInfo" Type="int" />
-    <Property Name="idRentInvoice" Type="int" Nullable="false" />
-    <Property Name="idCustomer" Type="int" Nullable="false" />
+    <Property Name="IdRentInvoiceInfo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdRentInvoice" Type="int" Nullable="false" />
+    <Property Name="IdCustomer" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Revenue">
     <Key>
-      <PropertyRef Name="idRevenue" />
+      <PropertyRef Name="IdRevenue" />
     </Key>
-    <Property Name="idRevenue" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="totalMoney" Type="money" />
+    <Property Name="IdRevenue" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdTypeRoom" Type="int" />
+    <Property Name="RevenueType" Type="money" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="RevenueInfo">
-          <Property Name="percent" Type="float" />
-          <Property Name="month" Type="int" />
-          <Property Name="year" Type="int" />
-          <Property Name="idRoom" Type="int" />
-        </EntityType>-->
   <EntityType Name="RevenuePercentage">
     <Key>
-      <PropertyRef Name="idrevenuePrecentage" />
+      <PropertyRef Name="IdrevenuePrecentage" />
     </Key>
-    <Property Name="idrevenuePrecentage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="percent" Type="float" />
-    <Property Name="month" Type="int" />
-    <Property Name="year" Type="int" />
-    <Property Name="idRoom" Type="int" />
+    <Property Name="IdrevenuePrecentage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Percent" Type="float" />
+    <Property Name="Month" Type="int" />
+    <Property Name="Year" Type="int" />
+    <Property Name="IdRoom" Type="int" />
   </EntityType>
   <EntityType Name="Room">
     <Key>
-      <PropertyRef Name="idRoom" />
+      <PropertyRef Name="IdRoom" />
     </Key>
-    <Property Name="idRoom" Type="int" Nullable="false" />
-    <Property Name="floor" Type="int" Nullable="false" />
-    <Property Name="displayName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="idType" Type="int" Nullable="false" />
-    <Property Name="status" Type="bit" Nullable="false" />
-    <Property Name="note" Type="nvarchar(max)" />
-    <Property Name="isDelete" Type="bit" />
+    <Property Name="IdRoom" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Floor" Type="int" Nullable="false" />
+    <Property Name="Number" Type="int" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="IdTypeRoom" Type="int" Nullable="false" />
+    <Property Name="Status" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Note" Type="nvarchar(max)" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TypeAccount">
+    <Key>
+      <PropertyRef Name="IdTypeAccount" />
+    </Key>
+    <Property Name="IdTypeAccount" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="TypeCustomer">
     <Key>
-      <PropertyRef Name="idType" />
+      <PropertyRef Name="IdTypeCustomer" />
     </Key>
-    <Property Name="idType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="displayname" Type="nvarchar(max)" />
-    <Property Name="number" Type="float" />
-    <Property Name="isDelete" Type="bit" />
+    <Property Name="IdTypeCustomer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Displayname" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="CoefficientsObtained" Type="float" Nullable="false" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="TypeRoom">
     <Key>
-      <PropertyRef Name="idType" />
+      <PropertyRef Name="IdTypeRoom" />
     </Key>
-    <Property Name="idType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="fullname" Type="nvarchar(max)" />
-    <Property Name="price" Type="money" />
-    <Property Name="isDelete" Type="bit" />
+    <Property Name="IdTypeRoom" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
   </EntityType>
-  <Association Name="FK__BillInfo__idBill__48CFD27E">
+  <Association Name="FK__Account__IdTypeA__47DBAE45">
+    <End Role="TypeAccount" Type="Self.TypeAccount" Multiplicity="1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeAccount">
+        <PropertyRef Name="IdTypeAccount" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="IdTypeAccount" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BillInfo__IdBill__4AB81AF0">
     <End Role="Bill" Type="Self.Bill" Multiplicity="1" />
     <End Role="BillInfo" Type="Self.BillInfo" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Bill">
-        <PropertyRef Name="idBill" />
+        <PropertyRef Name="IdBill" />
       </Principal>
       <Dependent Role="BillInfo">
-        <PropertyRef Name="idBill" />
+        <PropertyRef Name="IdBill" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__BillInfo__idRoom__44FF419A">
+  <Association Name="FK__BillInfo__IdRoom__45F365D3">
     <End Role="Room" Type="Self.Room" Multiplicity="1" />
     <End Role="BillInfo" Type="Self.BillInfo" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Room">
-        <PropertyRef Name="idRoom" />
+        <PropertyRef Name="IdRoom" />
       </Principal>
       <Dependent Role="BillInfo">
-        <PropertyRef Name="idRoom" />
+        <PropertyRef Name="IdRoom" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Customer__idType__45F365D3">
+  <Association Name="FK__Customer__IdType__46E78A0C">
     <End Role="TypeCustomer" Type="Self.TypeCustomer" Multiplicity="1" />
     <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TypeCustomer">
-        <PropertyRef Name="idType" />
+        <PropertyRef Name="IdTypeCustomer" />
       </Principal>
       <Dependent Role="Customer">
-        <PropertyRef Name="idType" />
+        <PropertyRef Name="IdTypeCustomer" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__RentInvoi__idCus__46E78A0C">
+  <Association Name="FK__RentInvoi__IdCus__48CFD27E">
     <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
     <End Role="RentInvoiceInfo" Type="Self.RentInvoiceInfo" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Customer">
-        <PropertyRef Name="idCustomer" />
+        <PropertyRef Name="IdCustomer" />
       </Principal>
       <Dependent Role="RentInvoiceInfo">
-        <PropertyRef Name="idCustomer" />
+        <PropertyRef Name="IdCustomer" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__RentInvoi__idRen__47DBAE45">
+  <Association Name="FK__RentInvoi__IdRen__49C3F6B7">
     <End Role="RentInvoice" Type="Self.RentInvoice" Multiplicity="1" />
     <End Role="RentInvoiceInfo" Type="Self.RentInvoiceInfo" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="RentInvoice">
-        <PropertyRef Name="idRentInvoice" />
+        <PropertyRef Name="IdRentInvoice" />
       </Principal>
       <Dependent Role="RentInvoiceInfo">
-        <PropertyRef Name="idRentInvoice" />
+        <PropertyRef Name="IdRentInvoice" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__RentInvoi__idRoo__440B1D61">
-    <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+  <Association Name="FK__RentInvoi__IdRoo__44FF419A">
+    <End Role="Room" Type="Self.Room" Multiplicity="1" />
     <End Role="RentInvoice" Type="Self.RentInvoice" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Room">
-        <PropertyRef Name="idRoom" />
+        <PropertyRef Name="IdRoom" />
       </Principal>
       <Dependent Role="RentInvoice">
-        <PropertyRef Name="idRoom" />
+        <PropertyRef Name="IdRoom" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Room__idType__4316F928">
+  <Association Name="FK__Revenue__IdTypeR__4316F928">
+    <End Role="TypeRoom" Type="Self.TypeRoom" Multiplicity="0..1" />
+    <End Role="Revenue" Type="Self.Revenue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeRoom">
+        <PropertyRef Name="IdTypeRoom" />
+      </Principal>
+      <Dependent Role="Revenue">
+        <PropertyRef Name="IdTypeRoom" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Room__IdTypeRoom__440B1D61">
     <End Role="TypeRoom" Type="Self.TypeRoom" Multiplicity="1" />
     <End Role="Room" Type="Self.Room" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TypeRoom">
-        <PropertyRef Name="idType" />
+        <PropertyRef Name="IdTypeRoom" />
       </Principal>
       <Dependent Role="Room">
-        <PropertyRef Name="idType" />
+        <PropertyRef Name="IdTypeRoom" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -212,33 +238,42 @@ warning 6013: The table/view 'Hotel_JustFriend.dbo.RevenueInfo' does not have a 
     <EntitySet Name="Revenue" EntityType="Self.Revenue" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RevenuePercentage" EntityType="Self.RevenuePercentage" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypeAccount" EntityType="Self.TypeAccount" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TypeCustomer" EntityType="Self.TypeCustomer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TypeRoom" EntityType="Self.TypeRoom" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__BillInfo__idBill__48CFD27E" Association="Self.FK__BillInfo__idBill__48CFD27E">
+    <AssociationSet Name="FK__Account__IdTypeA__47DBAE45" Association="Self.FK__Account__IdTypeA__47DBAE45">
+      <End Role="TypeAccount" EntitySet="TypeAccount" />
+      <End Role="Account" EntitySet="Account" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BillInfo__IdBill__4AB81AF0" Association="Self.FK__BillInfo__IdBill__4AB81AF0">
       <End Role="Bill" EntitySet="Bill" />
       <End Role="BillInfo" EntitySet="BillInfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__BillInfo__idRoom__44FF419A" Association="Self.FK__BillInfo__idRoom__44FF419A">
+    <AssociationSet Name="FK__BillInfo__IdRoom__45F365D3" Association="Self.FK__BillInfo__IdRoom__45F365D3">
       <End Role="Room" EntitySet="Room" />
       <End Role="BillInfo" EntitySet="BillInfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__Customer__idType__45F365D3" Association="Self.FK__Customer__idType__45F365D3">
+    <AssociationSet Name="FK__Customer__IdType__46E78A0C" Association="Self.FK__Customer__IdType__46E78A0C">
       <End Role="TypeCustomer" EntitySet="TypeCustomer" />
       <End Role="Customer" EntitySet="Customer" />
     </AssociationSet>
-    <AssociationSet Name="FK__RentInvoi__idCus__46E78A0C" Association="Self.FK__RentInvoi__idCus__46E78A0C">
+    <AssociationSet Name="FK__RentInvoi__IdCus__48CFD27E" Association="Self.FK__RentInvoi__IdCus__48CFD27E">
       <End Role="Customer" EntitySet="Customer" />
       <End Role="RentInvoiceInfo" EntitySet="RentInvoiceInfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__RentInvoi__idRen__47DBAE45" Association="Self.FK__RentInvoi__idRen__47DBAE45">
+    <AssociationSet Name="FK__RentInvoi__IdRen__49C3F6B7" Association="Self.FK__RentInvoi__IdRen__49C3F6B7">
       <End Role="RentInvoice" EntitySet="RentInvoice" />
       <End Role="RentInvoiceInfo" EntitySet="RentInvoiceInfo" />
     </AssociationSet>
-    <AssociationSet Name="FK__RentInvoi__idRoo__440B1D61" Association="Self.FK__RentInvoi__idRoo__440B1D61">
+    <AssociationSet Name="FK__RentInvoi__IdRoo__44FF419A" Association="Self.FK__RentInvoi__IdRoo__44FF419A">
       <End Role="Room" EntitySet="Room" />
       <End Role="RentInvoice" EntitySet="RentInvoice" />
     </AssociationSet>
-    <AssociationSet Name="FK__Room__idType__4316F928" Association="Self.FK__Room__idType__4316F928">
+    <AssociationSet Name="FK__Revenue__IdTypeR__4316F928" Association="Self.FK__Revenue__IdTypeR__4316F928">
+      <End Role="TypeRoom" EntitySet="TypeRoom" />
+      <End Role="Revenue" EntitySet="Revenue" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Room__IdTypeRoom__440B1D61" Association="Self.FK__Room__IdTypeRoom__440B1D61">
       <End Role="TypeRoom" EntitySet="TypeRoom" />
       <End Role="Room" EntitySet="Room" />
     </AssociationSet>
