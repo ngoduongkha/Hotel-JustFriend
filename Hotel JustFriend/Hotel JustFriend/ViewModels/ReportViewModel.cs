@@ -47,6 +47,7 @@ namespace Hotel_JustFriend.ViewModels
             reportTemplate.month.Text = uc.cbboxMonths.Text;
             reportTemplate.year.Text = uc.cbboxYears.Text;
             decimal total = 0;
+            decimal tt = 0;
             int year = int.Parse(uc.cbboxYears.Text);
             int month = uc.cbboxMonths.SelectedIndex + 1;
             if (month == 0) listBill = new ObservableCollection<Bill>(DataProvider.Instance.DB.Bills.Where(p => p.Date.Year == year));
@@ -54,6 +55,25 @@ namespace Hotel_JustFriend.ViewModels
             if (listBill.Count > 0)
             {
                 PieSerieCollection = new SeriesCollection();
+                for (int i=0; i<listRoomType.Count;i++)
+                {
+                    decimal revenue = 0;
+                    int idtype = listRoomType[i].IdTypeRoom;
+                    for (int j = 0; j < listBillInfo.Count; j++)
+                    {
+                        int idd = listBillInfo[j].IdBill;
+                        Bill k = listBill.Where(p => p.IdBill == idd).FirstOrDefault();
+                        if (k != null)
+                        {
+                            Room a = listRoom.Where(p => p.IdRoom == listBillInfo[j].IdRoom).FirstOrDefault();
+                            if (a.IdTypeRoom == idtype)
+                            {
+                                revenue = revenue + (decimal)k.TotalMoney;
+                            }
+                        }
+                    }
+                    tt = tt + revenue;
+                }
                 for (int i = 0; i < listRoomType.Count; i++)
                 {
                     double percent = 0;
@@ -68,12 +88,11 @@ namespace Hotel_JustFriend.ViewModels
                             Room a = listRoom.Where(p => p.IdRoom == listBillInfo[j].IdRoom).FirstOrDefault();
                             if (a.IdTypeRoom == idtype)
                             {
-                                percent = percent + 1;
                                 revenue = revenue + (decimal)k.TotalMoney;
                             }
                         }
                     }
-                    if (listBill != null) percent = percent / (listBill.Count);
+                    if (tt != 0) percent = (double)(revenue / tt);
                     total = total + revenue;
                     ChartValues<decimal> chartValue = new ChartValues<decimal>();
                     chartValue.Add(revenue);
