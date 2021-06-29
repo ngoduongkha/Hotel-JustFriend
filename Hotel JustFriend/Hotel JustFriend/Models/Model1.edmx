@@ -48,6 +48,7 @@
           <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="IdCard" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="IdTypeCustomer" Type="int" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="RentInvoice">
           <Key>
@@ -334,6 +335,7 @@
           <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IdCard" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IdTypeCustomer" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="TypeCustomer" Relationship="Self.FK__Customer__IdType__46E78A0C" FromRole="Customer" ToRole="TypeCustomer" />
           <NavigationProperty Name="RentInvoiceInfoes" Relationship="Self.FK__RentInvoi__IdCus__48CFD27E" FromRole="Customer" ToRole="RentInvoiceInfo" />
         </EntityType>
@@ -633,6 +635,7 @@
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="IdCard" ColumnName="IdCard" />
                 <ScalarProperty Name="IdTypeCustomer" ColumnName="IdTypeCustomer" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
