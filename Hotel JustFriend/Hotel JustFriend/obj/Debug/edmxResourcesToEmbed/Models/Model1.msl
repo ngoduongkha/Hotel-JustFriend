@@ -42,11 +42,11 @@
     <EntitySetMapping Name="Customers">
       <EntityTypeMapping TypeName="Hotel_JustFriendModel.Customer">
         <MappingFragment StoreEntitySet="Customer">
-          <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="IdCustomer" ColumnName="IdCustomer" />
           <ScalarProperty Name="FullName" ColumnName="FullName" />
           <ScalarProperty Name="IdCard" ColumnName="IdCard" />
           <ScalarProperty Name="IdTypeCustomer" ColumnName="IdTypeCustomer" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
