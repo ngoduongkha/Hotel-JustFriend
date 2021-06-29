@@ -136,7 +136,7 @@
                     MaxWidth="1050"
                     Padding="5">
                     <ItemsControl
-                        ItemsSource="{Binding Path=ListRoom}"
+                        ItemsSource="{Binding Path=ListRoom, Mode=OneWay}"
                         x:Name="MyItems">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
