@@ -21,14 +21,14 @@ namespace Hotel_JustFriend.Models
             this.RentInvoices = new HashSet<RentInvoice>();
         }
     
-        public int idRoom { get; set; }
-        public int floor { get; set; }
-        public int number { get; set; }
-        public string displayName { get; set; }
-        public int idType { get; set; }
-        public string status { get; set; }
-        public string note { get; set; }
-        public Nullable<bool> isDelete { get; set; }
+        public int IdRoom { get; set; }
+        public int Floor { get; set; }
+        public int Number { get; set; }
+        public string DisplayName { get; set; }
+        public int IdTypeRoom { get; set; }
+        public string Status { get; set; }
+        public string Note { get; set; }
+        public bool IsDelete { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BillInfo> BillInfoes { get; set; }

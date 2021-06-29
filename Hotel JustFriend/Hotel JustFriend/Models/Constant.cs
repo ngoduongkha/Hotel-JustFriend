@@ -14,8 +14,8 @@ namespace Hotel_JustFriend.Models
     
     public partial class Constant
     {
-        public int idConstant { get; set; }
-        public Nullable<int> maxCustomer { get; set; }
-        public Nullable<double> percent { get; set; }
+        public int IdConstant { get; set; }
+        public int MaxCustomer { get; set; }
+        public double Percent { get; set; }
     }
 }

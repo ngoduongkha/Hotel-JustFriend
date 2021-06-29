@@ -36,7 +36,7 @@ namespace Hotel_JustFriend.ViewModels
 
         public RoomDetailViewModel()
         {
-            ListRoomName = new ObservableCollection<string>(DataProvider.Instance.DB.Rooms.Where(x => x.isDelete == false).Select(x => x.displayName));
+            ListRoomName = new ObservableCollection<string>(DataProvider.Instance.DB.Rooms.Where(x => x.IsDelete == false).Select(x => x.DisplayName));
             ListRoomType = new ObservableCollection<TypeRoom>(DataProvider.Instance.DB.TypeRooms);
         }
 
@@ -54,13 +54,13 @@ namespace Hotel_JustFriend.ViewModels
 
                 Room newRoom = new Room()
                 {
-                    floor = RoomFloor,
-                    number = RoomNumber,
-                    displayName = DisplayName,
-                    status = RoomStatus,
-                    idType = SelectedRoomType.idType,
-                    note = RoomNote,
-                    isDelete = false,
+                    Floor = RoomFloor,
+                    Number = RoomNumber,
+                    DisplayName = DisplayName,
+                    Status = RoomStatus,
+                    IdTypeRoom = SelectedRoomType.IdTypeRoom,
+                    Note = RoomNote,
+                    IsDelete = false,
                 };
 
                 DataProvider.Instance.DB.Rooms.Add(newRoom);

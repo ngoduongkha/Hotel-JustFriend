@@ -14,10 +14,10 @@ namespace Hotel_JustFriend.Models
     
     public partial class RevenuePercentage
     {
-        public int idrevenuePrecentage { get; set; }
-        public Nullable<double> percent { get; set; }
-        public Nullable<int> month { get; set; }
-        public Nullable<int> year { get; set; }
-        public Nullable<int> idRoom { get; set; }
+        public int IdrevenuePrecentage { get; set; }
+        public Nullable<double> Percent { get; set; }
+        public Nullable<int> Month { get; set; }
+        public Nullable<int> Year { get; set; }
+        public Nullable<int> IdRoom { get; set; }
     }
 }

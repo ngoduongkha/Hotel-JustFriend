@@ -37,7 +37,7 @@
                 <Button
                     HorizontalAlignment="Right" VerticalAlignment="Center"
                     ToolTip="Thoát"
-                    Command="{Binding Close1Command}" Padding="0"
+                    Command="{Binding CloseCommand}" Padding="0"
                     CommandParameter="{Binding ElementName=window}"
                     Background="Transparent" BorderBrush="Transparent">
                     <materialDesign:PackIcon

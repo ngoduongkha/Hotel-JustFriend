@@ -133,7 +133,6 @@
                             SelectedIndex="0" Text="{Binding RoomStatus, Mode=OneWayToSource}">
                             <ComboBoxItem Content="Sẵn sàng"/>
                             <ComboBoxItem Content="Hư hỏng"/>
-                            <ComboBoxItem Content="Đang thuê"/>
                         </ComboBox>
                         <ComboBox
                             DockPanel.Dock="Left"
@@ -145,7 +144,7 @@
                             FontSize="20" Margin="15 25 30 0"
                             IsEditable="True"
                             ItemsSource="{Binding Path=ListRoomType}"
-                            DisplayMemberPath="fullname"
+                            DisplayMemberPath="DisplayName"
                             SelectedValue="{Binding Path=SelectedRoomType, Mode=OneWayToSource}">
                             <ComboBox.Text>
                                 <Binding
@@ -176,6 +175,7 @@
                             <ColumnDefinition Width="126*"/>
                         </Grid.ColumnDefinitions>
                         <TextBox
+                            IsHitTestVisible="False"
                             IsReadOnly="True"
                             x:Name="txtPrice"
                             FontSize="20"       
@@ -186,7 +186,7 @@
                             materialDesign:ValidationAssist.HorizontalAlignment="Right"
                             materialDesign:ValidationAssist.Background="White"
                             MaxLines="1" MaxLength="11" Grid.ColumnSpan="3"
-                            Text="{Binding Path=SelectedRoomType.price, Mode=OneWay, StringFormat=\{0:n0\}, ConverterCulture=vi-VN}">
+                            Text="{Binding Path=SelectedRoomType.Price, Mode=OneWay, StringFormat=\{0:n0\}, ConverterCulture=vi-VN}">
                         </TextBox>
                     </Grid>
                     <TextBox 

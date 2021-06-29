@@ -20,8 +20,8 @@ namespace Hotel_JustFriend.Models
             this.Accounts = new HashSet<Account>();
         }
     
-        public int idTypeAccount { get; set; }
-        public string displayname { get; set; }
+        public int IdTypeAccount { get; set; }
+        public string DisplayName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Account> Accounts { get; set; }

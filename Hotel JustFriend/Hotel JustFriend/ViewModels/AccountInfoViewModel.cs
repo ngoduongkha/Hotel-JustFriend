@@ -35,7 +35,7 @@ namespace Hotel_JustFriend.ViewModels
             }
 
             var passEncode = Utility.Encryption.EncryptPassword(_password);
-            var count = DataProvider.Instance.DB.Accounts.Where(x => x.username == _userName && x.password == passEncode).Count();
+            var count = DataProvider.Instance.DB.Accounts.Where(x => x.Username == _userName && x.Password == passEncode).Count();
 
             if (count != 1)
             {
@@ -55,8 +55,8 @@ namespace Hotel_JustFriend.ViewModels
                 return;
             }
 
-            var account = DataProvider.Instance.DB.Accounts.Where(x => x.username == _userName && x.password == passEncode).SingleOrDefault();
-            account.password = Utility.Encryption.EncryptPassword(_newPassword);
+            var account = DataProvider.Instance.DB.Accounts.Where(x => x.Username == _userName && x.Password == passEncode).SingleOrDefault();
+            account.Password = Utility.Encryption.EncryptPassword(_newPassword);
 
             DataProvider.Instance.DB.SaveChanges();
 

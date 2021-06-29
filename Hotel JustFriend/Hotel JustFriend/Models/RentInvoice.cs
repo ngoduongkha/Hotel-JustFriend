@@ -20,10 +20,10 @@ namespace Hotel_JustFriend.Models
             this.RentInvoiceInfoes = new HashSet<RentInvoiceInfo>();
         }
     
-        public int idRentInvoice { get; set; }
-        public Nullable<System.DateTime> date { get; set; }
-        public Nullable<int> idRoom { get; set; }
-        public Nullable<bool> purchase { get; set; }
+        public int IdRentInvoice { get; set; }
+        public System.DateTime Date { get; set; }
+        public int IdRoom { get; set; }
+        public bool Purchase { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RentInvoiceInfo> RentInvoiceInfoes { get; set; }

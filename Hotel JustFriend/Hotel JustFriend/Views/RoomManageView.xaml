@@ -18,14 +18,36 @@
             <materialDesign:Card Margin="10 0 0 0">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Margin="20 0 5 0" Kind="Search" Height="24" Width="24" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-                    <TextBox Margin="5 0 10 0" materialDesign:HintAssist.Hint="Tìm phòng" FontSize="15" Background="Transparent" MaxLength="50" MaxWidth="250" Width="250" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
-                    <Button Content="Tìm" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10 0 20 0" Width="70" Height="35" FontSize="15" Background="{DynamicResource PrimaryHueMidBrush}" BorderBrush="{DynamicResource PrimaryHueMidBrush}" materialDesign:ButtonAssist.CornerRadius="5" />
+                    <TextBox
+                        x:Name="tbSearch"
+                        Margin="5 0 10 0"
+                        materialDesign:HintAssist.Hint="Tìm phòng" 
+                        FontSize="15" Background="Transparent"
+                        MaxLength="50" MaxWidth="250" Width="250" 
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center" 
+                        HorizontalContentAlignment="Left" 
+                        VerticalContentAlignment="Center" />
+                    <Button
+                        Content="Tìm"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center" 
+                        Margin="10 0 20 0" 
+                        Width="70" Height="35" 
+                        FontSize="15" 
+                        Background="{DynamicResource PrimaryHueMidBrush}" 
+                        BorderBrush="{DynamicResource PrimaryHueMidBrush}" 
+                        materialDesign:ButtonAssist.CornerRadius="5"
+                        Command="{Binding Path=SearchRoomCommand}"
+                        CommandParameter="{Binding ElementName=RoomManageUC}"/>
                 </StackPanel>
             </materialDesign:Card>
             <materialDesign:Card Margin="10 0 0 0">
                 <StackPanel Orientation="Horizontal">
                     <ComboBox 
-                        x:Name="txtFilterStatus"
+                        x:Name="cbFilterStatus"
                         materialDesign:HintAssist.Hint="Trạng thái"
                         Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                         HorizontalContentAlignment="Left"
@@ -36,8 +58,9 @@
                         <ComboBoxItem Content="Đang thuê"/>
                     </ComboBox>
                     <ComboBox 
-                        x:Name="txtFilterType"
+                        x:Name="cbFilterType"
                         ItemsSource="{Binding Path=ListRoomType}"
+                        DisplayMemberPath="DisplayName"
                         materialDesign:HintAssist.Hint="Loại phòng"                     
                         Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                         HorizontalContentAlignment="Left" 
@@ -137,13 +160,13 @@
                         </Style>
                     </DataGrid.Resources>
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Tầng" MinWidth="80" Binding="{Binding floor}"/>
-                        <DataGridTextColumn Header="Phòng" MinWidth="80" Binding="{Binding number}" />
-                        <DataGridTextColumn Header="Tên phòng" MinWidth="180" Binding="{Binding displayName}" />
-                        <DataGridTextColumn Header="Loại phòng" MinWidth="180" Binding="{Binding typeRoomName}" />
-                        <DataGridTextColumn Header="Trạng thái" MinWidth="180" Binding="{Binding status}" />
-                        <DataGridTextColumn Header="Đơn giá" MinWidth="120" Binding="{Binding price, StringFormat=\{0:n0\}, ConverterCulture=vi-VN}" />
-                        <DataGridTextColumn Header="Ghi chú" Width="*" MinWidth="180" Binding="{Binding note}"/>
+                        <DataGridTextColumn Header="Tầng" MinWidth="80" Binding="{Binding Floor}"/>
+                        <DataGridTextColumn Header="Phòng" MinWidth="80" Binding="{Binding Number}" />
+                        <DataGridTextColumn Header="Tên phòng" MinWidth="180" Binding="{Binding DisplayName}" />
+                        <DataGridTextColumn Header="Loại phòng" MinWidth="180" Binding="{Binding TypeRoomName}" />
+                        <DataGridTextColumn Header="Trạng thái" MinWidth="180" Binding="{Binding Status}" />
+                        <DataGridTextColumn Header="Đơn giá" MinWidth="120" Binding="{Binding Price, StringFormat=\{0:n0\}, ConverterCulture=vi-VN}" />
+                        <DataGridTextColumn Header="Ghi chú" Width="*" MinWidth="180" Binding="{Binding Note}"/>
                     </DataGrid.Columns>
                     <i:Interaction.Triggers>
                         <i:EventTrigger>
