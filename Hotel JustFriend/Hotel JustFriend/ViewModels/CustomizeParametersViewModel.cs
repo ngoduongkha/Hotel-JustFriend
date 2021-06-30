@@ -207,9 +207,18 @@ namespace Hotel_JustFriend.ViewModels
                 {
                     if (tbox.Text != null)
                     {
-                        (DataProvider.Instance.DB.Constants.Find(0) as Constant).MaxCustomer = int.Parse(MaxCustomer);
-                        MaxCustomer = (DataProvider.Instance.DB.Constants.Find(0) as Constant).MaxCustomer.ToString();
-                        DataProvider.Instance.DB.SaveChanges();
+                        if (int.Parse(MaxCustomer) > 2)
+                        {
+                            (DataProvider.Instance.DB.Constants.Find(0) as Constant).MaxCustomer = int.Parse(MaxCustomer);
+                            MaxCustomer = (DataProvider.Instance.DB.Constants.Find(0) as Constant).MaxCustomer.ToString();
+                            DataProvider.Instance.DB.SaveChanges();
+                            MyMessageBox.Show("Sửa số khách hàng tối đa thành công", "Thông báo", MessageBoxButton.OK);
+                        }
+                        else
+                        {
+                            MyMessageBox.Show("Số khách hàng tối đa phải lớn hơn 2", "Nhắc nhở", MessageBoxButton.OK);
+                            return;
+                        }
                     }
                     return;
                 }
@@ -217,9 +226,17 @@ namespace Hotel_JustFriend.ViewModels
                 {
                     if (tbox.Text != null)
                     {
-                        (DataProvider.Instance.DB.Constants.Find(0) as Constant).Percent = double.Parse(Percent);
-                        Percent = (DataProvider.Instance.DB.Constants.Find(0) as Constant).Percent.ToString();
-                        DataProvider.Instance.DB.SaveChanges();
+                        if (double.Parse(Percent) >= 0)
+                        {
+                            (DataProvider.Instance.DB.Constants.Find(0) as Constant).Percent = double.Parse(Percent);
+                            Percent = (DataProvider.Instance.DB.Constants.Find(0) as Constant).Percent.ToString();
+                            DataProvider.Instance.DB.SaveChanges();
+                            MyMessageBox.Show("Sửa phụ thu thành công", "Thông báo", MessageBoxButton.OK);
+                        }
+                        else
+                        {
+                            MyMessageBox.Show("Phụ thu phải là số dương", "Nhắc nhở", MessageBoxButton.OK);
+                        }
                     }
                     return;
                 }
