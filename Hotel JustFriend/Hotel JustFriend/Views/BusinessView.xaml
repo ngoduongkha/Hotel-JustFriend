@@ -199,21 +199,47 @@
                     <ColumnDefinition Width="2.5*"/>
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
-                <StackPanel 
+                <Grid
                     Grid.Column="0"
-                    Orientation="Horizontal"
-                    Margin="10">
-                    <Label Content="Phòng:"
-                       FontSize="17"
-                       VerticalAlignment="Center">
-                    </Label>
-                    <TextBox
-                        materialDesign:HintAssist.Hint="Tên phòng"
-                        FontSize="17" VerticalAlignment="Center"
-                        Text="{Binding Path=SelectedRoom.DisplayName}"
-                        Margin="5,0" Width="100" IsReadOnly="True"
-                        TextAlignment="Center"/>
-                </StackPanel>
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <StackPanel
+                        Orientation="Horizontal"
+                        Margin="10 0"
+                        Grid.Row="0">
+                        <Label 
+                            Content="Phòng:"
+                            FontSize="17"
+                            VerticalAlignment="Center">
+                            </Label>
+                        <TextBox
+                            materialDesign:HintAssist.Hint="Tên phòng"
+                            FontSize="17" VerticalAlignment="Center"
+                            Text="{Binding Path=SelectedRoom.DisplayName}"
+                            Margin="5,0" Width="100" IsReadOnly="True"
+                            TextAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel
+                        Orientation="Horizontal"
+                        Margin="10 0"
+                        Grid.Row="1">
+                        <Label 
+                            Content="Loại phòng:"
+                            FontSize="17"
+                            VerticalAlignment="Center">
+                        </Label>
+                        <TextBox
+                            materialDesign:HintAssist.Hint="Loại"
+                            FontSize="17" VerticalAlignment="Center"
+                            Text="{Binding Path=SelectedRoom.DisplayName}"
+                            Margin="5,0" Width="80" IsReadOnly="True"
+                            TextAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
                 <StackPanel 
                     Grid.Column="1"
                     Orientation="Horizontal"
