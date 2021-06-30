@@ -243,7 +243,7 @@ namespace Hotel_JustFriend.ViewModels
             }
             catch 
             {
-                MyMessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButton.OK);
+                MyMessageBox.Show("Có lỗi xảy ra, xin vui lòng kiểm tra lại thông tin đã nhập", "Thông báo", MessageBoxButton.OK);
                 return;
             }
         }
