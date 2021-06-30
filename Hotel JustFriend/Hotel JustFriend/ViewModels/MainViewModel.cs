@@ -30,6 +30,7 @@ namespace Hotel_JustFriend.ViewModels
             switch (account.IdTypeAccount)
             {
                 case 2:
+                    IsCollapsedTabRoomManage = Visibility.Collapsed;
                     IsCollapsedTabCustomerManage = Visibility.Collapsed;
                     IsCollapsedTabAccountManage = Visibility.Collapsed;
                     IsCollapsedTabReport = Visibility.Collapsed;
