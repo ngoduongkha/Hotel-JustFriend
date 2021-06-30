@@ -72,7 +72,7 @@ namespace Hotel_JustFriend.ViewModels
                     return;
                 }
 
-                ListCustomerInfoes = new ObservableCollection<CustomerInfo>(ListCustomerInfoes.Where(x => x.Name.Contains(p.tboxSearch.Text) || x.IdCard.Contains(p.tboxSearch.Text) || x.Address.Contains(p.tboxSearch.Text)));
+                ListCustomerInfoes = new ObservableCollection<CustomerInfo>(ListCustomerInfoes.Where(x => x.Name.Contains(p.tboxSearch.Text) || x.IdCard.Contains(p.tboxSearch.Text)));
 
                 p.tboxSearch.Text = string.Empty;
             }
