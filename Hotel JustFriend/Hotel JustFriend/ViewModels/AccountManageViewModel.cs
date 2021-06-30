@@ -33,6 +33,7 @@ namespace Hotel_JustFriend.ViewModels
         
         public void LoadDB()
         {
+            ListAccount = new ObservableCollection<Account>(DataProvider.Instance.DB.Accounts);
             ListAccountWithType = new ObservableCollection<AccountAndType>(
                 _ListAccount.Join(_ListTypeAccount, (Account) => Account.IdTypeAccount, (TypeAccount) => TypeAccount.IdTypeAccount,
                 (Account, TypeAccount) => new AccountAndType { 
@@ -45,7 +46,6 @@ namespace Hotel_JustFriend.ViewModels
 
         public AccountManageViewModel()
         {
-            ListAccount = new ObservableCollection<Account>(DataProvider.Instance.DB.Accounts);
             ListTypeAccount = new ObservableCollection<TypeAccount>(DataProvider.Instance.DB.TypeAccounts);
             ListTypeAccountCanAdd = new ObservableCollection<TypeAccount>(DataProvider.Instance.DB.TypeAccounts.Where((x) => x.DisplayName != "Admin"));
 
