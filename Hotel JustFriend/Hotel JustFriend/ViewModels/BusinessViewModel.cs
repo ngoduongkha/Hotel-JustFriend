@@ -291,8 +291,12 @@ namespace Hotel_JustFriend.ViewModels
             try
             {
                 LoadDB();
-
-                if (string.IsNullOrEmpty(p.cbFilterStatus.Text) && !string.IsNullOrEmpty(p.cbFilterType.Text))
+                
+                if (string.IsNullOrEmpty(p.cbFilterStatus.Text) && string.IsNullOrEmpty(p.cbFilterType.Text))
+                {
+                    return;
+                }
+                else if (string.IsNullOrEmpty(p.cbFilterStatus.Text) && !string.IsNullOrEmpty(p.cbFilterType.Text))
                 {
                     int idType = DataProvider.Instance.DB.TypeRooms.Where(x => x.DisplayName == p.cbFilterType.Text).SingleOrDefault().IdTypeRoom;
                     ListRoom = new ObservableCollection<Room>(ListRoom
@@ -307,7 +311,7 @@ namespace Hotel_JustFriend.ViewModels
                         .OrderBy(x => x.Floor)
                         .ThenBy(x => x.Number));
                 }
-                else 
+                else
                 {
                     int idType = DataProvider.Instance.DB.TypeRooms.Where(x => x.DisplayName == p.cbFilterType.Text).SingleOrDefault().IdTypeRoom;
                     ListRoom = new ObservableCollection<Room>(ListRoom
